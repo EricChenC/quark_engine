@@ -6,7 +6,7 @@ var hierarchy =
         [ "qe::core::Component", "classqe_1_1core_1_1_component.html", [
           [ "qe::core::Animation", "classqe_1_1core_1_1_animation.html", null ],
           [ "qe::core::Behaviour", "classqe_1_1core_1_1_behaviour.html", [
-            [ "qe::core::QuarkBehaviour", "classqe_1_1core_1_1_quark_behaviour.html", [
+            [ "qe::core::ScriptBehaviour", "classqe_1_1core_1_1_script_behaviour.html", [
               [ "qe::core::AwakeBehaviour", "classqe_1_1core_1_1_awake_behaviour.html", null ]
             ] ]
           ] ],

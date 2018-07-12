@@ -14,7 +14,6 @@ var namespaceqe =
       [ "MeshRenderer", "classqe_1_1core_1_1_mesh_renderer.html", "classqe_1_1core_1_1_mesh_renderer" ],
       [ "Object", "classqe_1_1core_1_1_object.html", "classqe_1_1core_1_1_object" ],
       [ "Pipeline", "classqe_1_1core_1_1_pipeline.html", "classqe_1_1core_1_1_pipeline" ],
-      [ "QuarkBehaviour", "classqe_1_1core_1_1_quark_behaviour.html", "classqe_1_1core_1_1_quark_behaviour" ],
       [ "QuarkObject", "classqe_1_1core_1_1_quark_object.html", "classqe_1_1core_1_1_quark_object" ],
       [ "QuarkString", "classqe_1_1core_1_1_quark_string.html", "classqe_1_1core_1_1_quark_string" ],
       [ "Renderer", "classqe_1_1core_1_1_renderer.html", "classqe_1_1core_1_1_renderer" ],
@@ -22,6 +21,7 @@ var namespaceqe =
       [ "Resource", "classqe_1_1core_1_1_resource.html", "classqe_1_1core_1_1_resource" ],
       [ "Scene", "classqe_1_1core_1_1_scene.html", "classqe_1_1core_1_1_scene" ],
       [ "SceneManager", "classqe_1_1core_1_1_scene_manager.html", "classqe_1_1core_1_1_scene_manager" ],
+      [ "ScriptBehaviour", "classqe_1_1core_1_1_script_behaviour.html", "classqe_1_1core_1_1_script_behaviour" ],
       [ "Shader", "classqe_1_1core_1_1_shader.html", "classqe_1_1core_1_1_shader" ],
       [ "Texture", "classqe_1_1core_1_1_texture.html", "classqe_1_1core_1_1_texture" ],
       [ "Transform", "classqe_1_1core_1_1_transform.html", "classqe_1_1core_1_1_transform" ]
