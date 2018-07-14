@@ -5,7 +5,6 @@
 #pragma once
 
 #include "CoreObject.h"
-#include "Texture.h"
 
 #include <string>
 #include <glm/glm.hpp>
@@ -14,6 +13,8 @@
 
 namespace qe {
     namespace core {
+        class Texture;
+
         class DLL_EXPORT Shader : public CoreObject {
         public:
             enum class ShaderDataType
@@ -61,9 +62,9 @@ namespace qe {
 
             std::list<glm::mat4> get_global_matrix_array(const std::string& name);
 
-            Texture get_global_texture(const std::string& name);
+            std::shared_ptr<Texture> get_global_texture(const std::string& name);
 
-            std::list<Texture> get_global_texture_array(const std::string& name);
+            std::list<std::shared_ptr<Texture>> get_global_texture_array(const std::string& name);
 
             glm::vec4 get_global_vector(const std::string& name);
 
@@ -87,9 +88,9 @@ namespace qe {
 
             void set_global_matrix_array(const std::string& name, const std::list<glm::mat4>&& mat_list);
 
-            void set_global_texture(const std::string& name, const Texture& texture);
+            void set_global_texture(const std::string& name, std::shared_ptr<Texture> texture);
 
-            void set_global_texture_array(const std::string& name, const std::list<Texture>& texture_list);
+            void set_global_texture_array(const std::string& name, const std::list<std::shared_ptr<Texture>>& texture_list);
 
             void set_global_vector(const std::string& name, const glm::vec4& vec);
 
@@ -116,9 +117,9 @@ namespace qe {
 
             std::shared_ptr<std::map<std::string, std::list<glm::mat4>>> mat_list_map_;
 
-            std::shared_ptr<std::map<std::string, qe::core::Texture>> texture_map_;
+            std::shared_ptr<std::map<std::string, std::shared_ptr<Texture>>> texture_map_;
 
-            std::shared_ptr<std::map<std::string, std::list<qe::core::Texture>>> texture_list_map_;
+            std::shared_ptr<std::map<std::string, std::list<std::shared_ptr<Texture>>>> texture_list_map_;
 
             std::shared_ptr<std::map<std::string, glm::vec4>> vec_map_;
 

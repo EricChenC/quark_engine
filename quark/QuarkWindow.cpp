@@ -16,6 +16,7 @@
 #include "MeshRenderer.h"
 #include "QuarkString.h"
 #include "AwakeBehaviour.h"
+#include "Shader.h"
 
 
 qe::edit::QuarkWindow::QuarkWindow()

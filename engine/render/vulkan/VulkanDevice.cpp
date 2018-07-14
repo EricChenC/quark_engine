@@ -2,6 +2,9 @@
 
 #include "Texture.h"
 #include "VulkanTexture.h"
+#include "VulkanBuffer.h"
+#include "VulkanTools.h"
+
 
 qe::render::vulkan::VulkanDevice::VulkanDevice(HWND window, bool enable_validation, int gpu_index)
 {

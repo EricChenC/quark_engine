@@ -11,7 +11,6 @@
 
 #include "CoreObject.h"
 
-#include <string>
 #include <vector>
 #include <map>
 #include <glm/glm.hpp>

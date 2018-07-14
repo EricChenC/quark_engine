@@ -7,10 +7,11 @@
 #pragma once
 
 #include "CoreObject.h"
-#include "Scene.h"
 
 namespace qe {
     namespace core {
+        class Scene;
+
         class DLL_EXPORT SceneManager : public CoreObject {
         public:
             /// <summary>
@@ -28,14 +29,14 @@ namespace qe {
             /// </summary>
             /// <param name="scene"> for be loaded to main scene.</param>
             /// <param name="main_scene"> main scene.</param>
-            void Load(Scene scene, Scene main_scene);
+            void Load(std::shared_ptr<Scene> scene, std::shared_ptr<Scene> main_scene);
 
             /// <summary>
             ///  Unload a scene from main scene.
             /// </summary>
             /// <param name="scene"> is will be unloaded scene from main scene.</param>
             /// <param name="main_scene">The main scene.</param>
-            void Unload(Scene scene, Scene main_scene);
+            void Unload(std::shared_ptr<Scene> scene, std::shared_ptr<Scene> main_scene);
 
         };
     }

@@ -5,11 +5,8 @@
 #pragma once
 
 #include "VulkanObject.h"
-#include "VulkanTools.h"
-#include "VulkanBuffer.h"
 
 #include <vector>
-#include <string>
 
 namespace qe {
     namespace core {
@@ -19,6 +16,7 @@ namespace qe {
     namespace render {
         namespace vulkan {
             class VulkanTexture;
+            class VulkanBuffer;
 
             class DLL_EXPORT VulkanDevice : public VulkanObject {
             public:

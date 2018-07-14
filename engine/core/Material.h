@@ -4,11 +4,11 @@
 #pragma once
 
 #include "CoreObject.h"
-#include "Shader.h"
-
 
 namespace qe {
     namespace core {
+        class Shader;
+
         class DLL_EXPORT Material : public CoreObject {
         public:
             explicit Material();

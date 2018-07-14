@@ -1,4 +1,5 @@
 #include "Material.h"
+#include "Shader.h"
 
 qe::core::Material::Material()
 {

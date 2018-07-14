@@ -32,6 +32,7 @@ namespace qe {
         class Material;
         class MeshFilter;
         class MeshRenderer;
+        class Shader;
     }
 
     namespace render {

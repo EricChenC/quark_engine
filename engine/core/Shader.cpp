@@ -1,4 +1,5 @@
 #include "Shader.h"
+#include "Texture.h"
 
 #include <stdexcept>
 
@@ -22,9 +23,9 @@ qe::core::Shader::Shader()
 
     mat_list_map_ = std::make_shared<std::map<std::string, std::list<glm::mat4>>>();
 
-    texture_map_ = std::make_shared<std::map<std::string, qe::core::Texture>>();
+    texture_map_ = std::make_shared<std::map<std::string, std::shared_ptr<Texture>>>();
 
-    texture_list_map_ = std::make_shared<std::map<std::string, std::list<qe::core::Texture>>>();
+    texture_list_map_ = std::make_shared<std::map<std::string, std::list<std::shared_ptr<Texture>>>>();
 
     vec_map_ = std::make_shared<std::map<std::string, glm::vec4>>();
 
@@ -135,9 +136,9 @@ std::list<glm::mat4> qe::core::Shader::get_global_matrix_array(const std::string
     return mat_list;
 }
 
-qe::core::Texture qe::core::Shader::get_global_texture(const std::string & name)
+std::shared_ptr<qe::core::Texture> qe::core::Shader::get_global_texture(const std::string & name)
 {
-    qe::core::Texture texture;
+    auto texture = std::make_shared<qe::core::Texture>();
 
     auto it = texture_map_->find(name);
     if (it != texture_map_->end())
@@ -146,9 +147,9 @@ qe::core::Texture qe::core::Shader::get_global_texture(const std::string & name)
     return texture;
 }
 
-std::list<qe::core::Texture> qe::core::Shader::get_global_texture_array(const std::string & name)
+std::list<std::shared_ptr<qe::core::Texture>> qe::core::Shader::get_global_texture_array(const std::string & name)
 {
-    std::list<qe::core::Texture> texture_list;
+    std::list<std::shared_ptr<qe::core::Texture>> texture_list;
 
     auto it = texture_list_map_->find(name);
     if (it != texture_list_map_->end())
@@ -313,7 +314,7 @@ void qe::core::Shader::set_global_matrix_array(const std::string& name, const st
     mat_list_map_->emplace(name, mat_list);
 }
 
-void qe::core::Shader::set_global_texture(const std::string& name, const Texture & texture)
+void qe::core::Shader::set_global_texture(const std::string& name, std::shared_ptr<Texture> texture)
 {
 
     auto it = shader_data_type_map_->find(name);
@@ -330,7 +331,7 @@ void qe::core::Shader::set_global_texture(const std::string& name, const Texture
     texture_map_->emplace(name, texture);
 }
 
-void qe::core::Shader::set_global_texture_array(const std::string& name, const std::list<Texture>& texture_list)
+void qe::core::Shader::set_global_texture_array(const std::string& name, const std::list<std::shared_ptr<Texture>>& texture_list)
 {
     auto it = shader_data_type_map_->find(name);
     if (it == shader_data_type_map_->end()) {

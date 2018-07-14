@@ -7,9 +7,6 @@
 #include "Texture.h"
 #include "Shader.h"
 
-#include <memory>
-
-
 qe::core::Resource::Resource()
 {
     fbx_load_ = std::make_shared <resource::FBXLoad > ();
