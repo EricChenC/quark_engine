@@ -10,14 +10,22 @@
 /// will can use _CRTDBG_MAP_ALLOC to check memory allocate leak position,
 /// otherwise DBG_NEW just create a normal object.
 
-#include "dll_EXPORTS.h"
-
 #ifdef _DEBUG
 #define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
 // Replace _NORMAL_BLOCK with _CLIENT_BLOCK if you want the
 // allocations to be of _CLIENT_BLOCK type
 #else
 #define DBG_NEW new
+#endif
+
+#ifdef _WIN32
+#ifdef dll_EXPORTS
+#define DLL_EXPORT __declspec(dllexport)
+#else
+#define DLL_EXPORT __declspec(dllexport)
+#endif
+#else
+#define DLL_EXPORT
 #endif
 
 #define VERIFY(x) assert(x)
