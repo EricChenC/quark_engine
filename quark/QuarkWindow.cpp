@@ -32,8 +32,24 @@ qe::edit::QuarkWindow::QuarkWindow()
 
 qe::edit::QuarkWindow::~QuarkWindow()
 {
-    
+    vi_device_->logic_device_.freeCommandBuffers(
+        vi_device_->command_pool_,
+        command_buffers_.size(),
+        command_buffers_.data());
 
+    vi_device_->logic_device_.freeMemory(ubo_buffer_memory_);
+    vi_device_->logic_device_.destroyBuffer(ubo_buffer_);
+
+    vi_device_->logic_device_.freeMemory(uld_buffer_memory_);
+    vi_device_->logic_device_.destroyBuffer(uld_buffer_);
+
+    vi_device_->logic_device_.destroyPipelineLayout(pipeline_layout_);
+
+    vi_device_->logic_device_.destroyPipeline(pipeline_);
+
+    vi_device_->logic_device_.destroyDescriptorSetLayout(descriptor_set_layout_);
+
+    vi_device_->logic_device_.destroyDescriptorPool(descriptor_set_pool_);
 }
 
 void qe::edit::QuarkWindow::Init()
@@ -234,7 +250,7 @@ void qe::edit::QuarkWindow::LoadQuarkObject(
     mesh_renderer->add_material(standard_material);
 
     auto behaviour = quark_object->add_component<qe::core::AwakeBehaviour>();
-    behaviours_.push_back(behaviour);
+    //behaviours_.push_back(behaviour);
 
     LoadDrawData(quark_object->get_transform()->get_local_matrix(), mesh_filter, mesh_renderer);
 
