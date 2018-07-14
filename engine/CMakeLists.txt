@@ -42,11 +42,11 @@ libfbxsdk-md
 
 include (GenerateExportHeader)
 
-GENERATE_EXPORT_HEADER(engine        
-    BASE_NAME engine
-    EXPORT_MACRO_NAME dll_EXPORTS
-    EXPORT_FILE_NAME dll_EXPORTS.h
-    STATIC_DEFINE DLL_EXPORTS_BUILT_AS_STATIC)
+GENERATE_EXPORT_HEADER(
+engine        
+EXPORT_MACRO_NAME dll_EXPORTS
+)
+
 
 
 
