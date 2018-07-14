@@ -19,7 +19,7 @@
 namespace qe {
     namespace render {
         namespace vulkan {
-            class VulkanTools : public VulkanObject {
+            class DLL_EXPORT VulkanTools : public VulkanObject {
             public:
                 explicit VulkanTools();
                 ~VulkanTools();

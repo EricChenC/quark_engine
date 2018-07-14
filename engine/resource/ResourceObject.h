@@ -10,7 +10,7 @@
 namespace qe {
     namespace resource
     {
-        class ResourceObject : public core::Object
+        class DLL_EXPORT ResourceObject : public core::Object
         {
         public:
             explicit ResourceObject() {}

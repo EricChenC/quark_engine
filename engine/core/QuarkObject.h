@@ -21,7 +21,7 @@ namespace qe {
         class Material;
         class Component;
 
-        class QuarkObject : public CoreObject {
+        class DLL_EXPORT QuarkObject : public CoreObject {
         public:           
             /// <summary>
             /// Initializes a new instance of the <see cref="QuarkObject"/> class.

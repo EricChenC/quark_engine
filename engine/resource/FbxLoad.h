@@ -15,7 +15,7 @@ namespace qe {
     }
 
     namespace resource {
-        class FBXLoad : public ResourceObject {
+        class DLL_EXPORT FBXLoad : public ResourceObject {
         public:
             explicit FBXLoad() {}
             ~FBXLoad() {}

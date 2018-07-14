@@ -10,7 +10,7 @@
 namespace qe {
     namespace core
     {
-        class Behaviour : public Component
+        class DLL_EXPORT Behaviour : public Component
         {
         public:
             explicit Behaviour();

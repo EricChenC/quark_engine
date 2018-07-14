@@ -9,7 +9,7 @@
 
 namespace qe {
     namespace core {
-        class Material : public CoreObject {
+        class DLL_EXPORT Material : public CoreObject {
         public:
             explicit Material();
 

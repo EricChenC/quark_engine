@@ -17,7 +17,7 @@ namespace qe {
         class QuarkObject;
         class Transform;
 
-        class Component : public CoreObject {
+        class DLL_EXPORT Component : public CoreObject {
         public:
             /// <summary>
             /// Initializes a new instance of the <see cref="Component"/> class.

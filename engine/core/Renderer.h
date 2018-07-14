@@ -12,7 +12,7 @@ namespace qe {
     namespace core {
         class Material;
 
-        class Renderer : public Component {
+        class DLL_EXPORT Renderer : public Component {
         public:
             /// <summary>
             /// Initializes a new instance of the <see cref="Renderer"/> class.

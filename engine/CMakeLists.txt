@@ -30,7 +30,7 @@ ${DEPS}/vulkan/lib
 ${DEPS}/fbx/lib/x64
 )
 
-add_library(engine STATIC ${CORE} ${RENDER} ${RESOURCE} ${SHADERS})
+add_library(engine SHARED ${CORE} ${RENDER} ${RESOURCE} ${SHADERS})
 
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
@@ -39,6 +39,14 @@ engine
 vulkan-1
 libfbxsdk-md
 )
+
+include (GenerateExportHeader)
+
+GENERATE_EXPORT_HEADER(engine        
+    BASE_NAME engine
+    EXPORT_MACRO_NAME dll_EXPORTS
+    EXPORT_FILE_NAME dll_EXPORTS.h
+    STATIC_DEFINE DLL_EXPORTS_BUILT_AS_STATIC)
 
 
 

@@ -9,7 +9,7 @@
 namespace qe {
     namespace render {
         namespace vulkan {
-            class VulkanBuffer : public VulkanObject {
+            class DLL_EXPORT VulkanBuffer : public VulkanObject {
             public:
                 vk::Device device;
                 vk::Buffer buffer;

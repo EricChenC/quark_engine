@@ -25,7 +25,7 @@ std::unique_ptr<T> make_unique(Args&& ...args)
 namespace qe {
     namespace render {
         namespace vulkan {
-            class Thread {
+            class DLL_EXPORT Thread {
             private:
                 bool destroying = false;
                 std::thread worker;

@@ -8,7 +8,7 @@ namespace qe {
     namespace core {
         class Mesh;
 
-        class MeshFilter : public Component 
+        class DLL_EXPORT MeshFilter : public Component
         {
         public:
             /// <summary>

@@ -10,7 +10,7 @@
 
 namespace qe {
     namespace core {
-        class Camera : public Component {
+        class DLL_EXPORT Camera : public Component {
         public:
             /// <summary>
             /// Initializes a new instance of the <see cref="Camera"/> class.

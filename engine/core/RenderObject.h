@@ -10,7 +10,7 @@
 namespace qe {
     namespace core
     {
-        class RenderObject : public Object
+        class DLL_EXPORT RenderObject : public Object
         {
         public:
             explicit RenderObject(){}

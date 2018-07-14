@@ -15,7 +15,7 @@ namespace qe {
     namespace core {
         class QuarkObject;
 
-        class Scene : public CoreObject {
+        class DLL_EXPORT Scene : public CoreObject {
         public:
             /// <summary>
             /// Initializes a new instance of the <see cref="Scene"/> class.

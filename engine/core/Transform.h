@@ -14,7 +14,7 @@
 
 namespace qe {
     namespace core {
-        class Transform : public Component {
+        class DLL_EXPORT Transform : public Component {
         public:
             /// <summary>
             /// Initializes a new instance of the <see cref="Transform"/> class.

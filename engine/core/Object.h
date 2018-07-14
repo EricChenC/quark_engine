@@ -6,14 +6,14 @@
 
 #pragma once
 
-#include "MemoryAllocate.h"
+#include "Common.h"
 
 #include <string>
 #include <memory>
 
 namespace qe {
     namespace core {
-        class Object {
+        class DLL_EXPORT Object {
         public:
             /// <summary>
             /// Initializes a new instance of the <see cref="Object"/> class.

@@ -11,7 +11,7 @@
 namespace qe {
     namespace render {
         namespace vulkan {
-            class VulkanTexture : public VulkanObject {
+            class DLL_EXPORT VulkanTexture : public VulkanObject {
             public:
                 explicit VulkanTexture();
                 ~VulkanTexture();

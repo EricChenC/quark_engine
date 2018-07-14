@@ -10,7 +10,7 @@
 namespace qe {
     namespace core
     {
-        class CoreObject : public Object
+        class DLL_EXPORT CoreObject : public Object
         {
         public:
             explicit CoreObject(){}

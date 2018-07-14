@@ -11,7 +11,7 @@
 
 namespace qe {
     namespace core {
-        class QuarkString : public CoreObject {
+        class DLL_EXPORT QuarkString : public CoreObject {
         public:
             /// <summary>
             /// Initializes a new instance of the <see cref="QuarkString"/> class.

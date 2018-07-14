@@ -14,7 +14,7 @@ namespace qe {
 
     namespace resource
     {
-        class ShaderLoad
+        class DLL_EXPORT ShaderLoad
         {
         public:
             explicit ShaderLoad();

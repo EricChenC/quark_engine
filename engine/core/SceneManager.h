@@ -11,7 +11,7 @@
 
 namespace qe {
     namespace core {
-        class SceneManager : public CoreObject {
+        class DLL_EXPORT SceneManager : public CoreObject {
         public:
             /// <summary>
             /// Initializes a new instance of the <see cref="SceneManager"/> class.

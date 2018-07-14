@@ -8,7 +8,7 @@
 
 namespace qe {
     namespace core {
-        class Pipeline : public CoreObject {
+        class DLL_EXPORT Pipeline : public CoreObject {
         public:
             explicit Pipeline();
             ~Pipeline();

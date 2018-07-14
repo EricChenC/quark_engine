@@ -14,7 +14,7 @@
 
 namespace qe {
     namespace core {
-        class Shader : public CoreObject {
+        class DLL_EXPORT Shader : public CoreObject {
         public:
             enum class ShaderDataType
             {

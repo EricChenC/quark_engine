@@ -8,7 +8,7 @@
 
 namespace qe {
     namespace core {
-        class MeshRenderer : public Renderer {
+        class DLL_EXPORT MeshRenderer : public Renderer {
         public:
             explicit MeshRenderer();
             ~MeshRenderer();

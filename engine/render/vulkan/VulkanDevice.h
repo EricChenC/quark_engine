@@ -20,7 +20,7 @@ namespace qe {
         namespace vulkan {
             class VulkanTexture;
 
-            class VulkanDevice : public VulkanObject {
+            class DLL_EXPORT VulkanDevice : public VulkanObject {
             public:
                 vk::Instance instance_;
                 /// Physical device representation */

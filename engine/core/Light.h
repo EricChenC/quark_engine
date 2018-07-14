@@ -9,7 +9,7 @@
 
 namespace qe {
     namespace core {
-        class Light : public Component {
+        class DLL_EXPORT Light : public Component {
         public:
             explicit Light();
             ~Light();

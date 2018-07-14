@@ -19,7 +19,7 @@ namespace qe {
     namespace core {
         class Scene;
 
-        class Resource : public CoreObject {
+        class DLL_EXPORT Resource : public CoreObject {
         public:
             /// <summary>
             /// Initializes a new instance of the <see cref="Resource"/> class.

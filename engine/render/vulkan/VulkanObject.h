@@ -13,7 +13,7 @@
 namespace qe {
     namespace render {
         namespace vulkan {
-            class VulkanObject : public core::RenderObject {
+            class DLL_EXPORT VulkanObject : public core::RenderObject {
             public:
                 explicit VulkanObject();
                 ~VulkanObject();

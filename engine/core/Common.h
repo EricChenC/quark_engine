@@ -10,6 +10,7 @@
 /// will can use _CRTDBG_MAP_ALLOC to check memory allocate leak position,
 /// otherwise DBG_NEW just create a normal object.
 
+#include "dll_EXPORTS.h"
 
 #ifdef _DEBUG
 #define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )

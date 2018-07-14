@@ -9,7 +9,7 @@
 
 namespace qe {
     namespace core {
-        class Animation : public Component {
+        class DLL_EXPORT Animation : public Component {
         public:
             /// <summary>
             /// Initializes a new instance of the <see cref="Animation"/> class.

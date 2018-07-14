@@ -12,7 +12,7 @@ namespace qe {
     }
 
     namespace resource {
-        class TextureLoad : public ResourceObject {
+        class DLL_EXPORT TextureLoad : public ResourceObject {
         public:
             explicit TextureLoad();
             ~TextureLoad();

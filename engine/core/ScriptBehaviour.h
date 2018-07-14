@@ -10,7 +10,7 @@
 namespace qe {
     namespace core
     {
-        class ScriptBehaviour : public Behaviour
+        class DLL_EXPORT ScriptBehaviour : public Behaviour
         {
         public:
             explicit ScriptBehaviour();

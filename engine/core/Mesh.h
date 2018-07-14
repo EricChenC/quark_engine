@@ -19,7 +19,7 @@
 
 namespace qe {
     namespace core {
-        class Mesh : public CoreObject {
+        class DLL_EXPORT Mesh : public CoreObject {
         public:
             
             /// <summary>

@@ -10,7 +10,7 @@
 
 namespace qe {
     namespace core {
-        class Texture : public CoreObject {
+        class DLL_EXPORT Texture : public CoreObject {
         public:
             enum class Type
             {
