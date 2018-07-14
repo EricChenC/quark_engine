@@ -17,6 +17,8 @@
 #include "QuarkString.h"
 #include "AwakeBehaviour.h"
 #include "Shader.h"
+#include "ScriptBehaviour.h"
+
 
 
 qe::edit::QuarkWindow::QuarkWindow()

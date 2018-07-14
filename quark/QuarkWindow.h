@@ -17,8 +17,6 @@
 #include <glm/glm.hpp>
 
 #include "EditObject.h"
-#include "ScriptBehaviour.h"
-
 
 
 namespace qe {
@@ -33,6 +31,7 @@ namespace qe {
         class MeshFilter;
         class MeshRenderer;
         class Shader;
+        class ScriptBehaviour;
     }
 
     namespace render {
