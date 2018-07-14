@@ -5,13 +5,13 @@ file(GLOB RENDER render/vulkan/*.*)
 file(GLOB RESOURCE resource/*.*)
 
 source_group("Core" FILES ${CORE})
-source_group("Render" FILES ${RENDER})
+source_group("Render\\Vulkan" FILES ${RENDER})
 source_group("Resource" FILES ${RESOURCE})
 
 set(SHADER_DIR ../media/shader/)
 file(GLOB SHADERS "${SHADER_DIR}/*.bat" "${SHADER_DIR}/*.shader" "${SHADER_DIR}/*.vert" "${SHADER_DIR}/*.frag" "${SHADER_DIR}/*.geom" "${SHADER_DIR}/*.tesc" "${SHADER_DIR}/*.tese")
 
-source_group("Shaders" FILES ${SHADERS})
+source_group("Resource\\Shaders" FILES ${SHADERS})
 
 include_directories(
 ${DEPS}
