@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 #include "QuarkWindow.h"
 #include "QuarkWindowEvent.h"
+#include "QuarkString.h"
 
 #include <qsplitter.h>
 #include <qapplication.h>
@@ -16,18 +17,25 @@
 #include <QDropEvent>
 #include <qmimedata.h>
 #include <qlabel.h>
+#include <qmenubar.h>
+#include <qmenu.h>
+#include <qtimer.h>
 
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QSpacerItem>
 
 #include <iostream>
+#include <fstream>
+#include <vector>
 
 #include <qdebug.h>
 
 
 qe::edit::MainWindow::MainWindow()
 {
+    LoadConfig(kConfigPath);
+
     setAcceptDrops(true);
     InitUI();
 
@@ -78,11 +86,12 @@ void qe::edit::MainWindow::InitWindowBase()
     InitIcon();
     InitWindowName();
     InitWindowSize();
-    InitStatusBar();
 }
 
 void qe::edit::MainWindow::InitLayout()
 {
+    InitMenuBar();
+
     InitSplitterPolicy();
 
     InitSceneTreeUI();
@@ -95,6 +104,8 @@ void qe::edit::MainWindow::InitLayout()
 
     InitPropertyUI();
     InitMainUILayout();
+
+    InitStatusBar();
 }
 
 void qe::edit::MainWindow::InitIcon()
@@ -118,6 +129,15 @@ void qe::edit::MainWindow::InitWindowSize()
     window_rect.setHeight(screen_rect.height() - WindowParameter::windows_taskbar_height);
 
     this->setGeometry(window_rect);
+
+}
+
+void qe::edit::MainWindow::InitMenuBar()
+{
+    auto menu_bar = this->menuBar();
+    menu_bar->addMenu("File");
+
+    menu_bar->addMenu("Edit");
 
 }
 
@@ -323,6 +343,53 @@ void qe::edit::MainWindow::ClearUI()
     delete button_policy_;
 
     delete quark_window_event_;
+}
+
+void qe::edit::MainWindow::LoadConfig(const std::string & path)
+{
+
+    std::ifstream file(path);
+    std::string line;
+    std::string menu_string;
+
+    if (file.is_open()) {
+        while (getline(file, line)) {
+            if (line.find("//") != std::string::npos
+                || line.empty()) {
+                continue;
+            }
+
+            menu_string += line;
+
+            if (line.find("}") != std::string::npos) {
+                menu_list.push_back(menu_string);
+                menu_string = "";
+            }
+
+        }
+        file.close();
+    }
+    else {
+        std::cout << "can't open file " << path << endl;
+    }
+
+
+    for (auto str : menu_list) {
+        if (str.find("MenuBar") != std::string::npos) {
+
+            QString men(str.c_str());
+
+            auto split_result = men.split("{");
+
+
+
+
+        }
+
+
+        std::cout << "menu -> " << str << std::endl;
+    }
+
 }
 
 void qe::edit::MainWindow::ConnectSignals()

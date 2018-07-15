@@ -1,5 +1,7 @@
 #include "QuarkWindowEvent.h"
 
+#include <QEvent>
+
 #include <iostream>
 
 qe::edit::QuarkWindowEvent::QuarkWindowEvent()

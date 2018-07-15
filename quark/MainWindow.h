@@ -1,9 +1,6 @@
 #pragma once
 
 #include <qmainwindow.h>
-#include <memory>
-#include <qtimer.h>
-#include <qstatusbar.h>
 
 #include "EditObject.h"
 
@@ -47,6 +44,8 @@ namespace qe {
             void InitIcon();
             void InitWindowName();
             void InitWindowSize();
+
+            void InitMenuBar();
             void InitStatusBar();
 
             void InitSplitterPolicy();
@@ -64,6 +63,8 @@ namespace qe {
             void InitMainUILayout();
 
             void ClearUI();
+
+            void LoadConfig(const std::string& path);
 
         private:
             void ConnectSignals();
@@ -117,6 +118,10 @@ namespace qe {
             QToolButton *next_frame_button_;
 
             std::shared_ptr<QTimer> fps_timer_;
+
+            const std::string kConfigPath = "D:/project/quark_engine/media/config/menu.txt";
+
+            std::vector<std::string> menu_list;
 
             // after release layout ,  that inside QSpacerItem will auto release
         };

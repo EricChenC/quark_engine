@@ -1,9 +1,10 @@
 #pragma once
 
 #include <QObject>
-#include <QEvent>
 
 #include "EditObject.h"
+
+class QEvent;
 
 namespace qe {
     namespace edit {
