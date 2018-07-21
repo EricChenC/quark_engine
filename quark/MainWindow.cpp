@@ -19,7 +19,10 @@
 #include <qlabel.h>
 #include <qmenubar.h>
 #include <qmenu.h>
+#include <qaction.h>
 #include <qtimer.h>
+#include <qdesktopservices.h>
+#include <qfiledialog.h>
 
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QVBoxLayout>
@@ -34,8 +37,6 @@
 
 qe::edit::MainWindow::MainWindow()
 {
-    LoadConfig(kConfigPath);
-
     setAcceptDrops(true);
     InitUI();
 
@@ -53,8 +54,34 @@ void qe::edit::MainWindow::InitUI()
 {
     InitWindowBase();
     InitLayout();
+}
 
-    ConnectSignals();
+void qe::edit::MainWindow::NewProjectAction()
+{
+	std::cout << "new project action \n";
+}
+
+void qe::edit::MainWindow::OpenProjectAction()
+{
+	project_file_ = QFileDialog::getOpenFileName(this,
+		tr("Open Project"), "D:/", tr("Project Files (*.*)"));
+
+	std::cout << project_file_.toStdString() << std::endl;
+}
+
+void qe::edit::MainWindow::SaveProjectAction()
+{
+	std::cout << "save project action \n";
+}
+
+void qe::edit::MainWindow::ExitAction()
+{
+	this->close();
+}
+
+void qe::edit::MainWindow::QuarkManualAction()
+{
+	QDesktopServices::openUrl(QUrl("D:/project/quark_engine/doc/html/index.html"));
 }
 
 void qe::edit::MainWindow::UpdateFps()
@@ -135,9 +162,106 @@ void qe::edit::MainWindow::InitWindowSize()
 void qe::edit::MainWindow::InitMenuBar()
 {
     auto menu_bar = this->menuBar();
-    menu_bar->addMenu("File");
 
-    menu_bar->addMenu("Edit");
+	//File
+	auto file_menu = std::make_shared<QMenu>("File");
+
+	auto new_project_action = file_menu->addAction("New Project");
+	auto open_project_action = file_menu->addAction("Open Project");
+	auto save_project_action = file_menu->addAction("Save Project");
+
+	file_menu->addSeparator();
+
+	auto new_scene_action = file_menu->addAction("New Scene");
+	auto open_scene_action = file_menu->addAction("Open Scene");
+	auto save_scene_action = file_menu->addAction("Save Scenes");
+
+	file_menu->addSeparator();
+
+	auto build_settings_action = file_menu->addAction("Build Settings");
+	auto exit_action = file_menu->addAction("Exit");
+
+
+	//Eidt
+	auto edit_menu = std::make_shared<QMenu>("Edit");
+	auto proejct_setting_menu = edit_menu->addMenu("Project Settings");
+	auto quality_action = proejct_setting_menu->addAction("Quality");
+
+
+	//Assets
+	auto assets_menu = std::make_shared<QMenu>("Assets");
+	auto refresh_action = assets_menu->addAction("Refresh");
+
+
+	//QuarkObject
+	auto quark_object_menu = std::make_shared<QMenu>("Quark Object");
+	auto create_empty_action = quark_object_menu->addAction("Create Empty");
+
+	quark_object_menu->addSeparator();
+
+	auto light_menu = quark_object_menu->addMenu("Light");
+	auto direction_light_action = light_menu->addAction("Direction Light");
+	auto point_light_action = light_menu->addAction("Point Light");
+	auto spot_light_action = light_menu->addAction("Spot Light");
+	auto area_light_action = light_menu->addAction("Area Light");
+
+	quark_object_menu->addSeparator();
+
+	auto camera_action = quark_object_menu->addAction("Camera");
+
+
+	//Component
+	auto component_menu = std::make_shared<QMenu>("Component");
+	auto mesh_menu = component_menu->addMenu("Mesh");
+	auto mesh_renderer_action = mesh_menu->addAction("Mesh Renderer");
+
+
+	//Window
+	auto window_menu = std::make_shared<QMenu>("Window");
+	auto asset_store_action = window_menu->addAction("Asset Store");
+	auto profiler_action = window_menu->addAction("Profiler");
+
+
+	//Help
+	auto help_menu = std::make_shared<QMenu>("Help");
+	auto about_quark_action = help_menu->addAction("About Quark");
+
+	help_menu->addSeparator();
+
+	auto manage_license_action = help_menu->addAction("Manage license");
+	auto quark_manual_action = help_menu->addAction("Quark Manual");
+
+	help_menu->addSeparator();
+
+	auto check_for_updates_action = help_menu->addAction("Check for Updates");
+	auto report_a_bug_action = help_menu->addAction("Report a Bug");
+
+
+	//add menu to menu bar
+	menu_bar->addMenu(file_menu.get());
+	menu_bar->addMenu(edit_menu.get());
+	menu_bar->addMenu(assets_menu.get());
+	menu_bar->addMenu(quark_object_menu.get());
+	menu_bar->addMenu(component_menu.get());
+	menu_bar->addMenu(window_menu.get());
+	menu_bar->addMenu(help_menu.get());
+
+	//push menu to menu list
+	menus_.push_back(file_menu);
+	menus_.push_back(edit_menu);
+	menus_.push_back(assets_menu);
+	menus_.push_back(quark_object_menu);
+	menus_.push_back(component_menu);
+	menus_.push_back(window_menu);
+	menus_.push_back(help_menu);
+
+	connect(new_project_action, SIGNAL(triggered()), this, SLOT(NewProjectAction()));
+	connect(open_project_action, SIGNAL(triggered()), this, SLOT(OpenProjectAction()));
+	connect(save_project_action, SIGNAL(triggered()), this, SLOT(SaveProjectAction()));
+
+	connect(exit_action, SIGNAL(triggered()), this, SLOT(ExitAction()));
+
+	connect(quark_manual_action, SIGNAL(triggered()), this, SLOT(QuarkManualAction()));
 
 }
 
@@ -345,54 +469,3 @@ void qe::edit::MainWindow::ClearUI()
     delete quark_window_event_;
 }
 
-void qe::edit::MainWindow::LoadConfig(const std::string & path)
-{
-
-    std::ifstream file(path);
-    std::string line;
-    std::string menu_string;
-
-    if (file.is_open()) {
-        while (getline(file, line)) {
-            if (line.find("//") != std::string::npos
-                || line.empty()) {
-                continue;
-            }
-
-            menu_string += line;
-
-            if (line.find("}") != std::string::npos) {
-                menu_list.push_back(menu_string);
-                menu_string = "";
-            }
-
-        }
-        file.close();
-    }
-    else {
-        std::cout << "can't open file " << path << endl;
-    }
-
-
-    for (auto str : menu_list) {
-        if (str.find("MenuBar") != std::string::npos) {
-
-            QString men(str.c_str());
-
-            auto split_result = men.split("{");
-
-
-
-
-        }
-
-
-        std::cout << "menu -> " << str << std::endl;
-    }
-
-}
-
-void qe::edit::MainWindow::ConnectSignals()
-{
-    //connect(play_button_, SIGNAL(clicked()), vulkan_window_, SLOT(ChangeMaterial()));
-}

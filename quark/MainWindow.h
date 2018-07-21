@@ -14,6 +14,8 @@ class QToolButton;
 class QSpacerItem;
 class QDragEnterEvent;
 class QDropEvent;
+class QMenu;
+class QAction;
 
 
 namespace qe {
@@ -30,8 +32,17 @@ namespace qe {
 
             void InitUI();
 
-            public slots:
+        public slots:
             void UpdateFps();
+
+			void NewProjectAction();
+			void OpenProjectAction();
+			void SaveProjectAction();
+
+			void ExitAction();
+
+			void QuarkManualAction();
+
 
         protected:
             void dragEnterEvent(QDragEnterEvent *event) override;
@@ -63,11 +74,6 @@ namespace qe {
             void InitMainUILayout();
 
             void ClearUI();
-
-            void LoadConfig(const std::string& path);
-
-        private:
-            void ConnectSignals();
 
 
         private:
@@ -119,9 +125,9 @@ namespace qe {
 
             std::shared_ptr<QTimer> fps_timer_;
 
-            const std::string kConfigPath = "D:/project/quark_engine/media/config/menu.txt";
+			std::vector<std::shared_ptr<QMenu>> menus_;
 
-            std::vector<std::string> menu_list;
+			QString project_file_;
 
             // after release layout ,  that inside QSpacerItem will auto release
         };
