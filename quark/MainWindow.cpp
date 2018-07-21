@@ -63,15 +63,32 @@ void qe::edit::MainWindow::NewProjectAction()
 
 void qe::edit::MainWindow::OpenProjectAction()
 {
-	project_file_ = QFileDialog::getOpenFileName(this,
-		tr("Open Project"), "D:/", tr("Project Files (*.*)"));
-
-	std::cout << project_file_.toStdString() << std::endl;
+	std::cout << "open project action \n";
 }
 
 void qe::edit::MainWindow::SaveProjectAction()
 {
 	std::cout << "save project action \n";
+}
+
+void qe::edit::MainWindow::NewSceneAction()
+{
+	std::cout << "new scene action \n";
+}
+
+void qe::edit::MainWindow::OpenSceneAction()
+{
+	project_file_ = QFileDialog::getOpenFileName(this,
+		tr("Open Project"), "D:/media/model/", tr("Project Files (*.fbx *.obj)"));
+
+	if (project_file_.isEmpty()) return;
+
+	quark_window_->OpenScene(project_file_.toStdString());
+}
+
+void qe::edit::MainWindow::SaveSceneAction()
+{
+	std::cout << "save scene action \n";
 }
 
 void qe::edit::MainWindow::ExitAction()
@@ -258,6 +275,10 @@ void qe::edit::MainWindow::InitMenuBar()
 	connect(new_project_action, SIGNAL(triggered()), this, SLOT(NewProjectAction()));
 	connect(open_project_action, SIGNAL(triggered()), this, SLOT(OpenProjectAction()));
 	connect(save_project_action, SIGNAL(triggered()), this, SLOT(SaveProjectAction()));
+
+	connect(new_scene_action, SIGNAL(triggered()), this, SLOT(NewSceneAction()));
+	connect(open_scene_action, SIGNAL(triggered()), this, SLOT(OpenSceneAction()));
+	connect(save_scene_action, SIGNAL(triggered()), this, SLOT(SaveSceneAction()));
 
 	connect(exit_action, SIGNAL(triggered()), this, SLOT(ExitAction()));
 

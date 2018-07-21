@@ -39,6 +39,10 @@ namespace qe {
 			void OpenProjectAction();
 			void SaveProjectAction();
 
+			void NewSceneAction();
+			void OpenSceneAction();
+			void SaveSceneAction();
+
 			void ExitAction();
 
 			void QuarkManualAction();

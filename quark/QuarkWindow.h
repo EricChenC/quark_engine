@@ -115,8 +115,13 @@ namespace qe {
 
             void Draw();
 
+			void OpenScene(const std::string& scene_path);
+
+			void ReleaseScene();
+
         public slots:
             void update();
+
 
         protected:
             void resizeEvent(QResizeEvent *event) override;
@@ -156,6 +161,10 @@ namespace qe {
             void RecreateSwapChain();
 
             void CleanSwapChain();
+
+			void ReleaseSceneData();
+
+			void ReleaseRenderData();
        
         private:
             std::shared_ptr<qe::render::vulkan::VulkanDevice> vi_device_;
@@ -195,7 +204,8 @@ namespace qe {
             std::shared_ptr<QTimer> graphics_timer_;
             std::shared_ptr<QTime> fps_timer_;
 
-            const std::string kModelPath = "D:/media/model/test_scene.fbx";
+			std::shared_ptr<qe::core::Scene> scene_ = nullptr;
+
             const std::string kShaderPath = "D:/project/quark_engine/media/shader/standard.shader";
 
             std::string kShaderPre;
@@ -205,7 +215,6 @@ namespace qe {
             int frame_count_ = 0;
             int fps_number_ = 0;
 
-            bool is_init_vulkan_ = false;
             bool is_update_material_ = false;
 
             bool right_button_press_ = false;

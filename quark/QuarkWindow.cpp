@@ -26,39 +26,16 @@ qe::edit::QuarkWindow::QuarkWindow()
     vi_device_ = std::make_shared<qe::render::vulkan::VulkanDevice>(reinterpret_cast<HWND>(this->winId()));
     resource_ = std::make_shared<qe::core::Resource>();
     camera_controller_ = std::make_shared<qe::edit::CameraController>();
-
-    light_dir_ = glm::vec4(10.0f, 10.0f, 10.0f, 1.0f);
 }
 
 qe::edit::QuarkWindow::~QuarkWindow()
 {
-    vi_device_->logic_device_.freeCommandBuffers(
-        vi_device_->command_pool_,
-        command_buffers_.size(),
-        command_buffers_.data());
-
-    vi_device_->logic_device_.freeMemory(ubo_buffer_memory_);
-    vi_device_->logic_device_.destroyBuffer(ubo_buffer_);
-
-    vi_device_->logic_device_.freeMemory(uld_buffer_memory_);
-    vi_device_->logic_device_.destroyBuffer(uld_buffer_);
-
-    vi_device_->logic_device_.destroyPipelineLayout(pipeline_layout_);
-
-    vi_device_->logic_device_.destroyPipeline(pipeline_);
-
-    vi_device_->logic_device_.destroyDescriptorSetLayout(descriptor_set_layout_);
-
-    vi_device_->logic_device_.destroyDescriptorPool(descriptor_set_pool_);
+	ReleaseRenderData();
 }
 
 void qe::edit::QuarkWindow::Init()
 {
-    LoadScene(std::dynamic_pointer_cast<qe::core::Scene>(resource_->Load(kModelPath)));
-
-    Awake();
-
-    CreateCommandBuffer();
+	light_dir_ = glm::vec4(10.0f, 10.0f, 10.0f, 1.0f);
 
     graphics_timer_ = std::make_shared<QTimer>();
     graphics_timer_->setInterval(1);
@@ -67,12 +44,11 @@ void qe::edit::QuarkWindow::Init()
 
     fps_timer_ = std::make_shared<QTime>();
     fps_timer_->start();
-
-    is_init_vulkan_ = true;
 }
 
 void qe::edit::QuarkWindow::resizeEvent(QResizeEvent * event)
 {
+
     auto size = event->size();
     auto width = size.width();
     auto height = size.height();
@@ -80,6 +56,8 @@ void qe::edit::QuarkWindow::resizeEvent(QResizeEvent * event)
     if (height <= 0) return;
 
     camera_controller_->UpdateProjectionRatio((float)width / height);
+
+	if (!scene_) return;
 
     UpdateUniformBuffer();
 }
@@ -186,6 +164,8 @@ void qe::edit::QuarkWindow::keyReleaseEvent(QKeyEvent * event)
 
 void qe::edit::QuarkWindow::update()
 {
+	if (!scene_) return;
+
     UpdateBehaviour();
     UpdateUniformBuffer();
     Draw();
@@ -730,4 +710,53 @@ void qe::edit::QuarkWindow::UpdateBehaviour()
     for (auto behaviour : behaviours_) {
         behaviour->Update();
     }
+}
+
+void qe::edit::QuarkWindow::OpenScene(const std::string & scene_path)
+{
+	ReleaseScene();
+
+	scene_ = std::dynamic_pointer_cast<qe::core::Scene>(resource_->Load(scene_path));
+
+	LoadScene(scene_);
+
+	Awake();
+
+	CreateCommandBuffer();
+}
+
+void qe::edit::QuarkWindow::ReleaseScene()
+{
+	if (!scene_) return;
+
+	ReleaseSceneData();
+	ReleaseRenderData();
+}
+
+void qe::edit::QuarkWindow::ReleaseRenderData()
+{
+	vi_device_->logic_device_.freeCommandBuffers(
+		vi_device_->command_pool_,
+		command_buffers_.size(),
+		command_buffers_.data());
+
+	vi_device_->logic_device_.freeMemory(ubo_buffer_memory_);
+	vi_device_->logic_device_.destroyBuffer(ubo_buffer_);
+
+	vi_device_->logic_device_.freeMemory(uld_buffer_memory_);
+	vi_device_->logic_device_.destroyBuffer(uld_buffer_);
+
+	vi_device_->logic_device_.destroyPipelineLayout(pipeline_layout_);
+
+	vi_device_->logic_device_.destroyPipeline(pipeline_);
+
+	vi_device_->logic_device_.destroyDescriptorSetLayout(descriptor_set_layout_);
+
+	vi_device_->logic_device_.destroyDescriptorPool(descriptor_set_pool_);
+}
+
+void qe::edit::QuarkWindow::ReleaseSceneData()
+{
+	mesh_datas_.swap(std::vector<meshData>());
+	scene_.swap(std::shared_ptr<qe::core::Scene>());
 }
