@@ -6,18 +6,18 @@
 
 #include <qwindow.h>
 #include <qtimer.h>
-#include <QResizeEvent>
-#include <QMouseEvent>
-#include <QWheelEvent>
-#include <QKeyEvent>
 #include <QTime>
-
-#include <memory>
 #include <vector>
 #include <glm/glm.hpp>
 
 #include "EditObject.h"
 
+
+class QResizeEvent;
+class QMouseEvent;
+class QWheelEvent;
+class QKeyEvent;
+class QEvent;
 
 namespace qe {
     namespace core {
@@ -131,6 +131,9 @@ namespace qe {
             void wheelEvent(QWheelEvent *event) override;
             void keyPressEvent(QKeyEvent *event) override;
             void keyReleaseEvent(QKeyEvent *event) override;
+
+            bool event(QEvent *ev) override;
+
 
         private:
             void LoadScene(std::shared_ptr<qe::core::Scene> scene);

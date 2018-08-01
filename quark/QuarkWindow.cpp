@@ -1,6 +1,12 @@
 #include "QuarkWindow.h"
 
-#include <iostream>
+#include <qevent.h>
+#include <QDragEnterEvent>
+#include <QResizeEvent>
+#include <QMouseEvent>
+#include <QWheelEvent>
+#include <QKeyEvent>
+#include <qmimedata.h>
 
 #include "Scene.h"
 #include "Transform.h"
@@ -19,6 +25,7 @@
 #include "Shader.h"
 #include "ScriptBehaviour.h"
 
+#include <iostream>
 
 
 qe::edit::QuarkWindow::QuarkWindow()
@@ -795,4 +802,61 @@ void qe::edit::QuarkWindow::StartSmoothTimer()
         smooth_timer_->start();
         key_press_ = true;
     }
+}
+
+bool qe::edit::QuarkWindow::event(QEvent * ev)
+{
+    switch (ev->type())
+    {
+    case QEvent::Resize:
+    {
+        resizeEvent((QResizeEvent*)ev);
+        break;
+    }
+    case QEvent::MouseMove:
+    {
+        mouseMoveEvent((QMouseEvent*)ev);
+        break;
+    }
+    case QEvent::MouseButtonPress:
+    {
+        mousePressEvent((QMouseEvent*)ev);
+        break;
+    }
+    case QEvent::MouseButtonRelease:
+    {
+        mouseReleaseEvent((QMouseEvent*)ev);
+        break;
+    }
+    case QEvent::Wheel:
+    {
+        wheelEvent((QWheelEvent*)ev);
+        break;
+    }
+    case QEvent::KeyPress:
+    {
+        keyPressEvent((QKeyEvent*)ev);
+        break;
+    }
+    case QEvent::KeyRelease:
+    {
+        keyReleaseEvent((QKeyEvent*)ev);
+        break;
+    }
+    case QEvent::Drop:
+    {
+        auto file_name = ((QDragEnterEvent*)ev)->mimeData()->text();
+        auto file_name_splits = qe::core::QuarkString::split(file_name.toStdString(), "///");
+
+        if (file_name_splits.size() < 2) break;
+
+        OpenScene(file_name_splits[1]);
+        break;
+    }
+    default:
+        break;
+    }
+
+
+    return false;
 }

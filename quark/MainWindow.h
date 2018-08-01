@@ -21,7 +21,6 @@ class QAction;
 namespace qe {
     namespace edit {
         class QuarkWindow;
-        class QuarkWindowEvent;
 
         class MainWindow : public QMainWindow , public EditObject 
         {
@@ -121,7 +120,6 @@ namespace qe {
             QSizePolicy *button_policy_;
 
             QuarkWindow *quark_window_;
-            QuarkWindowEvent *quark_window_event_;
 
             QToolButton *play_button_;
             QToolButton *pause_button_;
@@ -131,7 +129,7 @@ namespace qe {
 
 			std::vector<std::shared_ptr<QMenu>> menus_;
 
-			QString project_file_;
+			QString scene_file_;
 
             // after release layout ,  that inside QSpacerItem will auto release
         };

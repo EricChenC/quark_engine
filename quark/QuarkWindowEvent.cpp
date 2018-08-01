@@ -1,6 +1,8 @@
 #include "QuarkWindowEvent.h"
 
 #include <QEvent>
+#include <QDragEnterEvent>
+#include <qmimedata.h>
 
 #include <iostream>
 
@@ -15,7 +17,10 @@ qe::edit::QuarkWindowEvent::~QuarkWindowEvent()
 bool qe::edit::QuarkWindowEvent::eventFilter(QObject * obj, QEvent * event)
 {
     if (event->type() == QEvent::DragEnter) {
-        std::cout << "drag enter \n";
+
+        auto co = ((QDragEnterEvent*)event)->mimeData()->text();
+
+        std::cout << "drag enter " << co.toStdString() << std::endl;
         return true;
     }
     else if(event->type() == QEvent::Drop)

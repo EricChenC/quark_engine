@@ -1,6 +1,5 @@
 #include "MainWindow.h"
 #include "QuarkWindow.h"
-#include "QuarkWindowEvent.h"
 #include "QuarkString.h"
 
 #include <qsplitter.h>
@@ -78,12 +77,12 @@ void qe::edit::MainWindow::NewSceneAction()
 
 void qe::edit::MainWindow::OpenSceneAction()
 {
-	project_file_ = QFileDialog::getOpenFileName(this,
+    scene_file_ = QFileDialog::getOpenFileName(this,
 		tr("Open Project"), "D:/media/models/maya/", tr("Project Files (*.fbx *.obj)"));
 
-	if (project_file_.isEmpty()) return;
+	if (scene_file_.isEmpty()) return;
 
-	quark_window_->OpenScene(project_file_.toStdString());
+	quark_window_->OpenScene(scene_file_.toStdString());
 }
 
 void qe::edit::MainWindow::SaveSceneAction()
@@ -329,11 +328,8 @@ void qe::edit::MainWindow::InitSceneUI()
     scene_button_layout_ = DBG_NEW QHBoxLayout(); 
     secne_widget_layout_ = DBG_NEW QVBoxLayout();
 
-    quark_window_event_ = DBG_NEW QuarkWindowEvent();
 
     quark_window_ = DBG_NEW QuarkWindow();
-    quark_window_->installEventFilter(quark_window_event_);
-
     quark_window_->Init();
     vulkan_window_containter_ = QWidget::createWindowContainer(quark_window_);
 
@@ -486,7 +482,5 @@ void qe::edit::MainWindow::ClearUI()
 {
     delete tab_splitter_policy_;
     delete button_policy_;
-
-    delete quark_window_event_;
 }
 
