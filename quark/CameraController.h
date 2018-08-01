@@ -51,7 +51,6 @@ namespace qe {
             float mouse_speed_;
             float horizontal_angle_;
             float vertical_angle_;
-            float move_pace_;
 
             glm::mat4 Model_;
             glm::mat4 View_;

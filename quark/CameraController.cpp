@@ -8,7 +8,6 @@ qe::edit::CameraController::CameraController()
     mouse_speed_ = 0.005f;
     horizontal_angle_ = 0.0f;
     vertical_angle_ = 0.0f;
-    move_pace_ = 0.5f;
 
     view_position_ = glm::vec3(0.0f, 1.0f, -6.0f);
     view_center_ = glm::vec3(0.0f, 0.0f, 0.0f);
