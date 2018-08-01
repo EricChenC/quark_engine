@@ -17,13 +17,14 @@ namespace qe {
             ~CameraController();
 
             void RotateCamera(const glm::vec2& pos);
-            void MoveForward();
-            void MoveBack();
-            void MoveLeft();
-            void MoveRight();
-            void MoveUp();
-            void MoveDown();
+            void MoveForward(const float& elapsed = 1.0);
+            void MoveBack(const float& elapsed = 1.0);
+            void MoveLeft(const float& elapsed = 1.0);
+            void MoveRight(const float& elapsed = 1.0);
+            void MoveUp(const float& elapsed = 1.0);
+            void MoveDown(const float& elapsed = 1.0);
             void UpdateProjectionRatio(const float& ratio);
+            void Update();
 
             const glm::mat4& get_m() const;
             const glm::mat4& get_v() const;
@@ -36,6 +37,8 @@ namespace qe {
             void UpdateModelMatrix();
             void UpdateViewMatrix();
             void UpdateProjectionMatrix();
+
+            float SmoothMove(const float& elapsed);
 
         private:
             glm::mat4 clip = glm::mat4{

@@ -165,6 +165,8 @@ namespace qe {
 			void ReleaseSceneData();
 
 			void ReleaseRenderData();
+
+            void StartSmoothTimer();
        
         private:
             std::shared_ptr<qe::render::vulkan::VulkanDevice> vi_device_;
@@ -202,9 +204,10 @@ namespace qe {
             std::vector<std::shared_ptr<qe::core::ScriptBehaviour>>  behaviours_;
 
             std::shared_ptr<QTimer> graphics_timer_;
+            std::shared_ptr<QTime> smooth_timer_;
             std::shared_ptr<QTime> fps_timer_;
 
-			std::shared_ptr<qe::core::Scene> scene_ = nullptr;
+            std::shared_ptr<qe::core::Scene> scene_ = nullptr;
 
             const std::string kShaderPath = "D:/project/quark_engine/media/shader/standard.shader";
 
@@ -219,6 +222,7 @@ namespace qe {
 
             bool right_button_press_ = false;
             bool init_mouse_pos_ = false;
+            bool key_press_ = false;
             glm::vec2 mouse_last_pos_;
 
         };

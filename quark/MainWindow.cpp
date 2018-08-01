@@ -79,7 +79,7 @@ void qe::edit::MainWindow::NewSceneAction()
 void qe::edit::MainWindow::OpenSceneAction()
 {
 	project_file_ = QFileDialog::getOpenFileName(this,
-		tr("Open Project"), "D:/media/model/", tr("Project Files (*.fbx *.obj)"));
+		tr("Open Project"), "D:/media/models/maya/", tr("Project Files (*.fbx *.obj)"));
 
 	if (project_file_.isEmpty()) return;
 

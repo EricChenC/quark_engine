@@ -44,6 +44,8 @@ void qe::edit::QuarkWindow::Init()
 
     fps_timer_ = std::make_shared<QTime>();
     fps_timer_->start();
+
+    smooth_timer_ = std::make_shared<QTime>();
 }
 
 void qe::edit::QuarkWindow::resizeEvent(QResizeEvent * event)
@@ -132,25 +134,33 @@ void qe::edit::QuarkWindow::wheelEvent(QWheelEvent * event)
 
 void qe::edit::QuarkWindow::keyPressEvent(QKeyEvent * event)
 {
+    if (!right_button_press_) return;
+
     switch (event->key())
     {
     case Qt::Key_W: // forward
-        camera_controller_->MoveForward();
+        StartSmoothTimer();
+        camera_controller_->MoveForward(smooth_timer_->elapsed());
         break;
     case Qt::Key_S: // back
-        camera_controller_->MoveBack();
+        StartSmoothTimer();
+        camera_controller_->MoveBack(smooth_timer_->elapsed());
         break;
     case Qt::Key_A: // left
-        camera_controller_->MoveLeft();
+        StartSmoothTimer();
+        camera_controller_->MoveLeft(smooth_timer_->elapsed());
         break;
     case Qt::Key_D: // right
-        camera_controller_->MoveRight();
+        StartSmoothTimer();
+        camera_controller_->MoveRight(smooth_timer_->elapsed());
         break;
     case Qt::Key_Q: // down
-        camera_controller_->MoveDown();
+        StartSmoothTimer();
+        camera_controller_->MoveDown(smooth_timer_->elapsed());
         break;
     case Qt::Key_E: // up
-        camera_controller_->MoveUp();
+        StartSmoothTimer();
+        camera_controller_->MoveUp(smooth_timer_->elapsed());
         break;
     default:
         break;
@@ -159,7 +169,23 @@ void qe::edit::QuarkWindow::keyPressEvent(QKeyEvent * event)
 
 void qe::edit::QuarkWindow::keyReleaseEvent(QKeyEvent * event)
 {
+    if (event->isAutoRepeat() || !right_button_press_) return;
 
+    switch (event->key())
+    {
+    case Qt::Key_W: // forward
+    case Qt::Key_S: // back
+    case Qt::Key_A: // left
+    case Qt::Key_D: // right
+    case Qt::Key_Q: // down
+    case Qt::Key_E: // up
+    {
+        key_press_ = false;
+        break;
+    }
+    default:
+        break;
+    }
 }
 
 void qe::edit::QuarkWindow::update()
@@ -631,6 +657,8 @@ void qe::edit::QuarkWindow::Draw()
 
 void qe::edit::QuarkWindow::UpdateUniformBuffer()
 {
+    camera_controller_->Update();
+
     UniformCameraBuffer umo = {};
     umo.proj = camera_controller_->get_p();
     umo.view = camera_controller_->get_v();
@@ -759,4 +787,12 @@ void qe::edit::QuarkWindow::ReleaseSceneData()
 {
 	mesh_datas_.swap(std::vector<meshData>());
 	scene_.swap(std::shared_ptr<qe::core::Scene>());
+}
+
+void qe::edit::QuarkWindow::StartSmoothTimer()
+{
+    if (!key_press_) {
+        smooth_timer_->start();
+        key_press_ = true;
+    }
 }

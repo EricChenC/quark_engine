@@ -2,6 +2,7 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
+
 qe::edit::CameraController::CameraController()
 {
     mouse_speed_ = 0.005f;
@@ -21,9 +22,6 @@ qe::edit::CameraController::CameraController()
     Model_ = glm::mat4(1.0);
     UpdateViewMatrix();
     UpdateProjectionMatrix();
-
-    // init camera rotate position 
-    RotateCamera(glm::vec2(0, 1));
 
 }
 
@@ -50,64 +48,62 @@ void qe::edit::CameraController::RotateCamera(const glm::vec2& pos)
 
     view_center_ = view_position_ + view_direction_;
     view_up_ = glm::cross(view_right_, view_direction_);
-    UpdateViewMatrix();
 }
 
-void qe::edit::CameraController::MoveForward()
+void qe::edit::CameraController::MoveForward(const float& elapsed)
 {
     glm::vec3 direc = view_center_ - view_position_;
 
-    view_position_ += direc * move_pace_;
-    view_center_ += direc * move_pace_;
-    UpdateViewMatrix();
+    view_position_ += direc * SmoothMove(elapsed);
+    view_center_ += direc * SmoothMove(elapsed);
 }
 
-void qe::edit::CameraController::MoveBack()
+void qe::edit::CameraController::MoveBack(const float& elapsed)
 {
     glm::vec3 direc = view_center_ - view_position_;
 
-    view_position_ -= direc * move_pace_;
-    view_center_ -= direc * move_pace_;
-    UpdateViewMatrix();
+    view_position_ -= direc * SmoothMove(elapsed);
+    view_center_ -= direc * SmoothMove(elapsed);
 }
 
-void qe::edit::CameraController::MoveLeft()
+void qe::edit::CameraController::MoveLeft(const float& elapsed)
 {
     glm::vec3 direc = view_center_ - view_position_;
     glm::vec3 right = glm::cross(direc, view_up_);
 
-    view_position_ -= right * move_pace_;
-    view_center_ -= right * move_pace_;
-    UpdateViewMatrix();
+    view_position_ -= right * SmoothMove(elapsed);
+    view_center_ -= right * SmoothMove(elapsed);
 }
 
-void qe::edit::CameraController::MoveRight()
+void qe::edit::CameraController::MoveRight(const float& elapsed)
 {
     glm::vec3 direc = view_center_ - view_position_;
     glm::vec3 right = glm::cross(direc, view_up_);
 
-    view_position_ += right * move_pace_;
-    view_center_ += right * move_pace_;
-    UpdateViewMatrix();
+    view_position_ += right * SmoothMove(elapsed);
+    view_center_ += right * SmoothMove(elapsed);
 }
 
-void qe::edit::CameraController::MoveUp()
+void qe::edit::CameraController::MoveUp(const float& elapsed)
 {
-    view_position_ += glm::normalize(view_up_) * move_pace_;
-    view_center_ += glm::normalize(view_up_) * move_pace_;
-    UpdateViewMatrix();
+    view_position_ += glm::normalize(view_up_) * SmoothMove(elapsed);
+    view_center_ += glm::normalize(view_up_) * SmoothMove(elapsed);
 }
 
-void qe::edit::CameraController::MoveDown()
+void qe::edit::CameraController::MoveDown(const float& elapsed)
 {
-    view_position_ -= view_up_ * move_pace_;
-    view_center_ -= view_up_ * move_pace_;
-    UpdateViewMatrix();
+    view_position_ -= view_up_ * SmoothMove(elapsed);
+    view_center_ -= view_up_ * SmoothMove(elapsed);
 }
 
 void qe::edit::CameraController::UpdateProjectionRatio(const float & ratio)
 {
     projection_ratio_ = ratio;
+}
+
+void qe::edit::CameraController::Update()
+{
+    UpdateViewMatrix();
     UpdateProjectionMatrix();
 }
 
@@ -156,6 +152,11 @@ void qe::edit::CameraController::UpdateProjectionMatrix()
 {
     Projection_ = glm::mat4(1.0);
     Projection_ = clip * glm::perspective(projection_angle_, projection_ratio_, projection_near_, projection_far_);
+}
+
+float qe::edit::CameraController::SmoothMove(const float & elapsed)
+{
+    return glm::clamp(glm::sqrt((elapsed + 1) * 0.001f), 0.0f, 1.0f);
 }
 
 
