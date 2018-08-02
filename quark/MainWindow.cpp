@@ -102,7 +102,10 @@ void qe::edit::MainWindow::QuarkManualAction()
 
 void qe::edit::MainWindow::UpdateFps()
 {
-    this->statusBar()->showMessage(QString::number(quark_window_->get_fps()) + " fps");
+    auto fps = quark_window_->get_fps();
+    auto delta = 1000.0f / fps;
+
+    this->statusBar()->showMessage(QString::number(delta) + " ms/" + QString::number(fps) + " fps");
 }
 
 void qe::edit::MainWindow::dragEnterEvent(QDragEnterEvent * event)

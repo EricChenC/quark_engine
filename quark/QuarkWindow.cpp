@@ -48,11 +48,6 @@ void qe::edit::QuarkWindow::Init()
     graphics_timer_->setInterval(1);
     connect(graphics_timer_.get(), SIGNAL(timeout()), this, SLOT(update()));
     graphics_timer_->start(1);
-
-    fps_timer_ = std::make_shared<QTime>();
-    fps_timer_->start();
-
-    smooth_timer_ = std::make_shared<QTime>();
 }
 
 void qe::edit::QuarkWindow::resizeEvent(QResizeEvent * event)
@@ -132,10 +127,10 @@ void qe::edit::QuarkWindow::mouseReleaseEvent(QMouseEvent * event)
 void qe::edit::QuarkWindow::wheelEvent(QWheelEvent * event)
 {
     if (event->angleDelta().y() > 0) {
-        camera_controller_->MoveForward();
+        camera_controller_->MoveForward(delta_time_);
     }
     else {
-        camera_controller_->MoveBack();
+        camera_controller_->MoveBack(delta_time_);
     }
 }
 
@@ -146,28 +141,22 @@ void qe::edit::QuarkWindow::keyPressEvent(QKeyEvent * event)
     switch (event->key())
     {
     case Qt::Key_W: // forward
-        StartSmoothTimer();
-        camera_controller_->MoveForward(smooth_timer_->elapsed());
+        camera_controller_->MoveForward(delta_time_);
         break;
     case Qt::Key_S: // back
-        StartSmoothTimer();
-        camera_controller_->MoveBack(smooth_timer_->elapsed());
+        camera_controller_->MoveBack(delta_time_);
         break;
     case Qt::Key_A: // left
-        StartSmoothTimer();
-        camera_controller_->MoveLeft(smooth_timer_->elapsed());
+        camera_controller_->MoveLeft(delta_time_);
         break;
     case Qt::Key_D: // right
-        StartSmoothTimer();
-        camera_controller_->MoveRight(smooth_timer_->elapsed());
+        camera_controller_->MoveRight(delta_time_);
         break;
     case Qt::Key_Q: // down
-        StartSmoothTimer();
-        camera_controller_->MoveDown(smooth_timer_->elapsed());
+        camera_controller_->MoveDown(delta_time_);
         break;
     case Qt::Key_E: // up
-        StartSmoothTimer();
-        camera_controller_->MoveUp(smooth_timer_->elapsed());
+        camera_controller_->MoveUp(delta_time_);
         break;
     default:
         break;
@@ -176,28 +165,14 @@ void qe::edit::QuarkWindow::keyPressEvent(QKeyEvent * event)
 
 void qe::edit::QuarkWindow::keyReleaseEvent(QKeyEvent * event)
 {
-    if (event->isAutoRepeat() || !right_button_press_) return;
-
-    switch (event->key())
-    {
-    case Qt::Key_W: // forward
-    case Qt::Key_S: // back
-    case Qt::Key_A: // left
-    case Qt::Key_D: // right
-    case Qt::Key_Q: // down
-    case Qt::Key_E: // up
-    {
-        key_press_ = false;
-        break;
-    }
-    default:
-        break;
-    }
+  
 }
 
 void qe::edit::QuarkWindow::update()
 {
 	if (!scene_) return;
+
+    auto tStart = std::chrono::high_resolution_clock::now();
 
     UpdateBehaviour();
     UpdateUniformBuffer();
@@ -205,9 +180,18 @@ void qe::edit::QuarkWindow::update()
 
     frame_count_++;
 
-    if (fps_timer_->elapsed() >= 1000)
+    auto tEnd = std::chrono::high_resolution_clock::now();
+    auto tDiff = std::chrono::duration<double, std::milli>(tEnd - tStart).count();
+    delta_time_ = (float)tDiff / 1000.0f;
+
+    fps_time_ += (float)tDiff;
+
+    if (fps_time_ > 1000.0f)
     {
-        fps_number_ = frame_count_ / ((double)fps_timer_->elapsed() / 1000.0);
+        fps_number_ = frame_count_;
+
+        fps_time_ = 0.0f;
+        frame_count_ = 0.0f;
     }
 }
 
@@ -794,14 +778,6 @@ void qe::edit::QuarkWindow::ReleaseSceneData()
 {
 	mesh_datas_.swap(std::vector<meshData>());
 	scene_.swap(std::shared_ptr<qe::core::Scene>());
-}
-
-void qe::edit::QuarkWindow::StartSmoothTimer()
-{
-    if (!key_press_) {
-        smooth_timer_->start();
-        key_press_ = true;
-    }
 }
 
 bool qe::edit::QuarkWindow::event(QEvent * ev)
