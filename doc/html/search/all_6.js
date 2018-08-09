@@ -26,6 +26,5 @@ var searchData=
   ['getmemorytype',['GetMemoryType',['../classqe_1_1render_1_1vulkan_1_1_vulkan_device.html#a063706147a6037e8d2df211b9dfe11e6',1,'qe::render::vulkan::VulkanDevice']]],
   ['getphysicaldevice',['GetPhysicalDevice',['../classqe_1_1render_1_1vulkan_1_1_vulkan_device.html#a00d20adde604d7e2422fe3e7496b4112',1,'qe::render::vulkan::VulkanDevice']]],
   ['getqueuefamilyindex',['GetQueueFamilyIndex',['../classqe_1_1render_1_1vulkan_1_1_vulkan_device.html#a21cd922b88a7abf3bf38ea988f7ff5ea',1,'qe::render::vulkan::VulkanDevice']]],
-  ['getsupporteddepthformat',['getSupportedDepthFormat',['../classqe_1_1render_1_1vulkan_1_1_vulkan_tools.html#a7901af60cfbf2ab86e07d81bba8eb5bf',1,'qe::render::vulkan::VulkanTools']]],
-  ['get_20start',['Get Start',['../index.html',1,'']]]
+  ['getsupporteddepthformat',['getSupportedDepthFormat',['../classqe_1_1render_1_1vulkan_1_1_vulkan_tools.html#a7901af60cfbf2ab86e07d81bba8eb5bf',1,'qe::render::vulkan::VulkanTools']]]
 ];

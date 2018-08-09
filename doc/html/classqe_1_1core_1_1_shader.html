@@ -165,12 +165,12 @@ glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>get_global_matri
 <tr class="memitem:a38059162a94dc4b0d7f08dceb520d319"><td class="memItemLeft" align="right" valign="top"><a id="a38059162a94dc4b0d7f08dceb520d319"></a>
 std::list&lt; glm::mat4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_global_matrix_array</b> (const std::string &amp;name)</td></tr>
 <tr class="separator:a38059162a94dc4b0d7f08dceb520d319"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae881b8099dbf5e7a44643d8e61a189b8"><td class="memItemLeft" align="right" valign="top"><a id="ae881b8099dbf5e7a44643d8e61a189b8"></a>
-<a class="el" href="classqe_1_1core_1_1_texture.html">Texture</a>&#160;</td><td class="memItemRight" valign="bottom"><b>get_global_texture</b> (const std::string &amp;name)</td></tr>
-<tr class="separator:ae881b8099dbf5e7a44643d8e61a189b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7320e26eb2ed80ed629692da720d590e"><td class="memItemLeft" align="right" valign="top"><a id="a7320e26eb2ed80ed629692da720d590e"></a>
-std::list&lt; <a class="el" href="classqe_1_1core_1_1_texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_global_texture_array</b> (const std::string &amp;name)</td></tr>
-<tr class="separator:a7320e26eb2ed80ed629692da720d590e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab07296701f828e50c410ff35322fbcd9"><td class="memItemLeft" align="right" valign="top"><a id="ab07296701f828e50c410ff35322fbcd9"></a>
+std::shared_ptr&lt; <a class="el" href="classqe_1_1core_1_1_texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_global_texture</b> (const std::string &amp;name)</td></tr>
+<tr class="separator:ab07296701f828e50c410ff35322fbcd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5989979cdfb4e184a8c9b42b25b0eeb"><td class="memItemLeft" align="right" valign="top"><a id="aa5989979cdfb4e184a8c9b42b25b0eeb"></a>
+std::list&lt; std::shared_ptr&lt; <a class="el" href="classqe_1_1core_1_1_texture.html">Texture</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_global_texture_array</b> (const std::string &amp;name)</td></tr>
+<tr class="separator:aa5989979cdfb4e184a8c9b42b25b0eeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10838572b9e580ed7d95cf0c0cf529ff"><td class="memItemLeft" align="right" valign="top"><a id="a10838572b9e580ed7d95cf0c0cf529ff"></a>
 glm::vec4&#160;</td><td class="memItemRight" valign="bottom"><b>get_global_vector</b> (const std::string &amp;name)</td></tr>
 <tr class="separator:a10838572b9e580ed7d95cf0c0cf529ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,12 +204,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_global_matrix</b>
 <tr class="memitem:a202c3cca991aa9c01f221645dcb45633"><td class="memItemLeft" align="right" valign="top"><a id="a202c3cca991aa9c01f221645dcb45633"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_global_matrix_array</b> (const std::string &amp;name, const std::list&lt; glm::mat4 &gt; &amp;&amp;mat_list)</td></tr>
 <tr class="separator:a202c3cca991aa9c01f221645dcb45633"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af195d010f56330ca2a5e9463e8bb35fb"><td class="memItemLeft" align="right" valign="top"><a id="af195d010f56330ca2a5e9463e8bb35fb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_global_texture</b> (const std::string &amp;name, const <a class="el" href="classqe_1_1core_1_1_texture.html">Texture</a> &amp;texture)</td></tr>
-<tr class="separator:af195d010f56330ca2a5e9463e8bb35fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7664965b04e4f253180fa161e4833dc"><td class="memItemLeft" align="right" valign="top"><a id="ae7664965b04e4f253180fa161e4833dc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_global_texture_array</b> (const std::string &amp;name, const std::list&lt; <a class="el" href="classqe_1_1core_1_1_texture.html">Texture</a> &gt; &amp;texture_list)</td></tr>
-<tr class="separator:ae7664965b04e4f253180fa161e4833dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54c6014e1557693c27c35d82e010e8af"><td class="memItemLeft" align="right" valign="top"><a id="a54c6014e1557693c27c35d82e010e8af"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_global_texture</b> (const std::string &amp;name, std::shared_ptr&lt; <a class="el" href="classqe_1_1core_1_1_texture.html">Texture</a> &gt; texture)</td></tr>
+<tr class="separator:a54c6014e1557693c27c35d82e010e8af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad47c88dac000552b5d71b266a46e4b43"><td class="memItemLeft" align="right" valign="top"><a id="ad47c88dac000552b5d71b266a46e4b43"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_global_texture_array</b> (const std::string &amp;name, const std::list&lt; std::shared_ptr&lt; <a class="el" href="classqe_1_1core_1_1_texture.html">Texture</a> &gt;&gt; &amp;texture_list)</td></tr>
+<tr class="separator:ad47c88dac000552b5d71b266a46e4b43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a903d86d44eb1859a4ec00431996a0306"><td class="memItemLeft" align="right" valign="top"><a id="a903d86d44eb1859a4ec00431996a0306"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_global_vector</b> (const std::string &amp;name, const glm::vec4 &amp;vec)</td></tr>
 <tr class="separator:a903d86d44eb1859a4ec00431996a0306"><td class="memSeparator" colspan="2">&#160;</td></tr>

@@ -58,6 +58,14 @@ namespace qe {
 
             void set_world_matrix(const glm::mat4x4& world_matrix);
 
+            qe::core::Transform* get_parent();
+
+            std::vector<std::shared_ptr<qe::core::Transform>> get_childs();
+
+            void add_child(std::shared_ptr<qe::core::Transform> child);
+
+            void detach_child(std::shared_ptr<qe::core::Transform> child);
+
         private:
             /// <summary>
             /// The local rotate
@@ -106,6 +114,16 @@ namespace qe {
             /// The world matrix
             /// </summary>
             glm::mat4x4 world_matrix_;
+
+            /// <summary>
+            /// The quark object pointer child list.
+            /// </summary>
+            std::vector<std::shared_ptr<qe::core::Transform>> childs_;
+
+            /// <summary>
+            /// The quark object parent.
+            /// </summary>
+            qe::core::Transform* parent_;
 
         };
     }

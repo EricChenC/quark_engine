@@ -20,6 +20,7 @@ namespace qe {
         class Transform;
         class Material;
         class Component;
+        class Scene;
 
         class DLL_EXPORT QuarkObject : public CoreObject {
         public:           
@@ -99,31 +100,32 @@ namespace qe {
                 return component_list;
             }
 
-
-            qe::core::QuarkObject* get_parent();
-
-            std::vector<std::shared_ptr<qe::core::QuarkObject>> get_childs();
-
-            void add_child(std::shared_ptr<qe::core::QuarkObject> child);
-
-            void detach_child(std::shared_ptr<qe::core::QuarkObject> child);
-
             auto get_transform()->std::shared_ptr<qe::core::Transform>;
 
+            auto get_scene()->Scene*;
+
+            void set_scene(Scene* scene);
+
         private:
+            /// <summary>
             /// The quark object id.
+            /// </summary>
             int id_;
 
+            /// <summary>
             /// The quark object components.
+            /// </summary>
             std::vector<std::shared_ptr<qe::core::Component>> components_;
-
-            /// The quark object pointer child list.
-            std::vector<std::shared_ptr<qe::core::QuarkObject>> childs_;
-
-            /// The quark object parent.
-            qe::core::QuarkObject* parent_;
-
+            
+            /// <summary>
+            /// The quark object transform
+            /// </summary>
             std::shared_ptr<qe::core::Transform> transform_;
+
+            /// <summary>
+            /// The scene of this quark object
+            /// </summary>
+            Scene* scene_;
 
         };
     }

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Quark Engine: engine/core/RenderObject.h Source File</title>
+<title>Quark Engine: engine/core/Common.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -69,7 +69,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('_render_object_8h_source.html','');});
+$(document).ready(function(){initNavTree('_common_8h_source.html','');});
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -89,18 +89,15 @@ $(document).ready(function(){initNavTree('_render_object_8h_source.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">RenderObject.h</div>  </div>
+<div class="title">Common.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#pragma once</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;Object.h&quot;</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceqe.html">qe</a> {</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">namespace </span>core</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    {</div><div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classqe_1_1core_1_1_render_object.html">   13</a></span>&#160;        <span class="keyword">class </span>DLL_EXPORT <a class="code" href="classqe_1_1core_1_1_render_object.html">RenderObject</a> : <span class="keyword">public</span> <a class="code" href="classqe_1_1core_1_1_object.html">Object</a></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        {</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">public</span>:</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <span class="keyword">explicit</span> <a class="code" href="classqe_1_1core_1_1_render_object.html">RenderObject</a>(){}</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            ~<a class="code" href="classqe_1_1core_1_1_render_object.html">RenderObject</a>(){}</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        };</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="ttc" id="classqe_1_1core_1_1_object_html"><div class="ttname"><a href="classqe_1_1core_1_1_object.html">qe::core::Object</a></div><div class="ttdef"><b>Definition:</b> Object.h:16</div></div>
-<div class="ttc" id="namespaceqe_html"><div class="ttname"><a href="namespaceqe.html">qe</a></div><div class="ttdef"><b>Definition:</b> Animation.h:10</div></div>
-<div class="ttc" id="classqe_1_1core_1_1_render_object_html"><div class="ttname"><a href="classqe_1_1core_1_1_render_object.html">qe::core::RenderObject</a></div><div class="ttdef"><b>Definition:</b> RenderObject.h:13</div></div>
-</div><!-- fragment --></div><!-- contents -->
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifdef _DEBUG</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// Replace _NORMAL_BLOCK with _CLIENT_BLOCK if you want the</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">// allocations to be of _CLIENT_BLOCK type</span></div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#else</span></div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define DBG_NEW new</span></div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif</span></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#ifdef _WIN32</span></div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifdef dll_EXPORTS</span></div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define DLL_EXPORT __declspec(dllexport)</span></div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#else</span></div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#define DLL_EXPORT __declspec(dllexport)</span></div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif</span></div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#else</span></div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define DLL_EXPORT</span></div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif</span></div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define VERIFY(x) assert(x)</span></div></div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_996f45160da62e1a3d7f6046fad68f51.html">engine</a></li><li class="navelem"><a class="el" href="dir_a0e47c104ecd6c0b6dccb5f33d071508.html">core</a></li><li class="navelem"><b>RenderObject.h</b></li>
+    <li class="navelem"><a class="el" href="dir_996f45160da62e1a3d7f6046fad68f51.html">engine</a></li><li class="navelem"><a class="el" href="dir_a0e47c104ecd6c0b6dccb5f33d071508.html">core</a></li><li class="navelem"><b>Common.h</b></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>

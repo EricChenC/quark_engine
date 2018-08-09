@@ -24,9 +24,6 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "Quark Engine", "index.html", [
-    [ "Get Start", "index.html", [
-      [ "Introduction", "index.html#intro_sec", null ]
-    ] ],
     [ "quark_engine", "md__r_e_a_d_m_e.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
