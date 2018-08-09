@@ -11,6 +11,7 @@ std::list<qe::core::Camera*> qe::core::Camera::cameras_;
 
 
 qe::core::Camera::Camera()
+    :transparency_sort_axis_(0, 0, 1)
 {
     cameras_.push_back(this);
 }
@@ -143,44 +144,79 @@ auto qe::core::Camera::Rect() -> glm::vec2
     return rect_;
 }
 
-auto qe::core::Camera::Scene() -> std::shared_ptr<qe::core::Scene>
+auto qe::core::Camera::Scene() -> qe::core::Scene*
 {
-    return get_quark_object()->get_s;
+    return get_quark_object()->get_scene();
 }
 
-auto qe::core::Camera::TargetDisplay() -> int
+auto qe::core::Camera::GetTargetDisplay() -> int
 {
-    return 0;
+    return target_deisplay_;
 }
 
-auto qe::core::Camera::TargetTexture() -> std::shared_ptr<RenderTexture>
+void qe::core::Camera::SetTargetDisplay(const int & target)
 {
-    return std::shared_ptr<RenderTexture>();
+    target_deisplay_ = target;
 }
 
-auto qe::core::Camera::TransparencySortAxis() -> glm::vec3
+auto qe::core::Camera::GetTargetTexture() -> std::shared_ptr<RenderTexture>
 {
-    return glm::vec3();
+    return target_texture_;
+}
+
+void qe::core::Camera::SetTargetTexture(std::shared_ptr<RenderTexture> texture)
+{
+    target_texture_ = texture;
+}
+
+auto qe::core::Camera::GetTransparencySortAxis() -> glm::vec3
+{
+    return transparency_sort_axis_;
+}
+
+void qe::core::Camera::SetTransparencySortAxis(const glm::vec3 & axis)
+{
+    transparency_sort_axis_ = axis;
 }
 
 auto qe::core::Camera::GetTransparencySortMode() -> qe::core::Camera::TransparencySortMode
 {
-    return TransparencySortMode::DEFAULT;
+    return transparency_sort_mode_;
+}
+
+void qe::core::Camera::SetTransparencySortMode(const TransparencySortMode & mode)
+{
+    transparency_sort_mode_ = mode;
 }
 
 auto qe::core::Camera::UseOcclusionCulling() -> bool
 {
-    return false;
+    return use_occlusion_culling_;
+}
+
+void qe::core::Camera::SetUseOcclusionCulling(bool use)
+{
+    use_occlusion_culling_ = use;
 }
 
 auto qe::core::Camera::UsePhysicalProperties() -> bool
 {
-    return false;
+    return use_physical_properties_;
 }
 
-auto qe::core::Camera::Velocity() -> glm::vec3
+void qe::core::Camera::SetUsePhysicalProperties(bool use)
 {
-    return glm::vec3();
+    use_physical_properties_ = use;
+}
+
+auto qe::core::Camera::GetVelocity() -> glm::vec3
+{
+    return velocity_;
+}
+
+void qe::core::Camera::SetVelocity(const glm::vec3 & velocity)
+{
+    velocity_ = velocity;
 }
 
 auto qe::core::Camera::WorldToCameraMatrix() -> glm::mat4

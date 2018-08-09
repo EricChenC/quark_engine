@@ -133,21 +133,35 @@ namespace qe {
 
             auto Rect()->glm::vec2;
 
-            auto Scene()->std::shared_ptr<Scene>;
+            auto Scene()->Scene*;
 
-            auto TargetDisplay()->int;
+            auto GetTargetDisplay()->int;
 
-            auto TargetTexture()->std::shared_ptr<RenderTexture>;
+            void SetTargetDisplay(const int& target);
 
-            auto TransparencySortAxis()->glm::vec3;
+            auto GetTargetTexture()->std::shared_ptr<RenderTexture>;
+
+            void SetTargetTexture(std::shared_ptr<RenderTexture> texture);
+
+            auto GetTransparencySortAxis()->glm::vec3;
+
+            void SetTransparencySortAxis(const glm::vec3& axis);
 
             auto GetTransparencySortMode()->TransparencySortMode;
 
+            void SetTransparencySortMode(const TransparencySortMode& mode);
+
             auto UseOcclusionCulling() -> bool;
+
+            void SetUseOcclusionCulling(bool use);
 
             auto UsePhysicalProperties() -> bool;
 
-            auto Velocity()->glm::vec3;
+            void SetUsePhysicalProperties(bool use);
+
+            auto GetVelocity()->glm::vec3;
+
+            void SetVelocity(const glm::vec3& velocity);
 
             auto WorldToCameraMatrix()->glm::mat4;
 
@@ -163,38 +177,118 @@ namespace qe {
 
 
         private:
+            /// <summary>
+            /// The whether allow dynamic resolution
+            /// </summary>
             bool allow_dynamic_resolution_;
+
+            /// <summary>
+            /// The whether allow HDR
+            /// </summary>
             bool allow_hdr_;
+
+            /// <summary>
+            /// The whether allow msaa
+            /// </summary>
             bool allow_msaa_;
+
+            /// <summary>
+            /// The whether ortho graphic
+            /// </summary>
             bool ortho_graphic_;
-            bool allow_dynamic_resolution_;
-            bool allow_dynamic_resolution_;
-            bool allow_dynamic_resolution_;
-            bool allow_dynamic_resolution_;
-            bool allow_dynamic_resolution_;
+
+            /// <summary>
+            /// The whether use occlusion culling
+            /// </summary>
+            bool use_occlusion_culling_;
+
+            /// <summary>
+            /// The whether use physical properties
+            /// </summary>
+            bool use_physical_properties_;
 
 
+            /// <summary>
+            /// The aspect
+            /// </summary>
             float aspect_;
 
+            /// <summary>
+            /// The depth
+            /// </summary>
             float depth_;
 
+            /// <summary>
+            /// The far clip plane
+            /// </summary>
             float far_clip_plane_;
 
+            /// <summary>
+            /// The field of view
+            /// </summary>
             float field_of_view_;
 
-            std::shared_ptr<Color> background_color_;
 
-            CameraType camera_type_;
-
-            ClearFlags clear_flags_;
-
+            /// <summary>
+            /// The culling mask
+            /// </summary>
             int culling_mask_;
 
+            /// <summary>
+            /// The pixel height
+            /// </summary>
             int pixel_height_;
 
+            /// <summary>
+            /// The target deisplay
+            /// </summary>
+            int target_deisplay_;
+
+
+            /// <summary>
+            /// The background color of camera
+            /// </summary>
+            std::shared_ptr<Color> background_color_;
+
+            /// <summary>
+            /// The camera type
+            /// </summary>
+            CameraType camera_type_;
+
+            /// <summary>
+            /// The clear flags
+            /// </summary>
+            ClearFlags clear_flags_;
+
+            /// <summary>
+            /// The culling matrix
+            /// </summary>
             glm::mat4 culling_matrix_;
 
+            /// <summary>
+            /// The rect of camera
+            /// </summary>
             glm::vec2 rect_;
+
+            /// <summary>
+            /// The target texture of camera
+            /// </summary>
+            std::shared_ptr<RenderTexture> target_texture_;
+
+            /// <summary>
+            /// The transparency sort axis
+            /// </summary>
+            glm::vec3 transparency_sort_axis_;
+
+            /// <summary>
+            /// The velocity of camera
+            /// </summary>
+            glm::vec3 velocity_;
+
+            /// <summary>
+            /// The transparency sort mode
+            /// </summary>
+            TransparencySortMode transparency_sort_mode_;
 
 
         };
