@@ -23,7 +23,6 @@ qe::edit::CameraController::CameraController()
     Model_ = glm::mat4(1.0);
     UpdateViewMatrix();
     UpdateProjectionMatrix();
-
 }
 
 qe::edit::CameraController::~CameraController()

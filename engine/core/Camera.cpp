@@ -64,9 +64,14 @@ auto qe::core::Camera::AllowMSAA() -> bool
     return false;
 }
 
-auto qe::core::Camera::Aspect() -> float
+auto qe::core::Camera::GetAspect() -> float
 {
-    return 0.0f;
+    return aspect_;
+}
+
+void qe::core::Camera::SetAspect(const float & aspect)
+{
+    aspect_ = aspect;
 }
 
 auto qe::core::Camera::GetBackgroundColor() -> std::shared_ptr<Color>
@@ -114,24 +119,64 @@ void qe::core::Camera::SetCullingMatrix(const glm::mat4 & mat)
     culling_matrix_ = mat;
 }
 
-auto qe::core::Camera::Depth() -> float
+auto qe::core::Camera::GetDepth() -> float
 {
     return depth_;
 }
 
-auto qe::core::Camera::FarClipPlane() -> float
+void qe::core::Camera::SetDepth(const float & depth)
+{
+    depth_ = depth;
+}
+
+auto qe::core::Camera::GetNearClipPlane() -> float
+{
+    return near_clip_plane_;
+}
+
+void qe::core::Camera::SetNearClipPlane(const float &near)
+{
+    near_clip_plane_ = near;
+}
+
+auto qe::core::Camera::GetFarClipPlane() -> float
 {
     return far_clip_plane_;
 }
 
-auto qe::core::Camera::FieldOfView() -> float
+void qe::core::Camera::SetFarClipPlane(const float &far)
+{
+    far_clip_plane_ = far;
+}
+
+auto qe::core::Camera::GetFieldOfView() -> float
 {
     return field_of_view_;
 }
 
-auto qe::core::Camera::OrthoGraphic() -> bool
+void qe::core::Camera::SetFieldOfView(const float & fov)
+{
+    field_of_view_ = fov;
+}
+
+auto qe::core::Camera::UseOrthoGraphic() -> bool
 {
     return ortho_graphic_;
+}
+
+void qe::core::Camera::SetUseOrthoGraphic(bool ortho)
+{
+    ortho_graphic_ = ortho;
+}
+
+auto qe::core::Camera::GetOrthoGraphicSize() -> float
+{
+    return ortho_graphic_size_;
+}
+
+void qe::core::Camera::SetOrthoGraphicSize(const float & size)
+{
+    ortho_graphic_size_ = size;
 }
 
 auto qe::core::Camera::PixelHeight() -> int
@@ -139,9 +184,14 @@ auto qe::core::Camera::PixelHeight() -> int
     return pixel_height_;
 }
 
-auto qe::core::Camera::Rect() -> glm::vec2
+auto qe::core::Camera::GetRect() -> Rect
 {
     return rect_;
+}
+
+void qe::core::Camera::SetRect(const Rect & rect)
+{
+    rect_ = rect;
 }
 
 auto qe::core::Camera::Scene() -> qe::core::Scene*

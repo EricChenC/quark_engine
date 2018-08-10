@@ -18,6 +18,11 @@ namespace qe {
         class Scene;
         class Shader;
 
+        /// <summary>
+        /// A Camera is a device through which the player views the world.
+        ///A screen space point is defined in pixels.The bottom - left of the screen is(0, 0); the right - top is(pixelWidth, pixelHeight).The z position is in world units from the Camera.
+        /// </summary>
+        /// <seealso cref="Behaviour" />
         class DLL_EXPORT Camera : public Behaviour {
         public:
             /// <summary>
@@ -101,7 +106,9 @@ namespace qe {
 
             auto AllowMSAA() -> bool;
 
-            auto Aspect() -> float;
+            auto GetAspect() -> float;
+
+            void SetAspect(const float& aspect);
 
             auto GetBackgroundColor()->std::shared_ptr<Color>;
 
@@ -121,17 +128,43 @@ namespace qe {
 
             void SetCullingMatrix(const glm::mat4& mat);
 
-            auto Depth() -> float;
+            auto GetDepth() -> float;
 
-            auto FarClipPlane() -> float;
+            void SetDepth(const float& depth);
 
-            auto FieldOfView() -> float;
+            auto GetNearClipPlane() -> float;
 
-            auto OrthoGraphic() -> bool;
+            void SetNearClipPlane(const float& near);
+
+            auto GetFarClipPlane() -> float;
+
+            void SetFarClipPlane(const float& far);
+
+            /// <summary>
+            /// Fields the of view (fov).
+            /// </summary>
+            /// <returns></returns>
+            auto GetFieldOfView() -> float;
+
+            /// <summary>
+            /// Sets the field of view.
+            /// </summary>
+            /// <param name="fov">The fov.</param>
+            void SetFieldOfView(const float& fov);
+
+            auto UseOrthoGraphic() -> bool;
+
+            void SetUseOrthoGraphic(bool ortho);
+
+            auto GetOrthoGraphicSize() -> float;
+
+            void SetOrthoGraphicSize(const float& size);
 
             auto PixelHeight() -> int;
 
-            auto Rect()->glm::vec2;
+            auto GetRect()->Rect;
+
+            void SetRect(const Rect& rect);
 
             auto Scene()->Scene*;
 
@@ -198,6 +231,11 @@ namespace qe {
             bool ortho_graphic_;
 
             /// <summary>
+            /// The ortho graphic size
+            /// </summary>
+            float ortho_graphic_size_;
+
+            /// <summary>
             /// The whether use occlusion culling
             /// </summary>
             bool use_occlusion_culling_;
@@ -206,7 +244,6 @@ namespace qe {
             /// The whether use physical properties
             /// </summary>
             bool use_physical_properties_;
-
 
             /// <summary>
             /// The aspect
@@ -217,6 +254,11 @@ namespace qe {
             /// The depth
             /// </summary>
             float depth_;
+
+            /// <summary>
+            /// The near clip plane
+            /// </summary>
+            float near_clip_plane_;
 
             /// <summary>
             /// The far clip plane
@@ -268,7 +310,7 @@ namespace qe {
             /// <summary>
             /// The rect of camera
             /// </summary>
-            glm::vec2 rect_;
+            Rect rect_;
 
             /// <summary>
             /// The target texture of camera
