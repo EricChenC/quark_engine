@@ -25,11 +25,6 @@ int qe::core::QuarkObject::get_id()
     return id_;
 }
 
-auto qe::core::QuarkObject::get_transform() -> std::shared_ptr<qe::core::Transform>
-{
-    return transform_;
-}
-
 auto qe::core::QuarkObject::get_scene() -> Scene*
 {
     return scene_;

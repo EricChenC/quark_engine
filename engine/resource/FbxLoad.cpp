@@ -172,7 +172,7 @@ void GetContent(FbxScene* pScene, std::shared_ptr<qe::core::Scene> scene)
         for (i = 0; i < lNode->GetChildCount(); i++)
         {
             auto node = std::make_shared<qe::core::QuarkObject>();
-            root->add_child(node);
+            root->get_component<qe::core::Transform>()->add_child(node->get_component<qe::core::Transform>());
 
             GetContent(lNode->GetChild(i), node);
         }
@@ -203,7 +203,7 @@ void GetContent(FbxNode* pNode, std::shared_ptr<qe::core::QuarkObject> node)
     for (i = 0; i < pNode->GetChildCount(); i++)
     {
         auto child_node = std::make_shared<qe::core::QuarkObject>();
-        node->add_child(child_node);
+        node->get_component<qe::core::Transform>()->add_child(child_node->get_component<qe::core::Transform>());
 
         GetContent(pNode->GetChild(i), child_node);
     }
@@ -238,7 +238,7 @@ void GetProperties(FbxObject* pObject, std::shared_ptr<qe::core::QuarkObject> no
         return; // there are no properties to display
 
     node->set_name((char *)pObject->GetName());
-    auto transform = node->get_transform();
+    auto transform = node->get_component<qe::core::Transform>();
 
     i = 0;
     lProperty = pObject->GetFirstProperty();

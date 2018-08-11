@@ -100,8 +100,6 @@ namespace qe {
                 return component_list;
             }
 
-            auto get_transform()->std::shared_ptr<qe::core::Transform>;
-
             auto get_scene()->Scene*;
 
             void set_scene(Scene* scene);
