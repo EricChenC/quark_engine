@@ -49,9 +49,9 @@ std::vector<std::shared_ptr<qe::core::QuarkObject>> qe::core::QuarkObject::get_c
 void qe::core::QuarkObject::add_child(std::shared_ptr<qe::core::QuarkObject> child)
 {
     childs_.push_back(child);
-    child->parent_ = this;
 
-    child->set_scene(this->get_scene());
+    child->parent_ = this;
+    child->scene_ = scene_;
 }
 
 void qe::core::QuarkObject::detach_child(std::shared_ptr<qe::core::QuarkObject> child)

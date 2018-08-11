@@ -1,12 +1,7 @@
 /// Copyright 2018 Stone, Inc. All Rights Reserved.
 /// create time: 6/8/2018 11:06:18 PM
 /// author: eric
-/// QuarkObject is all quark object base class.
-///
-/// QuarkObject is all quark object base class.
-/// a quark object can add,get,remove component.
-/// a quark object have parent and child relation, that can auto release memory.
-/// a quark object have self id.
+
 
 #pragma once
 
@@ -22,6 +17,13 @@ namespace qe {
         class Component;
         class Scene;
 
+        /// <summary>
+        /// QuarkObject is all quark object base class.  
+        /// a quark object can add,get,remove component.  
+        /// a quark object have parent and child relation, that can auto release memory.  
+        /// a quark object have self id.  
+        /// </summary>
+        /// <seealso cref="CoreObject" />
         class DLL_EXPORT QuarkObject : public CoreObject {
         public:           
             /// <summary>
@@ -129,20 +131,22 @@ namespace qe {
             std::shared_ptr<qe::core::Transform> transform_;
 
             /// <summary>
+            /// The quark object pointer child list.
+            /// </summary>
+            std::vector<std::shared_ptr<qe::core::QuarkObject>> childs_;
+            
+
+            /// <summary>
             /// The scene of this quark object
             /// never manual delete this raw pointer!
             /// </summary>
             Scene* scene_;
 
             /// <summary>
-            /// The quark object pointer child list.
-            /// </summary>
-            std::vector<std::shared_ptr<qe::core::QuarkObject>> childs_;
-
-            /// <summary>
             /// The quark object parent.
+            /// never manual delete this raw pointer!
             /// </summary>
-            qe::core::QuarkObject* parent_;
+            QuarkObject* parent_;
 
         };
     }
