@@ -235,9 +235,9 @@ void qe::edit::QuarkWindow::LoadQuarkObject(
 {
     auto mesh_filter = quark_object->get_component<qe::core::MeshFilter>();
     if (!mesh_filter) {
-        auto childs = quark_object->get_component<qe::core::Transform>()->get_childs();
+        auto childs = quark_object->get_childs();
         for (auto child : childs) {
-            LoadQuarkObject(child->get_quark_object(), standard_material);
+            LoadQuarkObject(child, standard_material);
         }
 
         return;
@@ -251,9 +251,9 @@ void qe::edit::QuarkWindow::LoadQuarkObject(
 
     LoadDrawData(quark_object->get_component<qe::core::Transform>()->get_local_matrix(), mesh_filter, mesh_renderer);
 
-    auto childs = quark_object->get_component<qe::core::Transform>()->get_childs();
+    auto childs = quark_object->get_childs();
     for (auto child : childs) {
-        LoadQuarkObject(child->get_quark_object(), standard_material);
+        LoadQuarkObject(child, standard_material);
     }
 }
 

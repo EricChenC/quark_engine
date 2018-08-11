@@ -15,7 +15,6 @@ namespace qe {
     namespace core {
 
         class QuarkObject;
-        class Transform;
 
         class DLL_EXPORT Component : public CoreObject {
         public:
@@ -35,14 +34,14 @@ namespace qe {
             /// Get the quark object to add this component.
             /// </summary>
             /// <returns> Gets the quark object of this component. </returns>
-            std::shared_ptr<qe::core::QuarkObject> get_quark_object();
+            qe::core::QuarkObject* get_quark_object();
 
             /// <summary>
             /// Sets the quark object of this component.
             /// just only used in quark object add_component() function.
             /// </summary>
             /// <param name="quark_object">The quark object.</param>
-            void set_quark_object(std::shared_ptr<qe::core::QuarkObject> quark_object);
+            void set_quark_object(qe::core::QuarkObject* quark_object);
 
         private:
             /// <summary>
@@ -69,10 +68,9 @@ namespace qe {
 
             /// <summary>
             /// The quark object of this component.
-            /// just use normal pointer, because a component can't delete self quarkobject.
-            /// never manual delete this pointer!
+            /// never manual delete this raw pointer!
             /// </summary>
-            qe::core::QuarkObject* quark_object_;
+           qe::core::QuarkObject* quark_object_;
 
             /// <summary>
             /// friend class quarkobject. 

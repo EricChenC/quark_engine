@@ -10,7 +10,6 @@
 
 
 qe::core::Transform::Transform()
-    : parent_(nullptr)
 {
     local_rotate_ = glm::vec3(0.0, 0.0, 0.0);
 
@@ -113,32 +112,6 @@ void qe::core::Transform::set_world_matrix(const glm::mat4x4& world_matrix)
     glm::decompose(world_matrix_, world_scale_, rot, world_translation_, world_skew_, world_perspective_);
 
     world_rotate_ = glm::eulerAngles(rot);
-}
-
-qe::core::Transform * qe::core::Transform::get_parent()
-{
-    return parent_;
-}
-
-std::vector<std::shared_ptr<qe::core::Transform>> qe::core::Transform::get_childs()
-{
-    return childs_;
-}
-
-void qe::core::Transform::add_child(std::shared_ptr<qe::core::Transform> child)
-{
-    childs_.push_back(child);
-    child->parent_ = this;
-
-    child->get_quark_object()->set_scene(get_quark_object()->get_scene());
-}
-
-void qe::core::Transform::detach_child(std::shared_ptr<qe::core::Transform> child)
-{
-    auto result = std::find(childs_.begin(), childs_.end(), child);
-    if (result != childs_.end()) {
-        childs_.erase(result);
-    }
 }
 
 void qe::core::Transform::set_local_matrix(const glm::mat4x4& local_matrix)

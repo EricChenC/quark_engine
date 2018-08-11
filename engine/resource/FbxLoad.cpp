@@ -164,15 +164,14 @@ void GetContent(FbxScene* pScene, std::shared_ptr<qe::core::Scene> scene)
 {
     int i;
     FbxNode* lNode = pScene->GetRootNode();
-    auto root = std::make_shared<qe::core::QuarkObject>();
-    scene->add_root(root);
+    auto root = scene->add_root();
 
     if (lNode)
     {
         for (i = 0; i < lNode->GetChildCount(); i++)
         {
             auto node = std::make_shared<qe::core::QuarkObject>();
-            root->get_component<qe::core::Transform>()->add_child(node->get_component<qe::core::Transform>());
+            root->add_child(node);
 
             GetContent(lNode->GetChild(i), node);
         }
@@ -203,7 +202,7 @@ void GetContent(FbxNode* pNode, std::shared_ptr<qe::core::QuarkObject> node)
     for (i = 0; i < pNode->GetChildCount(); i++)
     {
         auto child_node = std::make_shared<qe::core::QuarkObject>();
-        node->get_component<qe::core::Transform>()->add_child(child_node->get_component<qe::core::Transform>());
+        node->add_child(child_node);
 
         GetContent(pNode->GetChild(i), child_node);
     }

@@ -5,7 +5,7 @@
 ///
 /// QuarkObject is all quark object base class.
 /// a quark object can add,get,remove component.
-/// a quark object have parent and child relation.
+/// a quark object have parent and child relation, that can auto release memory.
 /// a quark object have self id.
 
 #pragma once
@@ -104,6 +104,14 @@ namespace qe {
 
             void set_scene(Scene* scene);
 
+            qe::core::QuarkObject* get_parent();
+
+            std::vector<std::shared_ptr<qe::core::QuarkObject>> get_childs();
+
+            void add_child(std::shared_ptr<qe::core::QuarkObject> child);
+
+            void detach_child(std::shared_ptr<qe::core::QuarkObject> child);
+
         private:
             /// <summary>
             /// The quark object id.
@@ -122,8 +130,19 @@ namespace qe {
 
             /// <summary>
             /// The scene of this quark object
+            /// never manual delete this raw pointer!
             /// </summary>
             Scene* scene_;
+
+            /// <summary>
+            /// The quark object pointer child list.
+            /// </summary>
+            std::vector<std::shared_ptr<qe::core::QuarkObject>> childs_;
+
+            /// <summary>
+            /// The quark object parent.
+            /// </summary>
+            qe::core::QuarkObject* parent_;
 
         };
     }
