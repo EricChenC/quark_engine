@@ -89,41 +89,223 @@ $(document).ready(function(){initNavTree('classqe_1_1core_1_1_camera.html','');}
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classqe_1_1core_1_1_camera-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">qe::core::Camera Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A <a class="el" href="classqe_1_1core_1_1_camera.html" title="A Camera is a device through which the player views the world. A screen space point is defined in pix...">Camera</a> is a device through which the player views the world. A screen space point is defined in pixels.The bottom - left of the screen is(0, 0); the right - top is(pixelWidth, pixelHeight).The z position is in world units from the <a class="el" href="classqe_1_1core_1_1_camera.html" title="A Camera is a device through which the player views the world. A screen space point is defined in pix...">Camera</a>.  
+ <a href="classqe_1_1core_1_1_camera.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_camera_8h_source.html">Camera.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for qe::core::Camera:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classqe_1_1core_1_1_camera.png" usemap="#qe::core::Camera_map" alt=""/>
   <map id="qe::core::Camera_map" name="qe::core::Camera_map">
+<area href="classqe_1_1core_1_1_behaviour.html" alt="qe::core::Behaviour" shape="rect" coords="0,168,128,192"/>
 <area href="classqe_1_1core_1_1_component.html" alt="qe::core::Component" shape="rect" coords="0,112,128,136"/>
 <area href="classqe_1_1core_1_1_core_object.html" alt="qe::core::CoreObject" shape="rect" coords="0,56,128,80"/>
 <area href="classqe_1_1core_1_1_object.html" alt="qe::core::Object" shape="rect" coords="0,0,128,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a089f48c3f158a832c8983331916be414"><td class="memItemLeft" align="right" valign="top"><a id="a089f48c3f158a832c8983331916be414"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>CameraType</b> { <br />
+&#160;&#160;<b>GAME</b>, 
+<b>SCENEVIEW</b>, 
+<b>PREVIEW</b>, 
+<b>VR</b>, 
+<br />
+&#160;&#160;<b>REFLECTION</b>
+<br />
+ }</td></tr>
+<tr class="separator:a089f48c3f158a832c8983331916be414"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06f0c745de7cb43bc24f98047b1a0020"><td class="memItemLeft" align="right" valign="top"><a id="a06f0c745de7cb43bc24f98047b1a0020"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>ClearFlags</b> { <b>SKYBOX</b>, 
+<b>SOLIDCOLOR</b>, 
+<b>DEPTH</b>, 
+<b>NOTHING</b>
+ }</td></tr>
+<tr class="separator:a06f0c745de7cb43bc24f98047b1a0020"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a667da827663f823cedafdb579ea0ac5a"><td class="memItemLeft" align="right" valign="top"><a id="a667da827663f823cedafdb579ea0ac5a"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>TransparencySortMode</b> { <b>DEFAULT</b>, 
+<b>PERSPECTIVE</b>, 
+<b>ORTHOGRAPHIC</b>, 
+<b>CUSTOMAXIS</b>
+ }</td></tr>
+<tr class="separator:a667da827663f823cedafdb579ea0ac5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a861195e8930f0fffc35b15a1faa77c20"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_camera.html#a861195e8930f0fffc35b15a1faa77c20">Camera</a> ()</td></tr>
-<tr class="memdesc:a861195e8930f0fffc35b15a1faa77c20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classqe_1_1core_1_1_camera.html">Camera</a> class.  <a href="#a861195e8930f0fffc35b15a1faa77c20">More...</a><br /></td></tr>
+<tr class="memdesc:a861195e8930f0fffc35b15a1faa77c20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classqe_1_1core_1_1_camera.html" title="A Camera is a device through which the player views the world. A screen space point is defined in pix...">Camera</a> class.  <a href="#a861195e8930f0fffc35b15a1faa77c20">More...</a><br /></td></tr>
 <tr class="separator:a861195e8930f0fffc35b15a1faa77c20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9f80b7a14ccca8de02cf96cd617f7bb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_camera.html#ac9f80b7a14ccca8de02cf96cd617f7bb">~Camera</a> ()</td></tr>
-<tr class="memdesc:ac9f80b7a14ccca8de02cf96cd617f7bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalizes an instance of the <a class="el" href="classqe_1_1core_1_1_camera.html">Camera</a> class.  <a href="#ac9f80b7a14ccca8de02cf96cd617f7bb">More...</a><br /></td></tr>
+<tr class="memdesc:ac9f80b7a14ccca8de02cf96cd617f7bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalizes an instance of the <a class="el" href="classqe_1_1core_1_1_camera.html" title="A Camera is a device through which the player views the world. A screen space point is defined in pix...">Camera</a> class.  <a href="#ac9f80b7a14ccca8de02cf96cd617f7bb">More...</a><br /></td></tr>
 <tr class="separator:ac9f80b7a14ccca8de02cf96cd617f7bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4026496ba0f857938f899561eb59afc2"><td class="memItemLeft" align="right" valign="top"><a id="a4026496ba0f857938f899561eb59afc2"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>get_look_at</b> ()</td></tr>
-<tr class="separator:a4026496ba0f857938f899561eb59afc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8341ca4333405d0fbe6b054a9a17ac3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_camera.html#af8341ca4333405d0fbe6b054a9a17ac3">get_near</a> ()</td></tr>
-<tr class="memdesc:af8341ca4333405d0fbe6b054a9a17ac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the near plane.  <a href="#af8341ca4333405d0fbe6b054a9a17ac3">More...</a><br /></td></tr>
-<tr class="separator:af8341ca4333405d0fbe6b054a9a17ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a33ffe68e21440e31b644d2162f9460"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_camera.html#a9a33ffe68e21440e31b644d2162f9460">get_far</a> ()</td></tr>
-<tr class="memdesc:a9a33ffe68e21440e31b644d2162f9460"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the far.  <a href="#a9a33ffe68e21440e31b644d2162f9460">More...</a><br /></td></tr>
-<tr class="separator:a9a33ffe68e21440e31b644d2162f9460"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb3e8bc11b3bbb212dd7a31658bce283"><td class="memItemLeft" align="right" valign="top"><a id="aeb3e8bc11b3bbb212dd7a31658bce283"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>ActiveTexture</b> () -&gt; std::shared_ptr&lt; <a class="el" href="classqe_1_1core_1_1_render_texture.html">RenderTexture</a> &gt;</td></tr>
+<tr class="separator:aeb3e8bc11b3bbb212dd7a31658bce283"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4341b062b884ff244916605caf5214a8"><td class="memItemLeft" align="right" valign="top"><a id="a4341b062b884ff244916605caf5214a8"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>AllowDynamicResolution</b> () -&gt; bool</td></tr>
+<tr class="separator:a4341b062b884ff244916605caf5214a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cdba6c2452f5d78bb0a5ab52f72a8e3"><td class="memItemLeft" align="right" valign="top"><a id="a5cdba6c2452f5d78bb0a5ab52f72a8e3"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>AllowHDR</b> () -&gt; bool</td></tr>
+<tr class="separator:a5cdba6c2452f5d78bb0a5ab52f72a8e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc27e99ee2c05ea3ef5a017bbae1fc5d"><td class="memItemLeft" align="right" valign="top"><a id="abc27e99ee2c05ea3ef5a017bbae1fc5d"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>AllowMSAA</b> () -&gt; bool</td></tr>
+<tr class="separator:abc27e99ee2c05ea3ef5a017bbae1fc5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fb2ead2b9976810a6113168e70b5f7b"><td class="memItemLeft" align="right" valign="top"><a id="a3fb2ead2b9976810a6113168e70b5f7b"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>GetAspect</b> () -&gt; float</td></tr>
+<tr class="separator:a3fb2ead2b9976810a6113168e70b5f7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5637e5deea0d0d1e9b66c11917c48d23"><td class="memItemLeft" align="right" valign="top"><a id="a5637e5deea0d0d1e9b66c11917c48d23"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetAspect</b> (const float &amp;aspect)</td></tr>
+<tr class="separator:a5637e5deea0d0d1e9b66c11917c48d23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ea6f06d3f156e902a5f813d6cbd0fc1"><td class="memItemLeft" align="right" valign="top"><a id="a7ea6f06d3f156e902a5f813d6cbd0fc1"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>GetBackgroundColor</b> () -&gt; std::shared_ptr&lt; <a class="el" href="classqe_1_1core_1_1_color.html">Color</a> &gt;</td></tr>
+<tr class="separator:a7ea6f06d3f156e902a5f813d6cbd0fc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfa02b8aa393e65760dbbde7c75d5af8"><td class="memItemLeft" align="right" valign="top"><a id="abfa02b8aa393e65760dbbde7c75d5af8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetBackgroundColor</b> (std::shared_ptr&lt; <a class="el" href="classqe_1_1core_1_1_color.html">Color</a> &gt; color)</td></tr>
+<tr class="separator:abfa02b8aa393e65760dbbde7c75d5af8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acebf4917a4d50f14985571adc6babba5"><td class="memItemLeft" align="right" valign="top"><a id="acebf4917a4d50f14985571adc6babba5"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>GetCameraToWorldMatrix</b> () -&gt; glm::mat4</td></tr>
+<tr class="separator:acebf4917a4d50f14985571adc6babba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac9124e750fcee9c370bcb727facb4c9"><td class="memItemLeft" align="right" valign="top"><a id="aac9124e750fcee9c370bcb727facb4c9"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>GetCameraType</b> () -&gt; CameraType</td></tr>
+<tr class="separator:aac9124e750fcee9c370bcb727facb4c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af92a9508b815103e361b345a892fd2a2"><td class="memItemLeft" align="right" valign="top"><a id="af92a9508b815103e361b345a892fd2a2"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>GetClearFlags</b> () -&gt; ClearFlags</td></tr>
+<tr class="separator:af92a9508b815103e361b345a892fd2a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e632f974474b7a9f9af4d48cbb14e23"><td class="memItemLeft" align="right" valign="top"><a id="a9e632f974474b7a9f9af4d48cbb14e23"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>GetCullingMask</b> () -&gt; int</td></tr>
+<tr class="separator:a9e632f974474b7a9f9af4d48cbb14e23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81d6fdfe2631c6acbc0c4269853d59b2"><td class="memItemLeft" align="right" valign="top"><a id="a81d6fdfe2631c6acbc0c4269853d59b2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetCullingMask</b> (const int &amp;mask)</td></tr>
+<tr class="separator:a81d6fdfe2631c6acbc0c4269853d59b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae71778361961d2d86f24011649d6b243"><td class="memItemLeft" align="right" valign="top"><a id="ae71778361961d2d86f24011649d6b243"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>GetCullingMatrix</b> () -&gt; glm::mat4</td></tr>
+<tr class="separator:ae71778361961d2d86f24011649d6b243"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa50a3687b843122f9b27e72ae80fdec3"><td class="memItemLeft" align="right" valign="top"><a id="aa50a3687b843122f9b27e72ae80fdec3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetCullingMatrix</b> (const glm::mat4 &amp;mat)</td></tr>
+<tr class="separator:aa50a3687b843122f9b27e72ae80fdec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1082f144e12c868b136c3a5e52eba958"><td class="memItemLeft" align="right" valign="top"><a id="a1082f144e12c868b136c3a5e52eba958"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>GetDepth</b> () -&gt; float</td></tr>
+<tr class="separator:a1082f144e12c868b136c3a5e52eba958"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae39aefcf0e73c5767ae5a266d825d731"><td class="memItemLeft" align="right" valign="top"><a id="ae39aefcf0e73c5767ae5a266d825d731"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetDepth</b> (const float &amp;depth)</td></tr>
+<tr class="separator:ae39aefcf0e73c5767ae5a266d825d731"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62b08a7281a4f0d80780ff54e4103585"><td class="memItemLeft" align="right" valign="top"><a id="a62b08a7281a4f0d80780ff54e4103585"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>GetNearClipPlane</b> () -&gt; float</td></tr>
+<tr class="separator:a62b08a7281a4f0d80780ff54e4103585"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7dbc20cee05a573d1d458b9235ef503"><td class="memItemLeft" align="right" valign="top"><a id="ab7dbc20cee05a573d1d458b9235ef503"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetNearClipPlane</b> (const float &amp;near)</td></tr>
+<tr class="separator:ab7dbc20cee05a573d1d458b9235ef503"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99ee55faabc21a4867235c2d6a4c4f55"><td class="memItemLeft" align="right" valign="top"><a id="a99ee55faabc21a4867235c2d6a4c4f55"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>GetFarClipPlane</b> () -&gt; float</td></tr>
+<tr class="separator:a99ee55faabc21a4867235c2d6a4c4f55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c2c1b2088032e63158d5cc752820f1a"><td class="memItemLeft" align="right" valign="top"><a id="a8c2c1b2088032e63158d5cc752820f1a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetFarClipPlane</b> (const float &amp;far)</td></tr>
+<tr class="separator:a8c2c1b2088032e63158d5cc752820f1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd5f4df457cf1a514989c21ca8e735d5"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_camera.html#acd5f4df457cf1a514989c21ca8e735d5">GetFieldOfView</a> () -&gt; float</td></tr>
+<tr class="memdesc:acd5f4df457cf1a514989c21ca8e735d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fields the of view (fov).  <a href="#acd5f4df457cf1a514989c21ca8e735d5">More...</a><br /></td></tr>
+<tr class="separator:acd5f4df457cf1a514989c21ca8e735d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a875d7184cc115d60523df2a8dae51f53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_camera.html#a875d7184cc115d60523df2a8dae51f53">SetFieldOfView</a> (const float &amp;fov)</td></tr>
+<tr class="memdesc:a875d7184cc115d60523df2a8dae51f53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the field of view.  <a href="#a875d7184cc115d60523df2a8dae51f53">More...</a><br /></td></tr>
+<tr class="separator:a875d7184cc115d60523df2a8dae51f53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff6917b2e4c30a36cdd28110f2469680"><td class="memItemLeft" align="right" valign="top"><a id="aff6917b2e4c30a36cdd28110f2469680"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>UseOrthoGraphic</b> () -&gt; bool</td></tr>
+<tr class="separator:aff6917b2e4c30a36cdd28110f2469680"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad76a93d805a4ee65cd5d0c1f1d344cef"><td class="memItemLeft" align="right" valign="top"><a id="ad76a93d805a4ee65cd5d0c1f1d344cef"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetUseOrthoGraphic</b> (bool ortho)</td></tr>
+<tr class="separator:ad76a93d805a4ee65cd5d0c1f1d344cef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fa99ef07b9a60710675d0c69ffc1054"><td class="memItemLeft" align="right" valign="top"><a id="a4fa99ef07b9a60710675d0c69ffc1054"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>GetOrthoGraphicSize</b> () -&gt; float</td></tr>
+<tr class="separator:a4fa99ef07b9a60710675d0c69ffc1054"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a0b12d7a31fab21d14d92be3ecb884e"><td class="memItemLeft" align="right" valign="top"><a id="a7a0b12d7a31fab21d14d92be3ecb884e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetOrthoGraphicSize</b> (const float &amp;size)</td></tr>
+<tr class="separator:a7a0b12d7a31fab21d14d92be3ecb884e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac78628168ee4d536c03440ce84786ded"><td class="memItemLeft" align="right" valign="top"><a id="ac78628168ee4d536c03440ce84786ded"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>PixelHeight</b> () -&gt; int</td></tr>
+<tr class="separator:ac78628168ee4d536c03440ce84786ded"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b3f1c8457ac12b5c4ab71c309517ec0"><td class="memItemLeft" align="right" valign="top"><a id="a6b3f1c8457ac12b5c4ab71c309517ec0"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>GetRect</b> () -&gt; <a class="el" href="struct_rect.html">Rect</a></td></tr>
+<tr class="separator:a6b3f1c8457ac12b5c4ab71c309517ec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf297e9f1eb9c0b9e94cc33a2fa0df11"><td class="memItemLeft" align="right" valign="top"><a id="adf297e9f1eb9c0b9e94cc33a2fa0df11"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetRect</b> (const <a class="el" href="struct_rect.html">Rect</a> &amp;rect)</td></tr>
+<tr class="separator:adf297e9f1eb9c0b9e94cc33a2fa0df11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8643a1d3bbdc857d99efc6c8a3f2ebc6"><td class="memItemLeft" align="right" valign="top"><a id="a8643a1d3bbdc857d99efc6c8a3f2ebc6"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>Scene</b> () -&gt; <a class="el" href="classqe_1_1core_1_1_scene.html">Scene</a> *</td></tr>
+<tr class="separator:a8643a1d3bbdc857d99efc6c8a3f2ebc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af72da506a10d39b58c2464757986502f"><td class="memItemLeft" align="right" valign="top"><a id="af72da506a10d39b58c2464757986502f"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>GetTargetDisplay</b> () -&gt; int</td></tr>
+<tr class="separator:af72da506a10d39b58c2464757986502f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7de1dc240472aa1984f4df7a6300d594"><td class="memItemLeft" align="right" valign="top"><a id="a7de1dc240472aa1984f4df7a6300d594"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetTargetDisplay</b> (const int &amp;target)</td></tr>
+<tr class="separator:a7de1dc240472aa1984f4df7a6300d594"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3448d7b42b2c86c51b3bb8e24eb1df4"><td class="memItemLeft" align="right" valign="top"><a id="ab3448d7b42b2c86c51b3bb8e24eb1df4"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>GetTargetTexture</b> () -&gt; std::shared_ptr&lt; <a class="el" href="classqe_1_1core_1_1_render_texture.html">RenderTexture</a> &gt;</td></tr>
+<tr class="separator:ab3448d7b42b2c86c51b3bb8e24eb1df4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f2460d769099290207c68e339573165"><td class="memItemLeft" align="right" valign="top"><a id="a8f2460d769099290207c68e339573165"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetTargetTexture</b> (std::shared_ptr&lt; <a class="el" href="classqe_1_1core_1_1_render_texture.html">RenderTexture</a> &gt; texture)</td></tr>
+<tr class="separator:a8f2460d769099290207c68e339573165"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e3d17b74a1642841e895fb0ac926144"><td class="memItemLeft" align="right" valign="top"><a id="a9e3d17b74a1642841e895fb0ac926144"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>GetTransparencySortAxis</b> () -&gt; glm::vec3</td></tr>
+<tr class="separator:a9e3d17b74a1642841e895fb0ac926144"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a389116144f6a20ff0cab73f2211e4a39"><td class="memItemLeft" align="right" valign="top"><a id="a389116144f6a20ff0cab73f2211e4a39"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetTransparencySortAxis</b> (const glm::vec3 &amp;axis)</td></tr>
+<tr class="separator:a389116144f6a20ff0cab73f2211e4a39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14acbd753bd5779a0f294befd8ba5325"><td class="memItemLeft" align="right" valign="top"><a id="a14acbd753bd5779a0f294befd8ba5325"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>GetTransparencySortMode</b> () -&gt; TransparencySortMode</td></tr>
+<tr class="separator:a14acbd753bd5779a0f294befd8ba5325"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b7574eaa55d62522595d72c859150e0"><td class="memItemLeft" align="right" valign="top"><a id="a1b7574eaa55d62522595d72c859150e0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetTransparencySortMode</b> (const TransparencySortMode &amp;mode)</td></tr>
+<tr class="separator:a1b7574eaa55d62522595d72c859150e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4ff92731a606446949b7bda7cb8a270"><td class="memItemLeft" align="right" valign="top"><a id="ac4ff92731a606446949b7bda7cb8a270"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>UseOcclusionCulling</b> () -&gt; bool</td></tr>
+<tr class="separator:ac4ff92731a606446949b7bda7cb8a270"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94d510c8a84344e9083d931083ca1b05"><td class="memItemLeft" align="right" valign="top"><a id="a94d510c8a84344e9083d931083ca1b05"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetUseOcclusionCulling</b> (bool use)</td></tr>
+<tr class="separator:a94d510c8a84344e9083d931083ca1b05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34d214e4dde7af05d454628e60708dad"><td class="memItemLeft" align="right" valign="top"><a id="a34d214e4dde7af05d454628e60708dad"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>UsePhysicalProperties</b> () -&gt; bool</td></tr>
+<tr class="separator:a34d214e4dde7af05d454628e60708dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62c61ca85c120b657c56496c1fd4480b"><td class="memItemLeft" align="right" valign="top"><a id="a62c61ca85c120b657c56496c1fd4480b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetUsePhysicalProperties</b> (bool use)</td></tr>
+<tr class="separator:a62c61ca85c120b657c56496c1fd4480b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6311a0f9e9dfd7edd11b171c26119171"><td class="memItemLeft" align="right" valign="top"><a id="a6311a0f9e9dfd7edd11b171c26119171"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>GetVelocity</b> () -&gt; glm::vec3</td></tr>
+<tr class="separator:a6311a0f9e9dfd7edd11b171c26119171"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a316aab17582abc93161c1eb95bba53fd"><td class="memItemLeft" align="right" valign="top"><a id="a316aab17582abc93161c1eb95bba53fd"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetVelocity</b> (const glm::vec3 &amp;velocity)</td></tr>
+<tr class="separator:a316aab17582abc93161c1eb95bba53fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac15b68f55266e4c4b8363aa1d5153ee0"><td class="memItemLeft" align="right" valign="top"><a id="ac15b68f55266e4c4b8363aa1d5153ee0"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>WorldToCameraMatrix</b> () -&gt; glm::mat4</td></tr>
+<tr class="separator:ac15b68f55266e4c4b8363aa1d5153ee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9019005ee10d48ac8a78842eca08f797"><td class="memItemLeft" align="right" valign="top"><a id="a9019005ee10d48ac8a78842eca08f797"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Render</b> ()</td></tr>
+<tr class="separator:a9019005ee10d48ac8a78842eca08f797"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2851dbf79331e4a9d670be6c64cf236c"><td class="memItemLeft" align="right" valign="top"><a id="a2851dbf79331e4a9d670be6c64cf236c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>RenderWithShader</b> (std::shared_ptr&lt; <a class="el" href="classqe_1_1core_1_1_shader.html">Shader</a> &gt; shader)</td></tr>
+<tr class="separator:a2851dbf79331e4a9d670be6c64cf236c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4d39abdc7cf50437946cd4d095a5a1c"><td class="memItemLeft" align="right" valign="top"><a id="aa4d39abdc7cf50437946cd4d095a5a1c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Reset</b> ()</td></tr>
+<tr class="separator:aa4d39abdc7cf50437946cd4d095a5a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3734fe311b58060c92abd465c2d1c49"><td class="memItemLeft" align="right" valign="top"><a id="ad3734fe311b58060c92abd465c2d1c49"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>ScreenPointToRay</b> (const glm::vec3 &amp;pos) -&gt; <a class="el" href="struct_ray.html">Ray</a></td></tr>
+<tr class="separator:ad3734fe311b58060c92abd465c2d1c49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classqe_1_1core_1_1_behaviour"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classqe_1_1core_1_1_behaviour')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classqe_1_1core_1_1_behaviour.html">qe::core::Behaviour</a></td></tr>
+<tr class="memitem:af0253bb2536333fd7ceeab31c7367250 inherit pub_methods_classqe_1_1core_1_1_behaviour"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_behaviour.html#af0253bb2536333fd7ceeab31c7367250">set_enable</a> (bool enable)</td></tr>
+<tr class="memdesc:af0253bb2536333fd7ceeab31c7367250 inherit pub_methods_classqe_1_1core_1_1_behaviour"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets whether enable the behaviour  <a href="classqe_1_1core_1_1_behaviour.html#af0253bb2536333fd7ceeab31c7367250">More...</a><br /></td></tr>
+<tr class="separator:af0253bb2536333fd7ceeab31c7367250 inherit pub_methods_classqe_1_1core_1_1_behaviour"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa87b71db048779e92685ff43e9bd5aa2 inherit pub_methods_classqe_1_1core_1_1_behaviour"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_behaviour.html#aa87b71db048779e92685ff43e9bd5aa2">get_enable</a> ()</td></tr>
+<tr class="memdesc:aa87b71db048779e92685ff43e9bd5aa2 inherit pub_methods_classqe_1_1core_1_1_behaviour"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets whether enable the behaviour  <a href="classqe_1_1core_1_1_behaviour.html#aa87b71db048779e92685ff43e9bd5aa2">More...</a><br /></td></tr>
+<tr class="separator:aa87b71db048779e92685ff43e9bd5aa2 inherit pub_methods_classqe_1_1core_1_1_behaviour"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classqe_1_1core_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classqe_1_1core_1_1_component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classqe_1_1core_1_1_component.html">qe::core::Component</a></td></tr>
 <tr class="memitem:a3ec40ead88558d693df6885805742eb2 inherit pub_methods_classqe_1_1core_1_1_component"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_component.html#a3ec40ead88558d693df6885805742eb2">Component</a> ()</td></tr>
 <tr class="memdesc:a3ec40ead88558d693df6885805742eb2 inherit pub_methods_classqe_1_1core_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classqe_1_1core_1_1_component.html">Component</a> class.  <a href="classqe_1_1core_1_1_component.html#a3ec40ead88558d693df6885805742eb2">More...</a><br /></td></tr>
@@ -131,12 +313,12 @@ glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>get_look_at</b> 
 <tr class="memitem:a569d42ddf0d454a7ae511a91c8cb76d6 inherit pub_methods_classqe_1_1core_1_1_component"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_component.html#a569d42ddf0d454a7ae511a91c8cb76d6">~Component</a> ()</td></tr>
 <tr class="memdesc:a569d42ddf0d454a7ae511a91c8cb76d6 inherit pub_methods_classqe_1_1core_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalizes an instance of the <a class="el" href="classqe_1_1core_1_1_component.html">Component</a> class.  <a href="classqe_1_1core_1_1_component.html#a569d42ddf0d454a7ae511a91c8cb76d6">More...</a><br /></td></tr>
 <tr class="separator:a569d42ddf0d454a7ae511a91c8cb76d6 inherit pub_methods_classqe_1_1core_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0031525e4c3d36b580d701c2b7b26ae0 inherit pub_methods_classqe_1_1core_1_1_component"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classqe_1_1core_1_1_quark_object.html">QuarkObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_component.html#a0031525e4c3d36b580d701c2b7b26ae0">get_quark_object</a> ()</td></tr>
+<tr class="memitem:a0031525e4c3d36b580d701c2b7b26ae0 inherit pub_methods_classqe_1_1core_1_1_component"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classqe_1_1core_1_1_quark_object.html">qe::core::QuarkObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_component.html#a0031525e4c3d36b580d701c2b7b26ae0">get_quark_object</a> ()</td></tr>
 <tr class="memdesc:a0031525e4c3d36b580d701c2b7b26ae0 inherit pub_methods_classqe_1_1core_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get quark object that is this component be added. Get the quark object to add this component.  <a href="classqe_1_1core_1_1_component.html#a0031525e4c3d36b580d701c2b7b26ae0">More...</a><br /></td></tr>
 <tr class="separator:a0031525e4c3d36b580d701c2b7b26ae0 inherit pub_methods_classqe_1_1core_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e3d3469b13b9e389bc8a2cd47a54ea4 inherit pub_methods_classqe_1_1core_1_1_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_component.html#a4e3d3469b13b9e389bc8a2cd47a54ea4">set_quark_object</a> (<a class="el" href="classqe_1_1core_1_1_quark_object.html">QuarkObject</a> *quark_object)</td></tr>
-<tr class="memdesc:a4e3d3469b13b9e389bc8a2cd47a54ea4 inherit pub_methods_classqe_1_1core_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the quark object of this component. just only used in quark object add_component() function.  <a href="classqe_1_1core_1_1_component.html#a4e3d3469b13b9e389bc8a2cd47a54ea4">More...</a><br /></td></tr>
-<tr class="separator:a4e3d3469b13b9e389bc8a2cd47a54ea4 inherit pub_methods_classqe_1_1core_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fc234ea581c8b1e32e0a9c4558c1da8 inherit pub_methods_classqe_1_1core_1_1_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_component.html#a0fc234ea581c8b1e32e0a9c4558c1da8">set_quark_object</a> (<a class="el" href="classqe_1_1core_1_1_quark_object.html">qe::core::QuarkObject</a> *quark_object)</td></tr>
+<tr class="memdesc:a0fc234ea581c8b1e32e0a9c4558c1da8 inherit pub_methods_classqe_1_1core_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the quark object of this component. just only used in quark object add_component() function.  <a href="classqe_1_1core_1_1_component.html#a0fc234ea581c8b1e32e0a9c4558c1da8">More...</a><br /></td></tr>
+<tr class="separator:a0fc234ea581c8b1e32e0a9c4558c1da8 inherit pub_methods_classqe_1_1core_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classqe_1_1core_1_1_object"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classqe_1_1core_1_1_object')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classqe_1_1core_1_1_object.html">qe::core::Object</a></td></tr>
 <tr class="memitem:a3c1f3e432fcdf10b5367ef6bae16af64 inherit pub_methods_classqe_1_1core_1_1_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_object.html#a3c1f3e432fcdf10b5367ef6bae16af64">Object</a> ()</td></tr>
 <tr class="memdesc:a3c1f3e432fcdf10b5367ef6bae16af64 inherit pub_methods_classqe_1_1core_1_1_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classqe_1_1core_1_1_object.html">Object</a> class.  <a href="classqe_1_1core_1_1_object.html#a3c1f3e432fcdf10b5367ef6bae16af64">More...</a><br /></td></tr>
@@ -153,8 +335,31 @@ glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>get_look_at</b> 
 <tr class="memitem:a8c0bd768bc514ff1c3eff66bace30d4c inherit pub_methods_classqe_1_1core_1_1_object"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_object.html#a8c0bd768bc514ff1c3eff66bace30d4c">get_name</a> ()</td></tr>
 <tr class="memdesc:a8c0bd768bc514ff1c3eff66bace30d4c inherit pub_methods_classqe_1_1core_1_1_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the name.  <a href="classqe_1_1core_1_1_object.html#a8c0bd768bc514ff1c3eff66bace30d4c">More...</a><br /></td></tr>
 <tr class="separator:a8c0bd768bc514ff1c3eff66bace30d4c inherit pub_methods_classqe_1_1core_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a38cb6cafde0b7b210e1ad73f84ddce19"><td class="memItemLeft" align="right" valign="top">static auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_camera.html#a38cb6cafde0b7b210e1ad73f84ddce19">get_all_camera</a> () -&gt; std::list&lt; <a class="el" href="classqe_1_1core_1_1_camera.html">Camera</a> *&gt;</td></tr>
+<tr class="memdesc:a38cb6cafde0b7b210e1ad73f84ddce19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets all enabled camera in scene.  <a href="#a38cb6cafde0b7b210e1ad73f84ddce19">More...</a><br /></td></tr>
+<tr class="separator:a38cb6cafde0b7b210e1ad73f84ddce19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcdb4afb5203e16f6e33f043cda80e21"><td class="memItemLeft" align="right" valign="top">static auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_camera.html#adcdb4afb5203e16f6e33f043cda80e21">get_all_camera_count</a> () -&gt; int</td></tr>
+<tr class="memdesc:adcdb4afb5203e16f6e33f043cda80e21"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of cameras in the current scene.  <a href="#adcdb4afb5203e16f6e33f043cda80e21">More...</a><br /></td></tr>
+<tr class="separator:adcdb4afb5203e16f6e33f043cda80e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac99c54facaa9b3530b1b4cb73915f390"><td class="memItemLeft" align="right" valign="top">static auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_camera.html#ac99c54facaa9b3530b1b4cb73915f390">current</a> () -&gt; <a class="el" href="classqe_1_1core_1_1_camera.html">Camera</a> *</td></tr>
+<tr class="memdesc:ac99c54facaa9b3530b1b4cb73915f390"><td class="mdescLeft">&#160;</td><td class="mdescRight">The camera we are currently rendering with.  <a href="#ac99c54facaa9b3530b1b4cb73915f390">More...</a><br /></td></tr>
+<tr class="separator:ac99c54facaa9b3530b1b4cb73915f390"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a105eb4014c2de68e8317b72b0c2dd27b"><td class="memItemLeft" align="right" valign="top">static auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_camera.html#a105eb4014c2de68e8317b72b0c2dd27b">main</a> () -&gt; <a class="el" href="classqe_1_1core_1_1_camera.html">Camera</a> *</td></tr>
+<tr class="memdesc:a105eb4014c2de68e8317b72b0c2dd27b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The first enabled camera tagged "MainCamera".  <a href="#a105eb4014c2de68e8317b72b0c2dd27b">More...</a><br /></td></tr>
+<tr class="separator:a105eb4014c2de68e8317b72b0c2dd27b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:aa19c0d69270e13f244e0ee166a76175e"><td class="memItemLeft" align="right" valign="top">static std::list&lt; <a class="el" href="classqe_1_1core_1_1_camera.html">Camera</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_camera.html#aa19c0d69270e13f244e0ee166a76175e">cameras_</a></td></tr>
+<tr class="memdesc:aa19c0d69270e13f244e0ee166a76175e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save the scene all cameras.  <a href="#aa19c0d69270e13f244e0ee166a76175e">More...</a><br /></td></tr>
+<tr class="separator:aa19c0d69270e13f244e0ee166a76175e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><dl class="section see"><dt>See also</dt><dd><a class="el" href="classqe_1_1core_1_1_behaviour.html">Behaviour</a></dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a861195e8930f0fffc35b15a1faa77c20"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a861195e8930f0fffc35b15a1faa77c20">&#9670;&nbsp;</a></span>Camera()</h2>
 
@@ -198,39 +403,172 @@ glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>get_look_at</b> 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9a33ffe68e21440e31b644d2162f9460"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a33ffe68e21440e31b644d2162f9460">&#9670;&nbsp;</a></span>get_far()</h2>
+<a id="ac99c54facaa9b3530b1b4cb73915f390"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac99c54facaa9b3530b1b4cb73915f390">&#9670;&nbsp;</a></span>current()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto qe::core::Camera::current </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt; <a class="el" href="classqe_1_1core_1_1_camera.html">Camera</a>*</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a38cb6cafde0b7b210e1ad73f84ddce19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38cb6cafde0b7b210e1ad73f84ddce19">&#9670;&nbsp;</a></span>get_all_camera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto qe::core::Camera::get_all_camera </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt; std::list&lt;<a class="el" href="classqe_1_1core_1_1_camera.html">Camera</a>*&gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="adcdb4afb5203e16f6e33f043cda80e21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcdb4afb5203e16f6e33f043cda80e21">&#9670;&nbsp;</a></span>get_all_camera_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto qe::core::Camera::get_all_camera_count </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt; int</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="acd5f4df457cf1a514989c21ca8e735d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd5f4df457cf1a514989c21ca8e735d5">&#9670;&nbsp;</a></span>GetFieldOfView()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int qe::core::Camera::get_far </td>
+          <td class="memname">auto qe::core::Camera::GetFieldOfView </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> -&gt; float</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Gets the far plane. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
-<a id="af8341ca4333405d0fbe6b054a9a17ac3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8341ca4333405d0fbe6b054a9a17ac3">&#9670;&nbsp;</a></span>get_near()</h2>
+<a id="a105eb4014c2de68e8317b72b0c2dd27b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a105eb4014c2de68e8317b72b0c2dd27b">&#9670;&nbsp;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto qe::core::Camera::main </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt; <a class="el" href="classqe_1_1core_1_1_camera.html">Camera</a>*</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a875d7184cc115d60523df2a8dae51f53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a875d7184cc115d60523df2a8dae51f53">&#9670;&nbsp;</a></span>SetFieldOfView()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int qe::core::Camera::get_near </td>
+          <td class="memname">void qe::core::Camera::SetFieldOfView </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const float &amp;&#160;</td>
+          <td class="paramname"><em>fov</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Gets the near plane. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fov</td><td>The fov.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aa19c0d69270e13f244e0ee166a76175e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa19c0d69270e13f244e0ee166a76175e">&#9670;&nbsp;</a></span>cameras_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::list&lt; <a class="el" href="classqe_1_1core_1_1_camera.html">qe::core::Camera</a> * &gt; qe::core::Camera::cameras_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

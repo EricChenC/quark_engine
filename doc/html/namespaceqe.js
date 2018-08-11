@@ -5,6 +5,7 @@ var namespaceqe =
       [ "AwakeBehaviour", "classqe_1_1core_1_1_awake_behaviour.html", "classqe_1_1core_1_1_awake_behaviour" ],
       [ "Behaviour", "classqe_1_1core_1_1_behaviour.html", "classqe_1_1core_1_1_behaviour" ],
       [ "Camera", "classqe_1_1core_1_1_camera.html", "classqe_1_1core_1_1_camera" ],
+      [ "Color", "classqe_1_1core_1_1_color.html", "classqe_1_1core_1_1_color" ],
       [ "Component", "classqe_1_1core_1_1_component.html", "classqe_1_1core_1_1_component" ],
       [ "CoreObject", "classqe_1_1core_1_1_core_object.html", "classqe_1_1core_1_1_core_object" ],
       [ "Light", "classqe_1_1core_1_1_light.html", "classqe_1_1core_1_1_light" ],
@@ -18,12 +19,14 @@ var namespaceqe =
       [ "QuarkString", "classqe_1_1core_1_1_quark_string.html", "classqe_1_1core_1_1_quark_string" ],
       [ "Renderer", "classqe_1_1core_1_1_renderer.html", "classqe_1_1core_1_1_renderer" ],
       [ "RenderObject", "classqe_1_1core_1_1_render_object.html", "classqe_1_1core_1_1_render_object" ],
+      [ "RenderTexture", "classqe_1_1core_1_1_render_texture.html", "classqe_1_1core_1_1_render_texture" ],
       [ "Resource", "classqe_1_1core_1_1_resource.html", "classqe_1_1core_1_1_resource" ],
       [ "Scene", "classqe_1_1core_1_1_scene.html", "classqe_1_1core_1_1_scene" ],
       [ "SceneManager", "classqe_1_1core_1_1_scene_manager.html", "classqe_1_1core_1_1_scene_manager" ],
       [ "ScriptBehaviour", "classqe_1_1core_1_1_script_behaviour.html", "classqe_1_1core_1_1_script_behaviour" ],
       [ "Shader", "classqe_1_1core_1_1_shader.html", "classqe_1_1core_1_1_shader" ],
       [ "Texture", "classqe_1_1core_1_1_texture.html", "classqe_1_1core_1_1_texture" ],
+      [ "Texture2D", "classqe_1_1core_1_1_texture2_d.html", "classqe_1_1core_1_1_texture2_d" ],
       [ "Transform", "classqe_1_1core_1_1_transform.html", "classqe_1_1core_1_1_transform" ]
     ] ],
     [ "edit", null, [

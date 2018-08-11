@@ -10,6 +10,7 @@ var classqe_1_1core_1_1_quark_object =
     [ "get_components", "classqe_1_1core_1_1_quark_object.html#accb7ca510b0a5df4cebd5055a6452312", null ],
     [ "get_id", "classqe_1_1core_1_1_quark_object.html#a7e7db7c548ade30eb99625adcac6ba9a", null ],
     [ "get_parent", "classqe_1_1core_1_1_quark_object.html#a5b1080d4e1ea1e9beb4301ac7a3d3f8b", null ],
-    [ "get_transform", "classqe_1_1core_1_1_quark_object.html#ae6cc8747d4e9801e0792d8ddbddc1ff4", null ],
-    [ "set_id", "classqe_1_1core_1_1_quark_object.html#a9a22c6f447b36932b9cae6ed62bb1407", null ]
+    [ "get_scene", "classqe_1_1core_1_1_quark_object.html#adfd8e60b43517582e54635ea2eab00b8", null ],
+    [ "set_id", "classqe_1_1core_1_1_quark_object.html#a9a22c6f447b36932b9cae6ed62bb1407", null ],
+    [ "set_scene", "classqe_1_1core_1_1_quark_object.html#a0cc810141670402e58950d9290009a1f", null ]
 ];
