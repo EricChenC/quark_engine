@@ -10,6 +10,8 @@
 #include <glm/glm.hpp>
 #include <list>
 
+typedef void(*AwakeFP)();
+
 namespace qe {
     namespace core {
 
@@ -68,146 +70,424 @@ namespace qe {
             /// <summary>
             /// Save the scene all cameras.
             /// </summary>
-            static std::list<Camera*> cameras_;
+            static std::list<Camera*> cameras;
 
             /// <summary>
             /// Gets all enabled camera in scene.
             /// </summary>
             /// <returns></returns>
-            static auto get_all_camera()->std::list<Camera*>;
+            static auto AllCamera()->std::list<Camera*>;
 
             /// <summary>
             /// The number of cameras in the current scene.
             /// </summary>
             /// <returns></returns>
-            static auto get_all_camera_count() -> int;
+            static auto AllCameraCount() -> int;
 
 
             /// <summary>
             /// The camera we are currently rendering with.
             /// </summary>
             /// <returns></returns>
-            static auto current()->Camera*;
+            static auto Current()->Camera*;
 
 
             /// <summary>
             /// The first enabled camera tagged "MainCamera".
             /// </summary>
             /// <returns></returns>
-            static auto main()->Camera*;
+            static auto MainCamera()->Camera*;
 
         // Properties
         public:
-            auto ActiveTexture()->std::shared_ptr<RenderTexture>;
+            /// <summary>
+            /// Gets the allow dynamic resolution.
+            /// </summary>
+            /// <returns></returns>
+            auto get_allow_dynamic_resolution() const -> const bool&;
 
-            auto AllowDynamicResolution() -> bool;
+            /// <summary>
+            /// Sets the allow dynamic resolution.
+            /// </summary>
+            /// <param name="allow">The allow.</param>
+            void set_allow_dynamic_resolution(const bool& allow);
 
-            auto AllowHDR() -> bool;
+            /// <summary>
+            /// Gets the allow HDR.
+            /// </summary>
+            /// <returns></returns>
+            auto get_allow_hdr() const -> const bool&;
 
-            auto AllowMSAA() -> bool;
+            /// <summary>
+            /// Sets the allow HDR.
+            /// </summary>
+            /// <param name="allow">The allow.</param>
+            void set_allow_hdr(const bool& allow);
 
-            auto GetAspect() -> float;
+            /// <summary>
+            /// Gets the allow msaa.
+            /// </summary>
+            /// <returns></returns>
+            auto get_allow_msaa() const -> const bool&;
 
-            void SetAspect(const float& aspect);
+            /// <summary>
+            /// Sets the allow msaa.
+            /// </summary>
+            /// <param name="allow">The allow.</param>
+            void set_allow_msaa(const bool& allow);
 
-            auto GetBackgroundColor()->std::shared_ptr<Color>;
+            /// <summary>
+            /// Gets the aspect.
+            /// </summary>
+            /// <returns></returns>
+            auto get_aspect() const -> const float&;
 
-            void SetBackgroundColor(std::shared_ptr<Color> color);
+            /// <summary>
+            /// Sets the aspect.
+            /// </summary>
+            /// <param name="aspect">The aspect.</param>
+            void set_aspect(const float& aspect);
 
-            auto GetCameraToWorldMatrix()->glm::mat4;
-       
-            auto GetCameraType()->CameraType;
+            /// <summary>
+            /// Gets the color of the background.
+            /// </summary>
+            /// <returns></returns>
+            auto get_background_color() const ->const std::shared_ptr<Color>&;
 
-            auto GetClearFlags()->ClearFlags;
+            /// <summary>
+            /// Sets the color of the background.
+            /// </summary>
+            /// <param name="color">The color.</param>
+            void set_background_color(const std::shared_ptr<Color>& color);
 
-            auto GetCullingMask()->int;
+            /// <summary>
+            /// Gets the type of the camera.
+            /// </summary>
+            /// <returns></returns>
+            auto get_camera_type() const ->const CameraType&;
 
-            void SetCullingMask(const int& mask);
+            /// <summary>
+            /// Sets the type of the camera.
+            /// </summary>
+            /// <param name="type">The type.</param>
+            /// <returns></returns>
+            auto set_camera_type(const CameraType& type);
 
-            auto GetCullingMatrix()->glm::mat4;
+            /// <summary>
+            /// Gets the clear flags.
+            /// </summary>
+            /// <returns></returns>
+            auto get_clear_flags() const ->const ClearFlags&;
 
-            void SetCullingMatrix(const glm::mat4& mat);
+            /// <summary>
+            /// Sets the clear flags.
+            /// </summary>
+            /// <param name="flag">The flag.</param>
+            void set_clear_flags(const ClearFlags& flag);
 
-            auto GetDepth() -> float;
+            /// <summary>
+            /// Gets the culling mask.
+            /// </summary>
+            /// <returns></returns>
+            auto get_culling_mask() const ->const int&;
 
-            void SetDepth(const float& depth);
+            /// <summary>
+            /// Sets the culling mask.
+            /// </summary>
+            /// <param name="mask">The mask.</param>
+            void set_culling_mask(const int& mask);
 
-            auto GetNearClipPlane() -> float;
+            /// <summary>
+            /// Gets the culling matrix.
+            /// </summary>
+            /// <returns></returns>
+            auto get_culling_matrix() const->const glm::mat4&;
 
-            void SetNearClipPlane(const float& near);
+            /// <summary>
+            /// Sets the culling matrix.
+            /// </summary>
+            /// <param name="mat">The mat.</param>
+            void set_culling_matrix(const glm::mat4& mat);
 
-            auto GetFarClipPlane() -> float;
+            /// <summary>
+            /// Gets the depth.
+            /// </summary>
+            /// <returns></returns>
+            auto get_depth() const ->const float&;
 
-            void SetFarClipPlane(const float& far);
+            /// <summary>
+            /// Sets the depth.
+            /// </summary>
+            /// <param name="depth">The depth.</param>
+            void set_depth(const float& depth);
+
+            /// <summary>
+            /// Gets the near clip plane.
+            /// </summary>
+            /// <returns></returns>
+            auto get_near_clip_plane() const -> const float&;
+
+            /// <summary>
+            /// Sets the near clip plane.
+            /// </summary>
+            /// <param name="">The .</param>
+            void set_near_clip_plane(const float& near);
+
+            /// <summary>
+            /// Gets the far clip plane.
+            /// </summary>
+            /// <returns></returns>
+            auto get_far_clip_plane() const ->const float&;
+
+            /// <summary>
+            /// Sets the far clip plane.
+            /// </summary>
+            /// <param name="">The .</param>
+            void set_far_clip_plane(const float& far);
 
             /// <summary>
             /// Fields the of view (fov).
             /// </summary>
             /// <returns></returns>
-            auto GetFieldOfView() -> float;
+            auto get_field_of_view() const ->const float&;
 
             /// <summary>
             /// Sets the field of view.
             /// </summary>
             /// <param name="fov">The fov.</param>
-            void SetFieldOfView(const float& fov);
+            void set_field_of_view(const float& fov);
 
-            auto UseOrthoGraphic() -> bool;
+            /// <summary>
+            /// Gets the use ortho graphic.
+            /// </summary>
+            /// <returns></returns>
+            auto get_use_ortho_graphic() const ->const bool&;
 
-            void SetUseOrthoGraphic(bool ortho);
+            /// <summary>
+            /// Sets the use ortho graphic.
+            /// </summary>
+            /// <param name="ortho">The ortho.</param>
+            void set_use_ortho_graphic(const bool& ortho);
 
-            auto GetOrthoGraphicSize() -> float;
+            /// <summary>
+            /// Gets the size of the ortho graphic.
+            /// </summary>
+            /// <returns></returns>
+            auto get_ortho_graphic_size() const ->const float&;
 
-            void SetOrthoGraphicSize(const float& size);
+            /// <summary>
+            /// Sets the size of the ortho graphic.
+            /// </summary>
+            /// <param name="size">The size.</param>
+            void set_ortho_graphic_size(const float& size);
 
-            auto PixelHeight() -> int;
+            /// <summary>
+            /// Gets the pixel x.
+            /// </summary>
+            /// <returns></returns>
+            auto get_pixel_x() const ->const int&;
 
-            auto GetRect()->Rect;
+            /// <summary>
+            /// Sets the pixel x.
+            /// </summary>
+            /// <param name="x">The x.</param>
+            void set_pixel_x(const int& x);
 
-            void SetRect(const Rect& rect);
+            /// <summary>
+            /// Gets the pixel y.
+            /// </summary>
+            /// <returns></returns>
+            auto get_pixel_y() const ->const int&;
 
-            auto Scene()->Scene*;
+            /// <summary>
+            /// Sets the pixel y.
+            /// </summary>
+            /// <param name="y">The y.</param>
+            void set_pixel_y(const int& y);
 
-            auto GetTargetDisplay()->int;
+            /// <summary>
+            /// Gets the width of the pixel.
+            /// </summary>
+            /// <returns></returns>
+            auto get_pixel_width() const ->const int&;
 
-            void SetTargetDisplay(const int& target);
+            /// <summary>
+            /// Sets the width of the pixel.
+            /// </summary>
+            /// <param name="width">The width.</param>
+            void set_pixel_width(const int& width);
 
-            auto GetTargetTexture()->std::shared_ptr<RenderTexture>;
+            /// <summary>
+            /// Gets the height of the pixel.
+            /// </summary>
+            /// <returns></returns>
+            auto get_pixel_height() const ->const int&;
 
-            void SetTargetTexture(std::shared_ptr<RenderTexture> texture);
+            /// <summary>
+            /// Sets the height of the pixel.
+            /// </summary>
+            /// <param name="height">The height.</param>
+            void set_pixel_height(const int& height);
 
-            auto GetTransparencySortAxis()->glm::vec3;
+            /// <summary>
+            /// Gets the pixel rect.
+            /// </summary>
+            /// <returns></returns>
+            auto get_pixel_rect() const ->const Rect&;
 
-            void SetTransparencySortAxis(const glm::vec3& axis);
+            /// <summary>
+            /// Sets the pixel rect.
+            /// </summary>
+            /// <param name="rect">The rect.</param>
+            void set_pixel_rect(const Rect& rect);
 
-            auto GetTransparencySortMode()->TransparencySortMode;
+            /// <summary>
+            /// Gets the rect.
+            /// </summary>
+            /// <returns></returns>
+            auto get_rect() const->const Rect&;
 
-            void SetTransparencySortMode(const TransparencySortMode& mode);
+            /// <summary>
+            /// Sets the rect.
+            /// </summary>
+            /// <param name="rect">The rect.</param>
+            void set_rect(const Rect& rect);
 
-            auto UseOcclusionCulling() -> bool;
+            /// <summary>
+            /// Gets the target display.
+            /// </summary>
+            /// <returns></returns>
+            auto get_target_display()const ->const int&;
 
-            void SetUseOcclusionCulling(bool use);
+            /// <summary>
+            /// Sets the target display.
+            /// </summary>
+            /// <param name="target">The target.</param>
+            void set_target_display(const int& target);
 
-            auto UsePhysicalProperties() -> bool;
+            /// <summary>
+            /// Gets the target texture.
+            /// </summary>
+            /// <returns></returns>
+            auto get_target_texture() const -> const std::shared_ptr<RenderTexture>&;
 
-            void SetUsePhysicalProperties(bool use);
+            /// <summary>
+            /// Sets the target texture.
+            /// </summary>
+            /// <param name="texture">The texture.</param>
+            void set_target_texture(const std::shared_ptr<RenderTexture>& texture);
 
-            auto GetVelocity()->glm::vec3;
+            /// <summary>
+            /// Gets the transparency sort axis.
+            /// </summary>
+            /// <returns></returns>
+            auto get_transparency_sort_axis() const ->const glm::vec3&;
 
-            void SetVelocity(const glm::vec3& velocity);
+            /// <summary>
+            /// Sets the transparency sort axis.
+            /// </summary>
+            /// <param name="axis">The axis.</param>
+            void set_transparency_sort_axis(const glm::vec3& axis);
 
-            auto WorldToCameraMatrix()->glm::mat4;
+            /// <summary>
+            /// Gets the transparency sort mode.
+            /// </summary>
+            /// <returns></returns>
+            auto get_transparency_sort_mode() const -> const TransparencySortMode&;
+
+            /// <summary>
+            /// Sets the transparency sort mode.
+            /// </summary>
+            /// <param name="mode">The mode.</param>
+            void set_transparency_sort_mode(const TransparencySortMode& mode);
+
+            /// <summary>
+            /// Gets the use occlusion culling.
+            /// </summary>
+            /// <returns></returns>
+            auto get_use_occlusion_culling() const -> const bool&;
+
+            /// <summary>
+            /// Sets the use occlusion culling.
+            /// </summary>
+            /// <param name="use">The use.</param>
+            void set_use_occlusion_culling(const bool& use);
+
+            /// <summary>
+            /// Gets the use physical properties.
+            /// </summary>
+            /// <returns></returns>
+            auto get_use_physical_properties() const ->const bool&;
+
+            /// <summary>
+            /// Sets the use physical properties.
+            /// </summary>
+            /// <param name="use">The use.</param>
+            void set_use_physical_properties(const bool& use);
+
+            /// <summary>
+            /// Gets the velocity.
+            /// </summary>
+            /// <returns></returns>
+            auto get_velocity() const->const glm::vec3&;
+
+            /// <summary>
+            /// Sets the velocity.
+            /// </summary>
+            /// <param name="velocity">The velocity.</param>
+            void set_velocity(const glm::vec3& velocity);
 
         // Methods
         public:
+            /// <summary>
+            /// Gets the temporary RenderTexture target for this Camera.
+            /// </summary>
+            /// <returns></returns>
+            auto ActiveTexture()->std::shared_ptr<RenderTexture>;
+
+            /// <summary>
+            /// Cameras to world matrix.
+            /// </summary>
+            /// <returns></returns>
+            auto CameraToWorldMatrix() const->glm::mat4;
+
+            /// <summary>
+            /// Worlds to camera matrix.
+            /// </summary>
+            /// <returns></returns>
+            auto WorldToCameraMatrix() const->glm::mat4;
+
+            /// <summary>
+            /// Scenes this instance.
+            /// </summary>
+            /// <returns></returns>
+            auto Scene()->Scene*;
+
+            /// <summary>
+            /// Renders this instance.
+            /// </summary>
             void Render();
 
+            /// <summary>
+            /// Renders the with shader.
+            /// </summary>
+            /// <param name="shader">The shader.</param>
             void RenderWithShader(std::shared_ptr<Shader> shader);
 
+            /// <summary>
+            /// Revert all camera parameters to default.
+            /// </summary>
             void Reset();
 
-            auto ScreenPointToRay(const glm::vec3& pos) -> Ray;
+            /// <summary>
+            /// Screens the point to ray.
+            /// </summary>
+            /// <param name="pos">The position.</param>
+            /// <returns></returns>
+            auto ScreenPointToRay(const glm::vec3& pos)->Ray;
 
+        private:
+            std::list<AwakeFP> awake_functions_;
 
         private:
             /// <summary>
@@ -277,9 +557,14 @@ namespace qe {
             int culling_mask_;
 
             /// <summary>
-            /// The pixel height
+            /// The pixel rect in pixel coordinate
             /// </summary>
-            int pixel_height_;
+            Rect pixel_rect_;
+
+            /// <summary>
+            /// The rect of camera in normalized coordinate
+            /// </summary>
+            Rect rect_;
 
             /// <summary>
             /// The target deisplay
@@ -306,11 +591,6 @@ namespace qe {
             /// The culling matrix
             /// </summary>
             glm::mat4 culling_matrix_;
-
-            /// <summary>
-            /// The rect of camera
-            /// </summary>
-            Rect rect_;
 
             /// <summary>
             /// The target texture of camera

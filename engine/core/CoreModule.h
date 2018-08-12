@@ -31,10 +31,10 @@ public:
     }
 
     Rect(const float& x, const float& y, const float& width, const float& height) 
-        :x_(x),
-        y_(y),
-        width_(width),
-        height_(height)
+        :x(x),
+        y(y),
+        width(width),
+        height(height)
     {
     }
 
@@ -60,43 +60,43 @@ public:
     }
 
     void Set(const float& x, const float& y, const float& width, const float& height) {
-        x_ = x;
-        y_ = y;
-        width_ = width;
-        height_ = height;
+        this->x = x;
+        this->y = y;
+        this->width = width;
+        this->height = height;
     }
 
 
 
 
 public:
-    float x_;
+    float x;
 
-    float y_;
+    float y;
 
-    float width_;
+    float width;
 
-    float height_;
+    float height;
 
-    float center_;
+    float center;
 
-    glm::vec2 max_;
+    glm::vec2 max;
 
-    glm::vec2 min_;
+    glm::vec2 min;
 
     /// <summary>
     /// The X and Y position of the rectangle.
     /// </summary>
-    glm::vec2 position_;
+    glm::vec2 position;
 
-    glm::vec2 size_;
+    glm::vec2 size;
 
-    float xMax_;
+    float xMax;
 
-    float xMin_;
+    float xMin;
 
-    float yMax_;
+    float yMax;
 
-    float yMin_;
+    float yMin;
 
 };

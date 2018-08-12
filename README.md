@@ -8,7 +8,9 @@ The best IR engine of universe.
 1, (classes, file, function, structs, type aliases, enums, and type template parameters):
 ->  start with a capital letter and have a capital letter for each new word.(ExampleName)
 
-->  get and set functions be named like variables. (get_count(), set_count())
+->  methods function. (ExampleName())
+
+->  property functions use get and set to named like variables. (get_count(), set_count())
 
 
 2, (Variable Names):
@@ -32,5 +34,7 @@ The best IR engine of universe.
   OUT_OF_MEMORY = 1,
   MALFORMED_INPUT = 2,
 };
+
+
 
 
