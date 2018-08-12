@@ -9,7 +9,7 @@ var classqe_1_1edit_1_1_quark_window =
     [ "Awake", "classqe_1_1edit_1_1_quark_window.html#ab3f1e5cbabbd78b14d9a5cd9497da2c0", null ],
     [ "Draw", "classqe_1_1edit_1_1_quark_window.html#a38d298026e45fd2fcdb45cd92c487105", null ],
     [ "event", "classqe_1_1edit_1_1_quark_window.html#a1f9c17645f16010e71990d3ce084c71d", null ],
-    [ "get_fps", "classqe_1_1edit_1_1_quark_window.html#a38b7a53fb25e5ee82424bbe29294c5a5", null ],
+    [ "Fps", "classqe_1_1edit_1_1_quark_window.html#a609b9366f4aa4d603a169e2bbd551a43", null ],
     [ "Init", "classqe_1_1edit_1_1_quark_window.html#a0fb89c537b7d6c30e5091ac2bed86255", null ],
     [ "keyPressEvent", "classqe_1_1edit_1_1_quark_window.html#a1040159f4673e70603f9c91772b72577", null ],
     [ "keyReleaseEvent", "classqe_1_1edit_1_1_quark_window.html#a7b3c81ea7655da3a9810d6485f80e2fa", null ],
