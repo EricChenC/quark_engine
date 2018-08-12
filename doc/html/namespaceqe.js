@@ -17,6 +17,8 @@ var namespaceqe =
       [ "Pipeline", "classqe_1_1core_1_1_pipeline.html", "classqe_1_1core_1_1_pipeline" ],
       [ "QuarkObject", "classqe_1_1core_1_1_quark_object.html", "classqe_1_1core_1_1_quark_object" ],
       [ "QuarkString", "classqe_1_1core_1_1_quark_string.html", "classqe_1_1core_1_1_quark_string" ],
+      [ "Ray", "structqe_1_1core_1_1_ray.html", "structqe_1_1core_1_1_ray" ],
+      [ "Rect", "structqe_1_1core_1_1_rect.html", "structqe_1_1core_1_1_rect" ],
       [ "Renderer", "classqe_1_1core_1_1_renderer.html", "classqe_1_1core_1_1_renderer" ],
       [ "RenderObject", "classqe_1_1core_1_1_render_object.html", "classqe_1_1core_1_1_render_object" ],
       [ "RenderTexture", "classqe_1_1core_1_1_render_texture.html", "classqe_1_1core_1_1_render_texture" ],

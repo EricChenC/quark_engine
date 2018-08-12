@@ -16,22 +16,36 @@ namespace qe {
             explicit CameraController();
             ~CameraController();
 
-            void RotateCamera(const glm::vec2& pos);
-            void MoveForward(const float& delta_time);
-            void MoveBack(const float& delta_time);
-            void MoveLeft(const float& delta_time);
-            void MoveRight(const float& delta_time);
-            void MoveUp(const float& delta_time);
-            void MoveDown(const float& delta_time);
-            void UpdateProjectionRatio(const float& ratio);
-            void Update();
 
-            const glm::mat4& get_m() const;
-            const glm::mat4& get_v() const;
-            const glm::mat4& get_p() const;
-            const glm::mat4& get_mv() const;
-            const glm::mat4& get_vp() const;
-            const glm::mat4& get_mvp() const;
+            inline auto M() const -> const glm::mat4& { return Model_; }
+
+            inline auto V() const -> const glm::mat4& { return View_; }
+
+            inline auto P() const -> const glm::mat4& { return Projection_; }
+
+            inline auto MV() const -> const glm::mat4& { return View_ * Model_; }
+
+            inline auto VP() const -> const glm::mat4&{ return Projection_ * View_; }
+
+            inline auto MVP() const -> const glm::mat4&{ return Projection_ * View_ * Model_; }
+
+            void RotateCamera(const glm::vec2& pos);
+
+            void MoveForward(const float& delta_time);
+
+            void MoveBack(const float& delta_time);
+
+            void MoveLeft(const float& delta_time);
+
+            void MoveRight(const float& delta_time);
+
+            void MoveUp(const float& delta_time);
+
+            void MoveDown(const float& delta_time);
+
+            void UpdateProjectionRatio(const float& ratio);
+
+            void Update();
 
         private:
             void UpdateModelMatrix();

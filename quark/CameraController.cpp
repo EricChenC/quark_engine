@@ -107,36 +107,6 @@ void qe::edit::CameraController::Update()
     UpdateProjectionMatrix();
 }
 
-const glm::mat4& qe::edit::CameraController::get_m() const
-{
-    return Model_;
-}
-
-const glm::mat4& qe::edit::CameraController::get_v() const
-{
-    return View_;
-}
-
-const glm::mat4& qe::edit::CameraController::get_p() const
-{
-    return Projection_;
-}
-
-const glm::mat4& qe::edit::CameraController::get_mv() const
-{
-    return View_ * Model_;
-}
-
-const glm::mat4 & qe::edit::CameraController::get_vp() const
-{
-    return Projection_ * View_;
-}
-
-const glm::mat4& qe::edit::CameraController::get_mvp() const
-{
-    return Projection_ * View_ * Model_;
-}
-
 void qe::edit::CameraController::UpdateModelMatrix()
 {
 

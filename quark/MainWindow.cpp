@@ -102,7 +102,7 @@ void qe::edit::MainWindow::QuarkManualAction()
 
 void qe::edit::MainWindow::UpdateFps()
 {
-    auto fps = quark_window_->get_fps();
+    auto fps = quark_window_->Fps();
     auto delta = 1000.0f / fps;
 
     this->statusBar()->showMessage(QString::number(delta) + " ms/" + QString::number(fps) + " fps");

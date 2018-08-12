@@ -58,8 +58,8 @@ var hierarchy =
     [ "QWindow", null, [
       [ "qe::edit::QuarkWindow", "classqe_1_1edit_1_1_quark_window.html", null ]
     ] ],
-    [ "Ray", "struct_ray.html", null ],
-    [ "Rect", "struct_rect.html", null ],
+    [ "qe::core::Ray", "structqe_1_1core_1_1_ray.html", null ],
+    [ "qe::core::Rect", "structqe_1_1core_1_1_rect.html", null ],
     [ "qe::resource::ShaderLoad", "classqe_1_1resource_1_1_shader_load.html", null ],
     [ "qe::render::vulkan::VulkanDevice::SwapChainSupportDetails", "structqe_1_1render_1_1vulkan_1_1_vulkan_device_1_1_swap_chain_support_details.html", null ],
     [ "qe::render::vulkan::Thread", "classqe_1_1render_1_1vulkan_1_1_thread.html", null ],

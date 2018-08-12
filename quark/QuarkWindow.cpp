@@ -195,11 +195,6 @@ void qe::edit::QuarkWindow::update()
     }
 }
 
-int qe::edit::QuarkWindow::get_fps()
-{
-    return fps_number_;
-}
-
 void qe::edit::QuarkWindow::LoadScene(std::shared_ptr<qe::core::Scene> scene)
 {
     auto roots = scene->Roots();
@@ -651,8 +646,8 @@ void qe::edit::QuarkWindow::UpdateUniformBuffer()
     camera_controller_->Update();
 
     UniformCameraBuffer umo = {};
-    umo.proj = camera_controller_->get_p();
-    umo.view = camera_controller_->get_v();
+    umo.proj = camera_controller_->P();
+    umo.view = camera_controller_->V();
 
     void* data;
     vi_device_->logic_device_.mapMemory(ubo_buffer_memory_, 0, sizeof(umo), vk::MemoryMapFlagBits(), &data);

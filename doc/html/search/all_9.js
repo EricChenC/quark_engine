@@ -11,6 +11,6 @@ var searchData=
   ['meshfilter',['MeshFilter',['../classqe_1_1core_1_1_mesh_filter.html',1,'qe::core::MeshFilter'],['../classqe_1_1core_1_1_mesh_filter.html#ab24f64f7015d4b48e082ef79fca37c98',1,'qe::core::MeshFilter::MeshFilter()']]],
   ['meshrenderer',['MeshRenderer',['../classqe_1_1core_1_1_mesh_renderer.html',1,'qe::core']]],
   ['meshtype',['MeshType',['../classqe_1_1core_1_1_mesh.html#a24f14d0505841378aef6271e82e5b332',1,'qe::core::Mesh']]],
-  ['minmaxrect',['MinMaxRect',['../struct_rect.html#afc4705848a2e1518075ca4c900217fd1',1,'Rect']]],
+  ['minmaxrect',['MinMaxRect',['../structqe_1_1core_1_1_rect.html#a5ef1bde7b05b1f2635c5fd8f89e17693',1,'qe::core::Rect']]],
   ['modelmatrix',['ModelMatrix',['../structqe_1_1edit_1_1_quark_window_1_1_model_matrix.html',1,'qe::edit::QuarkWindow']]]
 ];

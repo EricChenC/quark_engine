@@ -111,13 +111,14 @@ namespace qe {
 
             void UpdateBehaviour();
 
-            int get_fps();
-
             void Draw();
 
 			void OpenScene(const std::string& scene_path);
 
 			void ReleaseScene();
+
+
+            inline auto Fps()const -> const int& { return fps_number_; }
 
         public slots:
             void update();
