@@ -33,8 +33,7 @@ var namespaceqe =
       [ "CameraController", "classqe_1_1edit_1_1_camera_controller.html", "classqe_1_1edit_1_1_camera_controller" ],
       [ "EditObject", "classqe_1_1edit_1_1_edit_object.html", "classqe_1_1edit_1_1_edit_object" ],
       [ "MainWindow", "classqe_1_1edit_1_1_main_window.html", "classqe_1_1edit_1_1_main_window" ],
-      [ "QuarkWindow", "classqe_1_1edit_1_1_quark_window.html", "classqe_1_1edit_1_1_quark_window" ],
-      [ "QuarkWindowEvent", "classqe_1_1edit_1_1_quark_window_event.html", "classqe_1_1edit_1_1_quark_window_event" ]
+      [ "QuarkWindow", "classqe_1_1edit_1_1_quark_window.html", "classqe_1_1edit_1_1_quark_window" ]
     ] ],
     [ "render", null, [
       [ "vulkan", null, [

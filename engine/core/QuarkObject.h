@@ -39,17 +39,47 @@ namespace qe {
             /// </summary>
             ~QuarkObject();
 
-            /// <summary>
-            /// Sets the identifier.
-            /// </summary>
-            /// <param name="id">The identifier.</param>
-            void set_id(const int& id);
 
+        // properties
+        public:
             /// <summary>
             /// Gets the identifier.
             /// </summary>
             /// <returns>this quark object id.</returns>
-            int get_id();
+            inline auto get_id() const -> const int& { return id_; };
+
+            /// <summary>
+            /// Sets the identifier.
+            /// </summary>
+            /// <param name="id">The identifier.</param>
+            inline void set_id(const int& id) { id_ = id; }
+
+            /// <summary>
+            /// Gets the scene.
+            /// </summary>
+            /// <returns></returns>
+            inline auto get_scene()->Scene* { return scene_; }
+
+            /// <summary>
+            /// Sets the scene.
+            /// </summary>
+            /// <param name="scene">The scene.</param>
+            inline void set_scene(Scene* scene) { scene_ = scene; }
+
+            /// <summary>
+            /// Gets the parent.
+            /// </summary>
+            /// <returns></returns>
+            inline auto get_parent() const -> const qe::core::QuarkObject* { return parent_; }
+
+            /// <summary>
+            /// Sets the parent.
+            /// </summary>
+            /// <param name="parent">The parent.</param>
+            inline void set_parent(qe::core::QuarkObject* parent) { parent_ = parent; }
+
+        // methods
+        public:
 
             /// <summary>
             /// Add T type component to this quark object.
@@ -57,7 +87,8 @@ namespace qe {
             /// </summary>
             /// <returns> T* is a quark object component pointer.</returns>
             template<typename T>
-            std::shared_ptr<T> add_component() {
+            inline auto AddComponent() -> std::shared_ptr<T>
+            {
                 auto component = std::make_shared<T>();
 
                 component->set_component_flag(typeid(T*).name());
@@ -72,16 +103,15 @@ namespace qe {
             /// </summary>
             /// <returns> T* is a quark object component pointer.</returns>
             template<typename T>
-            std::shared_ptr<T> get_component() {
-                std::shared_ptr<T> comp = nullptr;
-
+            inline auto GetComponent() const -> std::shared_ptr<T>
+            {
                 for (auto component : components_) {
                     if (component->get_component_flag() == typeid(T*).name()) {
-                        comp = std::static_pointer_cast<T>(component);
+                        return std::static_pointer_cast<T>(component);
                     }
                 }
 
-                return comp;
+                return nullptr;
             }
 
             /// <summary>
@@ -90,7 +120,8 @@ namespace qe {
             /// </summary>
             /// <returns> std::vector<T*> is a quark object component pointer list.</returns>
             template<typename T>
-            std::vector<std::shared_ptr<T>> get_components() {
+            inline auto GetComponents() const -> std::vector<std::shared_ptr<T>>
+            {
                 std::vector<std::shared_ptr<T>> component_list;
 
                 for (auto component : components_) {
@@ -102,17 +133,23 @@ namespace qe {
                 return component_list;
             }
 
-            auto get_scene()->Scene*;
+            /// <summary>
+            /// Gets the childs.
+            /// </summary>
+            /// <returns></returns>
+            inline auto GetChilds() const ->std::vector<std::shared_ptr<qe::core::QuarkObject>> { return childs_; }
 
-            void set_scene(Scene* scene);
+            /// <summary>
+            /// Adds the child.
+            /// </summary>
+            /// <param name="child">The child.</param>
+            inline void AddChild(const std::shared_ptr<qe::core::QuarkObject>& child);
 
-            qe::core::QuarkObject* get_parent();
-
-            std::vector<std::shared_ptr<qe::core::QuarkObject>> get_childs();
-
-            void add_child(std::shared_ptr<qe::core::QuarkObject> child);
-
-            void detach_child(std::shared_ptr<qe::core::QuarkObject> child);
+            /// <summary>
+            /// Detaches the child.
+            /// </summary>
+            /// <param name="child">The child.</param>
+            inline void DetachChild(const std::shared_ptr<qe::core::QuarkObject>& child);
 
         private:
             /// <summary>

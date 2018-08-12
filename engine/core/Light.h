@@ -9,12 +9,22 @@
 
 namespace qe {
     namespace core {
+
+        class Color;
+
         class DLL_EXPORT Light : public Component {
         public:
             explicit Light();
             ~Light();
 
-            glm::vec3 get_color();
+        // properties
+        public:
+            inline auto get_color() const -> const std::shared_ptr<Color>& { return color_; }
+
+            inline void set_color(const std::shared_ptr<Color>& color){ color_ = color; }
+
+        private:
+            std::shared_ptr<Color> color_;
 
         };
     }

@@ -20,7 +20,7 @@ qe::core::Resource::~Resource()
 
 std::shared_ptr<qe::core::CoreObject> qe::core::Resource::Load(const std::string & path)
 {
-    auto format = qe::core::QuarkString::get_file_format(path);
+    auto format = qe::core::QuarkString::FileFormat(path);
     if (format == "obj" || format == "fbx") {
         return std::dynamic_pointer_cast<qe::core::CoreObject>(fbx_load_->Load(path));
     }

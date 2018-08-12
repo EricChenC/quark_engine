@@ -12,7 +12,7 @@
 namespace qe {
     namespace core
     {
-        class Color : public CoreObject
+        class DLL_EXPORT Color : public CoreObject
         {
         public:
             explicit Color();
@@ -21,22 +21,27 @@ namespace qe {
 
             ~Color();
 
-            void set_r(const float& r);
+        // properties
+        public:
+            inline auto get_r()const -> const float& { return r_; }
 
-            void set_g(const float& g);
+            inline void set_r(const float& r){ r_ = r; }
 
-            void set_b(const float& b);
+            inline auto get_g()const -> const float& { return g_; }
 
-            void set_a(const float& a);
+            inline void set_g(const float& g){ g_ = g; }
 
-            const float& get_r();
+            inline auto get_b()const -> const float& { return b_; }
 
-            const float& get_g();
+            inline void set_b(const float& b){ b_ = b; }
 
-            const float& get_b();
+            inline auto get_a()const -> const float& { return a_; }
 
-            const float& get_a();
+            inline void set_a(const float& a){ a_ = a; }
 
+
+        // methods
+        public:
             Color Black();
 
             Color Blue();

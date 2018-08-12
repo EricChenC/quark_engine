@@ -22,17 +22,19 @@ namespace qe {
             ~MeshFilter();
 
 
+        // properties
+        public:
             /// <summary>
             /// Gets the render mesh.
             /// </summary>
             /// <returns>the render mesh</returns>
-            auto get_mesh()->std::shared_ptr<Mesh>;
+            inline auto get_mesh() const->const std::shared_ptr<Mesh>&{ return mesh_; }
 
             /// <summary>
             /// Sets the render mesh.
             /// </summary>
             /// <param name="mesh">The mesh.</param>
-            void set_mesh(std::shared_ptr<Mesh> mesh);
+            inline void set_mesh(const std::shared_ptr<Mesh>& mesh){ mesh_ = mesh; }
 
 
         private:

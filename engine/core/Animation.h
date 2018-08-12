@@ -21,20 +21,23 @@ namespace qe {
             /// </summary>
             ~Animation();
 
+        // methods
+        public:
+
             /// <summary>
             /// Play animation, if no animation will no effect.
             /// </summary>
-            void play();
+            void Play();
 
             /// <summary>
             /// Pause animation. if no animation will no effect.
             /// </summary>
-            void pause();
+            void Pause();
 
             /// <summary>
             /// Stop animation. if no animation will no effect.
             /// </summary>
-            void stop();
+            void Stop();
 
         };
     }

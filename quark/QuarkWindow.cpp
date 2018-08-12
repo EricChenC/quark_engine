@@ -202,7 +202,7 @@ int qe::edit::QuarkWindow::get_fps()
 
 void qe::edit::QuarkWindow::LoadScene(std::shared_ptr<qe::core::Scene> scene)
 {
-    auto roots = scene->get_roots();
+    auto roots = scene->Roots();
 
     auto standard_shader = std::dynamic_pointer_cast<qe::core::Shader>(resource_->Load(kShaderPath));
     standard_shader->set_global_vector("lightDir", light_dir_);
@@ -213,8 +213,8 @@ void qe::edit::QuarkWindow::LoadScene(std::shared_ptr<qe::core::Scene> scene)
     CreateDescriptorSetLayout();
 
     auto path = standard_material->get_shader()->get_path();
-    auto pre_path = qe::core::QuarkString::get_path_prefixed(path);
-    auto name = qe::core::QuarkString::get_file_name(path);
+    auto pre_path = qe::core::QuarkString::PathPrefixed(path);
+    auto name = qe::core::QuarkString::FileName(path);
 
     kShaderPre = pre_path + name;
 
@@ -233,9 +233,9 @@ void qe::edit::QuarkWindow::LoadQuarkObject(
     std::shared_ptr<qe::core::QuarkObject> quark_object,
     std::shared_ptr<qe::core::Material> standard_material)
 {
-    auto mesh_filter = quark_object->get_component<qe::core::MeshFilter>();
+    auto mesh_filter = quark_object->GetComponent<qe::core::MeshFilter>();
     if (!mesh_filter) {
-        auto childs = quark_object->get_childs();
+        auto childs = quark_object->GetChilds();
         for (auto child : childs) {
             LoadQuarkObject(child, standard_material);
         }
@@ -243,15 +243,15 @@ void qe::edit::QuarkWindow::LoadQuarkObject(
         return;
     }
 
-    auto mesh_renderer = quark_object->add_component<qe::core::MeshRenderer>();
-    mesh_renderer->add_material(standard_material);
+    auto mesh_renderer = quark_object->AddComponent<qe::core::MeshRenderer>();
+    mesh_renderer->AddMaterial(standard_material);
 
-    auto behaviour = quark_object->add_component<qe::core::AwakeBehaviour>();
+    auto behaviour = quark_object->AddComponent<qe::core::AwakeBehaviour>();
     //behaviours_.push_back(behaviour);
 
-    LoadDrawData(quark_object->get_component<qe::core::Transform>()->get_local_matrix(), mesh_filter, mesh_renderer);
+    LoadDrawData(quark_object->GetComponent<qe::core::Transform>()->get_local_matrix(), mesh_filter, mesh_renderer);
 
-    auto childs = quark_object->get_childs();
+    auto childs = quark_object->GetChilds();
     for (auto child : childs) {
         LoadQuarkObject(child, standard_material);
     }
@@ -822,7 +822,7 @@ bool qe::edit::QuarkWindow::event(QEvent * ev)
     case QEvent::Drop:
     {
         auto file_name = ((QDragEnterEvent*)ev)->mimeData()->text();
-        auto file_name_splits = qe::core::QuarkString::split(file_name.toStdString(), "///");
+        auto file_name_splits = qe::core::QuarkString::Split(file_name.toStdString(), "///");
 
         if (file_name_splits.size() < 2) break;
 

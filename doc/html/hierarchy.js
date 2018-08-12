@@ -45,8 +45,7 @@ var hierarchy =
       [ "qe::edit::EditObject", "classqe_1_1edit_1_1_edit_object.html", [
         [ "qe::edit::CameraController", "classqe_1_1edit_1_1_camera_controller.html", null ],
         [ "qe::edit::MainWindow", "classqe_1_1edit_1_1_main_window.html", null ],
-        [ "qe::edit::QuarkWindow", "classqe_1_1edit_1_1_quark_window.html", null ],
-        [ "qe::edit::QuarkWindowEvent", "classqe_1_1edit_1_1_quark_window_event.html", null ]
+        [ "qe::edit::QuarkWindow", "classqe_1_1edit_1_1_quark_window.html", null ]
       ] ],
       [ "qe::resource::ResourceObject", "classqe_1_1resource_1_1_resource_object.html", [
         [ "qe::resource::FBXLoad", "classqe_1_1resource_1_1_f_b_x_load.html", null ],
@@ -55,9 +54,6 @@ var hierarchy =
     ] ],
     [ "QMainWindow", null, [
       [ "qe::edit::MainWindow", "classqe_1_1edit_1_1_main_window.html", null ]
-    ] ],
-    [ "QObject", null, [
-      [ "qe::edit::QuarkWindowEvent", "classqe_1_1edit_1_1_quark_window_event.html", null ]
     ] ],
     [ "QWindow", null, [
       [ "qe::edit::QuarkWindow", "classqe_1_1edit_1_1_quark_window.html", null ]

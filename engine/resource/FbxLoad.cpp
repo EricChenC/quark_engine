@@ -164,14 +164,14 @@ void GetContent(FbxScene* pScene, std::shared_ptr<qe::core::Scene> scene)
 {
     int i;
     FbxNode* lNode = pScene->GetRootNode();
-    auto root = scene->add_root();
+    auto root = scene->AddRoot();
 
     if (lNode)
     {
         for (i = 0; i < lNode->GetChildCount(); i++)
         {
             auto node = std::make_shared<qe::core::QuarkObject>();
-            root->add_child(node);
+            root->AddChild(node);
 
             GetContent(lNode->GetChild(i), node);
         }
@@ -202,7 +202,7 @@ void GetContent(FbxNode* pNode, std::shared_ptr<qe::core::QuarkObject> node)
     for (i = 0; i < pNode->GetChildCount(); i++)
     {
         auto child_node = std::make_shared<qe::core::QuarkObject>();
-        node->add_child(child_node);
+        node->AddChild(child_node);
 
         GetContent(pNode->GetChild(i), child_node);
     }
@@ -211,7 +211,7 @@ void GetContent(FbxNode* pNode, std::shared_ptr<qe::core::QuarkObject> node)
 void GetMesh(FbxNode* pNode, std::shared_ptr<qe::core::QuarkObject> node)
 {
     FbxMesh* lMesh = (FbxMesh*)pNode->GetNodeAttribute();
-    auto meshFilter = node->add_component<qe::core::MeshFilter>();
+    auto meshFilter = node->AddComponent<qe::core::MeshFilter>();
     auto mesh = std::make_shared<qe::core::Mesh>();
     meshFilter->set_mesh(mesh);
 
@@ -237,7 +237,7 @@ void GetProperties(FbxObject* pObject, std::shared_ptr<qe::core::QuarkObject> no
         return; // there are no properties to display
 
     node->set_name((char *)pObject->GetName());
-    auto transform = node->get_component<qe::core::Transform>();
+    auto transform = node->GetComponent<qe::core::Transform>();
 
     i = 0;
     lProperty = pObject->GetFirstProperty();

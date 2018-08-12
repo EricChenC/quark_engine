@@ -21,6 +21,8 @@ namespace qe {
             /// </summary>
             virtual void Awake();
 
+        // methods
+        public:
             /// <summary>
             /// This function is called every fixed framerate frame, if the Behaviour is enabled.
             /// </summary>

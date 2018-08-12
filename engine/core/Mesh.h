@@ -48,107 +48,118 @@ namespace qe {
             /// </summary>
             ~Mesh();
 
-            /// <summary>
-            /// Set vertex data to mesh.
-            /// </summary>
-            /// <param name="vertexs">The mesh vertex data.</param>
-            void set_vertexs(std::shared_ptr<std::vector<glm::vec3>> vertexs) { vertexs_ = vertexs; };
 
-            /// <summary>
-            /// Set normal data to mesh.
-            /// </summary>
-            /// <param name="normals">The mesh normal data.</param>
-            void set_normals(std::shared_ptr<std::vector<glm::vec3>> normals) { normals_ = normals; };
-
-            /// <summary>
-            /// Set uv data to mesh.
-            /// </summary>
-            /// <param name="uvs">The mesh uv data.</param>
-            void set_uvs(std::shared_ptr<std::vector<glm::vec2>> uvs) { uvs_ = uvs; };
-
-            /// <summary>
-            /// Set index data to mesh.
-            /// </summary>
-            /// <param name="indexs">The mesh index data.</param>
-            void set_indexs(std::shared_ptr<std::vector<unsigned int>> indexs) { indexs_ = indexs; };
-
-            /// <summary>
-            /// Set vertex count.
-            /// </summary>
-            /// <param name="vertexs_count">The mesh vertex count.</param>
-            void set_vertexs_count(const int& vertexs_count) { vertex_count_ = vertexs_count; };
-
-            /// <summary>
-            /// Sets the normals count.
-            /// </summary>
-            /// <param name="normals_count">The normals count.</param>
-            void set_normals_count(const int& normals_count) { normal_count_ = normals_count; };
-
-            /// <summary>
-            /// Sets the uvs count.
-            /// </summary>
-            /// <param name="uvs_count">The uvs count.</param>
-            void set_uvs_count(const int& uvs_count) { uv_count_ = uvs_count; };
-
-            /// <summary>
-            /// Sets the indexs count.
-            /// </summary>
-            /// <param name="indexs_count">The indexs count.</param>
-            void set_indexs_count(const int& indexs_count) { index_count_ = indexs_count; };
+        // properties
+        public:
 
             /// <summary>
             /// Gets the vertexs.
             /// </summary>
             /// <returns> mesh vertexs data pointer. </returns>
-            std::shared_ptr<std::vector<glm::vec3>> get_vertexs() { return vertexs_; };
+            inline auto get_vertexs() const -> const std::shared_ptr<std::vector<glm::vec3>>& { return vertexs_; };
+
+            /// <summary>
+            /// Set vertex data to mesh.
+            /// </summary>
+            /// <param name="vertexs">The mesh vertex data.</param>
+            inline void set_vertexs(const std::shared_ptr<std::vector<glm::vec3>>& vertexs) { vertexs_ = vertexs; };
 
             /// <summary>
             /// Gets the normals.
             /// </summary>
             /// <returns> mesh normals data pointer. </returns>
-            std::shared_ptr<std::vector<glm::vec3>> get_normals() { return normals_; };
+            inline auto get_normals() const -> const std::shared_ptr<std::vector<glm::vec3>>& { return normals_; };
+
+            /// <summary>
+            /// Set normal data to mesh.
+            /// </summary>
+            /// <param name="normals">The mesh normal data.</param>
+            inline void set_normals(const std::shared_ptr<std::vector<glm::vec3>>& normals) { normals_ = normals; };
 
             /// <summary>
             /// Gets the uvs.
             /// </summary>
             /// <returns>mesh uv data pointer.</returns>
-            std::shared_ptr<std::vector<glm::vec2>> get_uvs() { return uvs_; };
+            inline auto get_uvs() const -> const std::shared_ptr<std::vector<glm::vec2>>& { return uvs_; };
+
+            /// <summary>
+            /// Set uv data to mesh.
+            /// </summary>
+            /// <param name="uvs">The mesh uv data.</param>
+            inline void set_uvs(const std::shared_ptr<std::vector<glm::vec2>>& uvs) { uvs_ = uvs; };
 
             /// <summary>
             /// Gets the indexs.
             /// </summary>
             /// <returns>mesh vertex index data pointer.</returns>
-            std::shared_ptr<std::vector<unsigned int>> get_indexs() { return indexs_; };
+            inline auto get_indexs() const -> std::shared_ptr<std::vector<unsigned int>> { return indexs_; };
+
+            /// <summary>
+            /// Set index data to mesh.
+            /// </summary>
+            /// <param name="indexs">The mesh index data.</param>
+            inline void set_indexs(const std::shared_ptr<std::vector<unsigned int>>& indexs) { indexs_ = indexs; };
 
             /// <summary>
             /// Gets the vertex count.
             /// </summary>
             /// <returns>mesh vertex count.</returns>
-            int get_vertex_count() { return vertex_count_; };
+            inline auto get_vertex_count() const -> const int& { return vertex_count_; };
+
+            /// <summary>
+            /// Set vertex count.
+            /// </summary>
+            /// <param name="vertexs_count">The mesh vertex count.</param>
+            inline void set_vertexs_count(const int& vertexs_count) { vertex_count_ = vertexs_count; };
 
             /// <summary>
             /// Gets the normal count.
             /// </summary>
             /// <returns>mesh normal count.</returns>
-            int get_normal_count() { return normal_count_; };
+            inline auto get_normal_count() const -> const int& { return normal_count_; };
+
+            /// <summary>
+            /// Sets the normals count.
+            /// </summary>
+            /// <param name="normals_count">The normals count.</param>
+            inline void set_normals_count(const int& normals_count) { normal_count_ = normals_count; };
 
             /// <summary>
             /// Gets the uv count.
             /// </summary>
             /// <returns>mesh uv count.</returns>
-            int get_uv_count() { return uv_count_; };
+            inline auto get_uv_count() const -> const int& { return uv_count_; };
+
+            /// <summary>
+            /// Sets the uvs count.
+            /// </summary>
+            /// <param name="uvs_count">The uvs count.</param>
+            inline void set_uvs_count(const int& uvs_count) { uv_count_ = uvs_count; };
 
             /// <summary>
             /// Gets the index count.
             /// </summary>
             /// <returns>mesh vertex index count.</returns>
-            int get_index_count() { return index_count_; };
+            inline auto get_index_count() const -> const int& { return index_count_; };
+
+            /// <summary>
+            /// Sets the indexs count.
+            /// </summary>
+            /// <param name="indexs_count">The indexs count.</param>
+            inline void set_indexs_count(const int& indexs_count) { index_count_ = indexs_count; };
+
+
+            /// <summary>
+            /// Gets the type.
+            /// </summary>
+            /// <returns></returns>
+            inline auto get_type() const -> const MeshType& { return type_; }
 
             /// <summary>
             /// Set this mesh type.
             /// </summary>
             /// <param name="type">type is this mesh type.</param>
-            void set_type(MeshType type) { type_ = type; };
+            inline void set_type(const MeshType& type) { type_ = type; };
 
         private:
             /// mesh vertexs data pointer.

@@ -27,21 +27,24 @@ namespace qe {
             /// </summary>
             ~Scene();
 
+        // methods
+        public:
             /// <summary>
             /// Get this scene all root quark objects pointers.
             /// </summary>
             /// <returns>all root quark objects pointers.</returns>
-            std::vector<std::shared_ptr<qe::core::QuarkObject>> get_roots();
+            auto Roots() const -> const std::vector<std::shared_ptr<qe::core::QuarkObject>>&;
            
             /// <summary>
             /// Adds the root to scene.
             /// </summary>
             /// <returns>return a root quark object</returns>
-            auto add_root()->std::shared_ptr<qe::core::QuarkObject>;
+            auto AddRoot()-> std::shared_ptr<qe::core::QuarkObject>;
 
         private:
             /// Saved this scene all quark object roots pointer.
             std::vector<std::shared_ptr<qe::core::QuarkObject>> roots_;
+
 
         };
     }

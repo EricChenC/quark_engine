@@ -16,10 +16,12 @@ namespace qe {
             explicit Material(std::shared_ptr<Shader> shader);
 
             ~Material();
+            
+        // properties
+        public:
+            inline auto get_shader() const -> const std::shared_ptr<Shader>& { return shader_; };
 
-            std::shared_ptr<Shader> get_shader();
-
-            void set_shader(std::shared_ptr<Shader> shader);
+            inline void set_shader(const std::shared_ptr<Shader>& shader){ shader_ = shader; }
 
         private:
             std::shared_ptr<Shader> shader_;

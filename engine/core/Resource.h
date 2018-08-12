@@ -17,7 +17,6 @@ namespace qe {
     }
 
     namespace core {
-        class Scene;
 
         class DLL_EXPORT Resource : public CoreObject {
         public:

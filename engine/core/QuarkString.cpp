@@ -8,54 +8,52 @@ qe::core::QuarkString::~QuarkString()
 {
 }
 
-std::vector<std::string> qe::core::QuarkString::split(std::string str, const std::string & split_str)
+auto qe::core::QuarkString::Split(const std::string& str, const std::string & delimiter) -> std::vector<std::string>
 {
-    std::string::size_type pos;
+    std::string strings = str;
     std::vector<std::string> result;
-    str += split_str;
-    int size = str.size();
 
-    for (int i = 0; i < size + 1; i++)
-    {
-        pos = str.find(split_str, i);
-        if (pos < size)
-        {
-            std::string s = str.substr(i, pos - i);
-            result.push_back(s);
-            i = pos + split_str.size() - 1;
-        }
+    size_t pos = 0;
+    std::string token;
+    while ((pos = strings.find(delimiter)) != std::string::npos) {
+        token = strings.substr(0, pos);
+        result.push_back(std::move(token));
+        strings.erase(0, pos + delimiter.length());
     }
+
+    result.push_back(std::move(strings));
+
     return result;
 }
 
-std::string qe::core::QuarkString::get_path_prefixed(const std::string & path)
+auto qe::core::QuarkString::PathPrefixed(const std::string & path) -> std::string
 {
-    auto name = get_file_name(path);
+    auto name = FileName(path);
     if (name == "") return path;
 
-    auto lists = split(path, name);
+    auto lists = Split(path, name);
     int size = lists.size();
     if (size == 0 || size < 2) return nullptr;
 
     return lists[0];
 }
 
-std::string qe::core::QuarkString::get_file_name(const std::string & path)
+auto qe::core::QuarkString::FileName(const std::string & path) -> std::string
 {
-    auto lists = split(path, "/");
+    auto lists = Split(path, "/");
     auto file_name = lists[lists.size() - 1];
-    auto names = split(file_name, ".");
+    auto names = Split(file_name, ".");
 
     if (names.size() == 0) return nullptr;
 
     return names[0];
 }
 
-std::string qe::core::QuarkString::get_file_format(const std::string & path)
+std::string qe::core::QuarkString::FileFormat(const std::string & path)
 {
-    auto lists = split(path, "/");
+    auto lists = Split(path, "/");
     auto file_name = lists[lists.size() - 1];
-    auto names = split(file_name, ".");
+    auto names = Split(file_name, ".");
 
     int size = names.size();
     if (size == 0 || size < 2) return nullptr;

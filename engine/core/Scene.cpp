@@ -10,12 +10,12 @@ qe::core::Scene::~Scene()
 {
 }
 
-std::vector<std::shared_ptr<qe::core::QuarkObject>> qe::core::Scene::get_roots()
+auto qe::core::Scene::Roots() const -> const std::vector<std::shared_ptr<qe::core::QuarkObject>>&
 {
     return roots_;
 }
 
-auto qe::core::Scene::add_root() -> std::shared_ptr<qe::core::QuarkObject>
+auto qe::core::Scene::AddRoot() -> std::shared_ptr<qe::core::QuarkObject>
 {
     auto root = std::make_shared<qe::core::QuarkObject>();
 
@@ -24,3 +24,5 @@ auto qe::core::Scene::add_root() -> std::shared_ptr<qe::core::QuarkObject>
 
     return root;
 }
+
+

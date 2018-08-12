@@ -9,14 +9,14 @@ qe::core::Animation::~Animation()
 {
 }
 
-void qe::core::Animation::play()
+void qe::core::Animation::Play()
 {
 }
 
-void qe::core::Animation::pause()
+void qe::core::Animation::Pause()
 {
 }
 
-void qe::core::Animation::stop()
+void qe::core::Animation::Stop()
 {
 }

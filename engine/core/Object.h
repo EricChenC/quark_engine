@@ -25,27 +25,32 @@ namespace qe {
             /// </summary>
             ~Object();
 
+        // properties
+        public:
+            /// <summary>
+            /// Gets the name.
+            /// </summary>
+            /// <returns>object name</returns>
+            inline auto get_name() const -> const std::string& { return name_; }
+
             /// <summary>
             /// Sets the name.
             /// </summary>
             /// <param name="name">The string name.</param>
-            virtual void set_name(const std::string& name);
+            inline virtual void set_name(const std::string& name){ name_ = name; }
 
             /// <summary>
             /// Sets the name.
             /// </summary>
             /// <param name="name">The char* name.</param>
-            virtual void set_name(const char* name);
-
-            /// <summary>
-            /// Gets the name.
-            /// </summary>
-            /// <returns>object name</returns>
-            std::string get_name();
+            inline virtual void set_name(const char* name){ name_ = name; }
 
         private:
             /// object name.
             std::string name_;
+
+
+
         };
     }
 }

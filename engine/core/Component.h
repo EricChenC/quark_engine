@@ -28,21 +28,23 @@ namespace qe {
             /// </summary>
             ~Component();
 
-            
+        // properties
+        public:
             /// <summary>
             /// Get quark object that is this component be added.
             /// Get the quark object to add this component.
             /// </summary>
             /// <returns> Gets the quark object of this component. </returns>
-            qe::core::QuarkObject* get_quark_object();
+            inline auto get_quark_object() const -> qe::core::QuarkObject* { return quark_object_; }
 
             /// <summary>
             /// Sets the quark object of this component.
             /// just only used in quark object add_component() function.
             /// </summary>
             /// <param name="quark_object">The quark object.</param>
-            void set_quark_object(qe::core::QuarkObject* quark_object);
+            inline void set_quark_object(qe::core::QuarkObject* quark_object){ quark_object_ = quark_object; }
 
+        // properties
         private:
             /// <summary>
             /// Sets the component flag. default set by typeid(T*).name(), T is component.

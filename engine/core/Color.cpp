@@ -19,46 +19,6 @@ qe::core::Color::~Color()
 
 }
 
-void qe::core::Color::set_r(const float & r)
-{
-    r_ = r;
-}
-
-void qe::core::Color::set_g(const float & g)
-{
-    g_ = g;
-}
-
-void qe::core::Color::set_b(const float & b)
-{
-    b_ = b;
-}
-
-void qe::core::Color::set_a(const float & a)
-{
-    a_ = a;
-}
-
-const float & qe::core::Color::get_r()
-{
-    return r_;
-}
-
-const float & qe::core::Color::get_g()
-{
-    return g_;
-}
-
-const float & qe::core::Color::get_b()
-{
-    return b_;
-}
-
-const float & qe::core::Color::get_a()
-{
-    return a_;
-}
-
 qe::core::Color qe::core::Color::Black()
 {
     return Color(0, 0, 0, 1);

@@ -1,7 +1,5 @@
 #include "Pipeline.h"
 
-#include <iostream>
-
 qe::core::Pipeline::Pipeline()
 {
 }

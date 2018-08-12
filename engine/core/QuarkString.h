@@ -23,13 +23,16 @@ namespace qe {
             /// </summary>
             ~QuarkString();
 
+        // methods
+        public:
+
             /// <summary>
             /// split a string use split_str, then return a splited string list.
             /// </summary>
             /// <param name="str">The string.</param>
             /// <param name="split_str">is used to split string.</param>
             /// <returns>a list is str be splited use split_str.</returns>
-            static std::vector<std::string> split(std::string str, const std::string& split_str);
+            static auto Split(const std::string& str, const std::string& delimiter)->std::vector<std::string>;
 
             /// <summary>
             /// Gets the path prefixed. 
@@ -38,7 +41,7 @@ namespace qe {
             /// </summary>
             /// <param name="path">The path.</param>
             /// <returns>path prefixed</returns>
-            static std::string get_path_prefixed(const std::string& path);
+            static auto PathPrefixed(const std::string& path) ->std::string;
 
             /// <summary>
             /// Get a file name in give path, return a file name.
@@ -46,14 +49,14 @@ namespace qe {
             /// </summary>
             /// <param name="path">The file path..</param>
             /// <returns>a file name.</returns>
-            static std::string get_file_name(const std::string& path);
+            static auto FileName(const std::string& path) ->std::string;
 
             /// <summary>
             /// Gets the file format.
             /// </summary>
             /// <param name="path">The path.</param>
             /// <returns>file format</returns>
-            static std::string get_file_format(const std::string& path);
+            static std::string FileFormat(const std::string& path);
 
 
         };

@@ -16,10 +16,10 @@ std::shared_ptr<qe::core::Shader> qe::resource::ShaderLoad::Load(const std::stri
 
     shader->set_path(path);
 
-    shader->set_name(qe::core::QuarkString::get_file_name(path));
+    shader->set_name(qe::core::QuarkString::FileName(path));
 
     // read shader file
-    // file shader map
+    // fill shader map
     shader->set_shader_map("lightDir", qe::core::Shader::ShaderDataType::VECTOR);
 
     return shader;

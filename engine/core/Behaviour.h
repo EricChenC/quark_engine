@@ -16,18 +16,20 @@ namespace qe {
             explicit Behaviour();
             ~Behaviour();
 
+        // property
+        public:
             /// <summary>
             /// Sets whether enable the behaviour 
             /// </summary>
             /// <param name="enable">if set to <c>true</c> enable the behaviour, else disable.</param>
-            void set_enable(bool enable);
+            inline void set_enable(const bool& enable) { enable_ = enable; }
 
 
             /// <summary>
             /// Gets whether enable the behaviour 
             /// </summary>
             /// <returns></returns>
-            bool get_enable();
+            inline auto get_enable() const -> const bool& { return enable_; }
 
 
         private:
