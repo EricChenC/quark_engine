@@ -6,6 +6,9 @@
 #include <QMouseEvent>
 #include <QWheelEvent>
 #include <QKeyEvent>
+#include <qtimer.h>
+#include <QTime>
+
 #include <qmimedata.h>
 
 #include "Scene.h"
@@ -52,18 +55,8 @@ void qe::edit::QuarkWindow::Init()
 
 void qe::edit::QuarkWindow::resizeEvent(QResizeEvent * event)
 {
-
     auto size = event->size();
-    auto width = size.width();
-    auto height = size.height();
-
-    if (height <= 0) return;
-
-    camera_controller_->UpdateProjectionRatio((float)width / height);
-
-	if (!scene_) return;
-
-    UpdateUniformBuffer();
+    InitCamera(size.width(), size.height());
 }
 
 void qe::edit::QuarkWindow::mouseMoveEvent(QMouseEvent * event)
@@ -138,25 +131,34 @@ void qe::edit::QuarkWindow::keyPressEvent(QKeyEvent * event)
 {
     if (!right_button_press_) return;
 
+    if (!key_press_) {
+        key_press_ = true;
+        press_time_ = std::chrono::high_resolution_clock::now();
+    }
+    
+    auto new_time = std::chrono::high_resolution_clock::now();
+    auto press_span = std::chrono::duration<double, std::milli>(new_time - press_time_).count();
+    auto max_span = glm::max(1.0, press_span / 1000.0f);
+
     switch (event->key())
     {
     case Qt::Key_W: // forward
-        camera_controller_->MoveForward(delta_time_);
+        camera_controller_->MoveForward(delta_time_ * max_span);
         break;
     case Qt::Key_S: // back
-        camera_controller_->MoveBack(delta_time_);
+        camera_controller_->MoveBack(delta_time_* max_span);
         break;
     case Qt::Key_A: // left
-        camera_controller_->MoveLeft(delta_time_);
+        camera_controller_->MoveLeft(delta_time_* max_span);
         break;
     case Qt::Key_D: // right
-        camera_controller_->MoveRight(delta_time_);
+        camera_controller_->MoveRight(delta_time_* max_span);
         break;
     case Qt::Key_Q: // down
-        camera_controller_->MoveDown(delta_time_);
+        camera_controller_->MoveDown(delta_time_* max_span);
         break;
     case Qt::Key_E: // up
-        camera_controller_->MoveUp(delta_time_);
+        camera_controller_->MoveUp(delta_time_* max_span);
         break;
     default:
         break;
@@ -165,7 +167,9 @@ void qe::edit::QuarkWindow::keyPressEvent(QKeyEvent * event)
 
 void qe::edit::QuarkWindow::keyReleaseEvent(QKeyEvent * event)
 {
-  
+    if (event->isAutoRepeat()) return;
+
+    key_press_ = false;
 }
 
 void qe::edit::QuarkWindow::update()
@@ -182,7 +186,8 @@ void qe::edit::QuarkWindow::update()
 
     auto tEnd = std::chrono::high_resolution_clock::now();
     auto tDiff = std::chrono::duration<double, std::milli>(tEnd - tStart).count();
-    delta_time_ = (float)tDiff / 1000.0f;
+
+    delta_time_ = glm::clamp(tDiff, 0.0, 1.0);
 
     fps_time_ += (float)tDiff;
 
@@ -661,7 +666,6 @@ void qe::edit::QuarkWindow::UpdateUniformBuffer()
     vi_device_->logic_device_.mapMemory(uld_buffer_memory_, 0, sizeof(ulb), vk::MemoryMapFlagBits(), &light_data);
     memcpy(light_data, &ulb, sizeof(ulb));
     vi_device_->logic_device_.unmapMemory(uld_buffer_memory_);
-
 }
 
 void qe::edit::QuarkWindow::RecreateSwapChain()
@@ -773,6 +777,23 @@ void qe::edit::QuarkWindow::ReleaseSceneData()
 {
 	mesh_datas_.swap(std::vector<meshData>());
 	scene_.swap(std::shared_ptr<qe::core::Scene>());
+
+    frame_count_ = 0;
+    fps_number_ = 0;
+
+    fps_time_ = 0.0f;
+    delta_time_ = 0.0f;
+    key_press_time_ = 0.0f;
+
+    is_update_material_ = false;
+    right_button_press_ = false;
+    right_button_press_ = false;
+    key_press_ = false;
+    init_mouse_pos_ = false;
+
+    camera_controller_.swap(std::make_shared<qe::edit::CameraController>());
+
+    InitCamera(this->geometry().width(), this->geometry().height());
 }
 
 bool qe::edit::QuarkWindow::event(QEvent * ev)
@@ -828,6 +849,16 @@ bool qe::edit::QuarkWindow::event(QEvent * ev)
         break;
     }
 
-
     return false;
+}
+
+void qe::edit::QuarkWindow::InitCamera(const int & width, const int & height)
+{
+    if (height <= 0) return;
+
+    camera_controller_->UpdateProjectionRatio((float)width / height);
+
+    if (!scene_) return;
+
+    UpdateUniformBuffer();
 }

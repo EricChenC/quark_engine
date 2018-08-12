@@ -5,8 +5,6 @@
 #include <vulkan/vulkan.hpp>
 
 #include <qwindow.h>
-#include <qtimer.h>
-#include <QTime>
 #include <vector>
 #include <glm/glm.hpp>
 
@@ -18,6 +16,7 @@ class QMouseEvent;
 class QWheelEvent;
 class QKeyEvent;
 class QEvent;
+class QTimer;
 
 namespace qe {
     namespace core {
@@ -169,6 +168,8 @@ namespace qe {
 			void ReleaseSceneData();
 
 			void ReleaseRenderData();
+
+            void InitCamera(const int& width, const int& height);
        
         private:
             std::shared_ptr<qe::render::vulkan::VulkanDevice> vi_device_;
@@ -220,12 +221,15 @@ namespace qe {
 
             float fps_time_ = 0.0f;
             float delta_time_ = 0.0f;
+            float key_press_time_ = 0.0f;
 
             bool is_update_material_ = false;
-
             bool right_button_press_ = false;
+            bool key_press_ = false;
             bool init_mouse_pos_ = false;
             glm::vec2 mouse_last_pos_;
+
+            std::chrono::time_point<std::chrono::steady_clock> press_time_;
 
         };
     }

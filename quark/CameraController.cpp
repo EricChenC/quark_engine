@@ -6,7 +6,7 @@
 qe::edit::CameraController::CameraController()
 {
     rotation_speed_ = 0.005f;
-    movement_speed_ = 2000.0f;
+    movement_speed_ = 1.0f;
 
     horizontal_angle_ = 0.0f;
     vertical_angle_ = 0.0f;
