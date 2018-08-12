@@ -99,7 +99,7 @@ namespace qe {
 
             glm::vec3 rotation_;
 
-            CameraType type_ = CameraType::THIRDPERSON;
+            CameraType type_ = CameraType::FIRSTPERSON;
 
         };
     }

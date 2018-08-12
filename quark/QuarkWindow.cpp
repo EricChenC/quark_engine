@@ -120,10 +120,10 @@ void qe::edit::QuarkWindow::mouseReleaseEvent(QMouseEvent * event)
 void qe::edit::QuarkWindow::wheelEvent(QWheelEvent * event)
 {
     if (event->angleDelta().y() > 0) {
-        camera_controller_->MoveForward(delta_time_);
+        camera_controller_->MoveForward(delta_time_ * 0.1);
     }
     else {
-        camera_controller_->MoveBack(delta_time_);
+        camera_controller_->MoveBack(delta_time_ * 0.1);
     }
 }
 
