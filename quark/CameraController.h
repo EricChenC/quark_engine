@@ -16,7 +16,20 @@ namespace qe {
             explicit CameraController();
             ~CameraController();
 
+            enum class CameraType
+            {
+                FIRSTPERSON,
+                THIRDPERSON
+            };
 
+        // properties
+        public:
+            inline auto get_type() const -> const CameraType& { return type_; }
+
+            inline void set_type(const CameraType& type) { type_ = type; }
+
+        // methods
+        public:
             inline auto M() const -> const glm::mat4& { return Model_; }
 
             inline auto V() const -> const glm::mat4& { return View_; }
@@ -52,6 +65,8 @@ namespace qe {
             void UpdateViewMatrix();
             void UpdateProjectionMatrix();
 
+            void UpdateDirection();
+
         private:
             glm::mat4 clip = glm::mat4{
                 1.0, 0.0, 0.0, 0.0,
@@ -82,7 +97,9 @@ namespace qe {
             float projection_near_;
             float projection_far_;
 
-            
+            glm::vec3 rotation_;
+
+            CameraType type_ = CameraType::THIRDPERSON;
 
         };
     }
