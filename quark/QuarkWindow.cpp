@@ -93,9 +93,9 @@ void qe::edit::QuarkWindow::mouseMoveEvent(QMouseEvent * event)
         camera_controller_->RotateCamera(move_span);
     }
 
-    /*if (middle_button_press_) {
-        camera_controller_->mo
-    }*/
+    if (middle_button_press_) {
+        camera_controller_->MoveCamera(move_span * 0.1f);
+    }
 
 }
 
@@ -191,11 +191,11 @@ void qe::edit::QuarkWindow::keyPressEvent(QKeyEvent * event)
         camera_controller_->MoveUp(delta_time_* max_span);
         break;
     case Qt::Key_Space:
-        if (camera_controller_->get_type() == CameraController::CameraType::THIRDPERSON) {
+        if (camera_controller_->get_type() == CameraController::CameraType::LOOKAT) {
             camera_controller_->set_type(CameraController::CameraType::FIRSTPERSON);
         }
         else {
-            camera_controller_->set_type(CameraController::CameraType::THIRDPERSON);
+            camera_controller_->set_type(CameraController::CameraType::LOOKAT);
         }
         break;
     default:

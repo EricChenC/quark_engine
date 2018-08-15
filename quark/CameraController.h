@@ -18,6 +18,7 @@ namespace qe {
 
             enum class CameraType
             {
+                LOOKAT,
                 FIRSTPERSON,
                 THIRDPERSON
             };

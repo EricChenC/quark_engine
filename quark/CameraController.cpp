@@ -13,7 +13,7 @@ qe::edit::CameraController::CameraController()
     0.0, 0.0, 0.5, 1.0 }
     , rotation_speed_(0.05f)
     , movement_speed_(1.0f)
-    , view_position_(0.0f, 0.0f, 0.0f)
+    , view_position_(0.0f, -2.0f, -6.0f)
     , projection_fov_(45.0f)
     , projection_ratio_(4.0f / 3.0f)
     , projection_near_(0.1f)
@@ -37,19 +37,33 @@ void qe::edit::CameraController::RotateCamera(const glm::vec2& pos)
 
 void qe::edit::CameraController::MoveCamera(const glm::vec2 & pos)
 {
+    UpdateDirection();
 
+    view_position_ += glm::normalize(glm::cross(view_direction_, glm::vec3(0.0, 1.0, 0.0))) * movement_speed_ * pos.x;
+
+    view_position_ += glm::vec3(0.0, 1.0, 0.0) * movement_speed_ * pos.y;
 }
 
 void qe::edit::CameraController::MoveForward(const float& delta_time)
 {
     UpdateDirection();
 
-    if (type_ == CameraType::FIRSTPERSON)
+    switch (type_)
+    {
+    case qe::edit::CameraController::CameraType::LOOKAT:
     {
         view_position_ += view_direction_ * movement_speed_ * delta_time;
+        break;
     }
-    else {
+    case qe::edit::CameraController::CameraType::FIRSTPERSON:
+    {
         view_position_ += view_direction_ * movement_speed_ * delta_time;
+        break;
+    }
+    case qe::edit::CameraController::CameraType::THIRDPERSON:
+    {
+        break;
+    }
     }
 }
 
@@ -57,12 +71,22 @@ void qe::edit::CameraController::MoveBack(const float& delta_time)
 {
     UpdateDirection();
 
-    if (type_ == CameraType::FIRSTPERSON)
+    switch (type_)
+    {
+    case qe::edit::CameraController::CameraType::LOOKAT:
     {
         view_position_ -= view_direction_ * movement_speed_ * delta_time;
+        break;
     }
-    else {
+    case qe::edit::CameraController::CameraType::FIRSTPERSON:
+    {
         view_position_ -= view_direction_ * movement_speed_ * delta_time;
+        break;
+    }
+    case qe::edit::CameraController::CameraType::THIRDPERSON:
+    {
+        break;
+    }
     }
 }
 
@@ -70,12 +94,22 @@ void qe::edit::CameraController::MoveLeft(const float& delta_time)
 {
     UpdateDirection();
 
-    if (type_ == CameraType::FIRSTPERSON)
+    switch (type_)
+    {
+    case qe::edit::CameraController::CameraType::LOOKAT:
     {
         view_position_ -= glm::normalize(glm::cross(view_direction_, glm::vec3(0.0, 1.0, 0.0))) * movement_speed_ * delta_time;
+        break;
     }
-    else {
+    case qe::edit::CameraController::CameraType::FIRSTPERSON:
+    {
         view_position_ -= glm::normalize(glm::cross(view_direction_, glm::vec3(0.0, 1.0, 0.0))) * movement_speed_ * delta_time;
+        break;
+    }
+    case qe::edit::CameraController::CameraType::THIRDPERSON:
+    {
+        break;
+    }
     }
 }
 
@@ -83,12 +117,22 @@ void qe::edit::CameraController::MoveRight(const float& delta_time)
 {
     UpdateDirection();
 
-    if (type_ == CameraType::FIRSTPERSON)
+    switch (type_)
+    {
+    case qe::edit::CameraController::CameraType::LOOKAT:
     {
         view_position_ += glm::normalize(glm::cross(view_direction_, glm::vec3(0.0, 1.0, 0.0))) * movement_speed_ * delta_time;
+        break;
     }
-    else {
+    case qe::edit::CameraController::CameraType::FIRSTPERSON:
+    {
         view_position_ += glm::normalize(glm::cross(view_direction_, glm::vec3(0.0, 1.0, 0.0))) * movement_speed_ * delta_time;
+        break;
+    }
+    case qe::edit::CameraController::CameraType::THIRDPERSON:
+    {
+        break;
+    }
     }
 }
 
@@ -96,12 +140,22 @@ void qe::edit::CameraController::MoveUp(const float& delta_time)
 {
     UpdateDirection();
 
-    if (type_ == CameraType::FIRSTPERSON)
+    switch (type_)
+    {
+    case qe::edit::CameraController::CameraType::LOOKAT:
+    {
+        view_position_ += glm::vec3(0.0, 1.0, 0.0) * movement_speed_ * delta_time;
+        break;
+    }
+    case qe::edit::CameraController::CameraType::FIRSTPERSON:
     {
         view_position_ -= glm::vec3(0.0, 1.0, 0.0) * movement_speed_ * delta_time;
+        break;
     }
-    else {
-        view_position_ += glm::vec3(0.0, 1.0, 0.0) * movement_speed_ * delta_time;
+    case qe::edit::CameraController::CameraType::THIRDPERSON:
+    {
+        break;
+    }
     }
 }
 
@@ -109,12 +163,22 @@ void qe::edit::CameraController::MoveDown(const float& delta_time)
 {
     UpdateDirection();
 
-    if (type_ == CameraType::FIRSTPERSON)
+    switch (type_)
+    {
+    case qe::edit::CameraController::CameraType::LOOKAT:
+    {
+        view_position_ -= glm::vec3(0.0, 1.0, 0.0) * movement_speed_ * delta_time;
+        break;
+    }
+    case qe::edit::CameraController::CameraType::FIRSTPERSON:
     {
         view_position_ += glm::vec3(0.0, 1.0, 0.0) * movement_speed_ * delta_time;
+        break;
     }
-    else {
-        view_position_ -= glm::vec3(0.0, 1.0, 0.0) * movement_speed_ * delta_time;
+    case qe::edit::CameraController::CameraType::THIRDPERSON:
+    {
+        break;
+    }
     }
 }
 
