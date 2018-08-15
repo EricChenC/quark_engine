@@ -1,5 +1,4 @@
 #include "FbxLoad.h"
-#include "Scene.h"
 #include "QuarkObject.h"
 #include "Mesh.h"
 #include "MeshFilter.h"
@@ -20,8 +19,8 @@
 #endif
 
 void InitializeSdkObjects(FbxManager*& pManager, FbxScene*& pScene);
-bool LoadScene(FbxManager* pManager, FbxDocument* pScene, const char* pFilename);
-void GetContent(FbxScene* pScene, std::shared_ptr<qe::core::Scene> scene);
+bool LoadModel(FbxManager* pManager, FbxDocument* pScene, const char* pFilename);
+void GetContent(FbxScene* pScene, std::shared_ptr<qe::core::QuarkObject> root);
 void GetContent(FbxNode* pNode, std::shared_ptr<qe::core::QuarkObject> node);
 void GetMesh(FbxNode* pNode, std::shared_ptr<qe::core::QuarkObject> node);
 void GetPolygons(FbxMesh* pMesh, std::shared_ptr<qe::core::Mesh> mesh);
@@ -41,9 +40,9 @@ qe::resource::FBXLoad::~FBXLoad()
 
 }
 
-std::shared_ptr<qe::core::Scene> qe::resource::FBXLoad::Load(const std::string & path)
+std::shared_ptr<qe::core::QuarkObject> qe::resource::FBXLoad::Load(const std::string & path)
 {
-    auto kscene = std::make_shared<qe::core::Scene>();
+    auto root = std::make_shared<qe::core::QuarkObject>();
 
     FbxManager* lSdkManager = NULL;
     FbxScene* lScene = NULL;
@@ -60,7 +59,7 @@ std::shared_ptr<qe::core::Scene> qe::resource::FBXLoad::Load(const std::string &
     }
     else
     {
-        lResult = LoadScene(lSdkManager, lScene, lFilePath.Buffer());
+        lResult = LoadModel(lSdkManager, lScene, lFilePath.Buffer());
     }
 
     if (lResult == false)
@@ -68,13 +67,13 @@ std::shared_ptr<qe::core::Scene> qe::resource::FBXLoad::Load(const std::string &
     }
     else
     {
-        if (gVerbose) GetContent(lScene, kscene);
+        if (gVerbose) GetContent(lScene, root);
     }
 
     // Destroy all objects created by the FBX SDK.
     DestroySdkObjects(lSdkManager, lResult);
 
-    return kscene;
+    return root;
 }
 
 void InitializeSdkObjects(FbxManager*& pManager, FbxScene*& pScene)
@@ -102,7 +101,7 @@ void InitializeSdkObjects(FbxManager*& pManager, FbxScene*& pScene)
     }
 }
 
-bool LoadScene(FbxManager* pManager, FbxDocument* pScene, const char* pFilename)
+bool LoadModel(FbxManager* pManager, FbxDocument* pScene, const char* pFilename)
 {
     int lFileMajor, lFileMinor, lFileRevision;
     int lSDKMajor, lSDKMinor, lSDKRevision;
@@ -171,11 +170,10 @@ bool LoadScene(FbxManager* pManager, FbxDocument* pScene, const char* pFilename)
     return lStatus;
 }
 
-void GetContent(FbxScene* pScene, std::shared_ptr<qe::core::Scene> scene)
+void GetContent(FbxScene* pScene, std::shared_ptr<qe::core::QuarkObject> root)
 {
     int i;
     FbxNode* lNode = pScene->GetRootNode();
-    auto root = scene->AddRoot();
 
     if (lNode)
     {

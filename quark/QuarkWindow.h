@@ -112,7 +112,7 @@ namespace qe {
 
             void Draw();
 
-			void OpenScene(const std::string& scene_path);
+			void LoadScene(const std::string& scene_path);
 
 			void ReleaseScene();
 
@@ -136,7 +136,7 @@ namespace qe {
 
 
         private:
-            void LoadScene(std::shared_ptr<qe::core::Scene> scene);
+            void DrawScene(std::shared_ptr<qe::core::Scene> scene);
 
             void LoadQuarkObject(
                 std::shared_ptr<qe::core::QuarkObject> quark_object,

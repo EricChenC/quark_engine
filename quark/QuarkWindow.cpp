@@ -238,7 +238,7 @@ void qe::edit::QuarkWindow::update()
     }
 }
 
-void qe::edit::QuarkWindow::LoadScene(std::shared_ptr<qe::core::Scene> scene)
+void qe::edit::QuarkWindow::DrawScene(std::shared_ptr<qe::core::Scene> scene)
 {
     auto roots = scene->Roots();
 
@@ -768,13 +768,21 @@ void qe::edit::QuarkWindow::UpdateBehaviour()
     }
 }
 
-void qe::edit::QuarkWindow::OpenScene(const std::string & scene_path)
+void qe::edit::QuarkWindow::LoadScene(const std::string & scene_path)
 {
+    auto file_name_splits = qe::core::QuarkString::Split(scene_path, "///");
+
+    if (file_name_splits.size() < 2) return;
+
 	ReleaseScene();
 
-	scene_ = std::dynamic_pointer_cast<qe::core::Scene>(resource_->Load(scene_path));
+    scene_ = std::make_shared<qe::core::Scene>();
 
-	LoadScene(scene_);
+	auto root = std::dynamic_pointer_cast<qe::core::QuarkObject>(resource_->Load(file_name_splits[1]));
+
+    scene_->AddRoot(root);
+
+    DrawScene(scene_);
 
 	Awake();
 
@@ -875,12 +883,7 @@ bool qe::edit::QuarkWindow::event(QEvent * ev)
     }
     case QEvent::Drop:
     {
-        auto file_name = ((QDragEnterEvent*)ev)->mimeData()->text();
-        auto file_name_splits = qe::core::QuarkString::Split(file_name.toStdString(), "///");
-
-        if (file_name_splits.size() < 2) break;
-
-        OpenScene(file_name_splits[1]);
+        LoadScene(((QDragEnterEvent*)ev)->mimeData()->text().toStdString());
         break;
     }
     default:

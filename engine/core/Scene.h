@@ -35,11 +35,12 @@ namespace qe {
             /// <returns>all root quark objects pointers.</returns>
             auto Roots() const -> const std::vector<std::shared_ptr<qe::core::QuarkObject>>&;
            
+           
             /// <summary>
-            /// Adds the root to scene.
+            /// Adds the root.
             /// </summary>
-            /// <returns>return a root quark object</returns>
-            auto AddRoot()-> std::shared_ptr<qe::core::QuarkObject>;
+            /// <param name="">The .</param>
+            void AddRoot(std::shared_ptr<qe::core::QuarkObject> root);
 
         private:
             /// Saved this scene all quark object roots pointer.

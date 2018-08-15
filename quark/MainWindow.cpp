@@ -82,7 +82,7 @@ void qe::edit::MainWindow::OpenSceneAction()
 
 	if (scene_file_.isEmpty()) return;
 
-	quark_window_->OpenScene(scene_file_.toStdString());
+	quark_window_->LoadScene(scene_file_.toStdString());
 }
 
 void qe::edit::MainWindow::SaveSceneAction()

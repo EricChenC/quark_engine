@@ -11,7 +11,7 @@
 
 namespace qe {
     namespace core {
-        class Scene;
+        class QuarkObject;
     }
 
     namespace resource {
@@ -20,7 +20,7 @@ namespace qe {
             explicit FBXLoad();
             ~FBXLoad();
 
-            std::shared_ptr<qe::core::Scene> Load(const std::string & path);
+            std::shared_ptr<qe::core::QuarkObject> Load(const std::string & path);
 
         private:
             bool gVerbose;

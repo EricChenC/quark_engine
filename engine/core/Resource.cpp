@@ -3,7 +3,7 @@
 #include "FbxLoad.h"
 #include "TextureLoad.h"
 #include "ShaderLoad.h"
-#include "Scene.h"
+#include "QuarkObject.h"
 #include "Texture.h"
 #include "Shader.h"
 
