@@ -44,6 +44,8 @@ namespace qe {
 
             void RotateCamera(const glm::vec2& pos);
 
+            void MoveCamera(const glm::vec2& pos);
+
             void MoveForward(const float& delta_time);
 
             void MoveBack(const float& delta_time);
@@ -68,38 +70,26 @@ namespace qe {
             void UpdateDirection();
 
         private:
-            glm::mat4 clip = glm::mat4{
-                1.0, 0.0, 0.0, 0.0,
-                0.0, -1.0, 0.0, 0.0,
-                0.0, 0.0, 0.5, 0.0,
-                0.0, 0.0, 0.5, 1.0 };
-
+            glm::mat4 clip;
 
             float rotation_speed_;
             float movement_speed_;
-
-            float horizontal_angle_;
-            float vertical_angle_;
 
             glm::mat4 Model_;
             glm::mat4 View_;
             glm::mat4 Projection_;
 
             glm::vec3 view_direction_;
-            glm::vec3 view_right_;
-
             glm::vec3 view_position_;
-            glm::vec3 view_center_;
-            glm::vec3 view_up_;
 
-            float projection_angle_;
+            float projection_fov_;
             float projection_ratio_;
             float projection_near_;
             float projection_far_;
 
             glm::vec3 rotation_;
 
-            CameraType type_ = CameraType::FIRSTPERSON;
+            CameraType type_;
 
         };
     }

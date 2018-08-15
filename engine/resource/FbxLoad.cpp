@@ -30,6 +30,17 @@ void GetProperties(FbxObject* pObject, std::shared_ptr<qe::core::QuarkObject> no
 void DestroySdkObjects(FbxManager* pManager, bool pExitStatus);
 
 
+qe::resource::FBXLoad::FBXLoad()
+    : gVerbose(true)
+{
+
+}
+
+qe::resource::FBXLoad::~FBXLoad()
+{
+
+}
+
 std::shared_ptr<qe::core::Scene> qe::resource::FBXLoad::Load(const std::string & path)
 {
     auto kscene = std::make_shared<qe::core::Scene>();

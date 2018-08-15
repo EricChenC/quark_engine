@@ -208,25 +208,28 @@ namespace qe {
 
             std::shared_ptr<QTimer> graphics_timer_;
 
-            std::shared_ptr<qe::core::Scene> scene_ = nullptr;
+            std::shared_ptr<qe::core::Scene> scene_;
 
-            const std::string kShaderPath = "D:/project/quark_engine/media/shader/standard.shader";
+            std::string kShaderPath;
 
             std::string kShaderPre;
 
             glm::vec4 light_dir_;
 
-            int frame_count_ = 0;
-            int fps_number_ = 0;
+            int frame_count_;
+            int fps_number_;
 
-            float fps_time_ = 0.0f;
-            float delta_time_ = 0.0f;
-            float key_press_time_ = 0.0f;
+            float fps_time_;
+            float delta_time_;
+            float key_press_time_;
 
-            bool is_update_material_ = false;
-            bool right_button_press_ = false;
-            bool key_press_ = false;
-            bool init_mouse_pos_ = false;
+            bool is_update_material_;
+            bool right_button_press_;
+            bool middle_button_press_;
+            bool key_press_;
+            bool init_mouse_pos_;
+
+
             glm::vec2 mouse_last_pos_;
 
             std::chrono::time_point<std::chrono::steady_clock> press_time_;

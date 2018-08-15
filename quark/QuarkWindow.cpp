@@ -32,10 +32,23 @@
 
 
 qe::edit::QuarkWindow::QuarkWindow()
+    : vi_device_(std::make_shared<qe::render::vulkan::VulkanDevice>(reinterpret_cast<HWND>(this->winId())))
+    , resource_(std::make_shared<qe::core::Resource>())
+    , camera_controller_(std::make_shared<qe::edit::CameraController>())
+    , scene_(nullptr)
+    , frame_count_(0)
+    , fps_number_(0)
+    , fps_time_(0.0f)
+    , delta_time_(0.0f)
+    , key_press_time_(0.0f)
+    , is_update_material_(false)
+    , right_button_press_(false)
+    , middle_button_press_(false)
+    , key_press_(false)
+    , init_mouse_pos_(false)
+    , kShaderPath("D:/project/quark_engine/media/shader/standard.shader")
 {
-    vi_device_ = std::make_shared<qe::render::vulkan::VulkanDevice>(reinterpret_cast<HWND>(this->winId()));
-    resource_ = std::make_shared<qe::core::Resource>();
-    camera_controller_ = std::make_shared<qe::edit::CameraController>();
+    
 }
 
 qe::edit::QuarkWindow::~QuarkWindow()
@@ -61,7 +74,8 @@ void qe::edit::QuarkWindow::resizeEvent(QResizeEvent * event)
 
 void qe::edit::QuarkWindow::mouseMoveEvent(QMouseEvent * event)
 {
-    if (!right_button_press_) {
+
+    if (!right_button_press_ && !middle_button_press_) {
         return;
     }
 
@@ -75,7 +89,14 @@ void qe::edit::QuarkWindow::mouseMoveEvent(QMouseEvent * event)
     glm::vec2 move_span = mouse_last_pos_ - mouse_pos;
     mouse_last_pos_ = mouse_pos;
 
-    camera_controller_->RotateCamera(move_span);
+    if (right_button_press_) {
+        camera_controller_->RotateCamera(move_span);
+    }
+
+    /*if (middle_button_press_) {
+        camera_controller_->mo
+    }*/
+
 }
 
 void qe::edit::QuarkWindow::mousePressEvent(QMouseEvent * event)
@@ -91,7 +112,11 @@ void qe::edit::QuarkWindow::mousePressEvent(QMouseEvent * event)
         break;
     }
     case Qt::MiddleButton:
+    {
+        middle_button_press_ = true;
+        this->setCursor(Qt::BlankCursor);
         break;
+    }
     default:
         break;
     }
@@ -111,7 +136,12 @@ void qe::edit::QuarkWindow::mouseReleaseEvent(QMouseEvent * event)
         break;
     }
     case Qt::MiddleButton:
+    {
+        middle_button_press_ = false;
+        init_mouse_pos_ = false;
+        this->setCursor(Qt::ArrowCursor);
         break;
+    }
     default:
         break;
     }
@@ -159,6 +189,14 @@ void qe::edit::QuarkWindow::keyPressEvent(QKeyEvent * event)
         break;
     case Qt::Key_E: // up
         camera_controller_->MoveUp(delta_time_* max_span);
+        break;
+    case Qt::Key_Space:
+        if (camera_controller_->get_type() == CameraController::CameraType::THIRDPERSON) {
+            camera_controller_->set_type(CameraController::CameraType::FIRSTPERSON);
+        }
+        else {
+            camera_controller_->set_type(CameraController::CameraType::THIRDPERSON);
+        }
         break;
     default:
         break;

@@ -17,13 +17,13 @@ namespace qe {
     namespace resource {
         class DLL_EXPORT FBXLoad : public ResourceObject {
         public:
-            explicit FBXLoad() {}
-            ~FBXLoad() {}
+            explicit FBXLoad();
+            ~FBXLoad();
 
             std::shared_ptr<qe::core::Scene> Load(const std::string & path);
 
         private:
-            bool gVerbose = true;
+            bool gVerbose;
 
         };
     }
