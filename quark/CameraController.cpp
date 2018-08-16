@@ -37,8 +37,6 @@ void qe::edit::CameraController::RotateCamera(const glm::vec2& pos)
 
 void qe::edit::CameraController::MoveCamera(const glm::vec2 & pos)
 {
-    UpdateDirection();
-
     view_position_ += glm::normalize(glm::cross(view_direction_, glm::vec3(0.0, 1.0, 0.0))) * movement_speed_ * pos.x;
 
     view_position_ += glm::vec3(0.0, 1.0, 0.0) * movement_speed_ * pos.y;
@@ -46,8 +44,6 @@ void qe::edit::CameraController::MoveCamera(const glm::vec2 & pos)
 
 void qe::edit::CameraController::MoveForward(const float& delta_time)
 {
-    UpdateDirection();
-
     switch (type_)
     {
     case qe::edit::CameraController::CameraType::LOOKAT:
@@ -69,8 +65,6 @@ void qe::edit::CameraController::MoveForward(const float& delta_time)
 
 void qe::edit::CameraController::MoveBack(const float& delta_time)
 {
-    UpdateDirection();
-
     switch (type_)
     {
     case qe::edit::CameraController::CameraType::LOOKAT:
@@ -92,8 +86,6 @@ void qe::edit::CameraController::MoveBack(const float& delta_time)
 
 void qe::edit::CameraController::MoveLeft(const float& delta_time)
 {
-    UpdateDirection();
-
     switch (type_)
     {
     case qe::edit::CameraController::CameraType::LOOKAT:
@@ -115,8 +107,6 @@ void qe::edit::CameraController::MoveLeft(const float& delta_time)
 
 void qe::edit::CameraController::MoveRight(const float& delta_time)
 {
-    UpdateDirection();
-
     switch (type_)
     {
     case qe::edit::CameraController::CameraType::LOOKAT:
@@ -138,8 +128,6 @@ void qe::edit::CameraController::MoveRight(const float& delta_time)
 
 void qe::edit::CameraController::MoveUp(const float& delta_time)
 {
-    UpdateDirection();
-
     switch (type_)
     {
     case qe::edit::CameraController::CameraType::LOOKAT:
@@ -161,8 +149,6 @@ void qe::edit::CameraController::MoveUp(const float& delta_time)
 
 void qe::edit::CameraController::MoveDown(const float& delta_time)
 {
-    UpdateDirection();
-
     switch (type_)
     {
     case qe::edit::CameraController::CameraType::LOOKAT:
@@ -189,6 +175,7 @@ void qe::edit::CameraController::UpdateProjectionRatio(const float & ratio)
 
 void qe::edit::CameraController::Update()
 {
+    UpdateDirection();
     UpdateViewMatrix();
     UpdateProjectionMatrix();
 }
