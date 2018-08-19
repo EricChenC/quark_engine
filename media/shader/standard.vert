@@ -36,24 +36,24 @@ out gl_PerVertex {
 // vertex shader
 void main()
 {
-		// Output position of the vertex, in clip space : MVP * position
-	gl_Position =  ubo.proj * ubo.view * mt.model * vec4(inPosition,1);
-	
-	// Position of the vertex, in worldspace : M * position
-	Position_worldspace = (mt.model * vec4(inPosition,1)).xyz;
-	
-	// Vector that goes from the vertex to the camera, in camera space.
-	// In camera space, the camera is at the origin (0,0,0).
-	EyeDirection_cameraspace = vec3(0,0,0) - ( ubo.view * mt.model * vec4(inPosition,1)).xyz;
+        // Output position of the vertex, in clip space : MVP * position
+    gl_Position =  ubo.proj * ubo.view * mt.model * vec4(inPosition,1);
+    
+    // Position of the vertex, in worldspace : M * position
+    Position_worldspace = (mt.model * vec4(inPosition,1)).xyz;
+    
+    // Vector that goes from the vertex to the camera, in camera space.
+    // In camera space, the camera is at the origin (0,0,0).
+    EyeDirection_cameraspace = vec3(0,0,0) - ( ubo.view * mt.model * vec4(inPosition,1)).xyz;
 
-	// Vector that goes from the vertex to the light, in camera space
-	LightDirection_cameraspace = (uld.lightDir).xyz;
-	
-	// Normal of the the vertex, in camera space
-	Normal_cameraspace = ( ubo.view * mt.model * vec4(inNormal,0)).xyz; // Only correct if ModelMatrix does not scale the model ! Use its inverse transpose if not.
-	
-	// UV of the vertex. No special space for this one.
-	UV = inTexcoord;
+    // Vector that goes from the vertex to the light, in camera space
+    LightDirection_cameraspace = (uld.lightDir).xyz;
+    
+    // Normal of the the vertex, in camera space
+    Normal_cameraspace = ( ubo.view * mt.model * vec4(inNormal,0)).xyz; // Only correct if ModelMatrix does not scale the model ! Use its inverse transpose if not.
+    
+    // UV of the vertex. No special space for this one.
+    UV = inTexcoord;
     
     outViewPos = (ubo.view * mt.model * vec4(inPosition.xyz, 1.0)).xyz;
 }

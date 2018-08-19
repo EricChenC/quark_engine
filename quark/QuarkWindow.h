@@ -113,9 +113,9 @@ namespace qe {
 
             void Draw();
 
-			void LoadScene(const std::string& scene_path);
+            void LoadScene(const std::string& scene_path);
 
-			void ReleaseScene();
+            void ReleaseScene();
 
 
             inline auto Fps()const -> const int& { return fps_number_; }
@@ -166,9 +166,9 @@ namespace qe {
 
             void CleanSwapChain();
 
-			void ReleaseSceneData();
+            void ReleaseSceneData();
 
-			void ReleaseRenderData();
+            void ReleaseRenderData();
 
             void SetCameraAspect(const int& width, const int& height);
        

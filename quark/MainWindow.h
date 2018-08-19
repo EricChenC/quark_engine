@@ -34,17 +34,17 @@ namespace qe {
         public slots:
             void UpdateFps();
 
-			void NewProjectAction();
-			void OpenProjectAction();
-			void SaveProjectAction();
+            void NewProjectAction();
+            void OpenProjectAction();
+            void SaveProjectAction();
 
-			void NewSceneAction();
-			void OpenSceneAction();
-			void SaveSceneAction();
+            void NewSceneAction();
+            void OpenSceneAction();
+            void SaveSceneAction();
 
-			void ExitAction();
+            void ExitAction();
 
-			void QuarkManualAction();
+            void QuarkManualAction();
 
 
         protected:
@@ -127,9 +127,9 @@ namespace qe {
 
             std::shared_ptr<QTimer> fps_timer_;
 
-			std::vector<std::shared_ptr<QMenu>> menus_;
+            std::vector<std::shared_ptr<QMenu>> menus_;
 
-			QString scene_file_;
+            QString scene_file_;
 
             // after release layout ,  that inside QSpacerItem will auto release
         };

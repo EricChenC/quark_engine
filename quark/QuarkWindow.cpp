@@ -57,12 +57,12 @@ qe::edit::QuarkWindow::QuarkWindow()
 
 qe::edit::QuarkWindow::~QuarkWindow()
 {
-	ReleaseRenderData();
+    ReleaseRenderData();
 }
 
 void qe::edit::QuarkWindow::Init()
 {
-	light_dir_ = glm::vec4(10.0f, 10.0f, 10.0f, 1.0f);
+    light_dir_ = glm::vec4(10.0f, 10.0f, 10.0f, 1.0f);
 
     graphics_timer_ = std::make_shared<QTimer>();
     graphics_timer_->setInterval(1);
@@ -242,7 +242,7 @@ void qe::edit::QuarkWindow::keyReleaseEvent(QKeyEvent * event)
 
 void qe::edit::QuarkWindow::update()
 {
-	if (!scene_) return;
+    if (!scene_) return;
 
     auto tStart = std::chrono::high_resolution_clock::now();
 
@@ -803,11 +803,11 @@ void qe::edit::QuarkWindow::LoadScene(const std::string & scene_path)
 
     if (file_name_splits.size() < 2) return;
 
-	ReleaseScene();
+    ReleaseScene();
 
     scene_ = std::make_shared<qe::core::Scene>();
 
-	auto root = std::dynamic_pointer_cast<qe::core::QuarkObject>(resource_->Load(file_name_splits[1]));
+    auto root = std::dynamic_pointer_cast<qe::core::QuarkObject>(resource_->Load(file_name_splits[1]));
 
     auto camera_object = std::make_shared<qe::core::QuarkObject>();
 
@@ -829,45 +829,45 @@ void qe::edit::QuarkWindow::LoadScene(const std::string & scene_path)
 
     Awake();
 
-	CreateCommandBuffer();
+    CreateCommandBuffer();
 
     SetCameraAspect(this->geometry().width(), this->geometry().height());
 }
 
 void qe::edit::QuarkWindow::ReleaseScene()
 {
-	if (!scene_) return;
+    if (!scene_) return;
 
-	ReleaseSceneData();
-	ReleaseRenderData();
+    ReleaseSceneData();
+    ReleaseRenderData();
 }
 
 void qe::edit::QuarkWindow::ReleaseRenderData()
 {
-	vi_device_->logic_device_.freeCommandBuffers(
-		vi_device_->command_pool_,
-		command_buffers_.size(),
-		command_buffers_.data());
+    vi_device_->logic_device_.freeCommandBuffers(
+        vi_device_->command_pool_,
+        command_buffers_.size(),
+        command_buffers_.data());
 
-	vi_device_->logic_device_.freeMemory(ubo_buffer_memory_);
-	vi_device_->logic_device_.destroyBuffer(ubo_buffer_);
+    vi_device_->logic_device_.freeMemory(ubo_buffer_memory_);
+    vi_device_->logic_device_.destroyBuffer(ubo_buffer_);
 
-	vi_device_->logic_device_.freeMemory(uld_buffer_memory_);
-	vi_device_->logic_device_.destroyBuffer(uld_buffer_);
+    vi_device_->logic_device_.freeMemory(uld_buffer_memory_);
+    vi_device_->logic_device_.destroyBuffer(uld_buffer_);
 
-	vi_device_->logic_device_.destroyPipelineLayout(pipeline_layout_);
+    vi_device_->logic_device_.destroyPipelineLayout(pipeline_layout_);
 
-	vi_device_->logic_device_.destroyPipeline(pipeline_);
+    vi_device_->logic_device_.destroyPipeline(pipeline_);
 
-	vi_device_->logic_device_.destroyDescriptorSetLayout(descriptor_set_layout_);
+    vi_device_->logic_device_.destroyDescriptorSetLayout(descriptor_set_layout_);
 
-	vi_device_->logic_device_.destroyDescriptorPool(descriptor_set_pool_);
+    vi_device_->logic_device_.destroyDescriptorPool(descriptor_set_pool_);
 }
 
 void qe::edit::QuarkWindow::ReleaseSceneData()
 {
-	mesh_datas_.swap(std::vector<meshData>());
-	scene_.swap(std::shared_ptr<qe::core::Scene>());
+    mesh_datas_.swap(std::vector<meshData>());
+    scene_.swap(std::shared_ptr<qe::core::Scene>());
 
     camera_controller_.swap(std::shared_ptr<qe::core::CameraController>());
 

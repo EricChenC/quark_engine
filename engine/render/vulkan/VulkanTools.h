@@ -153,12 +153,12 @@ namespace qe {
 }
 
 
-#define VK_CHECK_RESULT(f)																				\
-{																										\
-	vk::Result res = (f);																					\
-	if (res != vk::Result::eSuccess)																				\
-	{																									\
-		std::cout << "Fatal : vk::Result  is \"" << qe::render::vulkan::VulkanTools::errorString(res) << "\" in " << __FILE__ << " at line " << __LINE__ << std::endl; \
-		assert(res == vk::Result::eSuccess);																		\
-	}\
+#define VK_CHECK_RESULT(f)                                                                                \
+{                                                                                                        \
+    vk::Result res = (f);                                                                                    \
+    if (res != vk::Result::eSuccess)                                                                                \
+    {                                                                                                    \
+        std::cout << "Fatal : vk::Result  is \"" << qe::render::vulkan::VulkanTools::errorString(res) << "\" in " << __FILE__ << " at line " << __LINE__ << std::endl; \
+        assert(res == vk::Result::eSuccess);                                                                        \
+    }\
 }

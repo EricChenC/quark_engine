@@ -57,47 +57,47 @@ void qe::edit::MainWindow::InitUI()
 
 void qe::edit::MainWindow::NewProjectAction()
 {
-	std::cout << "new project action \n";
+    std::cout << "new project action \n";
 }
 
 void qe::edit::MainWindow::OpenProjectAction()
 {
-	std::cout << "open project action \n";
+    std::cout << "open project action \n";
 }
 
 void qe::edit::MainWindow::SaveProjectAction()
 {
-	std::cout << "save project action \n";
+    std::cout << "save project action \n";
 }
 
 void qe::edit::MainWindow::NewSceneAction()
 {
-	std::cout << "new scene action \n";
+    std::cout << "new scene action \n";
 }
 
 void qe::edit::MainWindow::OpenSceneAction()
 {
     scene_file_ = QFileDialog::getOpenFileName(this,
-		tr("Open Project"), "D:/media/models/maya/", tr("Project Files (*.fbx *.obj)"));
+        tr("Open Project"), "D:/media/models/maya/", tr("Project Files (*.fbx *.obj)"));
 
-	if (scene_file_.isEmpty()) return;
+    if (scene_file_.isEmpty()) return;
 
-	quark_window_->LoadScene(scene_file_.toStdString());
+    quark_window_->LoadScene(scene_file_.toStdString());
 }
 
 void qe::edit::MainWindow::SaveSceneAction()
 {
-	std::cout << "save scene action \n";
+    std::cout << "save scene action \n";
 }
 
 void qe::edit::MainWindow::ExitAction()
 {
-	this->close();
+    this->close();
 }
 
 void qe::edit::MainWindow::QuarkManualAction()
 {
-	QDesktopServices::openUrl(QUrl("D:/project/quark_engine/doc/html/index.html"));
+    QDesktopServices::openUrl(QUrl("D:/project/quark_engine/doc/html/index.html"));
 }
 
 void qe::edit::MainWindow::UpdateFps()
@@ -182,109 +182,109 @@ void qe::edit::MainWindow::InitMenuBar()
 {
     auto menu_bar = this->menuBar();
 
-	//File
-	auto file_menu = std::make_shared<QMenu>("File");
+    //File
+    auto file_menu = std::make_shared<QMenu>("File");
 
-	auto new_project_action = file_menu->addAction("New Project");
-	auto open_project_action = file_menu->addAction("Open Project");
-	auto save_project_action = file_menu->addAction("Save Project");
+    auto new_project_action = file_menu->addAction("New Project");
+    auto open_project_action = file_menu->addAction("Open Project");
+    auto save_project_action = file_menu->addAction("Save Project");
 
-	file_menu->addSeparator();
+    file_menu->addSeparator();
 
-	auto new_scene_action = file_menu->addAction("New Scene");
-	auto open_scene_action = file_menu->addAction("Open Scene");
-	auto save_scene_action = file_menu->addAction("Save Scenes");
+    auto new_scene_action = file_menu->addAction("New Scene");
+    auto open_scene_action = file_menu->addAction("Open Scene");
+    auto save_scene_action = file_menu->addAction("Save Scenes");
 
-	file_menu->addSeparator();
+    file_menu->addSeparator();
 
-	auto build_settings_action = file_menu->addAction("Build Settings");
-	auto exit_action = file_menu->addAction("Exit");
-
-
-	//Eidt
-	auto edit_menu = std::make_shared<QMenu>("Edit");
-	auto proejct_setting_menu = edit_menu->addMenu("Project Settings");
-	auto quality_action = proejct_setting_menu->addAction("Quality");
+    auto build_settings_action = file_menu->addAction("Build Settings");
+    auto exit_action = file_menu->addAction("Exit");
 
 
-	//Assets
-	auto assets_menu = std::make_shared<QMenu>("Assets");
-	auto refresh_action = assets_menu->addAction("Refresh");
+    //Eidt
+    auto edit_menu = std::make_shared<QMenu>("Edit");
+    auto proejct_setting_menu = edit_menu->addMenu("Project Settings");
+    auto quality_action = proejct_setting_menu->addAction("Quality");
 
 
-	//QuarkObject
-	auto quark_object_menu = std::make_shared<QMenu>("Quark Object");
-	auto create_empty_action = quark_object_menu->addAction("Create Empty");
-
-	quark_object_menu->addSeparator();
-
-	auto light_menu = quark_object_menu->addMenu("Light");
-	auto direction_light_action = light_menu->addAction("Direction Light");
-	auto point_light_action = light_menu->addAction("Point Light");
-	auto spot_light_action = light_menu->addAction("Spot Light");
-	auto area_light_action = light_menu->addAction("Area Light");
-
-	quark_object_menu->addSeparator();
-
-	auto camera_action = quark_object_menu->addAction("Camera");
+    //Assets
+    auto assets_menu = std::make_shared<QMenu>("Assets");
+    auto refresh_action = assets_menu->addAction("Refresh");
 
 
-	//Component
-	auto component_menu = std::make_shared<QMenu>("Component");
-	auto mesh_menu = component_menu->addMenu("Mesh");
-	auto mesh_renderer_action = mesh_menu->addAction("Mesh Renderer");
+    //QuarkObject
+    auto quark_object_menu = std::make_shared<QMenu>("Quark Object");
+    auto create_empty_action = quark_object_menu->addAction("Create Empty");
+
+    quark_object_menu->addSeparator();
+
+    auto light_menu = quark_object_menu->addMenu("Light");
+    auto direction_light_action = light_menu->addAction("Direction Light");
+    auto point_light_action = light_menu->addAction("Point Light");
+    auto spot_light_action = light_menu->addAction("Spot Light");
+    auto area_light_action = light_menu->addAction("Area Light");
+
+    quark_object_menu->addSeparator();
+
+    auto camera_action = quark_object_menu->addAction("Camera");
 
 
-	//Window
-	auto window_menu = std::make_shared<QMenu>("Window");
-	auto asset_store_action = window_menu->addAction("Asset Store");
-	auto profiler_action = window_menu->addAction("Profiler");
+    //Component
+    auto component_menu = std::make_shared<QMenu>("Component");
+    auto mesh_menu = component_menu->addMenu("Mesh");
+    auto mesh_renderer_action = mesh_menu->addAction("Mesh Renderer");
 
 
-	//Help
-	auto help_menu = std::make_shared<QMenu>("Help");
-	auto about_quark_action = help_menu->addAction("About Quark");
-
-	help_menu->addSeparator();
-
-	auto manage_license_action = help_menu->addAction("Manage license");
-	auto quark_manual_action = help_menu->addAction("Quark Manual");
-
-	help_menu->addSeparator();
-
-	auto check_for_updates_action = help_menu->addAction("Check for Updates");
-	auto report_a_bug_action = help_menu->addAction("Report a Bug");
+    //Window
+    auto window_menu = std::make_shared<QMenu>("Window");
+    auto asset_store_action = window_menu->addAction("Asset Store");
+    auto profiler_action = window_menu->addAction("Profiler");
 
 
-	//add menu to menu bar
-	menu_bar->addMenu(file_menu.get());
-	menu_bar->addMenu(edit_menu.get());
-	menu_bar->addMenu(assets_menu.get());
-	menu_bar->addMenu(quark_object_menu.get());
-	menu_bar->addMenu(component_menu.get());
-	menu_bar->addMenu(window_menu.get());
-	menu_bar->addMenu(help_menu.get());
+    //Help
+    auto help_menu = std::make_shared<QMenu>("Help");
+    auto about_quark_action = help_menu->addAction("About Quark");
 
-	//push menu to menu list
-	menus_.push_back(file_menu);
-	menus_.push_back(edit_menu);
-	menus_.push_back(assets_menu);
-	menus_.push_back(quark_object_menu);
-	menus_.push_back(component_menu);
-	menus_.push_back(window_menu);
-	menus_.push_back(help_menu);
+    help_menu->addSeparator();
 
-	connect(new_project_action, SIGNAL(triggered()), this, SLOT(NewProjectAction()));
-	connect(open_project_action, SIGNAL(triggered()), this, SLOT(OpenProjectAction()));
-	connect(save_project_action, SIGNAL(triggered()), this, SLOT(SaveProjectAction()));
+    auto manage_license_action = help_menu->addAction("Manage license");
+    auto quark_manual_action = help_menu->addAction("Quark Manual");
 
-	connect(new_scene_action, SIGNAL(triggered()), this, SLOT(NewSceneAction()));
-	connect(open_scene_action, SIGNAL(triggered()), this, SLOT(OpenSceneAction()));
-	connect(save_scene_action, SIGNAL(triggered()), this, SLOT(SaveSceneAction()));
+    help_menu->addSeparator();
 
-	connect(exit_action, SIGNAL(triggered()), this, SLOT(ExitAction()));
+    auto check_for_updates_action = help_menu->addAction("Check for Updates");
+    auto report_a_bug_action = help_menu->addAction("Report a Bug");
 
-	connect(quark_manual_action, SIGNAL(triggered()), this, SLOT(QuarkManualAction()));
+
+    //add menu to menu bar
+    menu_bar->addMenu(file_menu.get());
+    menu_bar->addMenu(edit_menu.get());
+    menu_bar->addMenu(assets_menu.get());
+    menu_bar->addMenu(quark_object_menu.get());
+    menu_bar->addMenu(component_menu.get());
+    menu_bar->addMenu(window_menu.get());
+    menu_bar->addMenu(help_menu.get());
+
+    //push menu to menu list
+    menus_.push_back(file_menu);
+    menus_.push_back(edit_menu);
+    menus_.push_back(assets_menu);
+    menus_.push_back(quark_object_menu);
+    menus_.push_back(component_menu);
+    menus_.push_back(window_menu);
+    menus_.push_back(help_menu);
+
+    connect(new_project_action, SIGNAL(triggered()), this, SLOT(NewProjectAction()));
+    connect(open_project_action, SIGNAL(triggered()), this, SLOT(OpenProjectAction()));
+    connect(save_project_action, SIGNAL(triggered()), this, SLOT(SaveProjectAction()));
+
+    connect(new_scene_action, SIGNAL(triggered()), this, SLOT(NewSceneAction()));
+    connect(open_scene_action, SIGNAL(triggered()), this, SLOT(OpenSceneAction()));
+    connect(save_scene_action, SIGNAL(triggered()), this, SLOT(SaveSceneAction()));
+
+    connect(exit_action, SIGNAL(triggered()), this, SLOT(ExitAction()));
+
+    connect(quark_manual_action, SIGNAL(triggered()), this, SLOT(QuarkManualAction()));
 
 }
 
