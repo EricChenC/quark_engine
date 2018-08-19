@@ -93,17 +93,35 @@ void qe::edit::QuarkWindow::mouseMoveEvent(QMouseEvent * event)
     glm::vec2 move_span = mouse_last_pos_ - mouse_pos;
     mouse_last_pos_ = mouse_pos;
 
-    if (left_button_press_ && alt_button_press_) {
-        camera_controller_->LookAtRotate(move_span);
-    }
+    if (alt_button_press_) {
+        if (left_button_press_) {
+            this->setCursor(Qt::SizeHorCursor);
+            camera_controller_->LookAtRotate(move_span);
+        }
 
-    if (right_button_press_) {
-        camera_controller_->RotateCamera(move_span);
+        if (right_button_press_) {
+
+            this->setCursor(Qt::UpArrowCursor);
+
+            if (move_span.y > 0) {
+                camera_controller_->SmoothZoom(-delta_time_);
+            }
+            else {
+                camera_controller_->SmoothZoom(delta_time_);
+            }
+            
+        }
+    }
+    else {
+        if (right_button_press_) {
+            camera_controller_->RotateCamera(move_span);
+        }
     }
 
     if (middle_button_press_) {
         camera_controller_->DragCamera(move_span * 0.01f);
     }
+
 }
 
 void qe::edit::QuarkWindow::mousePressEvent(QMouseEvent * event)
@@ -139,31 +157,30 @@ void qe::edit::QuarkWindow::mouseReleaseEvent(QMouseEvent * event)
     case Qt::LeftButton:
     {
         left_button_press_ = false;
-        init_mouse_pos_ = false;
         break;
     }
     case Qt::RightButton:
     {
         right_button_press_ = false;
-        init_mouse_pos_ = false;
-        this->setCursor(Qt::ArrowCursor);
         break;
     }
     case Qt::MiddleButton:
     {
         middle_button_press_ = false;
-        init_mouse_pos_ = false;
-        this->setCursor(Qt::ArrowCursor);
         break;
     }
     default:
         break;
     }
+
+    init_mouse_pos_ = false;
+    this->setCursor(Qt::ArrowCursor);
+
 }
 
 void qe::edit::QuarkWindow::wheelEvent(QWheelEvent * event)
 {
-    if (event->angleDelta().y() > 0) {
+    if (event->angleDelta().y() > 0 || event->angleDelta().x() > 0) {
         camera_controller_->ShrinkMove(-delta_time_ * 0.1);
     }
     else {
@@ -217,7 +234,6 @@ void qe::edit::QuarkWindow::keyPressEvent(QKeyEvent * event)
         break;
     case Qt::Key_Alt:
         alt_button_press_ = true;
-        this->setCursor(Qt::UpArrowCursor);
         break;
     default:
         break;
@@ -234,7 +250,6 @@ void qe::edit::QuarkWindow::keyReleaseEvent(QKeyEvent * event)
     {
     case Qt::Key_Alt:
         alt_button_press_ = false;
-        this->setCursor(Qt::ArrowCursor);
         break;
     }
 

@@ -40,7 +40,7 @@ void qe::core::CameraController::RotateCamera(const glm::vec2& pos)
 
 void qe::core::CameraController::SmoothZoom(const float & delta_time)
 {
-    ShrinkMove(delta_time / 5.0f);
+    ShrinkMove(delta_time / 100.0f);
 }
 
 void qe::core::CameraController::DragCamera(const glm::vec2 & pos)
