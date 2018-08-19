@@ -150,9 +150,9 @@ void qe::core::CameraController::UpdateProjectionMatrix()
 
 void qe::core::CameraController::UpdateDirection()
 {
-    view_direction_.x = -cos(glm::radians(transform_->get_world_rotate().x)) * sin(glm::radians(transform_->get_world_rotate().y));
-    view_direction_.y = sin(glm::radians(transform_->get_world_rotate().x));
-    view_direction_.z = cos(glm::radians(transform_->get_world_rotate().x)) * cos(glm::radians(transform_->get_world_rotate().y));
+    view_direction_.x = -cos(glm::radians(world_rotate_.x)) * sin(glm::radians(world_rotate_.y));
+    view_direction_.y = sin(glm::radians(world_rotate_.x));
+    view_direction_.z = cos(glm::radians(world_rotate_.x)) * cos(glm::radians(world_rotate_.y));
     view_direction_ = glm::normalize(view_direction_);
 }
 
