@@ -118,6 +118,9 @@ namespace qe {
             glm::vec3 view_direction_;
             glm::vec3 lookat_point_;
 
+            glm::vec3 lookat_rotate_;
+            glm::vec3 world_rotate_;
+
             bool is_lookat_rotate_;
 
         };

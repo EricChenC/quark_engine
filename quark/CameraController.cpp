@@ -33,7 +33,16 @@ void qe::core::CameraController::RotateCamera(const glm::vec2& pos)
 {
     glm::vec3 delta(-pos.y * rotation_speed_, -pos.x * rotation_speed_, 0.0f);
 
-    transform_->set_world_rotate(transform_->get_world_rotate() + delta);
+    if (is_lookat_rotate_) {
+        lookat_rotate_ += delta;
+
+        transform_->set_world_rotate(lookat_rotate_);
+    }
+    else {
+        world_rotate_ += delta;
+
+        transform_->set_world_rotate(world_rotate_);
+    }
 
     is_lookat_rotate_ = false;
 }
@@ -101,12 +110,19 @@ void qe::core::CameraController::UpdateModelMatrix()
 void qe::core::CameraController::UpdateViewMatrix()
 {
 
-    glm::mat4 rotM = glm::mat4(1.0f);
+    auto lookat_rotate = glm::mat4(1.0f);
+    auto world_rotate = glm::mat4(1.0f);
+
     glm::mat4 transM;
 
-    rotM = glm::rotate(rotM, glm::radians(transform_->get_world_rotate().x), glm::vec3(1.0f, 0.0f, 0.0f));
-    rotM = glm::rotate(rotM, glm::radians(transform_->get_world_rotate().y), glm::vec3(0.0f, 1.0f, 0.0f));
-    rotM = glm::rotate(rotM, glm::radians(transform_->get_world_rotate().z), glm::vec3(0.0f, 0.0f, 1.0f));
+    lookat_rotate = glm::rotate(lookat_rotate, glm::radians(lookat_rotate_.x), glm::vec3(1.0f, 0.0f, 0.0f));
+    lookat_rotate = glm::rotate(lookat_rotate, glm::radians(lookat_rotate_.y), glm::vec3(0.0f, 1.0f, 0.0f));
+    lookat_rotate = glm::rotate(lookat_rotate, glm::radians(lookat_rotate_.z), glm::vec3(0.0f, 0.0f, 1.0f));
+
+
+    world_rotate = glm::rotate(world_rotate, glm::radians(world_rotate_.x), glm::vec3(1.0f, 0.0f, 0.0f));
+    world_rotate = glm::rotate(world_rotate, glm::radians(world_rotate_.y), glm::vec3(0.0f, 1.0f, 0.0f));
+    world_rotate = glm::rotate(world_rotate, glm::radians(world_rotate_.z), glm::vec3(0.0f, 0.0f, 1.0f));
 
     // adjust camera coordination
     transM = glm::translate(glm::mat4(1.0f), -transform_->get_world_translation());
@@ -114,10 +130,10 @@ void qe::core::CameraController::UpdateViewMatrix()
     if (is_lookat_rotate_) {
         auto camera_point_mat = glm::translate(glm::mat4(1.0f), lookat_point_);
 
-        View_ = transM * rotM * camera_point_mat;
+        View_ = world_rotate * transM * lookat_rotate * camera_point_mat;
     }
     else {
-        View_ = rotM * transM;
+        View_ = world_rotate * transM * lookat_rotate;
     }
 
 }
