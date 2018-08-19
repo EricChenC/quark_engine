@@ -21,6 +21,48 @@ namespace qe {
 
             ~Color();
 
+            // static methods
+        public:
+            static std::shared_ptr<Color> Black() {
+                return std::make_shared<Color>(0, 0, 0, 1);
+            }
+
+            static std::shared_ptr<Color> Blue() {
+                return std::make_shared<Color>(0, 0, 1, 1);
+            }
+
+            static std::shared_ptr<Color> Clear() {
+                return std::make_shared<Color>(0, 0, 0, 0);
+            }
+
+            static std::shared_ptr<Color> Cyan() {
+                return std::make_shared<Color>(0, 1, 1, 1);
+            }
+
+            static std::shared_ptr<Color> Gray() {
+                return std::make_shared<Color>(0.5, 0.5, 0.5, 1);
+            }
+
+            static std::shared_ptr<Color> Green() {
+                return std::make_shared<Color>(0, 1, 0, 1);
+            }
+
+            static std::shared_ptr<Color> Magenta() {
+                return std::make_shared<Color>(1, 0, 1, 1);
+            }
+
+            static std::shared_ptr<Color> Red() {
+                return std::make_shared<Color>(1, 0, 0, 1);
+            }
+
+            static std::shared_ptr<Color> White() {
+                return std::make_shared<Color>(1, 1, 1, 1);
+            }
+
+            static std::shared_ptr<Color> Yellow() {
+                return std::make_shared<Color>(1, 0.92, 0.016, 1);
+            }
+
         // properties
         public:
             inline auto get_r()const -> const float& { return r_; }
@@ -39,29 +81,8 @@ namespace qe {
 
             inline void set_a(const float& a){ a_ = a; }
 
-
         // methods
         public:
-            Color Black();
-
-            Color Blue();
-
-            Color Clear();
-
-            Color Cyan();
-
-            Color Gray();
-
-            Color Green();
-
-            Color Magenta();
-
-            Color Red();
-
-            Color White();
-
-            Color Yellow();
-
             glm::vec4 get_glm_color(const Color& color);
 
         private:

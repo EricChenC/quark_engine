@@ -225,25 +225,25 @@ namespace qe {
             /// Gets the near clip plane.
             /// </summary>
             /// <returns></returns>
-            inline auto get_near_clip_plane() const -> const float&{ return near_clip_plane_; }
+            inline auto get_near_clip_plane() const -> const float& { return near_clip_plane_; }
 
             /// <summary>
             /// Sets the near clip plane.
             /// </summary>
             /// <param name="">The .</param>
-            inline void set_near_clip_plane(const float& near){ near_clip_plane_ = near; }
+            inline void set_near_clip_plane(const float& near_plane) { near_clip_plane_ = near_plane; }
 
             /// <summary>
             /// Gets the far clip plane.
             /// </summary>
             /// <returns></returns>
-            inline auto get_far_clip_plane() const ->const float&{ return far_clip_plane_; }
+            inline auto get_far_clip_plane() const ->const float& { return far_clip_plane_; }
 
             /// <summary>
             /// Sets the far clip plane.
             /// </summary>
             /// <param name="">The .</param>
-            inline void set_far_clip_plane(const float& far){ far_clip_plane_ = far; }
+            inline void set_far_clip_plane(const float& far_plane) { far_clip_plane_ = far_plane; }
 
             /// <summary>
             /// Fields the of view (fov).
@@ -546,7 +546,7 @@ namespace qe {
             float far_clip_plane_;
 
             /// <summary>
-            /// The field of view
+            /// The field of view(fov)
             /// </summary>
             float field_of_view_;
 

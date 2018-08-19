@@ -1,224 +1,142 @@
 #include "CameraController.h"
+#include "Camera.h"
+#include "Transform.h"
+#include "QuarkObject.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 
 #include <iostream>
 
 
-qe::edit::CameraController::CameraController()
-    : clip{
+qe::core::CameraController::CameraController()
+    : clip_{
     1.0, 0.0, 0.0, 0.0,
     0.0, -1.0, 0.0, 0.0,
     0.0, 0.0, 0.5, 0.0,
     0.0, 0.0, 0.5, 1.0 }
     , rotation_speed_(0.05f)
     , movement_speed_(1.0f)
-    , view_position_(0.0f, -2.0f, -6.0f)
-    , projection_fov_(45.0f)
-    , projection_ratio_(4.0f / 3.0f)
-    , projection_near_(0.1f)
-    , projection_far_(1000.0f)
+    , lookat_point_(0.0f)
     , Model_(1.0f)
-    , type_(CameraType::FIRSTPERSON)
+    , camera_(nullptr)
+    , transform_(nullptr)
 {
     
 }
 
-qe::edit::CameraController::~CameraController()
+qe::core::CameraController::~CameraController()
 {
+
 }
 
-void qe::edit::CameraController::RotateCamera(const glm::vec2& pos)
+void qe::core::CameraController::RotateCamera(const glm::vec2& pos)
 {
     glm::vec3 delta(-pos.y * rotation_speed_, -pos.x * rotation_speed_, 0.0f);
 
-    rotation_ += delta;
+    transform_->set_world_rotate(transform_->get_world_rotate() + delta);
+
+    is_lookat_rotate_ = false;
 }
 
-void qe::edit::CameraController::MoveCamera(const glm::vec2 & pos)
+void qe::core::CameraController::SmoothZoom(const float & delta_time)
 {
-    view_position_ += glm::normalize(glm::cross(view_direction_, glm::vec3(0.0, 1.0, 0.0))) * movement_speed_ * pos.x;
-
-    view_position_ += glm::vec3(0.0, 1.0, 0.0) * movement_speed_ * pos.y;
+    ShrinkMove(delta_time / 5.0f);
 }
 
-void qe::edit::CameraController::MoveForward(const float& delta_time)
+void qe::core::CameraController::DragCamera(const glm::vec2 & pos)
 {
-    switch (type_)
-    {
-    case qe::edit::CameraController::CameraType::LOOKAT:
-    {
-        view_position_ += view_direction_ * movement_speed_ * delta_time;
-        break;
-    }
-    case qe::edit::CameraController::CameraType::FIRSTPERSON:
-    {
-        view_position_ += view_direction_ * movement_speed_ * delta_time;
-        break;
-    }
-    case qe::edit::CameraController::CameraType::THIRDPERSON:
-    {
-        break;
-    }
-    }
+    transform_->set_world_translation(transform_->get_world_translation() - (glm::normalize(glm::cross(view_direction_, glm::vec3(0.0, 1.0, 0.0))) * movement_speed_ * pos.x));
+    transform_->set_world_translation(transform_->get_world_translation() - (glm::vec3(0.0, 1.0, 0.0) * movement_speed_ * pos.y));
 }
 
-void qe::edit::CameraController::MoveBack(const float& delta_time)
+void qe::core::CameraController::Zoom(const float & delta_time)
 {
-    switch (type_)
-    {
-    case qe::edit::CameraController::CameraType::LOOKAT:
-    {
-        view_position_ -= view_direction_ * movement_speed_ * delta_time;
-        break;
-    }
-    case qe::edit::CameraController::CameraType::FIRSTPERSON:
-    {
-        view_position_ -= view_direction_ * movement_speed_ * delta_time;
-        break;
-    }
-    case qe::edit::CameraController::CameraType::THIRDPERSON:
-    {
-        break;
-    }
-    }
+    ShrinkMove(delta_time / 2.0f);
 }
 
-void qe::edit::CameraController::MoveLeft(const float& delta_time)
+void qe::core::CameraController::LookAtRotate(const glm::vec2 & pos)
 {
-    switch (type_)
-    {
-    case qe::edit::CameraController::CameraType::LOOKAT:
-    {
-        view_position_ -= glm::normalize(glm::cross(view_direction_, glm::vec3(0.0, 1.0, 0.0))) * movement_speed_ * delta_time;
-        break;
-    }
-    case qe::edit::CameraController::CameraType::FIRSTPERSON:
-    {
-        view_position_ -= glm::normalize(glm::cross(view_direction_, glm::vec3(0.0, 1.0, 0.0))) * movement_speed_ * delta_time;
-        break;
-    }
-    case qe::edit::CameraController::CameraType::THIRDPERSON:
-    {
-        break;
-    }
-    }
+    RotateCamera(pos);
+    is_lookat_rotate_ = true;
 }
 
-void qe::edit::CameraController::MoveRight(const float& delta_time)
+void qe::core::CameraController::ShrinkMove(const float & delta_time)
 {
-    switch (type_)
-    {
-    case qe::edit::CameraController::CameraType::LOOKAT:
-    {
-        view_position_ += glm::normalize(glm::cross(view_direction_, glm::vec3(0.0, 1.0, 0.0))) * movement_speed_ * delta_time;
-        break;
-    }
-    case qe::edit::CameraController::CameraType::FIRSTPERSON:
-    {
-        view_position_ += glm::normalize(glm::cross(view_direction_, glm::vec3(0.0, 1.0, 0.0))) * movement_speed_ * delta_time;
-        break;
-    }
-    case qe::edit::CameraController::CameraType::THIRDPERSON:
-    {
-        break;
-    }
-    }
+    transform_->set_world_translation(transform_->get_world_translation() + (view_direction_ * movement_speed_ * delta_time));
 }
 
-void qe::edit::CameraController::MoveUp(const float& delta_time)
+void qe::core::CameraController::HorizontalMove(const float & delta_time)
 {
-    switch (type_)
-    {
-    case qe::edit::CameraController::CameraType::LOOKAT:
-    {
-        view_position_ += glm::vec3(0.0, 1.0, 0.0) * movement_speed_ * delta_time;
-        break;
-    }
-    case qe::edit::CameraController::CameraType::FIRSTPERSON:
-    {
-        view_position_ -= glm::vec3(0.0, 1.0, 0.0) * movement_speed_ * delta_time;
-        break;
-    }
-    case qe::edit::CameraController::CameraType::THIRDPERSON:
-    {
-        break;
-    }
-    }
+    transform_->set_world_translation(transform_->get_world_translation() + (glm::normalize(glm::cross(view_direction_, glm::vec3(0.0, 1.0, 0.0))) * movement_speed_ * delta_time));
 }
 
-void qe::edit::CameraController::MoveDown(const float& delta_time)
+void qe::core::CameraController::VerticalMove(const float & delta_time)
 {
-    switch (type_)
-    {
-    case qe::edit::CameraController::CameraType::LOOKAT:
-    {
-        view_position_ -= glm::vec3(0.0, 1.0, 0.0) * movement_speed_ * delta_time;
-        break;
-    }
-    case qe::edit::CameraController::CameraType::FIRSTPERSON:
-    {
-        view_position_ += glm::vec3(0.0, 1.0, 0.0) * movement_speed_ * delta_time;
-        break;
-    }
-    case qe::edit::CameraController::CameraType::THIRDPERSON:
-    {
-        break;
-    }
-    }
+    transform_->set_world_translation(transform_->get_world_translation() + (glm::vec3(0.0, 1.0, 0.0) * movement_speed_ * delta_time));
 }
 
-void qe::edit::CameraController::UpdateProjectionRatio(const float & ratio)
+void qe::core::CameraController::LookAtObject()
 {
-    projection_ratio_ = ratio;
+
 }
 
-void qe::edit::CameraController::Update()
+void qe::core::CameraController::Awake()
+{
+   camera_ = get_quark_object()->GetComponent<qe::core::Camera>();
+   transform_ = get_quark_object()->GetComponent<qe::core::Transform>();
+}
+
+void qe::core::CameraController::Update()
 {
     UpdateDirection();
     UpdateViewMatrix();
     UpdateProjectionMatrix();
 }
 
-void qe::edit::CameraController::UpdateModelMatrix()
+void qe::core::CameraController::UpdateModelMatrix()
 {
 
 }
 
-void qe::edit::CameraController::UpdateViewMatrix()
+void qe::core::CameraController::UpdateViewMatrix()
 {
 
     glm::mat4 rotM = glm::mat4(1.0f);
     glm::mat4 transM;
 
-    rotM = glm::rotate(rotM, glm::radians(rotation_.x), glm::vec3(1.0f, 0.0f, 0.0f));
-    rotM = glm::rotate(rotM, glm::radians(rotation_.y), glm::vec3(0.0f, 1.0f, 0.0f));
-    rotM = glm::rotate(rotM, glm::radians(rotation_.z), glm::vec3(0.0f, 0.0f, 1.0f));
+    rotM = glm::rotate(rotM, glm::radians(transform_->get_world_rotate().x), glm::vec3(1.0f, 0.0f, 0.0f));
+    rotM = glm::rotate(rotM, glm::radians(transform_->get_world_rotate().y), glm::vec3(0.0f, 1.0f, 0.0f));
+    rotM = glm::rotate(rotM, glm::radians(transform_->get_world_rotate().z), glm::vec3(0.0f, 0.0f, 1.0f));
 
-    transM = glm::translate(glm::mat4(1.0f), view_position_);
+    // adjust camera coordination
+    transM = glm::translate(glm::mat4(1.0f), -transform_->get_world_translation());
 
-    if (type_ == CameraType::FIRSTPERSON)
-    {
+    if (is_lookat_rotate_) {
+        auto camera_point_mat = glm::translate(glm::mat4(1.0f), lookat_point_);
+
+        View_ = transM * rotM * camera_point_mat;
+    }
+    else {
         View_ = rotM * transM;
     }
-    else
-    {
-        View_ = transM * rotM;
-    }
 
 }
 
-void qe::edit::CameraController::UpdateProjectionMatrix()
+void qe::core::CameraController::UpdateProjectionMatrix()
 {
     Projection_ = glm::mat4(1.0);
-    Projection_ = clip * glm::perspective(projection_fov_, projection_ratio_, projection_near_, projection_far_);
+    Projection_ = clip_ * glm::perspective(
+        camera_->get_field_of_view(), 
+        camera_->get_aspect(),
+        camera_->get_near_clip_plane(),
+        camera_->get_far_clip_plane());
 }
 
-void qe::edit::CameraController::UpdateDirection()
+void qe::core::CameraController::UpdateDirection()
 {
-    view_direction_.x = -cos(glm::radians(rotation_.x)) * sin(glm::radians(rotation_.y));
-    view_direction_.y = sin(glm::radians(rotation_.x));
-    view_direction_.z = cos(glm::radians(rotation_.x)) * cos(glm::radians(rotation_.y));
+    view_direction_.x = -cos(glm::radians(transform_->get_world_rotate().x)) * sin(glm::radians(transform_->get_world_rotate().y));
+    view_direction_.y = sin(glm::radians(transform_->get_world_rotate().x));
+    view_direction_.z = cos(glm::radians(transform_->get_world_rotate().x)) * cos(glm::radians(transform_->get_world_rotate().y));
     view_direction_ = glm::normalize(view_direction_);
 }
 

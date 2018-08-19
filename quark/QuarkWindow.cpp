@@ -27,6 +27,8 @@
 #include "AwakeBehaviour.h"
 #include "Shader.h"
 #include "ScriptBehaviour.h"
+#include "Camera.h"
+#include "Color.h"
 
 #include <iostream>
 
@@ -34,7 +36,7 @@
 qe::edit::QuarkWindow::QuarkWindow()
     : vi_device_(std::make_shared<qe::render::vulkan::VulkanDevice>(reinterpret_cast<HWND>(this->winId())))
     , resource_(std::make_shared<qe::core::Resource>())
-    , camera_controller_(std::make_shared<qe::edit::CameraController>())
+    , camera_controller_(nullptr)
     , scene_(nullptr)
     , frame_count_(0)
     , fps_number_(0)
@@ -42,13 +44,15 @@ qe::edit::QuarkWindow::QuarkWindow()
     , delta_time_(0.0f)
     , key_press_time_(0.0f)
     , is_update_material_(false)
+    , left_button_press_(false)
     , right_button_press_(false)
     , middle_button_press_(false)
     , key_press_(false)
+    , alt_button_press_(false)
     , init_mouse_pos_(false)
     , kShaderPath("D:/project/quark_engine/media/shader/standard.shader")
 {
-    
+
 }
 
 qe::edit::QuarkWindow::~QuarkWindow()
@@ -69,13 +73,13 @@ void qe::edit::QuarkWindow::Init()
 void qe::edit::QuarkWindow::resizeEvent(QResizeEvent * event)
 {
     auto size = event->size();
-    InitCamera(size.width(), size.height());
+    SetCameraAspect(size.width(), size.height());
 }
 
 void qe::edit::QuarkWindow::mouseMoveEvent(QMouseEvent * event)
 {
 
-    if (!right_button_press_ && !middle_button_press_) {
+    if (!left_button_press_ && !right_button_press_ && !middle_button_press_) {
         return;
     }
 
@@ -89,14 +93,17 @@ void qe::edit::QuarkWindow::mouseMoveEvent(QMouseEvent * event)
     glm::vec2 move_span = mouse_last_pos_ - mouse_pos;
     mouse_last_pos_ = mouse_pos;
 
+    if (left_button_press_ && alt_button_press_) {
+        camera_controller_->LookAtRotate(move_span);
+    }
+
     if (right_button_press_) {
         camera_controller_->RotateCamera(move_span);
     }
 
     if (middle_button_press_) {
-        camera_controller_->MoveCamera(move_span * 0.1f);
+        camera_controller_->DragCamera(move_span * 0.01f);
     }
-
 }
 
 void qe::edit::QuarkWindow::mousePressEvent(QMouseEvent * event)
@@ -104,17 +111,20 @@ void qe::edit::QuarkWindow::mousePressEvent(QMouseEvent * event)
     switch (event->button())
     {
     case Qt::LeftButton:
+    {
+        left_button_press_ = true;
         break;
+    }
     case Qt::RightButton:
     {
         right_button_press_ = true;
-        this->setCursor(Qt::BlankCursor);
+        this->setCursor(Qt::SplitVCursor);
         break;
     }
     case Qt::MiddleButton:
     {
         middle_button_press_ = true;
-        this->setCursor(Qt::BlankCursor);
+        this->setCursor(Qt::SizeAllCursor);
         break;
     }
     default:
@@ -127,7 +137,11 @@ void qe::edit::QuarkWindow::mouseReleaseEvent(QMouseEvent * event)
     switch (event->button())
     {
     case Qt::LeftButton:
+    {
+        left_button_press_ = false;
+        init_mouse_pos_ = false;
         break;
+    }
     case Qt::RightButton:
     {
         right_button_press_ = false;
@@ -150,16 +164,15 @@ void qe::edit::QuarkWindow::mouseReleaseEvent(QMouseEvent * event)
 void qe::edit::QuarkWindow::wheelEvent(QWheelEvent * event)
 {
     if (event->angleDelta().y() > 0) {
-        camera_controller_->MoveForward(delta_time_ * 0.1);
+        camera_controller_->ShrinkMove(-delta_time_ * 0.1);
     }
     else {
-        camera_controller_->MoveBack(delta_time_ * 0.1);
+        camera_controller_->ShrinkMove(delta_time_ * 0.1);
     }
 }
 
 void qe::edit::QuarkWindow::keyPressEvent(QKeyEvent * event)
 {
-    if (!right_button_press_) return;
 
     if (!key_press_) {
         key_press_ = true;
@@ -173,30 +186,38 @@ void qe::edit::QuarkWindow::keyPressEvent(QKeyEvent * event)
     switch (event->key())
     {
     case Qt::Key_W: // forward
-        camera_controller_->MoveForward(delta_time_ * max_span);
+        if (!right_button_press_) break;
+
+        camera_controller_->ShrinkMove(-delta_time_ * max_span);
         break;
     case Qt::Key_S: // back
-        camera_controller_->MoveBack(delta_time_* max_span);
+        if (!right_button_press_) break;
+
+        camera_controller_->ShrinkMove(delta_time_* max_span);
         break;
     case Qt::Key_A: // left
-        camera_controller_->MoveLeft(delta_time_* max_span);
+        if (!right_button_press_) break;
+
+        camera_controller_->HorizontalMove(delta_time_* max_span);
         break;
     case Qt::Key_D: // right
-        camera_controller_->MoveRight(delta_time_* max_span);
+        if (!right_button_press_) break;
+
+        camera_controller_->HorizontalMove(-delta_time_* max_span);
         break;
     case Qt::Key_Q: // down
-        camera_controller_->MoveDown(delta_time_* max_span);
+        if (!right_button_press_) break;
+
+        camera_controller_->VerticalMove(-delta_time_* max_span);
         break;
     case Qt::Key_E: // up
-        camera_controller_->MoveUp(delta_time_* max_span);
+        if (!right_button_press_) break;
+
+        camera_controller_->VerticalMove(delta_time_* max_span);
         break;
-    case Qt::Key_Space:
-        if (camera_controller_->get_type() == CameraController::CameraType::LOOKAT) {
-            camera_controller_->set_type(CameraController::CameraType::FIRSTPERSON);
-        }
-        else {
-            camera_controller_->set_type(CameraController::CameraType::LOOKAT);
-        }
+    case Qt::Key_Alt:
+        alt_button_press_ = true;
+        this->setCursor(Qt::UpArrowCursor);
         break;
     default:
         break;
@@ -208,6 +229,15 @@ void qe::edit::QuarkWindow::keyReleaseEvent(QKeyEvent * event)
     if (event->isAutoRepeat()) return;
 
     key_press_ = false;
+
+    switch (event->key())
+    {
+    case Qt::Key_Alt:
+        alt_button_press_ = false;
+        this->setCursor(Qt::ArrowCursor);
+        break;
+    }
+
 }
 
 void qe::edit::QuarkWindow::update()
@@ -238,7 +268,7 @@ void qe::edit::QuarkWindow::update()
     }
 }
 
-void qe::edit::QuarkWindow::DrawScene(std::shared_ptr<qe::core::Scene> scene)
+void qe::edit::QuarkWindow::LoadSceneReadyRender(std::shared_ptr<qe::core::Scene> scene)
 {
     auto roots = scene->Roots();
 
@@ -587,10 +617,10 @@ void qe::edit::QuarkWindow::CreateCommandBuffer()
         renderPassInfo.renderArea.extent = vi_device_->swap_chain_extent_;
 
         vk::ClearColorValue c_color;
-        c_color.float32[0] = 0.2f;
-        c_color.float32[1] = 0.2f;
-        c_color.float32[2] = 0.2f;
-        c_color.float32[3] = 1.0f;
+        c_color.float32[0] = camera_->get_background_color()->get_r();
+        c_color.float32[1] = camera_->get_background_color()->get_g();
+        c_color.float32[2] = camera_->get_background_color()->get_b();
+        c_color.float32[3] = camera_->get_background_color()->get_a();
 
         std::array<vk::ClearValue, 2> clearValues = {};
         clearValues[0].color = c_color;
@@ -686,7 +716,6 @@ void qe::edit::QuarkWindow::Draw()
 
 void qe::edit::QuarkWindow::UpdateUniformBuffer()
 {
-    camera_controller_->Update();
 
     UniformCameraBuffer umo = {};
     umo.proj = camera_controller_->P();
@@ -780,13 +809,29 @@ void qe::edit::QuarkWindow::LoadScene(const std::string & scene_path)
 
 	auto root = std::dynamic_pointer_cast<qe::core::QuarkObject>(resource_->Load(file_name_splits[1]));
 
+    auto camera_object = std::make_shared<qe::core::QuarkObject>();
+
+    camera_ = camera_object->AddComponent<qe::core::Camera>();
+
+    camera_->get_quark_object()->GetComponent<qe::core::Transform>()->set_world_translation(glm::vec3(0.0, 2.0, 6.0));
+
+    camera_->set_background_color(qe::core::Color::Gray());
+
+    camera_controller_ = camera_object->AddComponent<qe::core::CameraController>();
+
+    behaviours_.push_back(camera_controller_);
+
     scene_->AddRoot(root);
 
-    DrawScene(scene_);
+    scene_->AddRoot(camera_object);
 
-	Awake();
+    LoadSceneReadyRender(scene_);
+
+    Awake();
 
 	CreateCommandBuffer();
+
+    SetCameraAspect(this->geometry().width(), this->geometry().height());
 }
 
 void qe::edit::QuarkWindow::ReleaseScene()
@@ -824,6 +869,10 @@ void qe::edit::QuarkWindow::ReleaseSceneData()
 	mesh_datas_.swap(std::vector<meshData>());
 	scene_.swap(std::shared_ptr<qe::core::Scene>());
 
+    camera_controller_.swap(std::shared_ptr<qe::core::CameraController>());
+
+    behaviours_.clear();
+
     frame_count_ = 0;
     fps_number_ = 0;
 
@@ -837,9 +886,7 @@ void qe::edit::QuarkWindow::ReleaseSceneData()
     key_press_ = false;
     init_mouse_pos_ = false;
 
-    camera_controller_.swap(std::make_shared<qe::edit::CameraController>());
-
-    InitCamera(this->geometry().width(), this->geometry().height());
+    SetCameraAspect(this->geometry().width(), this->geometry().height());
 }
 
 bool qe::edit::QuarkWindow::event(QEvent * ev)
@@ -893,11 +940,19 @@ bool qe::edit::QuarkWindow::event(QEvent * ev)
     return false;
 }
 
-void qe::edit::QuarkWindow::InitCamera(const int & width, const int & height)
+void qe::edit::QuarkWindow::SetCameraAspect(const int & width, const int & height)
 {
     if (height <= 0) return;
 
-    camera_controller_->UpdateProjectionRatio((float)width / height);
+    if (!camera_controller_) return;
+
+    auto camera = camera_controller_->get_camera();
+
+    if (!camera) return;
+
+    camera->set_rect(qe::core::Rect(0.0, 0.0, width, height));
+
+    camera->set_aspect((float)width / height);
 
     if (!scene_) return;
 

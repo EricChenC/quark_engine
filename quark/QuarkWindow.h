@@ -31,6 +31,8 @@ namespace qe {
         class MeshRenderer;
         class Shader;
         class ScriptBehaviour;
+        class Camera;
+        class CameraController;
     }
 
     namespace render {
@@ -41,7 +43,6 @@ namespace qe {
     }
 
     namespace edit {
-        class CameraController;
 
         class QuarkWindow : public QWindow, public EditObject
         {
@@ -136,7 +137,7 @@ namespace qe {
 
 
         private:
-            void DrawScene(std::shared_ptr<qe::core::Scene> scene);
+            void LoadSceneReadyRender(std::shared_ptr<qe::core::Scene> scene);
 
             void LoadQuarkObject(
                 std::shared_ptr<qe::core::QuarkObject> quark_object,
@@ -169,12 +170,12 @@ namespace qe {
 
 			void ReleaseRenderData();
 
-            void InitCamera(const int& width, const int& height);
+            void SetCameraAspect(const int& width, const int& height);
        
         private:
             std::shared_ptr<qe::render::vulkan::VulkanDevice> vi_device_;
             std::shared_ptr<qe::core::Resource> resource_;
-            std::shared_ptr<qe::edit::CameraController> camera_controller_;
+            std::shared_ptr<qe::core::CameraController> camera_controller_;
 
             vk::Buffer ubo_buffer_;
             vk::DeviceMemory ubo_buffer_memory_;
@@ -210,6 +211,8 @@ namespace qe {
 
             std::shared_ptr<qe::core::Scene> scene_;
 
+            std::shared_ptr<qe::core::Camera> camera_;
+
             std::string kShaderPath;
 
             std::string kShaderPre;
@@ -224,8 +227,10 @@ namespace qe {
             float key_press_time_;
 
             bool is_update_material_;
+            bool left_button_press_;
             bool right_button_press_;
             bool middle_button_press_;
+            bool alt_button_press_;
             bool key_press_;
             bool init_mouse_pos_;
 

@@ -4,14 +4,38 @@
 #include "Scene.h"
 #include "Shader.h"
 #include "QuarkObject.h"
+#include "Color.h"
 
 // init static camera pointer list
 std::list<qe::core::Camera*> qe::core::Camera::cameras;
 
 
 qe::core::Camera::Camera()
-    :transparency_sort_axis_(0, 0, 1)
+    :allow_dynamic_resolution_(false)
+    , allow_hdr_(false)
+    , allow_msaa_(false)
+    , ortho_graphic_(false)
+    , ortho_graphic_size_(1.0f)
+    , use_occlusion_culling_(false)
+    , use_physical_properties_(false)
+    , aspect_(1.0f)
+    , depth_(1.0f)
+    , near_clip_plane_(0.01f)
+    , far_clip_plane_(1000.0f)
+    , field_of_view_(45.0f)
+    , culling_mask_(1.0f)
+    , pixel_rect_(0.0f, 0.0f, 800.0f, 600.0f)
+    , rect_(0.0f, 0.0f, 800.0f, 600.0f)
+    , target_deisplay_(0)
+    , background_color_(nullptr)
+    , camera_type_(CameraType::SCENEVIEW)
+    , clear_flags_(ClearFlags::SOLIDCOLOR)
+    , culling_matrix_(1.0f)
+    , transparency_sort_axis_(0, 0, 1)
+    , velocity_(1.0f)
+    , transparency_sort_mode_(TransparencySortMode::DEFAULT)
 {
+    target_texture_ = std::make_shared<RenderTexture>();
     cameras.push_back(this);
 }
 
