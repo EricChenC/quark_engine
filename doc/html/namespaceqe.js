@@ -5,6 +5,7 @@ var namespaceqe =
       [ "AwakeBehaviour", "classqe_1_1core_1_1_awake_behaviour.html", "classqe_1_1core_1_1_awake_behaviour" ],
       [ "Behaviour", "classqe_1_1core_1_1_behaviour.html", "classqe_1_1core_1_1_behaviour" ],
       [ "Camera", "classqe_1_1core_1_1_camera.html", "classqe_1_1core_1_1_camera" ],
+      [ "CameraController", "classqe_1_1core_1_1_camera_controller.html", "classqe_1_1core_1_1_camera_controller" ],
       [ "Color", "classqe_1_1core_1_1_color.html", "classqe_1_1core_1_1_color" ],
       [ "Component", "classqe_1_1core_1_1_component.html", "classqe_1_1core_1_1_component" ],
       [ "CoreObject", "classqe_1_1core_1_1_core_object.html", "classqe_1_1core_1_1_core_object" ],
@@ -32,7 +33,6 @@ var namespaceqe =
       [ "Transform", "classqe_1_1core_1_1_transform.html", "classqe_1_1core_1_1_transform" ]
     ] ],
     [ "edit", null, [
-      [ "CameraController", "classqe_1_1edit_1_1_camera_controller.html", "classqe_1_1edit_1_1_camera_controller" ],
       [ "EditObject", "classqe_1_1edit_1_1_edit_object.html", "classqe_1_1edit_1_1_edit_object" ],
       [ "MainWindow", "classqe_1_1edit_1_1_main_window.html", "classqe_1_1edit_1_1_main_window" ],
       [ "QuarkWindow", "classqe_1_1edit_1_1_quark_window.html", "classqe_1_1edit_1_1_quark_window" ]

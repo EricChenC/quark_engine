@@ -9,7 +9,8 @@ var hierarchy =
           [ "qe::core::Behaviour", "classqe_1_1core_1_1_behaviour.html", [
             [ "qe::core::Camera", "classqe_1_1core_1_1_camera.html", null ],
             [ "qe::core::ScriptBehaviour", "classqe_1_1core_1_1_script_behaviour.html", [
-              [ "qe::core::AwakeBehaviour", "classqe_1_1core_1_1_awake_behaviour.html", null ]
+              [ "qe::core::AwakeBehaviour", "classqe_1_1core_1_1_awake_behaviour.html", null ],
+              [ "qe::core::CameraController", "classqe_1_1core_1_1_camera_controller.html", null ]
             ] ]
           ] ],
           [ "qe::core::Light", "classqe_1_1core_1_1_light.html", null ],
@@ -43,7 +44,6 @@ var hierarchy =
         ] ]
       ] ],
       [ "qe::edit::EditObject", "classqe_1_1edit_1_1_edit_object.html", [
-        [ "qe::edit::CameraController", "classqe_1_1edit_1_1_camera_controller.html", null ],
         [ "qe::edit::MainWindow", "classqe_1_1edit_1_1_main_window.html", null ],
         [ "qe::edit::QuarkWindow", "classqe_1_1edit_1_1_quark_window.html", null ]
       ] ],

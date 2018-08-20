@@ -1,7 +1,7 @@
 var searchData=
 [
   ['camera',['Camera',['../classqe_1_1core_1_1_camera.html',1,'qe::core::Camera'],['../classqe_1_1core_1_1_camera.html#a861195e8930f0fffc35b15a1faa77c20',1,'qe::core::Camera::Camera()']]],
-  ['cameracontroller',['CameraController',['../classqe_1_1edit_1_1_camera_controller.html',1,'qe::edit']]],
+  ['cameracontroller',['CameraController',['../classqe_1_1core_1_1_camera_controller.html',1,'qe::core']]],
   ['cameras',['cameras',['../classqe_1_1core_1_1_camera.html#ae2ea6a410977154885045cb8f92e54e6',1,'qe::core::Camera']]],
   ['cameratoworldmatrix',['CameraToWorldMatrix',['../classqe_1_1core_1_1_camera.html#a9f9847b1e8c089e877964f284e993724',1,'qe::core::Camera']]],
   ['color',['Color',['../classqe_1_1core_1_1_color.html',1,'qe::core']]],
