@@ -8,6 +8,8 @@
 #include <QKeyEvent>
 #include <qtimer.h>
 #include <QTime>
+#include <qcursor.h>
+#include <qpixmap.h>
 
 #include <qmimedata.h>
 
@@ -52,7 +54,9 @@ qe::edit::QuarkWindow::QuarkWindow()
     , init_mouse_pos_(false)
     , kShaderPath("D:/project/quark_engine/media/shader/standard.shader")
 {
-
+    eye_lookat_cursor_ = std::make_shared<QCursor>(QPixmap("D:/project/quark_engine/media/image/eye_lookat.png"));
+    eye_rotate_cursor_ = std::make_shared<QCursor>(QPixmap("D:/project/quark_engine/media/image/eye_rotate.png"));
+    eye_smooth_cursor_ = std::make_shared<QCursor>(QPixmap("D:/project/quark_engine/media/image/eye_smooth.png"));
 }
 
 qe::edit::QuarkWindow::~QuarkWindow()
@@ -72,12 +76,16 @@ void qe::edit::QuarkWindow::Init()
 
 void qe::edit::QuarkWindow::resizeEvent(QResizeEvent * event)
 {
+    if (!scene_) return;
+
     auto size = event->size();
     SetCameraAspect(size.width(), size.height());
 }
 
 void qe::edit::QuarkWindow::mouseMoveEvent(QMouseEvent * event)
 {
+
+    if (!scene_) return;
 
     if (!left_button_press_ && !right_button_press_ && !middle_button_press_) {
         return;
@@ -95,13 +103,13 @@ void qe::edit::QuarkWindow::mouseMoveEvent(QMouseEvent * event)
 
     if (alt_button_press_) {
         if (left_button_press_) {
-            this->setCursor(Qt::SizeHorCursor);
+            this->setCursor(*(eye_lookat_cursor_.get()));
             camera_controller_->LookAtRotate(move_span);
         }
 
         if (right_button_press_) {
 
-            this->setCursor(Qt::UpArrowCursor);
+            this->setCursor(*(eye_smooth_cursor_.get()));
 
             if (move_span.y > 0) {
                 camera_controller_->SmoothZoom(-delta_time_);
@@ -126,6 +134,8 @@ void qe::edit::QuarkWindow::mouseMoveEvent(QMouseEvent * event)
 
 void qe::edit::QuarkWindow::mousePressEvent(QMouseEvent * event)
 {
+    if (!scene_) return;
+
     switch (event->button())
     {
     case Qt::LeftButton:
@@ -136,13 +146,13 @@ void qe::edit::QuarkWindow::mousePressEvent(QMouseEvent * event)
     case Qt::RightButton:
     {
         right_button_press_ = true;
-        this->setCursor(Qt::SplitVCursor);
+        this->setCursor(*(eye_rotate_cursor_.get()));
         break;
     }
     case Qt::MiddleButton:
     {
         middle_button_press_ = true;
-        this->setCursor(Qt::SizeAllCursor);
+        this->setCursor(Qt::OpenHandCursor);
         break;
     }
     default:
@@ -152,6 +162,8 @@ void qe::edit::QuarkWindow::mousePressEvent(QMouseEvent * event)
 
 void qe::edit::QuarkWindow::mouseReleaseEvent(QMouseEvent * event)
 {
+    if (!scene_) return;
+
     switch (event->button())
     {
     case Qt::LeftButton:
@@ -180,6 +192,8 @@ void qe::edit::QuarkWindow::mouseReleaseEvent(QMouseEvent * event)
 
 void qe::edit::QuarkWindow::wheelEvent(QWheelEvent * event)
 {
+    if (!scene_) return;
+
     if (event->angleDelta().y() > 0 || event->angleDelta().x() > 0) {
         camera_controller_->ShrinkMove(-delta_time_ * 0.1);
     }
@@ -190,6 +204,7 @@ void qe::edit::QuarkWindow::wheelEvent(QWheelEvent * event)
 
 void qe::edit::QuarkWindow::keyPressEvent(QKeyEvent * event)
 {
+    if (!scene_) return;
 
     if (!key_press_) {
         key_press_ = true;
@@ -242,7 +257,8 @@ void qe::edit::QuarkWindow::keyPressEvent(QKeyEvent * event)
 
 void qe::edit::QuarkWindow::keyReleaseEvent(QKeyEvent * event)
 {
-    if (event->isAutoRepeat()) return;
+
+    if (!scene_ || event->isAutoRepeat()) return;
 
     key_press_ = false;
 
@@ -820,10 +836,6 @@ void qe::edit::QuarkWindow::LoadScene(const std::string & scene_path)
 
     ReleaseScene();
 
-    scene_ = std::make_shared<qe::core::Scene>();
-
-    auto root = std::dynamic_pointer_cast<qe::core::QuarkObject>(resource_->Load(file_name_splits[1]));
-
     auto camera_object = std::make_shared<qe::core::QuarkObject>();
 
     camera_ = camera_object->AddComponent<qe::core::Camera>();
@@ -835,6 +847,10 @@ void qe::edit::QuarkWindow::LoadScene(const std::string & scene_path)
     camera_controller_ = camera_object->AddComponent<qe::core::CameraController>();
 
     behaviours_.push_back(camera_controller_);
+
+    scene_ = std::make_shared<qe::core::Scene>();
+
+    auto root = std::dynamic_pointer_cast<qe::core::QuarkObject>(resource_->Load(file_name_splits[1]));
 
     scene_->AddRoot(root);
 

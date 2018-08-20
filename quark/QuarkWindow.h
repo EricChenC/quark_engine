@@ -17,6 +17,7 @@ class QWheelEvent;
 class QKeyEvent;
 class QEvent;
 class QTimer;
+class QCursor;
 
 namespace qe {
     namespace core {
@@ -208,6 +209,12 @@ namespace qe {
             std::vector<std::shared_ptr<qe::core::ScriptBehaviour>>  behaviours_;
 
             std::shared_ptr<QTimer> graphics_timer_;
+
+            std::shared_ptr<QCursor> eye_lookat_cursor_;
+
+            std::shared_ptr<QCursor> eye_rotate_cursor_;
+
+            std::shared_ptr<QCursor> eye_smooth_cursor_;
 
             std::shared_ptr<qe::core::Scene> scene_;
 

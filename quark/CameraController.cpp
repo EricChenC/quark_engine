@@ -119,7 +119,6 @@ void qe::core::CameraController::UpdateViewMatrix()
     lookat_rotate = glm::rotate(lookat_rotate, glm::radians(lookat_rotate_.y), glm::vec3(0.0f, 1.0f, 0.0f));
     lookat_rotate = glm::rotate(lookat_rotate, glm::radians(lookat_rotate_.z), glm::vec3(0.0f, 0.0f, 1.0f));
 
-
     world_rotate = glm::rotate(world_rotate, glm::radians(world_rotate_.x), glm::vec3(1.0f, 0.0f, 0.0f));
     world_rotate = glm::rotate(world_rotate, glm::radians(world_rotate_.y), glm::vec3(0.0f, 1.0f, 0.0f));
     world_rotate = glm::rotate(world_rotate, glm::radians(world_rotate_.z), glm::vec3(0.0f, 0.0f, 1.0f));
