@@ -19,7 +19,3 @@ qe::core::Color::~Color()
 
 }
 
-glm::vec4 qe::core::Color::get_glm_color(const Color & color)
-{
-    return glm::vec4(color.r_, color.g_, color.b_, color.a_);
-}

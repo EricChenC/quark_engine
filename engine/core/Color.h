@@ -81,10 +81,6 @@ namespace qe {
 
             inline void set_a(const float& a){ a_ = a; }
 
-        // methods
-        public:
-            glm::vec4 get_glm_color(const Color& color);
-
         private:
             float r_;
             float g_;
