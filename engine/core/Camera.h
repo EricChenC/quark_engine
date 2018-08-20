@@ -22,7 +22,7 @@ namespace qe {
 
         /// <summary>
         /// A Camera is a device through which the player views the world.  
-        ///A screen space point is defined in pixels.The bottom - left of the screen is(0, 0); the right - top is(pixelWidth, pixelHeight).The z position is in world units from the Camera.  
+        ///A screen space point is defined in pixels.The bottom - left of the screen is(0, 0); the right - top is(pixelWidth, pixelHeight).The -z position is in world units from the Camera.  
         /// </summary>
         /// <seealso cref="Behaviour" />
         class DLL_EXPORT Camera : public Behaviour {
