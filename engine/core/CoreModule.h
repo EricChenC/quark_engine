@@ -105,14 +105,14 @@ namespace qe {
         enum class KeyCode
         {
             NONE,           // not assigned
-            BACKSPACE,      // backspace key
-            DELETE,         // delete key
-            TAB,            // tab key
-            CLEAR,          // clear key
-            RETURN,         // return key
-            PAUSE,          // Pause on PC machines
-            ESCAPE,         // escape key
-            SPACE,          // space key
+            KEYBACKSPACE,      // backspace key
+            KEYDELETE,         // delete key
+            KEYTAB,            // tab key
+            KEYCLEAR,          // clear key
+            KEYRETURN,         // return key
+            KEYPAUSE,          // Pause on PC machines
+            KEYESCAPE,         // escape key
+            KEYSPACE,          // space key
             KEYPAD0,        // Numeric keypad 0
             KEYPAD1,        // Numeric keypad 1
             KEYPAD2,        // Numeric keypad 2

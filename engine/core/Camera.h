@@ -68,11 +68,6 @@ namespace qe {
         public:
 
             /// <summary>
-            /// Save the scene all cameras.
-            /// </summary>
-            static std::list<Camera*> cameras;
-
-            /// <summary>
             /// Gets all enabled camera in scene.
             /// </summary>
             /// <returns></returns>
@@ -485,6 +480,13 @@ namespace qe {
             /// <param name="pos">The position.</param>
             /// <returns></returns>
             auto ScreenPointToRay(const glm::vec3& pos)->Ray;
+
+            /// static properties
+        private:
+            /// <summary>
+            /// Save the scene all cameras.
+            /// </summary>
+            static std::list<Camera*> cameras;
 
         private:
             std::list<AwakeFP> awake_functions_;
