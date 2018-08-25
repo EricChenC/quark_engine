@@ -15,7 +15,7 @@ void main()
 
     // Light emission properties
     vec3 light_color = vec3(1,1,1);
-    float light_power = 0.75f;
+    float light_power = 1.0f;
     
     // Material properties
     vec3 material_diffuse_color = vec3(1.0, 1.0, 1.0);
@@ -46,13 +46,18 @@ void main()
     //  - Looking elsewhere -> < 1
     float cos_alpha = clamp( dot( -l, -e ), 0, 1 );
         
+    float am = dot(vec3(0.4, 0.0, 0.0), normal_world_space);
+    
+    material_ambient_color *= am; // for fixed cube edge can't see problem
+
+
     vec3 color = 
         // Ambient : simulates indirect lighting
         material_ambient_color +
         // Diffuse : "color" of the object
         material_diffuse_color * light_color * light_power * cos_theta +
         // Specular : reflective highlight, like a mirror
-        material_specular_color * light_color * light_power * pow(cos_alpha, 1);
+        material_specular_color * light_color * light_power * pow(cos_alpha, 5);
     
     
     out_frag_cColor = vec4(color, 1.0f);
