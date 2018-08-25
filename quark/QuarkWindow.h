@@ -103,12 +103,71 @@ namespace qe {
             };
 
         public:
+
+            void Awake();
+            void OnEnable();
+            void Start();
+            void Reset();
+            void FixedUpdate();
+            void Update();
+            void LateUpdate();
+            void OnWillRenderObject();
+            void OnPreCull();
+            void OnBecameVisible();
+            void OnBecameInvisible();
+            void OnPreRender();
+            void OnRenderObject();
+            void OnPostRender();
+            void OnRenderImage();
+            void OnDrawGizmos();
+            void OnGUI();
+            void OnApplicationPause();
+            void OnApplicationQuit();
+            void OnDisable();
+            void OnDestroy();
+
+
+            void OnAnimatorIK();
+            void OnAnimatorMove();
+            void OnApplicationFocus();
+            void OnApplicationPause();
+            void OnApplicationQuit();
+            void OnAudioFilterRead();
+            void OnCollisionEnter();
+            void OnCollisionExit();
+            void OnCollisionStay();
+            void OnConnectToServer();
+            void OnControllerColliderHit();
+            void OnDisconnectedFromServer();
+            void OnDrawGizmosSelected();
+            void OnFailedToConnect();
+            void OnFailedToConnectToMasterServer();
+            void OnGUI();
+            void OnJointBreak();
+            void OnMasterServerEvent();
+            void OnMouseDown();
+            void OnMouseDrag();
+            void OnMouseEnter();
+            void OnMouseExit();
+            void OnMouseOver();
+            void OnMouseUp();
+            void OnParticleCollision();
+            void OnParticleTrigger();
+            void OnPlayerConnected();
+            void OnPlayerDisconnected();
+            void OnTriggerEnter();
+            void OnTriggerExit();
+            void OnTriggerStay();
+
+
+
+
+
+        public:
             explicit QuarkWindow();
             ~QuarkWindow();
 
             void Init();
-
-            void Awake();
 
             void UpdateBehaviour();
 

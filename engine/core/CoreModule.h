@@ -428,6 +428,166 @@ namespace qe {
         };
 
 
+        class Time {
+        public:
+            static auto get_capture_frame_rate() -> const int& { return capture_frame_rate_; }
+
+            static void set_capture_frame_rate(const int& rate) { capture_frame_rate_ = rate; }
+
+            static auto get_delta_time() -> const float& { return delta_time_; }
+
+            static void set_delta_time(const float& time) { delta_time_ = time; }
+
+            static auto get_fixed_delta_time() -> const float& { return fixed_delta_time_; }
+
+            static void set_fixed_delta_time(const float& time) { fixed_delta_time_ = time; }
+
+            static auto get_fixed_time() -> const float& { return fixed_time_; }
+
+            static void set_fixed_time(const float& time) { fixed_time_ = time; }
+
+            static auto get_fixed_unscaled_delta_time() -> const float& { return fixed_unscaled_delta_time_; }
+
+            static void set_fixed_unscaled_delta_time(const float& time) { fixed_unscaled_delta_time_ = time; }
+
+            static auto get_fixed_unscaled_time() -> const float& { return fixed_unscaled_time_; }
+
+            static void set_fixed_unscaled_time(const float& time) { fixed_unscaled_time_ = time; }
+
+            static auto get_frame_count() -> const int& { return frame_count_; }
+
+            static void set_frame_count(const int& count) { frame_count_ = count; }
+
+            static auto get_in_fixed_time_step() -> const bool& { return in_fixed_time_step_; }
+
+            static void set_in_fixed_time_step(const bool& step) { in_fixed_time_step_ = step; }
+
+            static auto get_maximum_delta_time() -> const float& { return maximum_delta_time_; }
+
+            static void set_maximum_delta_time(const float& time) { maximum_delta_time_ = time; }
+
+            static auto get_maximum_particle_delta_time() -> const float& { return maximum_particle_delta_time_; }
+
+            static void set_maximum_particle_delta_time(const float& time) { maximum_particle_delta_time_ = time; }
+
+            static auto get_realtime_since_startup() -> const float& { return realtime_since_startup_; }
+
+            static void set_realtime_since_startup(const float& time) { realtime_since_startup_ = time; }
+
+            static auto get_smooth_delta_time() -> const float& { return smooth_delta_time_; }
+
+            static void set_smooth_delta_time(const float& time) { smooth_delta_time_ = time; }
+
+            static auto get_time() -> const float& { return time_; }
+
+            static void set_time(const float& time) { time_ = time; }
+
+            static auto get_time_scale() -> const float& { return time_scale_; }
+
+            static void set_time_scale(const float& scale) { time_scale_ = scale; }
+
+            static auto get_time_since_level_load() -> const float& { return time_since_level_load_; }
+
+            static void set_time_since_level_load(const float& time) { time_since_level_load_ = time; }
+
+            static auto get_unscaled_delta_time() -> const float& { return unscaled_delta_time_; }
+
+            static void set_unscaled_delta_time(const float& time) { unscaled_delta_time_ = time; }
+
+            static auto get_unscaled_time() -> const float& { return unscaled_time_; }
+
+            static void set_unscaled_time(const float& time) { unscaled_time_ = time; }
+            
+
+        private:
+            /// <summary>
+            /// Slows game playback time to allow screenshots to be saved between frames.
+            /// </summary>
+            static int capture_frame_rate_;
+
+            /// <summary>
+            /// The time in seconds it took to complete the last frame (Read Only).
+            /// </summary>
+            static float delta_time_;
+
+            /// <summary>
+            /// The interval in seconds at which physics and other fixed frame rate updates (like MonoBehaviour's FixedUpdate) are performed.
+            /// </summary>
+            static float fixed_delta_time_;
+
+            /// <summary>
+            /// The time the latest FixedUpdate has started (Read Only). This is the time in seconds since the start of the game.
+            /// </summary>
+            static float fixed_time_;
+
+            /// <summary>
+            /// The timeScale-independent interval in seconds from the last fixed frame to the current one (Read Only).
+            /// </summary>
+            static float fixed_unscaled_delta_time_;
+
+            /// <summary>
+            /// The TimeScale-independant time the latest FixedUpdate has started (Read Only). This is the time in seconds since the start of the game.
+            /// </summary>
+            static float fixed_unscaled_time_;
+
+            /// <summary>
+            /// The total number of frames that have passed (Read Only).
+            /// </summary>
+            static int frame_count_;
+
+            /// <summary>
+            /// Returns true if called inside a fixed time step callback (like MonoBehaviour's FixedUpdate), otherwise returns false.
+            /// </summary>
+            static bool in_fixed_time_step_;
+
+            /// <summary>
+            /// The maximum time a frame can take. Physics and other fixed frame rate updates (like MonoBehaviour's FixedUpdate).
+            /// </summary>
+            static float maximum_delta_time_;
+
+            /// <summary>
+            /// The maximum time a frame can spend on particle updates. If the frame takes longer than this, then updates are split into multiple smaller updates.
+            /// </summary>
+            static float maximum_particle_delta_time_;
+
+            /// <summary>
+            /// The real time in seconds since the game started (Read Only).
+            /// </summary>
+            static float realtime_since_startup_;
+
+            /// <summary>
+            /// A smoothed out Time.deltaTime (Read Only).
+            /// </summary>
+            static float smooth_delta_time_;
+
+            /// <summary>
+            /// The time at the beginning of this frame (Read Only). This is the time in seconds since the start of the game.
+            /// </summary>
+            static float time_;
+
+            /// <summary>
+            /// The scale at which the time is passing. This can be used for slow motion effects.
+            /// </summary>
+            static float time_scale_;
+
+            /// <summary>
+            /// The time this frame has started (Read Only). This is the time in seconds since the last level has been loaded.
+            /// </summary>
+            static float time_since_level_load_;
+
+            /// <summary>
+            /// The timeScale-independent interval in seconds from the last frame to the current one (Read Only).
+            /// </summary>
+            static float unscaled_delta_time_;
+
+            /// <summary>
+            /// The timeScale-independant time for this frame (Read Only). This is the time in seconds since the start of the game.
+            /// </summary>
+            static float unscaled_time_;
+
+        };
+
+
     }
 }
 

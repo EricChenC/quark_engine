@@ -45,12 +45,6 @@ namespace qe {
             /// <param name="">The .</param>
             void AddRoot(std::shared_ptr<qe::core::QuarkObject> root);
 
-
-        private:
-
-
-
-
         private:
             std::list<AwakeFP> awake_functions_;
 
