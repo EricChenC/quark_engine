@@ -4,7 +4,6 @@
 #include "Scene.h"
 #include "Shader.h"
 #include "QuarkObject.h"
-#include "Color.h"
 
 // init static camera pointer list
 std::list<qe::core::Camera*> qe::core::Camera::cameras_;

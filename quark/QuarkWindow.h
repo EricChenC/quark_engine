@@ -130,8 +130,6 @@ namespace qe {
             void OnAnimatorIK();
             void OnAnimatorMove();
             void OnApplicationFocus();
-            void OnApplicationPause();
-            void OnApplicationQuit();
             void OnAudioFilterRead();
             void OnCollisionEnter();
             void OnCollisionExit();
@@ -142,7 +140,6 @@ namespace qe {
             void OnDrawGizmosSelected();
             void OnFailedToConnect();
             void OnFailedToConnectToMasterServer();
-            void OnGUI();
             void OnJointBreak();
             void OnMasterServerEvent();
             void OnMouseDown();

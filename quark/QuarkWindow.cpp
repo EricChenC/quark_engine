@@ -30,7 +30,6 @@
 #include "Shader.h"
 #include "ScriptBehaviour.h"
 #include "Camera.h"
-#include "Color.h"
 
 #include <iostream>
 

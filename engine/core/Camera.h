@@ -14,7 +14,6 @@ namespace qe {
     namespace core {
 
         class RenderTexture;
-        class Color;
         class Scene;
         class Shader;
 
