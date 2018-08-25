@@ -10,6 +10,9 @@
 #include "CoreObject.h"
 
 #include <vector>
+#include <list>
+
+typedef void(*AwakeFP)();
 
 namespace qe {
     namespace core {
@@ -41,6 +44,16 @@ namespace qe {
             /// </summary>
             /// <param name="">The .</param>
             void AddRoot(std::shared_ptr<qe::core::QuarkObject> root);
+
+
+        private:
+
+
+
+
+        private:
+            std::list<AwakeFP> awake_functions_;
+
 
         private:
             /// Saved this scene all quark object roots pointer.

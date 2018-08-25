@@ -7,26 +7,23 @@ layout(binding = 0) uniform UniformBufferObject {
 } ubo;
 
 layout(binding = 1) uniform UniformLightDir{
-    vec4 lightDir;
+    vec4 light_dir;
 } uld;
 
 layout(push_constant) uniform ModelMatrix {
     mat4 model;
 } mt;
 
-layout(location = 0) in vec3 inPosition;
-layout(location = 1) in vec3 inNormal;
-layout(location = 2) in vec2 inTexcoord;
+layout(location = 0) in vec3 in_position;
+layout(location = 1) in vec3 in_normal;
+layout(location = 2) in vec2 in_texcoord;
 
 
 // Output data ; will be interpolated for each fragment.
-layout (location = 0) out vec2 UV;
-layout (location = 1) out vec3 Position_worldspace;
-layout (location = 2) out vec3 Normal_cameraspace;
-layout (location = 3) out vec3 EyeDirection_cameraspace;
-layout (location = 4) out vec3 LightDirection_cameraspace;
-layout (location = 5) out vec3 outViewPos;
-
+layout (location = 0) out vec2 uv;
+layout (location = 1) out vec3 normal_world_space;
+layout (location = 2) out vec3 light_direction_world_space;
+layout (location = 3) out vec3 light_direction_camera_space;
 
 
 out gl_PerVertex {
@@ -37,23 +34,17 @@ out gl_PerVertex {
 void main()
 {
         // Output position of the vertex, in clip space : MVP * position
-    gl_Position =  ubo.proj * ubo.view * mt.model * vec4(inPosition,1);
-    
-    // Position of the vertex, in worldspace : M * position
-    Position_worldspace = (mt.model * vec4(inPosition,1)).xyz;
-    
-    // Vector that goes from the vertex to the camera, in camera space.
-    // In camera space, the camera is at the origin (0,0,0).
-    EyeDirection_cameraspace = vec3(0,0,0) - ( ubo.view * mt.model * vec4(inPosition,1)).xyz;
+    gl_Position =  ubo.proj * ubo.view * mt.model * vec4(in_position,1);
 
     // Vector that goes from the vertex to the light, in camera space
-    LightDirection_cameraspace = (uld.lightDir).xyz;
+    light_direction_world_space = (uld.light_dir).xyz;
+
+    light_direction_camera_space = (ubo.view * mt.model * uld.light_dir).xyz;
     
     // Normal of the the vertex, in camera space
-    Normal_cameraspace = ( ubo.view * mt.model * vec4(inNormal,0)).xyz; // Only correct if ModelMatrix does not scale the model ! Use its inverse transpose if not.
+    normal_world_space = (mt.model * vec4(in_normal,0)).xyz; 
     
     // UV of the vertex. No special space for this one.
-    UV = inTexcoord;
+    uv = in_texcoord;
     
-    outViewPos = (ubo.view * mt.model * vec4(inPosition.xyz, 1.0)).xyz;
 }

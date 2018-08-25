@@ -10,8 +10,6 @@
 #include <glm/glm.hpp>
 #include <list>
 
-typedef void(*AwakeFP)();
-
 namespace qe {
     namespace core {
 
@@ -486,10 +484,7 @@ namespace qe {
             /// <summary>
             /// Save the scene all cameras.
             /// </summary>
-            static std::list<Camera*> cameras;
-
-        private:
-            std::list<AwakeFP> awake_functions_;
+            static std::list<Camera*> cameras_;
 
         private:
             /// <summary>

@@ -7,7 +7,7 @@
 #include "Color.h"
 
 // init static camera pointer list
-std::list<qe::core::Camera*> qe::core::Camera::cameras;
+std::list<qe::core::Camera*> qe::core::Camera::cameras_;
 
 
 qe::core::Camera::Camera()
@@ -36,35 +36,35 @@ qe::core::Camera::Camera()
     , transparency_sort_mode_(TransparencySortMode::DEFAULT)
 {
     target_texture_ = std::make_shared<RenderTexture>();
-    cameras.push_back(this);
+    cameras_.push_back(this);
 }
 
 qe::core::Camera::~Camera()
 {
-    auto result = std::find(cameras.begin(), cameras.end(), this);
-    if (result != cameras.end()) {
-        cameras.erase(result);
+    auto result = std::find(cameras_.begin(), cameras_.end(), this);
+    if (result != cameras_.end()) {
+        cameras_.erase(result);
     }
 }
 
 auto qe::core::Camera::AllCamera() -> std::list<Camera*>
 {
-    return cameras;
+    return cameras_;
 }
 
 auto qe::core::Camera::AllCameraCount() -> int
 {
-    return cameras.size();
+    return cameras_.size();
 }
 
 auto qe::core::Camera::Current() -> Camera *
 {
-    return cameras.front();
+    return cameras_.front();
 }
 
 auto qe::core::Camera::MainCamera() -> Camera *
 {
-    return cameras.front();
+    return cameras_.front();
 }
 
 auto qe::core::Camera::ActiveTexture() -> std::shared_ptr<RenderTexture>
