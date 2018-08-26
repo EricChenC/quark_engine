@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "qe::core::Color", "structqe_1_1core_1_1_color.html", null ],
+    [ "qe::core::LightBakingOutput", "structqe_1_1core_1_1_light_baking_output.html", null ],
     [ "qe::edit::QuarkWindow::ModelMatrix", "structqe_1_1edit_1_1_quark_window_1_1_model_matrix.html", null ],
     [ "qe::core::Object", "classqe_1_1core_1_1_object.html", [
       [ "qe::core::CoreObject", "classqe_1_1core_1_1_core_object.html", [
@@ -8,12 +9,11 @@ var hierarchy =
           [ "qe::core::Animation", "classqe_1_1core_1_1_animation.html", null ],
           [ "qe::core::Behaviour", "classqe_1_1core_1_1_behaviour.html", [
             [ "qe::core::Camera", "classqe_1_1core_1_1_camera.html", null ],
+            [ "qe::core::Light", "classqe_1_1core_1_1_light.html", null ],
             [ "qe::core::ScriptBehaviour", "classqe_1_1core_1_1_script_behaviour.html", [
-              [ "qe::core::AwakeBehaviour", "classqe_1_1core_1_1_awake_behaviour.html", null ],
               [ "qe::core::CameraController", "classqe_1_1core_1_1_camera_controller.html", null ]
             ] ]
           ] ],
-          [ "qe::core::Light", "classqe_1_1core_1_1_light.html", null ],
           [ "qe::core::MeshFilter", "classqe_1_1core_1_1_mesh_filter.html", null ],
           [ "qe::core::Renderer", "classqe_1_1core_1_1_renderer.html", [
             [ "qe::core::MeshRenderer", "classqe_1_1core_1_1_mesh_renderer.html", null ]

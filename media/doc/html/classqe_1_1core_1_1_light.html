@@ -89,6 +89,7 @@ $(document).ready(function(){initNavTree('classqe_1_1core_1_1_light.html','');})
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classqe_1_1core_1_1_light-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -101,20 +102,186 @@ Inheritance diagram for qe::core::Light:</div>
  <div class="center">
   <img src="classqe_1_1core_1_1_light.png" usemap="#qe::core::Light_map" alt=""/>
   <map id="qe::core::Light_map" name="qe::core::Light_map">
+<area href="classqe_1_1core_1_1_behaviour.html" alt="qe::core::Behaviour" shape="rect" coords="0,168,128,192"/>
 <area href="classqe_1_1core_1_1_component.html" alt="qe::core::Component" shape="rect" coords="0,112,128,136"/>
 <area href="classqe_1_1core_1_1_core_object.html" alt="qe::core::CoreObject" shape="rect" coords="0,56,128,80"/>
 <area href="classqe_1_1core_1_1_object.html" alt="qe::core::Object" shape="rect" coords="0,0,128,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a0be52d6589506e9af1d5109714f502e3"><td class="memItemLeft" align="right" valign="top"><a id="a0be52d6589506e9af1d5109714f502e3"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>LightType</b> { <b>SPOT</b>, 
+<b>DIRECTIONAL</b>, 
+<b>POINT</b>, 
+<b>AREA</b>
+ }</td></tr>
+<tr class="separator:a0be52d6589506e9af1d5109714f502e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44c9b921256a97bd774c33d42b9cb83c"><td class="memItemLeft" align="right" valign="top"><a id="a44c9b921256a97bd774c33d42b9cb83c"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>LightShadows</b> { <b>NONE</b>, 
+<b>HARD</b>, 
+<b>SOFT</b>
+ }</td></tr>
+<tr class="separator:a44c9b921256a97bd774c33d42b9cb83c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a7b30072e1154057237bc4ea0b55cf68d"><td class="memItemLeft" align="right" valign="top"><a id="a7b30072e1154057237bc4ea0b55cf68d"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_area_size</b> () const -&gt; const glm::vec2 &amp;</td></tr>
+<tr class="separator:a7b30072e1154057237bc4ea0b55cf68d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae534e632b9086b3a7853556cb2e0e926"><td class="memItemLeft" align="right" valign="top"><a id="ae534e632b9086b3a7853556cb2e0e926"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_area_size</b> (const glm::vec2 &amp;size)</td></tr>
+<tr class="separator:ae534e632b9086b3a7853556cb2e0e926"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33cc91385df90704b9ba9bd38edab232"><td class="memItemLeft" align="right" valign="top"><a id="a33cc91385df90704b9ba9bd38edab232"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_baking_output</b> () const -&gt; const <a class="el" href="structqe_1_1core_1_1_light_baking_output.html">LightBakingOutput</a> &amp;</td></tr>
+<tr class="separator:a33cc91385df90704b9ba9bd38edab232"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b2976785c97a22effa85b74256704a1"><td class="memItemLeft" align="right" valign="top"><a id="a4b2976785c97a22effa85b74256704a1"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_baking_output</b> (const <a class="el" href="structqe_1_1core_1_1_light_baking_output.html">LightBakingOutput</a> &amp;output)</td></tr>
+<tr class="separator:a4b2976785c97a22effa85b74256704a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13e0662fc10286163855bbde32d6c6f8"><td class="memItemLeft" align="right" valign="top"><a id="a13e0662fc10286163855bbde32d6c6f8"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_bounce_intensity</b> () const -&gt; const float &amp;</td></tr>
+<tr class="separator:a13e0662fc10286163855bbde32d6c6f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9df8676ba78b36b5be7fbafbe0f5281"><td class="memItemLeft" align="right" valign="top"><a id="af9df8676ba78b36b5be7fbafbe0f5281"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_bounce_intensity</b> (const float &amp;intensity)</td></tr>
+<tr class="separator:af9df8676ba78b36b5be7fbafbe0f5281"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7660c2365796cecd78d79d9506bc0575"><td class="memItemLeft" align="right" valign="top"><a id="a7660c2365796cecd78d79d9506bc0575"></a>
 auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_color</b> () const -&gt; const std::shared_ptr&lt; <a class="el" href="structqe_1_1core_1_1_color.html">Color</a> &gt; &amp;</td></tr>
 <tr class="separator:a7660c2365796cecd78d79d9506bc0575"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2d10094e6d8c6d811ec40301e5e7c01"><td class="memItemLeft" align="right" valign="top"><a id="ac2d10094e6d8c6d811ec40301e5e7c01"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_color</b> (const std::shared_ptr&lt; <a class="el" href="structqe_1_1core_1_1_color.html">Color</a> &gt; &amp;color)</td></tr>
-<tr class="separator:ac2d10094e6d8c6d811ec40301e5e7c01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab1355eb87facd378c070dd5b209c336"><td class="memItemLeft" align="right" valign="top"><a id="aab1355eb87facd378c070dd5b209c336"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_color</b> (const std::shared_ptr&lt; <a class="el" href="structqe_1_1core_1_1_color.html">Color</a> &gt; &amp;color)</td></tr>
+<tr class="separator:aab1355eb87facd378c070dd5b209c336"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a316039519acd5ad9a29b084a9d88f8"><td class="memItemLeft" align="right" valign="top"><a id="a5a316039519acd5ad9a29b084a9d88f8"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_color_temperature</b> () const -&gt; const float &amp;</td></tr>
+<tr class="separator:a5a316039519acd5ad9a29b084a9d88f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01057871606181ff3aae7e34d00aba2b"><td class="memItemLeft" align="right" valign="top"><a id="a01057871606181ff3aae7e34d00aba2b"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_color_temperature</b> (const float &amp;temperature)</td></tr>
+<tr class="separator:a01057871606181ff3aae7e34d00aba2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a993f889770c415f5803dd6276ba60ed0"><td class="memItemLeft" align="right" valign="top"><a id="a993f889770c415f5803dd6276ba60ed0"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_cookie</b> () const -&gt; const std::shared_ptr&lt; <a class="el" href="classqe_1_1core_1_1_texture.html">Texture</a> &gt; &amp;</td></tr>
+<tr class="separator:a993f889770c415f5803dd6276ba60ed0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a139df515c39f8b06976ce9eca6c94520"><td class="memItemLeft" align="right" valign="top"><a id="a139df515c39f8b06976ce9eca6c94520"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_cookie</b> (const std::shared_ptr&lt; <a class="el" href="classqe_1_1core_1_1_texture.html">Texture</a> &gt; &amp;cookie)</td></tr>
+<tr class="separator:a139df515c39f8b06976ce9eca6c94520"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af40a66d620da0952ebe357a1f3e84115"><td class="memItemLeft" align="right" valign="top"><a id="af40a66d620da0952ebe357a1f3e84115"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_cookie_size</b> () const -&gt; const float &amp;</td></tr>
+<tr class="separator:af40a66d620da0952ebe357a1f3e84115"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dba09fae72342595ca407b04f38e0ad"><td class="memItemLeft" align="right" valign="top"><a id="a5dba09fae72342595ca407b04f38e0ad"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_cookie_size</b> (const float &amp;size)</td></tr>
+<tr class="separator:a5dba09fae72342595ca407b04f38e0ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2d6ba454ec8d2e22b2356279f196fba"><td class="memItemLeft" align="right" valign="top"><a id="ae2d6ba454ec8d2e22b2356279f196fba"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_culling_mask</b> () const -&gt; const int &amp;</td></tr>
+<tr class="separator:ae2d6ba454ec8d2e22b2356279f196fba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af58b762fede778d6ac193df9bec3bcbc"><td class="memItemLeft" align="right" valign="top"><a id="af58b762fede778d6ac193df9bec3bcbc"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_culling_mask</b> (const int &amp;mask)</td></tr>
+<tr class="separator:af58b762fede778d6ac193df9bec3bcbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecd25c6ccdd298bf3eaa3459ba9b2106"><td class="memItemLeft" align="right" valign="top"><a id="aecd25c6ccdd298bf3eaa3459ba9b2106"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_intensity</b> () const -&gt; const float &amp;</td></tr>
+<tr class="separator:aecd25c6ccdd298bf3eaa3459ba9b2106"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affc9a47276a9b81cb8f7bd1a444a92a8"><td class="memItemLeft" align="right" valign="top"><a id="affc9a47276a9b81cb8f7bd1a444a92a8"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_intensity</b> (const float &amp;intensity)</td></tr>
+<tr class="separator:affc9a47276a9b81cb8f7bd1a444a92a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a389379b4906699f4286df9aaa804c911"><td class="memItemLeft" align="right" valign="top"><a id="a389379b4906699f4286df9aaa804c911"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_layer_shadow_cull_distances</b> () const -&gt; const std::list&lt; float &gt;</td></tr>
+<tr class="separator:a389379b4906699f4286df9aaa804c911"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9321a480a0e1730cc10e9ef849746ced"><td class="memItemLeft" align="right" valign="top"><a id="a9321a480a0e1730cc10e9ef849746ced"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_layer_shadow_cull_distances</b> (const std::list&lt; float &gt; distances)</td></tr>
+<tr class="separator:a9321a480a0e1730cc10e9ef849746ced"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43b3bb21ae61bd53f5cc99c911b85947"><td class="memItemLeft" align="right" valign="top"><a id="a43b3bb21ae61bd53f5cc99c911b85947"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_lightmap_back_type</b> () const -&gt; const LightmapBakeType &amp;</td></tr>
+<tr class="separator:a43b3bb21ae61bd53f5cc99c911b85947"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4c3ef5422af6a359062af47b0e841f8"><td class="memItemLeft" align="right" valign="top"><a id="af4c3ef5422af6a359062af47b0e841f8"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_lightmap_back_type</b> (const LightmapBakeType &amp;type)</td></tr>
+<tr class="separator:af4c3ef5422af6a359062af47b0e841f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97d78baff03f1693865133953e76a256"><td class="memItemLeft" align="right" valign="top"><a id="a97d78baff03f1693865133953e76a256"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_light_shadow_caster_mode</b> () const -&gt; const LightShadowCasterMode &amp;</td></tr>
+<tr class="separator:a97d78baff03f1693865133953e76a256"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad83ce4c53b5cfe83f3161d0900122d2c"><td class="memItemLeft" align="right" valign="top"><a id="ad83ce4c53b5cfe83f3161d0900122d2c"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_light_shadow_caster_mode</b> (const LightShadowCasterMode &amp;mode)</td></tr>
+<tr class="separator:ad83ce4c53b5cfe83f3161d0900122d2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37960077e23538bdef0b248c0571d35f"><td class="memItemLeft" align="right" valign="top"><a id="a37960077e23538bdef0b248c0571d35f"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_range</b> () const -&gt; const float &amp;</td></tr>
+<tr class="separator:a37960077e23538bdef0b248c0571d35f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70ac9779da597d2ad38ce466f1b8d051"><td class="memItemLeft" align="right" valign="top"><a id="a70ac9779da597d2ad38ce466f1b8d051"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_range</b> (const float &amp;range)</td></tr>
+<tr class="separator:a70ac9779da597d2ad38ce466f1b8d051"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab01b448708038ace3a1c6cc6ee7ffd6b"><td class="memItemLeft" align="right" valign="top"><a id="ab01b448708038ace3a1c6cc6ee7ffd6b"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_render_mode</b> () const -&gt; const LightRenderMode &amp;</td></tr>
+<tr class="separator:ab01b448708038ace3a1c6cc6ee7ffd6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace7b310987045137eab752ca0aff622a"><td class="memItemLeft" align="right" valign="top"><a id="ace7b310987045137eab752ca0aff622a"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_render_mode</b> (const LightRenderMode &amp;mode)</td></tr>
+<tr class="separator:ace7b310987045137eab752ca0aff622a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7a6c2828ad94d6089c769b6d32b52e0"><td class="memItemLeft" align="right" valign="top"><a id="ab7a6c2828ad94d6089c769b6d32b52e0"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_shadow_angle</b> () const -&gt; const float &amp;</td></tr>
+<tr class="separator:ab7a6c2828ad94d6089c769b6d32b52e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef072207987117a70421bdd46a38edb7"><td class="memItemLeft" align="right" valign="top"><a id="aef072207987117a70421bdd46a38edb7"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_shadow_angle</b> (const float &amp;angle)</td></tr>
+<tr class="separator:aef072207987117a70421bdd46a38edb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b00c7c73456e1d6ae0e16b1b0bec61d"><td class="memItemLeft" align="right" valign="top"><a id="a1b00c7c73456e1d6ae0e16b1b0bec61d"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_shadow_bias</b> () const -&gt; const float &amp;</td></tr>
+<tr class="separator:a1b00c7c73456e1d6ae0e16b1b0bec61d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f0f20d448818fe84e5e9719432fbbd0"><td class="memItemLeft" align="right" valign="top"><a id="a9f0f20d448818fe84e5e9719432fbbd0"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_shadow_bias</b> (const float &amp;bias)</td></tr>
+<tr class="separator:a9f0f20d448818fe84e5e9719432fbbd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a419f1f93a0c77dfcf8344b3ec415aec9"><td class="memItemLeft" align="right" valign="top"><a id="a419f1f93a0c77dfcf8344b3ec415aec9"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_shadow_custom_resolution</b> () const -&gt; const int &amp;</td></tr>
+<tr class="separator:a419f1f93a0c77dfcf8344b3ec415aec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27254d9cff6757bf2b9b14035da60610"><td class="memItemLeft" align="right" valign="top"><a id="a27254d9cff6757bf2b9b14035da60610"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_shadow_custom_resolution</b> (const int &amp;resolution)</td></tr>
+<tr class="separator:a27254d9cff6757bf2b9b14035da60610"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c8550d2e93e8121e4e1962a9979ce1f"><td class="memItemLeft" align="right" valign="top"><a id="a8c8550d2e93e8121e4e1962a9979ce1f"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_shadow_near_plane</b> () const -&gt; const float &amp;</td></tr>
+<tr class="separator:a8c8550d2e93e8121e4e1962a9979ce1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58817cdd520d868d2ee8cb4576af3696"><td class="memItemLeft" align="right" valign="top"><a id="a58817cdd520d868d2ee8cb4576af3696"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_shadow_near_plane</b> (const float &amp;near)</td></tr>
+<tr class="separator:a58817cdd520d868d2ee8cb4576af3696"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a720801dcf85aa33287a86c2817a97aa1"><td class="memItemLeft" align="right" valign="top"><a id="a720801dcf85aa33287a86c2817a97aa1"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_shadow_normal_bias</b> () const -&gt; const float &amp;</td></tr>
+<tr class="separator:a720801dcf85aa33287a86c2817a97aa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a482d1ed6ff9e3360bed19aba3f7c1914"><td class="memItemLeft" align="right" valign="top"><a id="a482d1ed6ff9e3360bed19aba3f7c1914"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_shadow_normal_bias</b> (const float &amp;bias)</td></tr>
+<tr class="separator:a482d1ed6ff9e3360bed19aba3f7c1914"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acac671a747bc8f4df2cd75c416c557b0"><td class="memItemLeft" align="right" valign="top"><a id="acac671a747bc8f4df2cd75c416c557b0"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_shadow_radius</b> () const -&gt; const float &amp;</td></tr>
+<tr class="separator:acac671a747bc8f4df2cd75c416c557b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9930584529a8cc70a869380f52cb53f"><td class="memItemLeft" align="right" valign="top"><a id="ab9930584529a8cc70a869380f52cb53f"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_shadow_radius</b> (const float &amp;radius)</td></tr>
+<tr class="separator:ab9930584529a8cc70a869380f52cb53f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c8f0629c2d0ddf9cc7d45352feed83a"><td class="memItemLeft" align="right" valign="top"><a id="a8c8f0629c2d0ddf9cc7d45352feed83a"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_shadow_resolution</b> () const -&gt; const LightShadowResolution &amp;</td></tr>
+<tr class="separator:a8c8f0629c2d0ddf9cc7d45352feed83a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35ec60d29f6fa6907eb4349051d117df"><td class="memItemLeft" align="right" valign="top"><a id="a35ec60d29f6fa6907eb4349051d117df"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_shadow_resolution</b> (const LightShadowResolution &amp;resolution)</td></tr>
+<tr class="separator:a35ec60d29f6fa6907eb4349051d117df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22d81dd78c53c21bd3b087ec2b83a415"><td class="memItemLeft" align="right" valign="top"><a id="a22d81dd78c53c21bd3b087ec2b83a415"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_shadows</b> () const -&gt; const LightShadows &amp;</td></tr>
+<tr class="separator:a22d81dd78c53c21bd3b087ec2b83a415"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45de8434746094db35fd37570dd0d650"><td class="memItemLeft" align="right" valign="top"><a id="a45de8434746094db35fd37570dd0d650"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_shadows</b> (const LightShadows &amp;shadows)</td></tr>
+<tr class="separator:a45de8434746094db35fd37570dd0d650"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89785e63c5fd9d2171e7345847e69ccc"><td class="memItemLeft" align="right" valign="top"><a id="a89785e63c5fd9d2171e7345847e69ccc"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_shadow_strength</b> () const -&gt; const float &amp;</td></tr>
+<tr class="separator:a89785e63c5fd9d2171e7345847e69ccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e46cae533486b46205da9032693f770"><td class="memItemLeft" align="right" valign="top"><a id="a1e46cae533486b46205da9032693f770"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_shadow_strength</b> (const float &amp;strength)</td></tr>
+<tr class="separator:a1e46cae533486b46205da9032693f770"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7e76bf47daa55828387a7cfaecb5029"><td class="memItemLeft" align="right" valign="top"><a id="ab7e76bf47daa55828387a7cfaecb5029"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_spot_angle</b> () const -&gt; const float &amp;</td></tr>
+<tr class="separator:ab7e76bf47daa55828387a7cfaecb5029"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57bce40d4629b28cb2465d7854c6d9dd"><td class="memItemLeft" align="right" valign="top"><a id="a57bce40d4629b28cb2465d7854c6d9dd"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_spot_angle</b> (const float &amp;angle)</td></tr>
+<tr class="separator:a57bce40d4629b28cb2465d7854c6d9dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abed7b181135744872044878c488c4bce"><td class="memItemLeft" align="right" valign="top"><a id="abed7b181135744872044878c488c4bce"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>get_type</b> () const -&gt; const LightType &amp;</td></tr>
+<tr class="separator:abed7b181135744872044878c488c4bce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2da189e881b41f7e7744838b63d9db3f"><td class="memItemLeft" align="right" valign="top"><a id="a2da189e881b41f7e7744838b63d9db3f"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>set_type</b> (const LightType &amp;type)</td></tr>
+<tr class="separator:a2da189e881b41f7e7744838b63d9db3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classqe_1_1core_1_1_behaviour"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classqe_1_1core_1_1_behaviour')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classqe_1_1core_1_1_behaviour.html">qe::core::Behaviour</a></td></tr>
+<tr class="memitem:ad31bedea0d5434209e52c75dd0d95183 inherit pub_methods_classqe_1_1core_1_1_behaviour"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_behaviour.html#ad31bedea0d5434209e52c75dd0d95183">get_enable</a> () const -&gt; const bool &amp;</td></tr>
+<tr class="memdesc:ad31bedea0d5434209e52c75dd0d95183 inherit pub_methods_classqe_1_1core_1_1_behaviour"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets whether enable the behaviour  <a href="classqe_1_1core_1_1_behaviour.html#ad31bedea0d5434209e52c75dd0d95183">More...</a><br /></td></tr>
+<tr class="separator:ad31bedea0d5434209e52c75dd0d95183 inherit pub_methods_classqe_1_1core_1_1_behaviour"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8c3083e9141ed5d71b1778fb2f08597 inherit pub_methods_classqe_1_1core_1_1_behaviour"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_behaviour.html#af8c3083e9141ed5d71b1778fb2f08597">set_enable</a> (const bool &amp;enable)</td></tr>
+<tr class="memdesc:af8c3083e9141ed5d71b1778fb2f08597 inherit pub_methods_classqe_1_1core_1_1_behaviour"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets whether enable the behaviour  <a href="classqe_1_1core_1_1_behaviour.html#af8c3083e9141ed5d71b1778fb2f08597">More...</a><br /></td></tr>
+<tr class="separator:af8c3083e9141ed5d71b1778fb2f08597 inherit pub_methods_classqe_1_1core_1_1_behaviour"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classqe_1_1core_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classqe_1_1core_1_1_component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classqe_1_1core_1_1_component.html">qe::core::Component</a></td></tr>
 <tr class="memitem:a3ec40ead88558d693df6885805742eb2 inherit pub_methods_classqe_1_1core_1_1_component"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_component.html#a3ec40ead88558d693df6885805742eb2">Component</a> ()</td></tr>
 <tr class="memdesc:a3ec40ead88558d693df6885805742eb2 inherit pub_methods_classqe_1_1core_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classqe_1_1core_1_1_component.html">Component</a> class.  <a href="classqe_1_1core_1_1_component.html#a3ec40ead88558d693df6885805742eb2">More...</a><br /></td></tr>
@@ -125,9 +292,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_color</b> (const 
 <tr class="memitem:aae121f65f05037e12ce16e4ad9938d27 inherit pub_methods_classqe_1_1core_1_1_component"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_component.html#aae121f65f05037e12ce16e4ad9938d27">get_quark_object</a> () const -&gt; <a class="el" href="classqe_1_1core_1_1_quark_object.html">qe::core::QuarkObject</a> *</td></tr>
 <tr class="memdesc:aae121f65f05037e12ce16e4ad9938d27 inherit pub_methods_classqe_1_1core_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get quark object that is this component be added. Get the quark object to add this component.  <a href="classqe_1_1core_1_1_component.html#aae121f65f05037e12ce16e4ad9938d27">More...</a><br /></td></tr>
 <tr class="separator:aae121f65f05037e12ce16e4ad9938d27 inherit pub_methods_classqe_1_1core_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fc234ea581c8b1e32e0a9c4558c1da8 inherit pub_methods_classqe_1_1core_1_1_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_component.html#a0fc234ea581c8b1e32e0a9c4558c1da8">set_quark_object</a> (<a class="el" href="classqe_1_1core_1_1_quark_object.html">qe::core::QuarkObject</a> *quark_object)</td></tr>
-<tr class="memdesc:a0fc234ea581c8b1e32e0a9c4558c1da8 inherit pub_methods_classqe_1_1core_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the quark object of this component. just only used in quark object add_component() function.  <a href="classqe_1_1core_1_1_component.html#a0fc234ea581c8b1e32e0a9c4558c1da8">More...</a><br /></td></tr>
-<tr class="separator:a0fc234ea581c8b1e32e0a9c4558c1da8 inherit pub_methods_classqe_1_1core_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2730da9a085735b76db937f59b5b4736 inherit pub_methods_classqe_1_1core_1_1_component"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_component.html#a2730da9a085735b76db937f59b5b4736">set_quark_object</a> (<a class="el" href="classqe_1_1core_1_1_quark_object.html">qe::core::QuarkObject</a> *quark_object)</td></tr>
+<tr class="memdesc:a2730da9a085735b76db937f59b5b4736 inherit pub_methods_classqe_1_1core_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the quark object of this component. just only used in quark object add_component() function.  <a href="classqe_1_1core_1_1_component.html#a2730da9a085735b76db937f59b5b4736">More...</a><br /></td></tr>
+<tr class="separator:a2730da9a085735b76db937f59b5b4736 inherit pub_methods_classqe_1_1core_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classqe_1_1core_1_1_object"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classqe_1_1core_1_1_object')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classqe_1_1core_1_1_object.html">qe::core::Object</a></td></tr>
 <tr class="memitem:a3c1f3e432fcdf10b5367ef6bae16af64 inherit pub_methods_classqe_1_1core_1_1_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqe_1_1core_1_1_object.html#a3c1f3e432fcdf10b5367ef6bae16af64">Object</a> ()</td></tr>
 <tr class="memdesc:a3c1f3e432fcdf10b5367ef6bae16af64 inherit pub_methods_classqe_1_1core_1_1_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classqe_1_1core_1_1_object.html">Object</a> class.  <a href="classqe_1_1core_1_1_object.html#a3c1f3e432fcdf10b5367ef6bae16af64">More...</a><br /></td></tr>
