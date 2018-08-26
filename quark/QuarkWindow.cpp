@@ -51,11 +51,11 @@ qe::edit::QuarkWindow::QuarkWindow()
     , key_press_(false)
     , alt_button_press_(false)
     , init_mouse_pos_(false)
-    , kShaderPath("D:/project/quark_engine/media/shader/standard.shader")
+    , kShaderPath("./../../media/shader/standard.shader")
 {
-    eye_lookat_cursor_ = std::make_shared<QCursor>(QPixmap("D:/project/quark_engine/media/image/eye_lookat.png"));
-    eye_rotate_cursor_ = std::make_shared<QCursor>(QPixmap("D:/project/quark_engine/media/image/eye_rotate.png"));
-    eye_smooth_cursor_ = std::make_shared<QCursor>(QPixmap("D:/project/quark_engine/media/image/eye_smooth.png"));
+    eye_lookat_cursor_ = std::make_shared<QCursor>(QPixmap("./../../media/image/eye_lookat.png"));
+    eye_rotate_cursor_ = std::make_shared<QCursor>(QPixmap("./../../media/image/eye_rotate.png"));
+    eye_smooth_cursor_ = std::make_shared<QCursor>(QPixmap("./../../media/image/eye_smooth.png"));
 }
 
 qe::edit::QuarkWindow::~QuarkWindow()

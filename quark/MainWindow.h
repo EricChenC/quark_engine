@@ -130,6 +130,8 @@ namespace qe {
             std::vector<std::shared_ptr<QMenu>> menus_;
 
             QString scene_file_;
+            QString doc_path_;
+            QString window_icon_;
 
             // after release layout ,  that inside QSpacerItem will auto release
         };

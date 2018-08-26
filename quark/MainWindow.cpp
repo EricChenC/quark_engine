@@ -35,6 +35,8 @@
 
 
 qe::edit::MainWindow::MainWindow()
+    : doc_path_("./../../doc/html/index.html")
+    , window_icon_("./../../media/image/quark.png")
 {
     setAcceptDrops(true);
     InitUI();
@@ -97,7 +99,7 @@ void qe::edit::MainWindow::ExitAction()
 
 void qe::edit::MainWindow::QuarkManualAction()
 {
-    QDesktopServices::openUrl(QUrl("D:/project/quark_engine/doc/html/index.html"));
+    QDesktopServices::openUrl(QUrl(doc_path_));
 }
 
 void qe::edit::MainWindow::UpdateFps()
@@ -156,7 +158,7 @@ void qe::edit::MainWindow::InitLayout()
 
 void qe::edit::MainWindow::InitIcon()
 {
-    this->setWindowIcon(QIcon("D:/project/quark_engine/media/image/quark.png"));
+    this->setWindowIcon(QIcon(window_icon_));
 }
 
 void qe::edit::MainWindow::InitWindowName()
