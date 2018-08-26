@@ -37,6 +37,7 @@ var namespaceqe =
     [ "edit", null, [
       [ "EditObject", "classqe_1_1edit_1_1_edit_object.html", "classqe_1_1edit_1_1_edit_object" ],
       [ "MainWindow", "classqe_1_1edit_1_1_main_window.html", "classqe_1_1edit_1_1_main_window" ],
+      [ "Platform", "classqe_1_1edit_1_1_platform.html", null ],
       [ "QuarkWindow", "classqe_1_1edit_1_1_quark_window.html", "classqe_1_1edit_1_1_quark_window" ]
     ] ],
     [ "render", null, [

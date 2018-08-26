@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 #include "QuarkWindow.h"
 #include "QuarkString.h"
+#include "EditModule.h"
 
 #include <qsplitter.h>
 #include <qapplication.h>
@@ -35,8 +36,8 @@
 
 
 qe::edit::MainWindow::MainWindow()
-    : doc_path_("./../../doc/html/index.html")
-    , window_icon_("./../../media/image/quark.png")
+    : doc_path_(QString(qe::edit::Platform::get_platform_path().c_str()) + "doc/html/index.html")
+    , window_icon_(QString(qe::edit::Platform::get_platform_path().c_str()) + "image/quark.png")
 {
     setAcceptDrops(true);
     InitUI();

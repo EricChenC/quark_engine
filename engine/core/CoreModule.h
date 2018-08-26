@@ -10,7 +10,6 @@ namespace qe {
             glm::vec3 origion;
         };
 
-
         struct Rect
         {
 
@@ -100,7 +99,6 @@ namespace qe {
             float yMin;
 
         };
-
 
         enum class KeyCode
         {
@@ -509,7 +507,6 @@ namespace qe {
 
         };
 
-
         class Time {
         public:
             static auto get_capture_frame_rate() -> const int& { return capture_frame_rate_; }
@@ -668,7 +665,6 @@ namespace qe {
             static float unscaled_time_;
 
         };
-
 
     }
 }

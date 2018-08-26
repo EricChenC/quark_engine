@@ -30,6 +30,7 @@
 #include "Shader.h"
 #include "ScriptBehaviour.h"
 #include "Camera.h"
+#include "EditModule.h"
 
 #include <iostream>
 
@@ -51,11 +52,11 @@ qe::edit::QuarkWindow::QuarkWindow()
     , key_press_(false)
     , alt_button_press_(false)
     , init_mouse_pos_(false)
-    , kShaderPath("./../../media/shader/standard.shader")
+    , shader_path_(qe::edit::Platform::get_platform_path() + "shader/standard.shader")
 {
-    eye_lookat_cursor_ = std::make_shared<QCursor>(QPixmap("./../../media/image/eye_lookat.png"));
-    eye_rotate_cursor_ = std::make_shared<QCursor>(QPixmap("./../../media/image/eye_rotate.png"));
-    eye_smooth_cursor_ = std::make_shared<QCursor>(QPixmap("./../../media/image/eye_smooth.png"));
+    eye_lookat_cursor_ = std::make_shared<QCursor>(QPixmap(QString(qe::edit::Platform::get_platform_path().c_str()) + "image/eye_lookat.png"));
+    eye_rotate_cursor_ = std::make_shared<QCursor>(QPixmap(QString(qe::edit::Platform::get_platform_path().c_str()) + "image/eye_rotate.png"));
+    eye_smooth_cursor_ = std::make_shared<QCursor>(QPixmap(QString(qe::edit::Platform::get_platform_path().c_str()) + "image/eye_smooth.png"));
 }
 
 qe::edit::QuarkWindow::~QuarkWindow()
@@ -302,7 +303,7 @@ void qe::edit::QuarkWindow::LoadSceneReadyRender(std::shared_ptr<qe::core::Scene
 {
     auto roots = scene->Roots();
 
-    auto standard_shader = std::dynamic_pointer_cast<qe::core::Shader>(resource_->Load(kShaderPath));
+    auto standard_shader = std::dynamic_pointer_cast<qe::core::Shader>(resource_->Load(shader_path_));
     standard_shader->set_global_vector("lightDir", light_dir_);
 
     auto standard_material = std::make_shared<qe::core::Material>();
@@ -314,7 +315,7 @@ void qe::edit::QuarkWindow::LoadSceneReadyRender(std::shared_ptr<qe::core::Scene
     auto pre_path = qe::core::QuarkString::PathPrefixed(path);
     auto name = qe::core::QuarkString::FileName(path);
 
-    kShaderPre = pre_path + name;
+    shader_pre_ = pre_path + name;
 
     CreatePipeline();
 
@@ -426,8 +427,8 @@ void qe::edit::QuarkWindow::CreateDescriptorSetLayout()
 
 void qe::edit::QuarkWindow::CreatePipeline()
 {
-    auto vertShaderPath = kShaderPre + ".vert.spv";
-    auto fragShaderPath = kShaderPre + ".frag.spv";
+    auto vertShaderPath = shader_pre_ + ".vert.spv";
+    auto fragShaderPath = shader_pre_ + ".frag.spv";
 
     auto vertShaderModule = qe::render::vulkan::VulkanTools::loadShader(vertShaderPath.c_str(), vi_device_->logic_device_);
     auto fragShaderModule = qe::render::vulkan::VulkanTools::loadShader(fragShaderPath.c_str(), vi_device_->logic_device_);

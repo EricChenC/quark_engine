@@ -54,6 +54,7 @@ var searchData=
   ['set_5fpixel_5fwidth',['set_pixel_width',['../classqe_1_1core_1_1_camera.html#adc321d26f3122c24b384a2f5a59f55e6',1,'qe::core::Camera']]],
   ['set_5fpixel_5fx',['set_pixel_x',['../classqe_1_1core_1_1_camera.html#afcf63dc2598531ca37c796ef99a06226',1,'qe::core::Camera']]],
   ['set_5fpixel_5fy',['set_pixel_y',['../classqe_1_1core_1_1_camera.html#aede2a240c25d5f429d506cd4ca8b5c73',1,'qe::core::Camera']]],
+  ['set_5fplatform',['set_platform',['../classqe_1_1edit_1_1_platform.html#a0eed8b5e6ff173f43fcf86105a1e88d2',1,'qe::edit::Platform']]],
   ['set_5fquark_5fobject',['set_quark_object',['../classqe_1_1core_1_1_component.html#a0fc234ea581c8b1e32e0a9c4558c1da8',1,'qe::core::Component']]],
   ['set_5frect',['set_rect',['../classqe_1_1core_1_1_camera.html#ae64e088c3a7fa6336abe223ca9d37f8f',1,'qe::core::Camera']]],
   ['set_5fscene',['set_scene',['../classqe_1_1core_1_1_quark_object.html#a0cc810141670402e58950d9290009a1f',1,'qe::core::QuarkObject']]],

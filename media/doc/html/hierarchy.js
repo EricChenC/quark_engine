@@ -53,6 +53,7 @@ var hierarchy =
         [ "qe::resource::TextureLoad", "classqe_1_1resource_1_1_texture_load.html", null ]
       ] ]
     ] ],
+    [ "qe::edit::Platform", "classqe_1_1edit_1_1_platform.html", null ],
     [ "QMainWindow", null, [
       [ "qe::edit::MainWindow", "classqe_1_1edit_1_1_main_window.html", null ]
     ] ],

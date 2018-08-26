@@ -276,9 +276,9 @@ namespace qe {
 
             std::shared_ptr<qe::core::Camera> camera_;
 
-            std::string kShaderPath;
+            std::string shader_path_;
 
-            std::string kShaderPre;
+            std::string shader_pre_;
 
             glm::vec4 light_dir_;
 
