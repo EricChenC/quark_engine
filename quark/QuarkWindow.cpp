@@ -26,7 +26,6 @@
 #include "MeshFilter.h"
 #include "MeshRenderer.h"
 #include "QuarkString.h"
-#include "AwakeBehaviour.h"
 #include "Shader.h"
 #include "ScriptBehaviour.h"
 #include "Camera.h"
@@ -344,9 +343,6 @@ void qe::edit::QuarkWindow::LoadQuarkObject(
 
     auto mesh_renderer = quark_object->AddComponent<qe::core::MeshRenderer>();
     mesh_renderer->AddMaterial(standard_material);
-
-    auto behaviour = quark_object->AddComponent<qe::core::AwakeBehaviour>();
-    //behaviours_.push_back(behaviour);
 
     LoadDrawData(quark_object->GetComponent<qe::core::Transform>()->get_local_matrix(), mesh_filter, mesh_renderer);
 
