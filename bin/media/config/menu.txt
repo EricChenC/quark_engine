@@ -1,0 +1,30 @@
+
+// == is a separator line.
+
+
+MenuBar{
+
+[File: (New Project) -- (Open Project) -- (Save Project) == (New Scene) -- (Open Scene) == (Save Scenes) == (Build Settings) == (Exit)]
+
+[Edit: (Project Settings: (Quality))]
+
+[Assets: (Refresh)]
+
+[GameObject: (Create Empty) -- (Light: (Direction Light) -- (Point Light) -- (Spot Light) -- (Area Light)) -- (Camera)]
+
+[Component: (Mesh: (Mesh Renderer))]
+
+[Window: (Asset Store) -- (Profiler)]
+
+[Help: (About Quark) -- (Manage license) -- (Quark Manual) -- (Check for Updates) -- (Report a Bug)]
+
+}
+
+
+
+
+
+
+
+
+
