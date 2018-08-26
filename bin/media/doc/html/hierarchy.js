@@ -1,9 +1,9 @@
 var hierarchy =
 [
+    [ "qe::core::Color", "structqe_1_1core_1_1_color.html", null ],
     [ "qe::edit::QuarkWindow::ModelMatrix", "structqe_1_1edit_1_1_quark_window_1_1_model_matrix.html", null ],
     [ "qe::core::Object", "classqe_1_1core_1_1_object.html", [
       [ "qe::core::CoreObject", "classqe_1_1core_1_1_core_object.html", [
-        [ "qe::core::Color", "classqe_1_1core_1_1_color.html", null ],
         [ "qe::core::Component", "classqe_1_1core_1_1_component.html", [
           [ "qe::core::Animation", "classqe_1_1core_1_1_animation.html", null ],
           [ "qe::core::Behaviour", "classqe_1_1core_1_1_behaviour.html", [
@@ -20,6 +20,7 @@ var hierarchy =
           ] ],
           [ "qe::core::Transform", "classqe_1_1core_1_1_transform.html", null ]
         ] ],
+        [ "qe::core::Input", "classqe_1_1core_1_1_input.html", null ],
         [ "qe::core::Material", "classqe_1_1core_1_1_material.html", null ],
         [ "qe::core::Mesh", "classqe_1_1core_1_1_mesh.html", null ],
         [ "qe::core::Pipeline", "classqe_1_1core_1_1_pipeline.html", null ],
@@ -63,6 +64,7 @@ var hierarchy =
     [ "qe::resource::ShaderLoad", "classqe_1_1resource_1_1_shader_load.html", null ],
     [ "qe::render::vulkan::VulkanDevice::SwapChainSupportDetails", "structqe_1_1render_1_1vulkan_1_1_vulkan_device_1_1_swap_chain_support_details.html", null ],
     [ "qe::render::vulkan::Thread", "classqe_1_1render_1_1vulkan_1_1_thread.html", null ],
+    [ "qe::core::Time", "classqe_1_1core_1_1_time.html", null ],
     [ "qe::edit::QuarkWindow::UniformCameraBuffer", "structqe_1_1edit_1_1_quark_window_1_1_uniform_camera_buffer.html", null ],
     [ "qe::edit::QuarkWindow::UniformLightBuffer", "structqe_1_1edit_1_1_quark_window_1_1_uniform_light_buffer.html", null ],
     [ "qe::edit::QuarkWindow::Vertex", "structqe_1_1edit_1_1_quark_window_1_1_vertex.html", null ]

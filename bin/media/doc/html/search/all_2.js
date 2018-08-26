@@ -2,9 +2,8 @@ var searchData=
 [
   ['camera',['Camera',['../classqe_1_1core_1_1_camera.html',1,'qe::core::Camera'],['../classqe_1_1core_1_1_camera.html#a861195e8930f0fffc35b15a1faa77c20',1,'qe::core::Camera::Camera()']]],
   ['cameracontroller',['CameraController',['../classqe_1_1core_1_1_camera_controller.html',1,'qe::core']]],
-  ['cameras',['cameras',['../classqe_1_1core_1_1_camera.html#ae2ea6a410977154885045cb8f92e54e6',1,'qe::core::Camera']]],
   ['cameratoworldmatrix',['CameraToWorldMatrix',['../classqe_1_1core_1_1_camera.html#a9f9847b1e8c089e877964f284e993724',1,'qe::core::Camera']]],
-  ['color',['Color',['../classqe_1_1core_1_1_color.html',1,'qe::core']]],
+  ['color',['Color',['../structqe_1_1core_1_1_color.html',1,'qe::core']]],
   ['command_5fpool_5f',['command_pool_',['../classqe_1_1render_1_1vulkan_1_1_vulkan_device.html#a89500508493d38ca854b06ffb0aea04f',1,'qe::render::vulkan::VulkanDevice']]],
   ['component',['Component',['../classqe_1_1core_1_1_component.html',1,'qe::core::Component'],['../classqe_1_1core_1_1_component.html#a3ec40ead88558d693df6885805742eb2',1,'qe::core::Component::Component()']]],
   ['copybuffer',['CopyBuffer',['../classqe_1_1render_1_1vulkan_1_1_vulkan_device.html#a231cdfd2d7a6072c8c147bea37995f89',1,'qe::render::vulkan::VulkanDevice']]],

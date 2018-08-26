@@ -6,9 +6,10 @@ var namespaceqe =
       [ "Behaviour", "classqe_1_1core_1_1_behaviour.html", "classqe_1_1core_1_1_behaviour" ],
       [ "Camera", "classqe_1_1core_1_1_camera.html", "classqe_1_1core_1_1_camera" ],
       [ "CameraController", "classqe_1_1core_1_1_camera_controller.html", "classqe_1_1core_1_1_camera_controller" ],
-      [ "Color", "classqe_1_1core_1_1_color.html", "classqe_1_1core_1_1_color" ],
+      [ "Color", "structqe_1_1core_1_1_color.html", "structqe_1_1core_1_1_color" ],
       [ "Component", "classqe_1_1core_1_1_component.html", "classqe_1_1core_1_1_component" ],
       [ "CoreObject", "classqe_1_1core_1_1_core_object.html", "classqe_1_1core_1_1_core_object" ],
+      [ "Input", "classqe_1_1core_1_1_input.html", "classqe_1_1core_1_1_input" ],
       [ "Light", "classqe_1_1core_1_1_light.html", "classqe_1_1core_1_1_light" ],
       [ "Material", "classqe_1_1core_1_1_material.html", "classqe_1_1core_1_1_material" ],
       [ "Mesh", "classqe_1_1core_1_1_mesh.html", "classqe_1_1core_1_1_mesh" ],
@@ -30,6 +31,7 @@ var namespaceqe =
       [ "Shader", "classqe_1_1core_1_1_shader.html", "classqe_1_1core_1_1_shader" ],
       [ "Texture", "classqe_1_1core_1_1_texture.html", "classqe_1_1core_1_1_texture" ],
       [ "Texture2D", "classqe_1_1core_1_1_texture2_d.html", "classqe_1_1core_1_1_texture2_d" ],
+      [ "Time", "classqe_1_1core_1_1_time.html", null ],
       [ "Transform", "classqe_1_1core_1_1_transform.html", "classqe_1_1core_1_1_transform" ]
     ] ],
     [ "edit", null, [
