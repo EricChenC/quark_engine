@@ -31,7 +31,7 @@ var namespaceqe =
       [ "Shader", "classqe_1_1core_1_1_shader.html", "classqe_1_1core_1_1_shader" ],
       [ "Texture", "classqe_1_1core_1_1_texture.html", "classqe_1_1core_1_1_texture" ],
       [ "Texture2D", "classqe_1_1core_1_1_texture2_d.html", "classqe_1_1core_1_1_texture2_d" ],
-      [ "Time", "classqe_1_1core_1_1_time.html", null ],
+      [ "Time", "classqe_1_1core_1_1_time.html", "classqe_1_1core_1_1_time" ],
       [ "Transform", "classqe_1_1core_1_1_transform.html", "classqe_1_1core_1_1_transform" ]
     ] ],
     [ "edit", null, [

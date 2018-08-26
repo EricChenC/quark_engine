@@ -36,7 +36,7 @@
 
 
 qe::edit::MainWindow::MainWindow()
-    : doc_path_(QString(qe::edit::Platform::get_platform_path().c_str()) + "doc/html/index.html")
+    : doc_path_("D:/project/quark_engine/media/doc/html/index.html")
     , window_icon_(QString(qe::edit::Platform::get_platform_path().c_str()) + "image/quark.png")
 {
     setAcceptDrops(true);

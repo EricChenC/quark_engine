@@ -44,8 +44,8 @@ var NAVTREEINDEX =
 [
 ".html",
 "classqe_1_1core_1_1_quark_object.html#a3bc54354020572c75fd9ff37d1637b79",
-"classqe_1_1edit_1_1_quark_window.html#a9f91eaa45d593c7dba9959260d59e8f8",
-"structqe_1_1core_1_1_rect.html#ad25c9f19c094f9de19cd2a4caf002e43"
+"classqe_1_1edit_1_1_quark_window.html#a9da5c709a549ba4ed76968d257d1b525",
+"structqe_1_1core_1_1_rect.html#a9cec69231af353d0d59996a37e113cba"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
