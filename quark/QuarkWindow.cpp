@@ -985,3 +985,195 @@ void qe::edit::QuarkWindow::SetCameraAspect(const int & width, const int & heigh
 
     UpdateUniformBuffer();
 }
+
+void qe::edit::QuarkWindow::OnEnable()
+{
+}
+
+void qe::edit::QuarkWindow::Start()
+{
+}
+
+void qe::edit::QuarkWindow::Reset()
+{
+}
+
+void qe::edit::QuarkWindow::FixedUpdate()
+{
+}
+
+void qe::edit::QuarkWindow::Update()
+{
+}
+
+void qe::edit::QuarkWindow::LateUpdate()
+{
+}
+
+void qe::edit::QuarkWindow::OnWillRenderObject()
+{
+}
+
+void qe::edit::QuarkWindow::OnPreCull()
+{
+}
+
+void qe::edit::QuarkWindow::OnBecameVisible()
+{
+}
+
+void qe::edit::QuarkWindow::OnBecameInvisible()
+{
+}
+
+void qe::edit::QuarkWindow::OnPreRender()
+{
+}
+
+void qe::edit::QuarkWindow::OnRenderObject()
+{
+}
+
+void qe::edit::QuarkWindow::OnPostRender()
+{
+}
+
+void qe::edit::QuarkWindow::OnRenderImage()
+{
+}
+
+void qe::edit::QuarkWindow::OnDrawGizmos()
+{
+}
+
+void qe::edit::QuarkWindow::OnGUI()
+{
+}
+
+void qe::edit::QuarkWindow::OnApplicationPause()
+{
+}
+
+void qe::edit::QuarkWindow::OnApplicationQuit()
+{
+}
+
+void qe::edit::QuarkWindow::OnDisable()
+{
+}
+
+void qe::edit::QuarkWindow::OnDestroy()
+{
+}
+
+void qe::edit::QuarkWindow::OnAnimatorIK()
+{
+}
+
+void qe::edit::QuarkWindow::OnAnimatorMove()
+{
+}
+
+void qe::edit::QuarkWindow::OnApplicationFocus()
+{
+}
+
+void qe::edit::QuarkWindow::OnAudioFilterRead()
+{
+}
+
+void qe::edit::QuarkWindow::OnCollisionEnter()
+{
+}
+
+void qe::edit::QuarkWindow::OnCollisionExit()
+{
+}
+
+void qe::edit::QuarkWindow::OnCollisionStay()
+{
+}
+
+void qe::edit::QuarkWindow::OnConnectToServer()
+{
+}
+
+void qe::edit::QuarkWindow::OnControllerColliderHit()
+{
+}
+
+void qe::edit::QuarkWindow::OnDisconnectedFromServer()
+{
+}
+
+void qe::edit::QuarkWindow::OnDrawGizmosSelected()
+{
+}
+
+void qe::edit::QuarkWindow::OnFailedToConnect()
+{
+}
+
+void qe::edit::QuarkWindow::OnFailedToConnectToMasterServer()
+{
+}
+
+void qe::edit::QuarkWindow::OnJointBreak()
+{
+}
+
+void qe::edit::QuarkWindow::OnMasterServerEvent()
+{
+}
+
+void qe::edit::QuarkWindow::OnMouseDown()
+{
+}
+
+void qe::edit::QuarkWindow::OnMouseDrag()
+{
+}
+
+void qe::edit::QuarkWindow::OnMouseEnter()
+{
+}
+
+void qe::edit::QuarkWindow::OnMouseExit()
+{
+}
+
+void qe::edit::QuarkWindow::OnMouseOver()
+{
+}
+
+void qe::edit::QuarkWindow::OnMouseUp()
+{
+}
+
+void qe::edit::QuarkWindow::OnParticleCollision()
+{
+}
+
+void qe::edit::QuarkWindow::OnParticleTrigger()
+{
+}
+
+void qe::edit::QuarkWindow::OnPlayerConnected()
+{
+}
+
+void qe::edit::QuarkWindow::OnPlayerDisconnected()
+{
+}
+
+void qe::edit::QuarkWindow::OnTriggerEnter()
+{
+}
+
+void qe::edit::QuarkWindow::OnTriggerExit()
+{
+}
+
+void qe::edit::QuarkWindow::OnTriggerStay()
+{
+}

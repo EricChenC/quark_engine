@@ -3,27 +3,58 @@
 /// author: eric
 #pragma once
 
-#include "Component.h"
-
-#include <glm/glm.hpp>
+#include "Behaviour.h"
 
 namespace qe {
     namespace core {
 
-        class Color;
+        struct Color;
 
-        class DLL_EXPORT Light : public Component {
+        class DLL_EXPORT Light : public Behaviour {
+        public:
+            enum class LightType
+            {
+                SPOT,
+                DIRECTIONAL,
+                POINT,
+                AREA
+            };
+
+            enum class LightShadows
+            {
+                NONE,
+                HARD,
+                SOFT
+            };
+
         public:
             explicit Light();
             ~Light();
 
         // properties
         public:
+            inline auto get_area_size() const -> const glm::vec2& { return area_size_; }
+
+            inline void set_area_size(const glm::vec2& size) { area_size_ = size; }
+
+            inline auto get_baking_output() const -> const LightBakingOutput& { return baking_output_; }
+
+            inline void set_baking_output(const LightBakingOutput& output) { baking_output_ = output; }
+
             inline auto get_color() const -> const std::shared_ptr<Color>& { return color_; }
 
             inline void set_color(const std::shared_ptr<Color>& color){ color_ = color; }
 
+
+
+
+
+
         private:
+            glm::vec2 area_size_;
+
+            LightBakingOutput baking_output_;
+
             std::shared_ptr<Color> color_;
 
         };

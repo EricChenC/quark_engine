@@ -5,7 +5,6 @@
 #pragma once
 
 #include "Behaviour.h"
-#include "CoreModule.h"
 
 #include <glm/glm.hpp>
 #include <list>
