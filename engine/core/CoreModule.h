@@ -1,6 +1,33 @@
 #pragma once
 
 #include <glm/glm.hpp>
+#include <memory>
+
+
+/// If define _DEBUG, then use DBG_NEW to create new object,
+/// will can use _CRTDBG_MAP_ALLOC to check memory allocate leak position,
+/// otherwise DBG_NEW just create a normal object.
+
+#ifdef _DEBUG
+#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+// Replace _NORMAL_BLOCK with _CLIENT_BLOCK if you want the
+// allocations to be of _CLIENT_BLOCK type
+#else
+#define DBG_NEW new
+#endif
+
+#ifdef _WIN32
+#ifdef dll_EXPORTS
+#define DLL_EXPORT __declspec(dllexport)
+#else
+#define DLL_EXPORT __declspec(dllexport)
+#endif
+#else
+#define DLL_EXPORT
+#endif
+
+#define VERIFY(x) assert(x)
+
 
 namespace qe {
     namespace core {
@@ -60,7 +87,7 @@ namespace qe {
                 return true;
             }
 
-            void Set(const float& x, const float& y, const float& width, const float& height) {
+            auto Set(const float& x, const float& y, const float& width, const float& height) {
                 this->x = x;
                 this->y = y;
                 this->width = width;
@@ -428,7 +455,7 @@ namespace qe {
         struct Color
         {
         public:
-            explicit Color(){}
+            explicit Color() {}
 
             Color(const float&r, const float&g, const float&b, const float&a)
                 : r_(r),
@@ -437,7 +464,7 @@ namespace qe {
                 a_(a)
             {}
 
-            ~Color(){}
+            ~Color() {}
 
             // static methods
         public:
@@ -485,19 +512,19 @@ namespace qe {
         public:
             inline auto get_r()const -> const float& { return r_; }
 
-            inline void set_r(const float& r) { r_ = r; }
+            inline auto set_r(const float& r) { r_ = r; }
 
             inline auto get_g()const -> const float& { return g_; }
 
-            inline void set_g(const float& g) { g_ = g; }
+            inline auto set_g(const float& g) { g_ = g; }
 
             inline auto get_b()const -> const float& { return b_; }
 
-            inline void set_b(const float& b) { b_ = b; }
+            inline auto set_b(const float& b) { b_ = b; }
 
             inline auto get_a()const -> const float& { return a_; }
 
-            inline void set_a(const float& a) { a_ = a; }
+            inline auto set_a(const float& a) { a_ = a; }
 
         private:
             float r_;
@@ -509,74 +536,74 @@ namespace qe {
 
         class Time {
         public:
-            static auto get_capture_frame_rate() -> const int& { return capture_frame_rate_; }
+            inline static auto get_capture_frame_rate() -> const int& { return capture_frame_rate_; }
 
-            static void set_capture_frame_rate(const int& rate) { capture_frame_rate_ = rate; }
+            inline static auto set_capture_frame_rate(const int& rate) { capture_frame_rate_ = rate; }
 
-            static auto get_delta_time() -> const float& { return delta_time_; }
+            inline static auto get_delta_time() -> const float& { return delta_time_; }
 
-            static void set_delta_time(const float& time) { delta_time_ = time; }
+            inline static auto set_delta_time(const float& time) { delta_time_ = time; }
 
-            static auto get_fixed_delta_time() -> const float& { return fixed_delta_time_; }
+            inline static auto get_fixed_delta_time() -> const float& { return fixed_delta_time_; }
 
-            static void set_fixed_delta_time(const float& time) { fixed_delta_time_ = time; }
+            inline static auto set_fixed_delta_time(const float& time) { fixed_delta_time_ = time; }
 
-            static auto get_fixed_time() -> const float& { return fixed_time_; }
+            inline static auto get_fixed_time() -> const float& { return fixed_time_; }
 
-            static void set_fixed_time(const float& time) { fixed_time_ = time; }
+            inline static auto set_fixed_time(const float& time) { fixed_time_ = time; }
 
-            static auto get_fixed_unscaled_delta_time() -> const float& { return fixed_unscaled_delta_time_; }
+            inline static auto get_fixed_unscaled_delta_time() -> const float& { return fixed_unscaled_delta_time_; }
 
-            static void set_fixed_unscaled_delta_time(const float& time) { fixed_unscaled_delta_time_ = time; }
+            inline static auto set_fixed_unscaled_delta_time(const float& time) { fixed_unscaled_delta_time_ = time; }
 
-            static auto get_fixed_unscaled_time() -> const float& { return fixed_unscaled_time_; }
+            inline static auto get_fixed_unscaled_time() -> const float& { return fixed_unscaled_time_; }
 
-            static void set_fixed_unscaled_time(const float& time) { fixed_unscaled_time_ = time; }
+            inline static auto set_fixed_unscaled_time(const float& time) { fixed_unscaled_time_ = time; }
 
-            static auto get_frame_count() -> const int& { return frame_count_; }
+            inline static auto get_frame_count() -> const int& { return frame_count_; }
 
-            static void set_frame_count(const int& count) { frame_count_ = count; }
+            inline static auto set_frame_count(const int& count) { frame_count_ = count; }
 
-            static auto get_in_fixed_time_step() -> const bool& { return in_fixed_time_step_; }
+            inline static auto get_in_fixed_time_step() -> const bool& { return in_fixed_time_step_; }
 
-            static void set_in_fixed_time_step(const bool& step) { in_fixed_time_step_ = step; }
+            inline static auto set_in_fixed_time_step(const bool& step) { in_fixed_time_step_ = step; }
 
-            static auto get_maximum_delta_time() -> const float& { return maximum_delta_time_; }
+            inline static auto get_maximum_delta_time() -> const float& { return maximum_delta_time_; }
 
-            static void set_maximum_delta_time(const float& time) { maximum_delta_time_ = time; }
+            inline static auto set_maximum_delta_time(const float& time) { maximum_delta_time_ = time; }
 
-            static auto get_maximum_particle_delta_time() -> const float& { return maximum_particle_delta_time_; }
+            inline static auto get_maximum_particle_delta_time() -> const float& { return maximum_particle_delta_time_; }
 
-            static void set_maximum_particle_delta_time(const float& time) { maximum_particle_delta_time_ = time; }
+            inline static auto set_maximum_particle_delta_time(const float& time) { maximum_particle_delta_time_ = time; }
 
-            static auto get_realtime_since_startup() -> const float& { return realtime_since_startup_; }
+            inline static auto get_realtime_since_startup() -> const float& { return realtime_since_startup_; }
 
-            static void set_realtime_since_startup(const float& time) { realtime_since_startup_ = time; }
+            inline static auto set_realtime_since_startup(const float& time) { realtime_since_startup_ = time; }
 
-            static auto get_smooth_delta_time() -> const float& { return smooth_delta_time_; }
+            inline static auto get_smooth_delta_time() -> const float& { return smooth_delta_time_; }
 
-            static void set_smooth_delta_time(const float& time) { smooth_delta_time_ = time; }
+            inline static auto set_smooth_delta_time(const float& time) { smooth_delta_time_ = time; }
 
-            static auto get_time() -> const float& { return time_; }
+            inline static auto get_time() -> const float& { return time_; }
 
-            static void set_time(const float& time) { time_ = time; }
+            inline static auto set_time(const float& time) { time_ = time; }
 
-            static auto get_time_scale() -> const float& { return time_scale_; }
+            inline static auto get_time_scale() -> const float& { return time_scale_; }
 
-            static void set_time_scale(const float& scale) { time_scale_ = scale; }
+            inline static auto set_time_scale(const float& scale) { time_scale_ = scale; }
 
-            static auto get_time_since_level_load() -> const float& { return time_since_level_load_; }
+            inline static auto get_time_since_level_load() -> const float& { return time_since_level_load_; }
 
-            static void set_time_since_level_load(const float& time) { time_since_level_load_ = time; }
+            inline static auto set_time_since_level_load(const float& time) { time_since_level_load_ = time; }
 
-            static auto get_unscaled_delta_time() -> const float& { return unscaled_delta_time_; }
+            inline static auto get_unscaled_delta_time() -> const float& { return unscaled_delta_time_; }
 
-            static void set_unscaled_delta_time(const float& time) { unscaled_delta_time_ = time; }
+            inline static auto set_unscaled_delta_time(const float& time) { unscaled_delta_time_ = time; }
 
-            static auto get_unscaled_time() -> const float& { return unscaled_time_; }
+            inline static auto get_unscaled_time() -> const float& { return unscaled_time_; }
 
-            static void set_unscaled_time(const float& time) { unscaled_time_ = time; }
-            
+            inline static auto set_unscaled_time(const float& time) { unscaled_time_ = time; }
+
 
         private:
             /// <summary>
@@ -663,6 +690,79 @@ namespace qe {
             /// The timeScale-independant time for this frame (Read Only). This is the time in seconds since the start of the game.
             /// </summary>
             static float unscaled_time_;
+
+        };
+
+        enum class LightmapBakeType
+        {
+            REALTIME,
+            BAKED,
+            MIXED
+        };
+
+        enum class LightShadowCasterMode
+        {
+            DEFAULT,
+            NONLIGHTMAPPEDONLY,
+            EVERYTHING
+        };
+
+        enum class MixedLightingMode
+        {
+            INDIRECTONLY,
+            SHADOWMASK,
+            SUBTRACTIVE
+        };
+
+        enum class LightRenderMode
+        {
+            AUTO,
+            FORCEPIXEL,
+            FORCEVERTEX
+        };
+
+        enum class LightShadowResolution
+        {
+            FROMQUALITYSETTINGS,
+            LOW,
+            MEDIUM,
+            HIGH,
+            VERYHIGH
+        };
+
+        struct LightBakingOutput
+        {
+        public:
+            inline auto get_is_baked() const -> const bool& { return is_baked_; }
+
+            inline auto set_is_baked(const bool& is_baked) { is_baked_ = is_baked; }
+
+            inline auto get_lightmap_bake_type() const -> const LightmapBakeType& { return lightmap_bake_type_; }
+
+            inline auto set_lightmap_bake_type(const LightmapBakeType& type) { lightmap_bake_type_ = type; }
+
+            inline auto get_mixed_lighting_mode() const -> const MixedLightingMode& { return mixed_lighting_mode_; }
+
+            inline auto set_mixed_lighting_mode(const MixedLightingMode& mode) { mixed_lighting_mode_ = mode; }
+
+            inline auto get_occlusion_mask_channel() const -> const int& { return occlusion_mask_channel_; }
+
+            inline auto set_occlusion_mask_channel(const int& occlusion) { occlusion_mask_channel_ = occlusion; }
+
+            inline auto get_probe_occlusion_light_index() const -> const int& { return probe_occlusion_light_index_; }
+
+            inline auto set_probe_occlusion_light_index(const int& index) { probe_occlusion_light_index_ = index; }
+
+        private:
+            bool is_baked_;
+
+            LightmapBakeType lightmap_bake_type_;
+
+            MixedLightingMode mixed_lighting_mode_;
+
+            int occlusion_mask_channel_;
+
+            int probe_occlusion_light_index_;
 
         };
 

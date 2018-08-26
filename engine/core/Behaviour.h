@@ -28,7 +28,7 @@ namespace qe {
             /// Sets whether enable the behaviour 
             /// </summary>
             /// <param name="enable">if set to <c>true</c> enable the behaviour, else disable.</param>
-            inline void set_enable(const bool& enable) { enable_ = enable; }
+            inline auto set_enable(const bool& enable) { enable_ = enable; }
 
         private:
             bool enable_;

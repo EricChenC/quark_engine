@@ -42,7 +42,7 @@ namespace qe {
             /// just only used in quark object add_component() function.
             /// </summary>
             /// <param name="quark_object">The quark object.</param>
-            inline void set_quark_object(qe::core::QuarkObject* quark_object){ quark_object_ = quark_object; }
+            inline auto set_quark_object(qe::core::QuarkObject* quark_object){ quark_object_ = quark_object; }
 
         // properties
         private:
@@ -50,17 +50,13 @@ namespace qe {
             /// Sets the component flag. default set by typeid(T*).name(), T is component.
             /// </summary>
             /// <param name="flag">The component flag.</param>
-            inline void set_component_flag(const std::string& flag) {
-                component_flag_ = flag;
-            }
+            inline void set_component_flag(const std::string& flag) { component_flag_ = flag; }
 
             /// <summary>
             /// Gets the component flag.
             /// </summary>
             /// <returns> component flag </returns>
-            inline std::string get_component_flag() {
-                return component_flag_;
-            }
+            inline auto get_component_flag() { return component_flag_; }
 
         private:
             /// <summary>

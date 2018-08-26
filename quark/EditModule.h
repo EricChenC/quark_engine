@@ -64,7 +64,7 @@ namespace qe {
             /// Sets the platform.
             /// </summary>
             /// <param name="platform">The platform.</param>
-            inline static void set_platform(const BuildPlatform& platform) { build_platform_ = platform; }
+            inline static auto set_platform(const BuildPlatform& platform) { build_platform_ = platform; }
 
         private:
             static BuildPlatform build_platform_;

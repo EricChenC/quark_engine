@@ -1385,7 +1385,7 @@ auto qe::render::vulkan::VulkanDevice::ChooseSwapPresentMode(const std::vector<v
 
 auto qe::render::vulkan::VulkanDevice::ChooseSwapExtent(const vk::SurfaceCapabilitiesKHR& capabilities) -> vk::Extent2D
 {
-    if (capabilities.currentExtent.width != std::numeric_limits<uint32_t>::max()) {
+    if (capabilities.currentExtent.width != UINT_MAX) {
         return capabilities.currentExtent;
     }
     else {
@@ -1397,8 +1397,8 @@ auto qe::render::vulkan::VulkanDevice::ChooseSwapExtent(const vk::SurfaceCapabil
             static_cast<uint32_t>(height)
         };
 
-        actualExtent.width = std::max(capabilities.minImageExtent.width, std::min(capabilities.maxImageExtent.width, actualExtent.width));
-        actualExtent.height = std::max(capabilities.minImageExtent.height, std::min(capabilities.maxImageExtent.height, actualExtent.height));
+        actualExtent.width = glm::max<uint32_t>(capabilities.minImageExtent.width, glm::min<uint32_t>(capabilities.maxImageExtent.width, actualExtent.width));
+        actualExtent.height = glm::max<uint32_t>(capabilities.minImageExtent.height, glm::min<uint32_t>(capabilities.maxImageExtent.height, actualExtent.height));
 
         return actualExtent;
     }

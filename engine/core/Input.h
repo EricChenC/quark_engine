@@ -6,9 +6,6 @@
 #pragma once
 
 #include "CoreObject.h"
-#include "CoreModule.h"
-
-#include "glm/glm.hpp"
 
 namespace qe {
     namespace core

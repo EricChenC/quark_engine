@@ -36,7 +36,7 @@ namespace qe {
             /// Sets the width.
             /// </summary>
             /// <param name="width">The width.</param>
-            inline void set_width(const uint32_t& width) { width_ = width; }
+            inline auto set_width(const uint32_t& width) { width_ = width; }
 
             /// <summary>
             /// Gets the height.
@@ -48,7 +48,7 @@ namespace qe {
             /// Sets the height.
             /// </summary>
             /// <param name="height">The height.</param>
-            inline void set_height(const uint32_t& height) { height_ = height; }
+            inline auto set_height(const uint32_t& height) { height_ = height; }
 
             /// <summary>
             /// Gets the channel.
@@ -60,7 +60,7 @@ namespace qe {
             /// Sets the channel.
             /// </summary>
             /// <param name="channel">The channel.</param>
-            inline void set_channel(const int& channel) { channel_ = channel; }
+            inline auto set_channel(const int& channel) { channel_ = channel; }
 
             /// <summary>
             /// Gets the data.
@@ -72,7 +72,7 @@ namespace qe {
             /// Sets the data.
             /// </summary>
             /// <param name="data">The data.</param>
-            inline void set_data(void* data) { data_ = data; }
+            inline auto set_data(void* data) { data_ = data; }
 
             /// <summary>
             /// Gets the mip level.
@@ -84,7 +84,7 @@ namespace qe {
             /// Sets the mip level.
             /// </summary>
             /// <param name="mip_level">The mip level.</param>
-            inline void set_mip_level(const uint32_t& mip_level) { mip_levels_ = mip_level; }
+            inline auto set_mip_level(const uint32_t& mip_level) { mip_levels_ = mip_level; }
           
             /// <summary>
             /// Gets the layer count.
@@ -96,7 +96,7 @@ namespace qe {
             /// Sets the layer count.
             /// </summary>
             /// <param name="layer_count">The layer count.</param>
-            inline void set_layer_count(const uint32_t& layer_count) { layer_count_ = layer_count; }
+            inline auto set_layer_count(const uint32_t& layer_count) { layer_count_ = layer_count; }
            
             /// <summary>
             /// Gets the size.
@@ -108,7 +108,7 @@ namespace qe {
             /// Sets the size.
             /// </summary>
             /// <param name="size">The size.</param>
-            inline void set_size(const size_t& size) { size_ = size; }
+            inline auto set_size(const size_t& size) { size_ = size; }
 
             /// <summary>
             /// Gets the type.
@@ -120,7 +120,7 @@ namespace qe {
             /// Sets the type.
             /// </summary>
             /// <param name="type">The type.</param>
-            inline void set_type(Type type) { type_ = type; }
+            inline auto set_type(Type type) { type_ = type; }
            
 
         private:

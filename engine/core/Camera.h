@@ -5,7 +5,6 @@
 #pragma once
 
 #include "Behaviour.h"
-#include "CoreModule.h"
 
 #include <glm/glm.hpp>
 #include <list>
@@ -102,7 +101,7 @@ namespace qe {
             /// Sets the allow dynamic resolution.
             /// </summary>
             /// <param name="allow">The allow.</param>
-            inline void set_allow_dynamic_resolution(const bool& allow) { allow_dynamic_resolution_ = allow; }
+            inline auto set_allow_dynamic_resolution(const bool& allow) { allow_dynamic_resolution_ = allow; }
 
             /// <summary>
             /// Gets the allow HDR.
@@ -114,7 +113,7 @@ namespace qe {
             /// Sets the allow HDR.
             /// </summary>
             /// <param name="allow">The allow.</param>
-            inline void set_allow_hdr(const bool& allow){ allow_hdr_ = allow; }
+            inline auto set_allow_hdr(const bool& allow){ allow_hdr_ = allow; }
 
             /// <summary>
             /// Gets the allow msaa.
@@ -126,7 +125,7 @@ namespace qe {
             /// Sets the allow msaa.
             /// </summary>
             /// <param name="allow">The allow.</param>
-            inline void set_allow_msaa(const bool& allow){ allow_msaa_ = allow; }
+            inline auto set_allow_msaa(const bool& allow){ allow_msaa_ = allow; }
 
             /// <summary>
             /// Gets the aspect.
@@ -138,7 +137,7 @@ namespace qe {
             /// Sets the aspect.
             /// </summary>
             /// <param name="aspect">The aspect.</param>
-            inline void set_aspect(const float& aspect){ aspect_ = aspect; }
+            inline auto set_aspect(const float& aspect){ aspect_ = aspect; }
 
             /// <summary>
             /// Gets the color of the background.
@@ -150,7 +149,7 @@ namespace qe {
             /// Sets the color of the background.
             /// </summary>
             /// <param name="color">The color.</param>
-            inline void set_background_color(const std::shared_ptr<Color>& color){ background_color_ = color; }
+            inline auto set_background_color(const std::shared_ptr<Color>& color){ background_color_ = color; }
 
             /// <summary>
             /// Gets the type of the camera.
@@ -175,7 +174,7 @@ namespace qe {
             /// Sets the clear flags.
             /// </summary>
             /// <param name="flag">The flag.</param>
-            inline void set_clear_flags(const ClearFlags& flag){ clear_flags_ = flag; }
+            inline auto set_clear_flags(const ClearFlags& flag){ clear_flags_ = flag; }
 
             /// <summary>
             /// Gets the culling mask.
@@ -187,7 +186,7 @@ namespace qe {
             /// Sets the culling mask.
             /// </summary>
             /// <param name="mask">The mask.</param>
-            inline void set_culling_mask(const int& mask){ culling_mask_ = mask; }
+            inline auto set_culling_mask(const int& mask){ culling_mask_ = mask; }
 
             /// <summary>
             /// Gets the culling matrix.
@@ -199,7 +198,7 @@ namespace qe {
             /// Sets the culling matrix.
             /// </summary>
             /// <param name="mat">The mat.</param>
-            inline void set_culling_matrix(const glm::mat4& mat){ culling_matrix_ = mat; }
+            inline auto set_culling_matrix(const glm::mat4& mat){ culling_matrix_ = mat; }
 
             /// <summary>
             /// Gets the depth.
@@ -211,7 +210,7 @@ namespace qe {
             /// Sets the depth.
             /// </summary>
             /// <param name="depth">The depth.</param>
-            inline void set_depth(const float& depth){ depth_ = depth; }
+            inline auto set_depth(const float& depth){ depth_ = depth; }
 
             /// <summary>
             /// Gets the near clip plane.
@@ -223,7 +222,7 @@ namespace qe {
             /// Sets the near clip plane.
             /// </summary>
             /// <param name="">The .</param>
-            inline void set_near_clip_plane(const float& near_plane) { near_clip_plane_ = near_plane; }
+            inline auto set_near_clip_plane(const float& near_plane) { near_clip_plane_ = near_plane; }
 
             /// <summary>
             /// Gets the far clip plane.
@@ -235,7 +234,7 @@ namespace qe {
             /// Sets the far clip plane.
             /// </summary>
             /// <param name="">The .</param>
-            inline void set_far_clip_plane(const float& far_plane) { far_clip_plane_ = far_plane; }
+            inline auto set_far_clip_plane(const float& far_plane) { far_clip_plane_ = far_plane; }
 
             /// <summary>
             /// Fields the of view (fov).
@@ -247,7 +246,7 @@ namespace qe {
             /// Sets the field of view.
             /// </summary>
             /// <param name="fov">The fov.</param>
-            inline void set_field_of_view(const float& fov){ field_of_view_ = fov; }
+            inline auto set_field_of_view(const float& fov){ field_of_view_ = fov; }
 
             /// <summary>
             /// Gets the use ortho graphic.
@@ -259,7 +258,7 @@ namespace qe {
             /// Sets the use ortho graphic.
             /// </summary>
             /// <param name="ortho">The ortho.</param>
-            inline void set_use_ortho_graphic(const bool& ortho){ ortho_graphic_ = ortho; }
+            inline auto set_use_ortho_graphic(const bool& ortho){ ortho_graphic_ = ortho; }
 
             /// <summary>
             /// Gets the size of the ortho graphic.
@@ -271,7 +270,7 @@ namespace qe {
             /// Sets the size of the ortho graphic.
             /// </summary>
             /// <param name="size">The size.</param>
-            inline void set_ortho_graphic_size(const float& size){ ortho_graphic_size_ = size; }
+            inline auto set_ortho_graphic_size(const float& size){ ortho_graphic_size_ = size; }
 
             /// <summary>
             /// Gets the pixel x.
@@ -283,7 +282,7 @@ namespace qe {
             /// Sets the pixel x.
             /// </summary>
             /// <param name="x">The x.</param>
-            inline void set_pixel_x(const int& x){ pixel_rect_.x = x; }
+            inline auto set_pixel_x(const int& x){ pixel_rect_.x = x; }
 
             /// <summary>
             /// Gets the pixel y.
@@ -295,7 +294,7 @@ namespace qe {
             /// Sets the pixel y.
             /// </summary>
             /// <param name="y">The y.</param>
-            inline void set_pixel_y(const int& y){ pixel_rect_.y = y; }
+            inline auto set_pixel_y(const int& y){ pixel_rect_.y = y; }
 
             /// <summary>
             /// Gets the width of the pixel.
@@ -307,7 +306,7 @@ namespace qe {
             /// Sets the width of the pixel.
             /// </summary>
             /// <param name="width">The width.</param>
-            inline void set_pixel_width(const int& width){ pixel_rect_.width = width; }
+            inline auto set_pixel_width(const int& width){ pixel_rect_.width = width; }
 
             /// <summary>
             /// Gets the height of the pixel.
@@ -319,7 +318,7 @@ namespace qe {
             /// Sets the height of the pixel.
             /// </summary>
             /// <param name="height">The height.</param>
-            inline void set_pixel_height(const int& height){ pixel_rect_.height = height; }
+            inline auto set_pixel_height(const int& height){ pixel_rect_.height = height; }
 
             /// <summary>
             /// Gets the pixel rect.
@@ -331,7 +330,7 @@ namespace qe {
             /// Sets the pixel rect.
             /// </summary>
             /// <param name="rect">The rect.</param>
-            inline void set_pixel_rect(const Rect& rect){ pixel_rect_ = rect; }
+            inline auto set_pixel_rect(const Rect& rect){ pixel_rect_ = rect; }
 
             /// <summary>
             /// Gets the rect.
@@ -343,7 +342,7 @@ namespace qe {
             /// Sets the rect.
             /// </summary>
             /// <param name="rect">The rect.</param>
-            inline void set_rect(const Rect& rect){ rect_ = rect; }
+            inline auto set_rect(const Rect& rect){ rect_ = rect; }
 
             /// <summary>
             /// Gets the target display.
@@ -355,7 +354,7 @@ namespace qe {
             /// Sets the target display.
             /// </summary>
             /// <param name="target">The target.</param>
-            inline void set_target_display(const int& target) { target_deisplay_ = target; }
+            inline auto set_target_display(const int& target) { target_deisplay_ = target; }
 
             /// <summary>
             /// Gets the target texture.
@@ -367,7 +366,7 @@ namespace qe {
             /// Sets the target texture.
             /// </summary>
             /// <param name="texture">The texture.</param>
-            inline void set_target_texture(const std::shared_ptr<RenderTexture>& texture) { target_texture_ = texture; };
+            inline auto set_target_texture(const std::shared_ptr<RenderTexture>& texture) { target_texture_ = texture; };
 
             /// <summary>
             /// Gets the transparency sort axis.
@@ -379,7 +378,7 @@ namespace qe {
             /// Sets the transparency sort axis.
             /// </summary>
             /// <param name="axis">The axis.</param>
-            inline void set_transparency_sort_axis(const glm::vec3& axis){ transparency_sort_axis_ = axis; }
+            inline auto set_transparency_sort_axis(const glm::vec3& axis){ transparency_sort_axis_ = axis; }
 
             /// <summary>
             /// Gets the transparency sort mode.
@@ -391,7 +390,7 @@ namespace qe {
             /// Sets the transparency sort mode.
             /// </summary>
             /// <param name="mode">The mode.</param>
-            inline void set_transparency_sort_mode(const TransparencySortMode& mode){ transparency_sort_mode_ = mode; }
+            inline auto set_transparency_sort_mode(const TransparencySortMode& mode){ transparency_sort_mode_ = mode; }
 
             /// <summary>
             /// Gets the use occlusion culling.
@@ -403,7 +402,7 @@ namespace qe {
             /// Sets the use occlusion culling.
             /// </summary>
             /// <param name="use">The use.</param>
-            inline void set_use_occlusion_culling(const bool& use){ use_occlusion_culling_ = use; }
+            inline auto set_use_occlusion_culling(const bool& use){ use_occlusion_culling_ = use; }
 
             /// <summary>
             /// Gets the use physical properties.
@@ -415,7 +414,7 @@ namespace qe {
             /// Sets the use physical properties.
             /// </summary>
             /// <param name="use">The use.</param>
-            inline void set_use_physical_properties(const bool& use){ use_physical_properties_ = use; }
+            inline auto set_use_physical_properties(const bool& use){ use_physical_properties_ = use; }
 
             /// <summary>
             /// Gets the velocity.
@@ -427,7 +426,7 @@ namespace qe {
             /// Sets the velocity.
             /// </summary>
             /// <param name="velocity">The velocity.</param>
-            inline void set_velocity(const glm::vec3& velocity){ velocity_ = velocity; }
+            inline auto set_velocity(const glm::vec3& velocity){ velocity_ = velocity; }
 
         // Methods
         public:

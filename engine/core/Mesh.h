@@ -62,7 +62,7 @@ namespace qe {
             /// Set vertex data to mesh.
             /// </summary>
             /// <param name="vertexs">The mesh vertex data.</param>
-            inline void set_vertexs(const std::shared_ptr<std::vector<glm::vec3>>& vertexs) { vertexs_ = vertexs; };
+            inline auto set_vertexs(const std::shared_ptr<std::vector<glm::vec3>>& vertexs) { vertexs_ = vertexs; };
 
             /// <summary>
             /// Gets the normals.
@@ -74,7 +74,7 @@ namespace qe {
             /// Set normal data to mesh.
             /// </summary>
             /// <param name="normals">The mesh normal data.</param>
-            inline void set_normals(const std::shared_ptr<std::vector<glm::vec3>>& normals) { normals_ = normals; };
+            inline auto set_normals(const std::shared_ptr<std::vector<glm::vec3>>& normals) { normals_ = normals; };
 
             /// <summary>
             /// Gets the uvs.
@@ -86,7 +86,7 @@ namespace qe {
             /// Set uv data to mesh.
             /// </summary>
             /// <param name="uvs">The mesh uv data.</param>
-            inline void set_uvs(const std::shared_ptr<std::vector<glm::vec2>>& uvs) { uvs_ = uvs; };
+            inline auto set_uvs(const std::shared_ptr<std::vector<glm::vec2>>& uvs) { uvs_ = uvs; };
 
             /// <summary>
             /// Gets the indexs.
@@ -98,7 +98,7 @@ namespace qe {
             /// Set index data to mesh.
             /// </summary>
             /// <param name="indexs">The mesh index data.</param>
-            inline void set_indexs(const std::shared_ptr<std::vector<unsigned int>>& indexs) { indexs_ = indexs; };
+            inline auto set_indexs(const std::shared_ptr<std::vector<unsigned int>>& indexs) { indexs_ = indexs; };
 
             /// <summary>
             /// Gets the vertex count.
@@ -110,7 +110,7 @@ namespace qe {
             /// Set vertex count.
             /// </summary>
             /// <param name="vertexs_count">The mesh vertex count.</param>
-            inline void set_vertexs_count(const int& vertexs_count) { vertex_count_ = vertexs_count; };
+            inline auto set_vertexs_count(const int& vertexs_count) { vertex_count_ = vertexs_count; };
 
             /// <summary>
             /// Gets the normal count.
@@ -122,7 +122,7 @@ namespace qe {
             /// Sets the normals count.
             /// </summary>
             /// <param name="normals_count">The normals count.</param>
-            inline void set_normals_count(const int& normals_count) { normal_count_ = normals_count; };
+            inline auto set_normals_count(const int& normals_count) { normal_count_ = normals_count; };
 
             /// <summary>
             /// Gets the uv count.
@@ -134,7 +134,7 @@ namespace qe {
             /// Sets the uvs count.
             /// </summary>
             /// <param name="uvs_count">The uvs count.</param>
-            inline void set_uvs_count(const int& uvs_count) { uv_count_ = uvs_count; };
+            inline auto set_uvs_count(const int& uvs_count) { uv_count_ = uvs_count; };
 
             /// <summary>
             /// Gets the index count.
@@ -146,7 +146,7 @@ namespace qe {
             /// Sets the indexs count.
             /// </summary>
             /// <param name="indexs_count">The indexs count.</param>
-            inline void set_indexs_count(const int& indexs_count) { index_count_ = indexs_count; };
+            inline auto set_indexs_count(const int& indexs_count) { index_count_ = indexs_count; };
 
 
             /// <summary>
@@ -159,7 +159,7 @@ namespace qe {
             /// Set this mesh type.
             /// </summary>
             /// <param name="type">type is this mesh type.</param>
-            inline void set_type(const MeshType& type) { type_ = type; };
+            inline auto set_type(const MeshType& type) { type_ = type; };
 
         private:
             /// mesh vertexs data pointer.

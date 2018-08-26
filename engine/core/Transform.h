@@ -46,7 +46,7 @@ namespace qe {
             /// Sets the local rotate.
             /// </summary>
             /// <param name="local_roate">The local roate.</param>
-            inline void set_local_rotate(const glm::vec3& local_roate) {
+            inline auto set_local_rotate(const glm::vec3& local_roate) {
                 local_rotate_ = local_roate;
                 local_matrix_ *= glm::orientate4(local_rotate_);
             }
@@ -61,7 +61,7 @@ namespace qe {
             /// Sets the world rotate.
             /// </summary>
             /// <param name="world_roate">The world roate.</param>
-            inline void set_world_rotate(const glm::vec3& world_roate) {
+            inline auto set_world_rotate(const glm::vec3& world_roate) {
                 world_rotate_ = world_roate;
                 world_matrix_ *= glm::orientate4(world_rotate_);
             }
@@ -76,7 +76,7 @@ namespace qe {
             /// Sets the local scale.
             /// </summary>
             /// <param name="local_scale">The local scale.</param>
-            inline void set_local_scale(const glm::vec3& local_scale) {
+            inline auto set_local_scale(const glm::vec3& local_scale) {
                 local_scale_ = local_scale;
                 local_matrix_ *= glm::scale(glm::mat4(1.0f), local_scale_);
             }
@@ -91,7 +91,7 @@ namespace qe {
             /// Sets the world scale.
             /// </summary>
             /// <param name="world_scale">The world scale.</param>
-            inline void set_world_scale(const glm::vec3& world_scale) {
+            inline auto set_world_scale(const glm::vec3& world_scale) {
                 world_scale_ = world_scale;
                 world_matrix_ *= glm::scale(glm::mat4(1.0f), world_scale_);
             }
@@ -106,7 +106,7 @@ namespace qe {
             /// Sets the local translation.
             /// </summary>
             /// <param name="local_translation">The local translation.</param>
-            inline void set_local_translation(const glm::vec3& local_translation) {
+            inline auto set_local_translation(const glm::vec3& local_translation) {
                 local_translation_ = local_translation;
                 local_matrix_ *= glm::translate(glm::mat4(1.0f), local_translation_);
             }
@@ -121,7 +121,7 @@ namespace qe {
             /// Sets the world translation.
             /// </summary>
             /// <param name="world_translation">The world translation.</param>
-            inline void set_world_translation(const glm::vec3& world_translation) {
+            inline auto set_world_translation(const glm::vec3& world_translation) {
                 world_translation_ = world_translation;
                 world_matrix_ *= glm::translate(glm::mat4(1.0f), world_translation_);
             }
@@ -136,7 +136,7 @@ namespace qe {
             /// Sets the local matrix.
             /// </summary>
             /// <param name="local_matrix">The local matrix.</param>
-            inline void set_local_matrix(const glm::mat4x4& local_matrix) {
+            inline auto set_local_matrix(const glm::mat4x4& local_matrix) {
 
                 local_matrix_ = local_matrix;
 
@@ -156,7 +156,7 @@ namespace qe {
             /// Sets the world matrix.
             /// </summary>
             /// <param name="world_matrix">The world matrix.</param>
-            inline void set_world_matrix(const glm::mat4x4& world_matrix) {
+            inline auto set_world_matrix(const glm::mat4x4& world_matrix) {
                 world_matrix_ = world_matrix;
 
                 glm::quat rot;
