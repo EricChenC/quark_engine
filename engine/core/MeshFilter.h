@@ -34,7 +34,7 @@ namespace qe {
             /// Sets the render mesh.
             /// </summary>
             /// <param name="mesh">The mesh.</param>
-            inline void set_mesh(const std::shared_ptr<Mesh>& mesh){ mesh_ = mesh; }
+            inline auto set_mesh(const std::shared_ptr<Mesh>& mesh){ mesh_ = mesh; }
 
 
         private:

@@ -52,7 +52,7 @@ namespace qe {
             /// Sets the identifier.
             /// </summary>
             /// <param name="id">The identifier.</param>
-            inline void set_id(const int& id) { id_ = id; }
+            inline auto set_id(const int& id) { id_ = id; }
 
             /// <summary>
             /// Gets the scene.
@@ -64,7 +64,7 @@ namespace qe {
             /// Sets the scene.
             /// </summary>
             /// <param name="scene">The scene.</param>
-            inline void set_scene(Scene* scene) { scene_ = scene; }
+            inline auto set_scene(Scene* scene) { scene_ = scene; }
 
             /// <summary>
             /// Gets the parent.
@@ -76,7 +76,7 @@ namespace qe {
             /// Sets the parent.
             /// </summary>
             /// <param name="parent">The parent.</param>
-            inline void set_parent(qe::core::QuarkObject* parent) { parent_ = parent; }
+            inline auto set_parent(qe::core::QuarkObject* parent) { parent_ = parent; }
 
         // methods
         public:

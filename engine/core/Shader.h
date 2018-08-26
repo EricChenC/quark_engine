@@ -56,7 +56,7 @@ namespace qe {
             /// Sets the path.
             /// </summary>
             /// <param name="path">The path.</param>
-            inline void set_path(const std::string& path) { path_ = path; }
+            inline auto set_path(const std::string& path) { path_ = path; }
 
             /// <summary>
             /// Gets the color of the global.
@@ -77,7 +77,7 @@ namespace qe {
             /// </summary>
             /// <param name="name">The name.</param>
             /// <param name="color">The color.</param>
-            inline void set_global_color(const std::string& name, const glm::vec4& color) {
+            inline auto set_global_color(const std::string& name, const glm::vec4& color) {
                 auto it = shader_data_type_map_->find(name);
                 if (it == shader_data_type_map_->end()) {
                     throw std::runtime_error("can't find this property");
@@ -111,7 +111,7 @@ namespace qe {
             /// </summary>
             /// <param name="name">The name.</param>
             /// <param name="color_list">The color list.</param>
-            inline void set_global_color_array(const std::string& name, const std::list<glm::vec4>& color_list) {
+            inline auto set_global_color_array(const std::string& name, const std::list<glm::vec4>& color_list) {
                 auto it = shader_data_type_map_->find(name);
                 if (it == shader_data_type_map_->end()) {
                     throw std::runtime_error("can't find this property");
@@ -145,7 +145,7 @@ namespace qe {
             /// </summary>
             /// <param name="name">The name.</param>
             /// <param name="value">The value.</param>
-            inline void set_global_float(const std::string& name, const float& value) {
+            inline auto set_global_float(const std::string& name, const float& value) {
                 auto it = shader_data_type_map_->find(name);
                 if (it == shader_data_type_map_->end()) {
                     throw std::runtime_error("can't find this property");
@@ -179,7 +179,7 @@ namespace qe {
             /// </summary>
             /// <param name="name">The name.</param>
             /// <param name="value_list">The value list.</param>
-            inline void set_global_float_array(const std::string& name, const std::list<float>& value_list) {
+            inline auto set_global_float_array(const std::string& name, const std::list<float>& value_list) {
                 auto it = shader_data_type_map_->find(name);
                 if (it == shader_data_type_map_->end()) {
                     throw std::runtime_error("can't find this property");
@@ -213,7 +213,7 @@ namespace qe {
             /// </summary>
             /// <param name="name">The name.</param>
             /// <param name="value">The value.</param>
-            inline void set_global_int(const std::string& name, const int& value) {
+            inline auto set_global_int(const std::string& name, const int& value) {
                 auto it = shader_data_type_map_->find(name);
                 if (it == shader_data_type_map_->end()) {
                     throw std::runtime_error("can't find this property");
@@ -247,7 +247,7 @@ namespace qe {
             /// </summary>
             /// <param name="name">The name.</param>
             /// <param name="value_list">The value list.</param>
-            inline void set_global_int_array(const std::string& name, const std::list<int>& value_list) {
+            inline auto set_global_int_array(const std::string& name, const std::list<int>& value_list) {
                 auto it = shader_data_type_map_->find(name);
                 if (it == shader_data_type_map_->end()) {
                     throw std::runtime_error("can't find this property");
@@ -281,7 +281,7 @@ namespace qe {
             /// </summary>
             /// <param name="name">The name.</param>
             /// <param name="mat">The mat.</param>
-            inline void set_global_matrix(const std::string& name, const glm::mat4& mat) {
+            inline auto set_global_matrix(const std::string& name, const glm::mat4& mat) {
                 auto it = shader_data_type_map_->find(name);
                 if (it == shader_data_type_map_->end()) {
                     throw std::runtime_error("can't find this property");
@@ -315,7 +315,7 @@ namespace qe {
             /// </summary>
             /// <param name="name">The name.</param>
             /// <param name="mat_list">The mat list.</param>
-            inline void set_global_matrix_array(const std::string& name, const std::list<glm::mat4>&& mat_list) {
+            inline auto set_global_matrix_array(const std::string& name, const std::list<glm::mat4>&& mat_list) {
                 auto it = shader_data_type_map_->find(name);
                 if (it == shader_data_type_map_->end()) {
                     throw std::runtime_error("can't find this property");
@@ -350,7 +350,7 @@ namespace qe {
             /// </summary>
             /// <param name="name">The name.</param>
             /// <param name="texture">The texture.</param>
-            inline void set_global_texture(const std::string& name, std::shared_ptr<Texture> texture) {
+            inline auto set_global_texture(const std::string& name, std::shared_ptr<Texture> texture) {
                 auto it = shader_data_type_map_->find(name);
                 if (it == shader_data_type_map_->end()) {
                     throw std::runtime_error("can't find this property");
@@ -385,7 +385,7 @@ namespace qe {
             /// </summary>
             /// <param name="name">The name.</param>
             /// <param name="texture_list">The texture list.</param>
-            inline void set_global_texture_array(const std::string& name, const std::list<std::shared_ptr<Texture>>& texture_list) {
+            inline auto set_global_texture_array(const std::string& name, const std::list<std::shared_ptr<Texture>>& texture_list) {
                 auto it = shader_data_type_map_->find(name);
                 if (it == shader_data_type_map_->end()) {
                     throw std::runtime_error("can't find this property");
@@ -419,7 +419,7 @@ namespace qe {
             /// </summary>
             /// <param name="name">The name.</param>
             /// <param name="vec">The vec.</param>
-            inline void set_global_vector(const std::string& name, const glm::vec4& vec) {
+            inline auto set_global_vector(const std::string& name, const glm::vec4& vec) {
                 auto it = shader_data_type_map_->find(name);
                 if (it == shader_data_type_map_->end()) {
                     throw std::runtime_error("can't find this property");
@@ -453,7 +453,7 @@ namespace qe {
             /// </summary>
             /// <param name="name">The name.</param>
             /// <param name="vec_list">The vec list.</param>
-            inline void set_global_vector_array(const std::string& name, const std::list<glm::vec4>& vec_list) {
+            inline auto set_global_vector_array(const std::string& name, const std::list<glm::vec4>& vec_list) {
                 auto it = shader_data_type_map_->find(name);
                 if (it == shader_data_type_map_->end()) {
                     throw std::runtime_error("can't find this property");
@@ -482,7 +482,7 @@ namespace qe {
             /// </summary>
             /// <param name="name">The name.</param>
             /// <param name="type">The type.</param>
-            inline void set_shader_map(const std::string& name, const ShaderDataType& type) {
+            inline auto set_shader_map(const std::string& name, const ShaderDataType& type) {
                 shader_data_type_map_->emplace(name, type);
             }
 

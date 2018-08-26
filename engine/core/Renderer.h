@@ -30,13 +30,13 @@ namespace qe {
             /// Gets whether the object enable in camera.
             /// </summary>
             /// <returns> whether enable in camera </returns>
-            auto get_enable() const -> const bool&{ return enable_; }
+            inline auto get_enable() const -> const bool&{ return enable_; }
 
             /// <summary>
             /// Sets the object enable in camera.
             /// </summary>
             /// <param name="enable">if set to <c>true</c> [enable] in camera.</param>
-            void set_enable(const bool& enable){ enable_ = enable; }
+            inline auto set_enable(const bool& enable){ enable_ = enable; }
 
 
         // methods

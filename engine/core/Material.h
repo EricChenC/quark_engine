@@ -21,7 +21,7 @@ namespace qe {
         public:
             inline auto get_shader() const -> const std::shared_ptr<Shader>& { return shader_; };
 
-            inline void set_shader(const std::shared_ptr<Shader>& shader){ shader_ = shader; }
+            inline auto set_shader(const std::shared_ptr<Shader>& shader){ shader_ = shader; }
 
         private:
             std::shared_ptr<Shader> shader_;
