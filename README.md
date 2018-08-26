@@ -35,7 +35,7 @@ The best IR engine of universe.
   MALFORMED_INPUT = 2,
 };
 
-6, unless must, never set value in header file.
+6, Unless need, never init value in header file.
 
 
 
