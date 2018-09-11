@@ -32,7 +32,7 @@ ${DEPS}/fbx/lib/x64
 
 add_library(engine SHARED ${CORE} ${RENDER} ${RESOURCE} ${SHADERS})
 
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build/bin)
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
 target_link_libraries( 
 engine

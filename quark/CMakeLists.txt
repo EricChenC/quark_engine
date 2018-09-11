@@ -9,7 +9,7 @@ ${PROJECT_SOURCE_DIR}/engine/core
 ${PROJECT_SOURCE_DIR}/engine/render/vulkan
 )
 
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build/bin)
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
 link_directories(
 ${DEPS}/vulkan/lib

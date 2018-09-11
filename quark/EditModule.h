@@ -34,7 +34,7 @@ namespace qe {
                 switch (build_platform_)
                 {
                 case qe::edit::BuildPlatform::NONE:
-                    return "D:/project/quark_engine/media/";
+                    return "./../../media/";
                     break;
                 case qe::edit::BuildPlatform::WINDOWS:
                     return "D:/project/quark_engine/media/";
