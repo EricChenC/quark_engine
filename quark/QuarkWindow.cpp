@@ -35,24 +35,25 @@
 
 
 qe::edit::QuarkWindow::QuarkWindow()
-    : vi_device_(std::make_shared<qe::render::vulkan::VulkanDevice>(reinterpret_cast<HWND>(this->winId())))
-    , resource_(std::make_shared<qe::core::Resource>())
-    , camera_controller_(nullptr)
-    , scene_(nullptr)
-    , frame_count_(0)
-    , fps_number_(0)
-    , fps_time_(0.0f)
-    , delta_time_(0.0f)
-    , key_press_time_(0.0f)
-    , is_update_material_(false)
-    , left_button_press_(false)
-    , right_button_press_(false)
-    , middle_button_press_(false)
-    , key_press_(false)
-    , alt_button_press_(false)
-    , init_mouse_pos_(false)
-    , shader_path_(qe::edit::Platform::get_platform_path() + "shader/standard.shader")
 {
+    vi_device_ = std::make_shared<qe::render::vulkan::VulkanDevice>(reinterpret_cast<HWND>(this->winId()));
+    resource_ = std::make_shared<qe::core::Resource>();
+    camera_controller_ = nullptr;
+    scene_ = nullptr;
+    frame_count_ = 0;
+    fps_number_ = 0;
+    fps_time_ = 0.0f;
+    delta_time_ = 0.0f;
+    key_press_time_ = 0.0f;
+    is_update_material_ = false;
+    left_button_press_ = false;
+    right_button_press_ = false;
+    middle_button_press_ = false;
+    key_press_ = false;
+    alt_button_press_ = false;
+    init_mouse_pos_ = false;
+    shader_path_ = qe::edit::Platform::get_platform_path() + "shader/standard.shader";
+
     eye_lookat_cursor_ = std::make_shared<QCursor>(QPixmap(QString(qe::edit::Platform::get_platform_path().c_str()) + "image/eye_lookat.png"));
     eye_rotate_cursor_ = std::make_shared<QCursor>(QPixmap(QString(qe::edit::Platform::get_platform_path().c_str()) + "image/eye_rotate.png"));
     eye_smooth_cursor_ = std::make_shared<QCursor>(QPixmap(QString(qe::edit::Platform::get_platform_path().c_str()) + "image/eye_smooth.png"));
