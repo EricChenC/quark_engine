@@ -2,7 +2,6 @@ var namespaceqe =
 [
     [ "core", null, [
       [ "Animation", "classqe_1_1core_1_1_animation.html", "classqe_1_1core_1_1_animation" ],
-      [ "AwakeBehaviour", "classqe_1_1core_1_1_awake_behaviour.html", "classqe_1_1core_1_1_awake_behaviour" ],
       [ "Behaviour", "classqe_1_1core_1_1_behaviour.html", "classqe_1_1core_1_1_behaviour" ],
       [ "Camera", "classqe_1_1core_1_1_camera.html", "classqe_1_1core_1_1_camera" ],
       [ "CameraController", "classqe_1_1core_1_1_camera_controller.html", "classqe_1_1core_1_1_camera_controller" ],
@@ -11,6 +10,7 @@ var namespaceqe =
       [ "CoreObject", "classqe_1_1core_1_1_core_object.html", "classqe_1_1core_1_1_core_object" ],
       [ "Input", "classqe_1_1core_1_1_input.html", "classqe_1_1core_1_1_input" ],
       [ "Light", "classqe_1_1core_1_1_light.html", "classqe_1_1core_1_1_light" ],
+      [ "LightBakingOutput", "structqe_1_1core_1_1_light_baking_output.html", "structqe_1_1core_1_1_light_baking_output" ],
       [ "Material", "classqe_1_1core_1_1_material.html", "classqe_1_1core_1_1_material" ],
       [ "Mesh", "classqe_1_1core_1_1_mesh.html", "classqe_1_1core_1_1_mesh" ],
       [ "MeshFilter", "classqe_1_1core_1_1_mesh_filter.html", "classqe_1_1core_1_1_mesh_filter" ],
@@ -31,7 +31,7 @@ var namespaceqe =
       [ "Shader", "classqe_1_1core_1_1_shader.html", "classqe_1_1core_1_1_shader" ],
       [ "Texture", "classqe_1_1core_1_1_texture.html", "classqe_1_1core_1_1_texture" ],
       [ "Texture2D", "classqe_1_1core_1_1_texture2_d.html", "classqe_1_1core_1_1_texture2_d" ],
-      [ "Time", "classqe_1_1core_1_1_time.html", null ],
+      [ "Time", "classqe_1_1core_1_1_time.html", "classqe_1_1core_1_1_time" ],
       [ "Transform", "classqe_1_1core_1_1_transform.html", "classqe_1_1core_1_1_transform" ]
     ] ],
     [ "edit", null, [

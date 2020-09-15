@@ -37,19 +37,19 @@ namespace qe {
                     return "./../../media/";
                     break;
                 case qe::edit::BuildPlatform::WINDOWS:
-                    return "./../../media/";
+                    return "D:/project/quark_engine/media/";
                     break;
                 case qe::edit::BuildPlatform::MAC:
-                    return "./../../media/";
+                    return "D:/project/quark_engine/media/";
                     break;
                 case qe::edit::BuildPlatform::LINUX:
-                    return "./../../media/";
+                    return "D:/project/quark_engine/media/";
                     break;
                 case qe::edit::BuildPlatform::IPHONE:
-                    return "./../../media/";
+                    return "D:/project/quark_engine/media/";
                     break;
                 case qe::edit::BuildPlatform::ANDROID:
-                    return "./../../media/";
+                    return "D:/project/quark_engine/media/";
                     break;
                 }
             }

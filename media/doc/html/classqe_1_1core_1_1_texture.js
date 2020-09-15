@@ -15,12 +15,12 @@ var classqe_1_1core_1_1_texture =
     [ "get_size", "classqe_1_1core_1_1_texture.html#ada29e1db46d38d8a353a4b8990506a6e", null ],
     [ "get_type", "classqe_1_1core_1_1_texture.html#a5854ea10b78a5be14df663b908ce720f", null ],
     [ "get_width", "classqe_1_1core_1_1_texture.html#a7dce4c772f252ee33abc504cc1e32213", null ],
-    [ "set_channel", "classqe_1_1core_1_1_texture.html#abf0974ca64b4b64d87e8231808e00175", null ],
-    [ "set_data", "classqe_1_1core_1_1_texture.html#a8eb8938210adc01887955074d32f8799", null ],
-    [ "set_height", "classqe_1_1core_1_1_texture.html#ac7b12cd4caa70ff79de27ce9b9bdd689", null ],
-    [ "set_layer_count", "classqe_1_1core_1_1_texture.html#a3ef609ef39da1287bc0b1521f1e498d9", null ],
-    [ "set_mip_level", "classqe_1_1core_1_1_texture.html#abca5f6780ca541258df95213a3128ed3", null ],
-    [ "set_size", "classqe_1_1core_1_1_texture.html#a91a569a64708b4bf619894987d6945a3", null ],
-    [ "set_type", "classqe_1_1core_1_1_texture.html#aa519a869d5140ece3c49cdf9180129c2", null ],
-    [ "set_width", "classqe_1_1core_1_1_texture.html#a2c1ace409e8b5491ad02702a40ff3f6b", null ]
+    [ "set_channel", "classqe_1_1core_1_1_texture.html#a8566beeb324f452d20ea9fb647cf0b9f", null ],
+    [ "set_data", "classqe_1_1core_1_1_texture.html#a481d0e2cb46088640f9317a8cd983d75", null ],
+    [ "set_height", "classqe_1_1core_1_1_texture.html#a5891e0f51d8c8f92ca9f46ac17a0dfee", null ],
+    [ "set_layer_count", "classqe_1_1core_1_1_texture.html#ad7306ca73bbb59ed3714a8c887e603a1", null ],
+    [ "set_mip_level", "classqe_1_1core_1_1_texture.html#ade1a06f21814a6c924ac05e06e72bd08", null ],
+    [ "set_size", "classqe_1_1core_1_1_texture.html#aad0972f19e78f883002b2054bf7a029b", null ],
+    [ "set_type", "classqe_1_1core_1_1_texture.html#a87411c90ca10549a70a6f619017659c2", null ],
+    [ "set_width", "classqe_1_1core_1_1_texture.html#ae9f9b67d3d436c0f2ba29737bf1a7d97", null ]
 ];

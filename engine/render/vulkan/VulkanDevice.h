@@ -44,6 +44,12 @@ namespace qe {
 
                 vk::RenderPass render_pass_;
 
+                vk::Image color_image_;
+
+                vk::DeviceMemory color_image_memory_;
+
+                vk::ImageView color_image_view_;
+
                 vk::Image frame_buffer_depth_image_;
 
                 vk::DeviceMemory frame_buffer_depth_image_memory_;
@@ -70,6 +76,8 @@ namespace qe {
                 vk::Semaphore present_complete_semaphore_;
 
                 vk::Semaphore render_complete_semaphore_;
+
+                vk::SampleCountFlagBits msaa_samples_ = vk::SampleCountFlagBits::e1;
 
                 bool b_enable_validation_ = true;
 
@@ -265,6 +273,7 @@ namespace qe {
                 std::shared_ptr<VulkanTexture> Create2DImage(
                     core::Texture kTexture,
                     vk::Format format,
+                    vk::SampleCountFlagBits numSamples,
                     vk::ImageUsageFlagBits imageUsage,
                     vk::ImageLayout imageLayout,
                     bool forceLinear);
@@ -302,6 +311,10 @@ namespace qe {
                 void CreateRenderPass();
 
                 void CreateFrameBuffer();
+
+
+            private:
+                vk::SampleCountFlagBits GetMSAASample(vk::PhysicalDeviceProperties properties);
 
             };
         }

@@ -20,14 +20,14 @@ class QAction;
 
 namespace qe {
     namespace edit {
-        class QuarkWindow;
+        class SceneWindow;
 
-        class MainWindow : public QMainWindow , public EditObject 
+        class EditWindow : public QMainWindow , public EditObject 
         {
             Q_OBJECT
         public:
-            explicit MainWindow();
-            ~MainWindow();
+            explicit EditWindow();
+            ~EditWindow();
 
             void InitUI();
 
@@ -50,6 +50,7 @@ namespace qe {
         protected:
             void dragEnterEvent(QDragEnterEvent *event) override;
             void dropEvent(QDropEvent *event) override;
+            void closeEvent(QCloseEvent* event) override;
 
         private:
             void InitWindowBase();
@@ -119,7 +120,7 @@ namespace qe {
             QSizePolicy *tab_splitter_policy_;
             QSizePolicy *button_policy_;
 
-            QuarkWindow *quark_window_;
+            SceneWindow *scene_window_;
 
             QToolButton *play_button_;
             QToolButton *pause_button_;

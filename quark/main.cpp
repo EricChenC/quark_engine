@@ -4,7 +4,7 @@
 #include <stdlib.h>  
 #include <crtdbg.h> 
 
-#include "MainWindow.h"
+#include "EditWindow.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,9 +13,9 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
 
-    qe::edit::MainWindow main_window;
+    qe::edit::EditWindow edit_window;
 
-    main_window.show();
+    edit_window.show();
 
     return a.exec();
 

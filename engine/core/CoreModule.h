@@ -536,6 +536,10 @@ namespace qe {
 
         class Time {
         public:
+            explicit Time(){}
+
+            ~Time(){}
+
             inline static auto get_capture_frame_rate() -> const int& { return capture_frame_rate_; }
 
             inline static auto set_capture_frame_rate(const int& rate) { capture_frame_rate_ = rate; }

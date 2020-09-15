@@ -7,8 +7,8 @@ var structqe_1_1core_1_1_color =
     [ "get_b", "structqe_1_1core_1_1_color.html#a44a08f9a14448cf1326ea346cb3b0467", null ],
     [ "get_g", "structqe_1_1core_1_1_color.html#a7dc5ea80f7b22bc5ba1fd979f3c232bc", null ],
     [ "get_r", "structqe_1_1core_1_1_color.html#a4495e0c94980fce90bd3e9f7d6763f43", null ],
-    [ "set_a", "structqe_1_1core_1_1_color.html#af9fc5bb4f824be3b7f5a9d4b85692b28", null ],
-    [ "set_b", "structqe_1_1core_1_1_color.html#a2c72261012eb1fe0c29c77ef178108c1", null ],
-    [ "set_g", "structqe_1_1core_1_1_color.html#a45012fc6ab40b04fd13171a8df586fe4", null ],
-    [ "set_r", "structqe_1_1core_1_1_color.html#a61b77526d3b3f853c8e5c1f24dd17763", null ]
+    [ "set_a", "structqe_1_1core_1_1_color.html#aca67b93c7cf9fae23cba97cac6fa526a", null ],
+    [ "set_b", "structqe_1_1core_1_1_color.html#aa6502a830c7453a1c4f6d3b4c0b09d14", null ],
+    [ "set_g", "structqe_1_1core_1_1_color.html#a0288b1e26f183c858cca08e1d5afdc99", null ],
+    [ "set_r", "structqe_1_1core_1_1_color.html#a1eb9b63d9bea057fa4ad403ef2178374", null ]
 ];

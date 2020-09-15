@@ -1,4 +1,4 @@
-#include "QuarkWindow.h"
+#include "SceneWindow.h"
 
 #include <qevent.h>
 #include <QDragEnterEvent>
@@ -34,36 +34,37 @@
 #include <iostream>
 
 
-qe::edit::QuarkWindow::QuarkWindow()
-    : vi_device_(std::make_shared<qe::render::vulkan::VulkanDevice>(reinterpret_cast<HWND>(this->winId())))
-    , resource_(std::make_shared<qe::core::Resource>())
-    , camera_controller_(nullptr)
-    , scene_(nullptr)
-    , frame_count_(0)
-    , fps_number_(0)
-    , fps_time_(0.0f)
-    , delta_time_(0.0f)
-    , key_press_time_(0.0f)
-    , is_update_material_(false)
-    , left_button_press_(false)
-    , right_button_press_(false)
-    , middle_button_press_(false)
-    , key_press_(false)
-    , alt_button_press_(false)
-    , init_mouse_pos_(false)
-    , shader_path_(qe::edit::Platform::get_platform_path() + "shader/standard.shader")
+qe::edit::SceneWindow::SceneWindow()
 {
+    vi_device_ = std::make_shared<qe::render::vulkan::VulkanDevice>(reinterpret_cast<HWND>(this->winId()));
+    resource_ = std::make_shared<qe::core::Resource>();
+    camera_controller_ = nullptr;
+    scene_ = nullptr;
+    frame_count_ = 0;
+    fps_number_ = 0;
+    fps_time_ = 0.0f;
+    delta_time_ = 0.0f;
+    key_press_time_ = 0.0f;
+    is_update_material_ = false;
+    left_button_press_ = false;
+    right_button_press_ = false;
+    middle_button_press_ = false;
+    key_press_ = false;
+    alt_button_press_ = false;
+    init_mouse_pos_ = false;
+    shader_path_ = qe::edit::Platform::get_platform_path() + "shader/standard.shader";
+
     eye_lookat_cursor_ = std::make_shared<QCursor>(QPixmap(QString(qe::edit::Platform::get_platform_path().c_str()) + "image/eye_lookat.png"));
     eye_rotate_cursor_ = std::make_shared<QCursor>(QPixmap(QString(qe::edit::Platform::get_platform_path().c_str()) + "image/eye_rotate.png"));
     eye_smooth_cursor_ = std::make_shared<QCursor>(QPixmap(QString(qe::edit::Platform::get_platform_path().c_str()) + "image/eye_smooth.png"));
 }
 
-qe::edit::QuarkWindow::~QuarkWindow()
+qe::edit::SceneWindow::~SceneWindow()
 {
-    ReleaseRenderData();
+    //ReleaseRenderData();
 }
 
-void qe::edit::QuarkWindow::Init()
+void qe::edit::SceneWindow::Init()
 {
     light_dir_ = glm::vec4(10.0f, 10.0f, 10.0f, 1.0f);
 
@@ -73,7 +74,7 @@ void qe::edit::QuarkWindow::Init()
     graphics_timer_->start(1);
 }
 
-void qe::edit::QuarkWindow::resizeEvent(QResizeEvent * event)
+void qe::edit::SceneWindow::resizeEvent(QResizeEvent * event)
 {
     if (!scene_) return;
 
@@ -81,7 +82,7 @@ void qe::edit::QuarkWindow::resizeEvent(QResizeEvent * event)
     SetCameraAspect(size.width(), size.height());
 }
 
-void qe::edit::QuarkWindow::mouseMoveEvent(QMouseEvent * event)
+void qe::edit::SceneWindow::mouseMoveEvent(QMouseEvent * event)
 {
 
     if (!scene_) return;
@@ -131,7 +132,7 @@ void qe::edit::QuarkWindow::mouseMoveEvent(QMouseEvent * event)
 
 }
 
-void qe::edit::QuarkWindow::mousePressEvent(QMouseEvent * event)
+void qe::edit::SceneWindow::mousePressEvent(QMouseEvent * event)
 {
     if (!scene_) return;
 
@@ -159,7 +160,7 @@ void qe::edit::QuarkWindow::mousePressEvent(QMouseEvent * event)
     }
 }
 
-void qe::edit::QuarkWindow::mouseReleaseEvent(QMouseEvent * event)
+void qe::edit::SceneWindow::mouseReleaseEvent(QMouseEvent * event)
 {
     if (!scene_) return;
 
@@ -189,7 +190,7 @@ void qe::edit::QuarkWindow::mouseReleaseEvent(QMouseEvent * event)
 
 }
 
-void qe::edit::QuarkWindow::wheelEvent(QWheelEvent * event)
+void qe::edit::SceneWindow::wheelEvent(QWheelEvent * event)
 {
     if (!scene_) return;
 
@@ -201,7 +202,7 @@ void qe::edit::QuarkWindow::wheelEvent(QWheelEvent * event)
     }
 }
 
-void qe::edit::QuarkWindow::keyPressEvent(QKeyEvent * event)
+void qe::edit::SceneWindow::keyPressEvent(QKeyEvent * event)
 {
     if (!scene_) return;
 
@@ -254,7 +255,7 @@ void qe::edit::QuarkWindow::keyPressEvent(QKeyEvent * event)
     }
 }
 
-void qe::edit::QuarkWindow::keyReleaseEvent(QKeyEvent * event)
+void qe::edit::SceneWindow::keyReleaseEvent(QKeyEvent * event)
 {
 
     if (!scene_ || event->isAutoRepeat()) return;
@@ -270,7 +271,7 @@ void qe::edit::QuarkWindow::keyReleaseEvent(QKeyEvent * event)
 
 }
 
-void qe::edit::QuarkWindow::update()
+void qe::edit::SceneWindow::update()
 {
     if (!scene_) return;
 
@@ -298,7 +299,7 @@ void qe::edit::QuarkWindow::update()
     }
 }
 
-void qe::edit::QuarkWindow::LoadSceneReadyRender(std::shared_ptr<qe::core::Scene> scene)
+void qe::edit::SceneWindow::LoadSceneReadyRender(std::shared_ptr<qe::core::Scene> scene)
 {
     auto roots = scene->Roots();
 
@@ -327,7 +328,7 @@ void qe::edit::QuarkWindow::LoadSceneReadyRender(std::shared_ptr<qe::core::Scene
     }
 }
 
-void qe::edit::QuarkWindow::LoadQuarkObject(
+void qe::edit::SceneWindow::LoadQuarkObject(
     std::shared_ptr<qe::core::QuarkObject> quark_object,
     std::shared_ptr<qe::core::Material> standard_material)
 {
@@ -352,7 +353,7 @@ void qe::edit::QuarkWindow::LoadQuarkObject(
     }
 }
 
-void qe::edit::QuarkWindow::LoadDrawData(
+void qe::edit::SceneWindow::LoadDrawData(
     glm::mat4 m,
     std::shared_ptr<qe::core::MeshFilter> mesh_filter,
     std::shared_ptr<qe::core::MeshRenderer> mesh_renderer)
@@ -379,7 +380,7 @@ void qe::edit::QuarkWindow::LoadDrawData(
 
 }
 
-void qe::edit::QuarkWindow::GetMeshData(std::shared_ptr<qe::core::Mesh> mesh, std::vector<Vertex>& vertexs, std::vector<uint>& indexs)
+void qe::edit::SceneWindow::GetMeshData(std::shared_ptr<qe::core::Mesh> mesh, std::vector<Vertex>& vertexs, std::vector<uint>& indexs)
 {
     for (int i = 0; i < mesh->get_vertex_count(); i++) {
         Vertex vertex = {};
@@ -396,7 +397,7 @@ void qe::edit::QuarkWindow::GetMeshData(std::shared_ptr<qe::core::Mesh> mesh, st
     }
 }
 
-void qe::edit::QuarkWindow::CreateDescriptorSetLayout()
+void qe::edit::SceneWindow::CreateDescriptorSetLayout()
 {
     vk::DescriptorSetLayoutBinding uboLayoutBinding = {};
     uboLayoutBinding.binding = 0;
@@ -421,7 +422,7 @@ void qe::edit::QuarkWindow::CreateDescriptorSetLayout()
     VK_CHECK_RESULT(vi_device_->logic_device_.createDescriptorSetLayout(&layoutInfo, nullptr, &descriptor_set_layout_));
 }
 
-void qe::edit::QuarkWindow::CreatePipeline()
+void qe::edit::SceneWindow::CreatePipeline()
 {
     auto vertShaderPath = shader_pre_ + ".vert.spv";
     auto fragShaderPath = shader_pre_ + ".frag.spv";
@@ -482,8 +483,9 @@ void qe::edit::QuarkWindow::CreatePipeline()
     rasterizer.depthBiasEnable = false;
 
     vk::PipelineMultisampleStateCreateInfo multisampling = {};
-    multisampling.sampleShadingEnable = false;
-    multisampling.rasterizationSamples = vk::SampleCountFlagBits::e1;
+    multisampling.sampleShadingEnable = true;
+    multisampling.rasterizationSamples = vi_device_->msaa_samples_;
+    multisampling.minSampleShading = .2f;
 
     vk::PipelineDepthStencilStateCreateInfo depthStencil = {};
     depthStencil.depthTestEnable = true;
@@ -548,7 +550,7 @@ void qe::edit::QuarkWindow::CreatePipeline()
 
 }
 
-void qe::edit::QuarkWindow::CreateUniformBuffer()
+void qe::edit::SceneWindow::CreateUniformBuffer()
 {
     vi_device_->CreateBuffer(
         vk::BufferUsageFlagBits::eUniformBuffer,
@@ -565,7 +567,7 @@ void qe::edit::QuarkWindow::CreateUniformBuffer()
         &uld_buffer_memory_);
 }
 
-void qe::edit::QuarkWindow::CreateDescriptorSet()
+void qe::edit::SceneWindow::CreateDescriptorSet()
 {
     
     std::array<vk::DescriptorPoolSize, 2> poolSizes = {};
@@ -620,7 +622,7 @@ void qe::edit::QuarkWindow::CreateDescriptorSet()
 
 }
 
-void qe::edit::QuarkWindow::CreateCommandBuffer()
+void qe::edit::SceneWindow::CreateCommandBuffer()
 {
     command_buffers_.resize(vi_device_->swap_chain_frame_buffers_.size());
 
@@ -683,7 +685,7 @@ void qe::edit::QuarkWindow::CreateCommandBuffer()
 
 }
 
-void qe::edit::QuarkWindow::Draw()
+void qe::edit::SceneWindow::Draw()
 {
     uint32_t imageIndex;
 
@@ -741,7 +743,7 @@ void qe::edit::QuarkWindow::Draw()
 
 }
 
-void qe::edit::QuarkWindow::UpdateUniformBuffer()
+void qe::edit::SceneWindow::UpdateUniformBuffer()
 {
 
     UniformCameraBuffer umo = {};
@@ -762,7 +764,7 @@ void qe::edit::QuarkWindow::UpdateUniformBuffer()
     vi_device_->logic_device_.unmapMemory(uld_buffer_memory_);
 }
 
-void qe::edit::QuarkWindow::RecreateSwapChain()
+void qe::edit::SceneWindow::RecreateSwapChain()
 {
     vi_device_->logic_device_.waitIdle();
 
@@ -779,7 +781,7 @@ void qe::edit::QuarkWindow::RecreateSwapChain()
     CreateCommandBuffer();
 }
 
-void qe::edit::QuarkWindow::CleanSwapChain()
+void qe::edit::SceneWindow::CleanSwapChain()
 {
     vi_device_->logic_device_.destroyImageView(vi_device_->frame_buffer_depth_image_view_);
 
@@ -810,21 +812,21 @@ void qe::edit::QuarkWindow::CleanSwapChain()
 
 }
 
-void qe::edit::QuarkWindow::Awake()
+void qe::edit::SceneWindow::Awake()
 {
     for (auto behaviour : behaviours_) {
         behaviour->Awake();
     }
 }
 
-void qe::edit::QuarkWindow::UpdateBehaviour()
+void qe::edit::SceneWindow::UpdateBehaviour()
 {
     for (auto behaviour : behaviours_) {
         behaviour->Update();
     }
 }
 
-void qe::edit::QuarkWindow::LoadScene(const std::string & scene_path)
+void qe::edit::SceneWindow::LoadScene(const std::string & scene_path)
 {
     auto file_name_splits = qe::core::QuarkString::Split(scene_path, "///");
 
@@ -861,7 +863,7 @@ void qe::edit::QuarkWindow::LoadScene(const std::string & scene_path)
     SetCameraAspect(this->geometry().width(), this->geometry().height());
 }
 
-void qe::edit::QuarkWindow::ReleaseScene()
+void qe::edit::SceneWindow::ReleaseScene()
 {
     if (!scene_) return;
 
@@ -869,7 +871,7 @@ void qe::edit::QuarkWindow::ReleaseScene()
     ReleaseRenderData();
 }
 
-void qe::edit::QuarkWindow::ReleaseRenderData()
+void qe::edit::SceneWindow::ReleaseRenderData()
 {
     vi_device_->logic_device_.freeCommandBuffers(
         vi_device_->command_pool_,
@@ -891,7 +893,7 @@ void qe::edit::QuarkWindow::ReleaseRenderData()
     vi_device_->logic_device_.destroyDescriptorPool(descriptor_set_pool_);
 }
 
-void qe::edit::QuarkWindow::ReleaseSceneData()
+void qe::edit::SceneWindow::ReleaseSceneData()
 {
     mesh_datas_.swap(std::vector<meshData>());
     scene_.swap(std::shared_ptr<qe::core::Scene>());
@@ -916,7 +918,7 @@ void qe::edit::QuarkWindow::ReleaseSceneData()
     SetCameraAspect(this->geometry().width(), this->geometry().height());
 }
 
-bool qe::edit::QuarkWindow::event(QEvent * ev)
+bool qe::edit::SceneWindow::event(QEvent * ev)
 {
     switch (ev->type())
     {
@@ -967,7 +969,7 @@ bool qe::edit::QuarkWindow::event(QEvent * ev)
     return false;
 }
 
-void qe::edit::QuarkWindow::SetCameraAspect(const int & width, const int & height)
+void qe::edit::SceneWindow::SetCameraAspect(const int & width, const int & height)
 {
     if (height <= 0) return;
 
@@ -986,194 +988,194 @@ void qe::edit::QuarkWindow::SetCameraAspect(const int & width, const int & heigh
     UpdateUniformBuffer();
 }
 
-void qe::edit::QuarkWindow::OnEnable()
+void qe::edit::SceneWindow::OnEnable()
 {
 }
 
-void qe::edit::QuarkWindow::Start()
+void qe::edit::SceneWindow::Start()
 {
 }
 
-void qe::edit::QuarkWindow::Reset()
+void qe::edit::SceneWindow::Reset()
 {
 }
 
-void qe::edit::QuarkWindow::FixedUpdate()
+void qe::edit::SceneWindow::FixedUpdate()
 {
 }
 
-void qe::edit::QuarkWindow::Update()
+void qe::edit::SceneWindow::Update()
 {
 }
 
-void qe::edit::QuarkWindow::LateUpdate()
+void qe::edit::SceneWindow::LateUpdate()
 {
 }
 
-void qe::edit::QuarkWindow::OnWillRenderObject()
+void qe::edit::SceneWindow::OnWillRenderObject()
 {
 }
 
-void qe::edit::QuarkWindow::OnPreCull()
+void qe::edit::SceneWindow::OnPreCull()
 {
 }
 
-void qe::edit::QuarkWindow::OnBecameVisible()
+void qe::edit::SceneWindow::OnBecameVisible()
 {
 }
 
-void qe::edit::QuarkWindow::OnBecameInvisible()
+void qe::edit::SceneWindow::OnBecameInvisible()
 {
 }
 
-void qe::edit::QuarkWindow::OnPreRender()
+void qe::edit::SceneWindow::OnPreRender()
 {
 }
 
-void qe::edit::QuarkWindow::OnRenderObject()
+void qe::edit::SceneWindow::OnRenderObject()
 {
 }
 
-void qe::edit::QuarkWindow::OnPostRender()
+void qe::edit::SceneWindow::OnPostRender()
 {
 }
 
-void qe::edit::QuarkWindow::OnRenderImage()
+void qe::edit::SceneWindow::OnRenderImage()
 {
 }
 
-void qe::edit::QuarkWindow::OnDrawGizmos()
+void qe::edit::SceneWindow::OnDrawGizmos()
 {
 }
 
-void qe::edit::QuarkWindow::OnGUI()
+void qe::edit::SceneWindow::OnGUI()
 {
 }
 
-void qe::edit::QuarkWindow::OnApplicationPause()
+void qe::edit::SceneWindow::OnApplicationPause()
 {
 }
 
-void qe::edit::QuarkWindow::OnApplicationQuit()
+void qe::edit::SceneWindow::OnApplicationQuit()
 {
 }
 
-void qe::edit::QuarkWindow::OnDisable()
+void qe::edit::SceneWindow::OnDisable()
 {
 }
 
-void qe::edit::QuarkWindow::OnDestroy()
+void qe::edit::SceneWindow::OnDestroy()
 {
 }
 
-void qe::edit::QuarkWindow::OnAnimatorIK()
+void qe::edit::SceneWindow::OnAnimatorIK()
 {
 }
 
-void qe::edit::QuarkWindow::OnAnimatorMove()
+void qe::edit::SceneWindow::OnAnimatorMove()
 {
 }
 
-void qe::edit::QuarkWindow::OnApplicationFocus()
+void qe::edit::SceneWindow::OnApplicationFocus()
 {
 }
 
-void qe::edit::QuarkWindow::OnAudioFilterRead()
+void qe::edit::SceneWindow::OnAudioFilterRead()
 {
 }
 
-void qe::edit::QuarkWindow::OnCollisionEnter()
+void qe::edit::SceneWindow::OnCollisionEnter()
 {
 }
 
-void qe::edit::QuarkWindow::OnCollisionExit()
+void qe::edit::SceneWindow::OnCollisionExit()
 {
 }
 
-void qe::edit::QuarkWindow::OnCollisionStay()
+void qe::edit::SceneWindow::OnCollisionStay()
 {
 }
 
-void qe::edit::QuarkWindow::OnConnectToServer()
+void qe::edit::SceneWindow::OnConnectToServer()
 {
 }
 
-void qe::edit::QuarkWindow::OnControllerColliderHit()
+void qe::edit::SceneWindow::OnControllerColliderHit()
 {
 }
 
-void qe::edit::QuarkWindow::OnDisconnectedFromServer()
+void qe::edit::SceneWindow::OnDisconnectedFromServer()
 {
 }
 
-void qe::edit::QuarkWindow::OnDrawGizmosSelected()
+void qe::edit::SceneWindow::OnDrawGizmosSelected()
 {
 }
 
-void qe::edit::QuarkWindow::OnFailedToConnect()
+void qe::edit::SceneWindow::OnFailedToConnect()
 {
 }
 
-void qe::edit::QuarkWindow::OnFailedToConnectToMasterServer()
+void qe::edit::SceneWindow::OnFailedToConnectToMasterServer()
 {
 }
 
-void qe::edit::QuarkWindow::OnJointBreak()
+void qe::edit::SceneWindow::OnJointBreak()
 {
 }
 
-void qe::edit::QuarkWindow::OnMasterServerEvent()
+void qe::edit::SceneWindow::OnMasterServerEvent()
 {
 }
 
-void qe::edit::QuarkWindow::OnMouseDown()
+void qe::edit::SceneWindow::OnMouseDown()
 {
 }
 
-void qe::edit::QuarkWindow::OnMouseDrag()
+void qe::edit::SceneWindow::OnMouseDrag()
 {
 }
 
-void qe::edit::QuarkWindow::OnMouseEnter()
+void qe::edit::SceneWindow::OnMouseEnter()
 {
 }
 
-void qe::edit::QuarkWindow::OnMouseExit()
+void qe::edit::SceneWindow::OnMouseExit()
 {
 }
 
-void qe::edit::QuarkWindow::OnMouseOver()
+void qe::edit::SceneWindow::OnMouseOver()
 {
 }
 
-void qe::edit::QuarkWindow::OnMouseUp()
+void qe::edit::SceneWindow::OnMouseUp()
 {
 }
 
-void qe::edit::QuarkWindow::OnParticleCollision()
+void qe::edit::SceneWindow::OnParticleCollision()
 {
 }
 
-void qe::edit::QuarkWindow::OnParticleTrigger()
+void qe::edit::SceneWindow::OnParticleTrigger()
 {
 }
 
-void qe::edit::QuarkWindow::OnPlayerConnected()
+void qe::edit::SceneWindow::OnPlayerConnected()
 {
 }
 
-void qe::edit::QuarkWindow::OnPlayerDisconnected()
+void qe::edit::SceneWindow::OnPlayerDisconnected()
 {
 }
 
-void qe::edit::QuarkWindow::OnTriggerEnter()
+void qe::edit::SceneWindow::OnTriggerEnter()
 {
 }
 
-void qe::edit::QuarkWindow::OnTriggerExit()
+void qe::edit::SceneWindow::OnTriggerExit()
 {
 }
 
-void qe::edit::QuarkWindow::OnTriggerStay()
+void qe::edit::SceneWindow::OnTriggerStay()
 {
 }

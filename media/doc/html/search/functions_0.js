@@ -8,5 +8,5 @@ var searchData=
   ['allcamera',['AllCamera',['../classqe_1_1core_1_1_camera.html#a98841e2fd9c7e155f83a7b56b9cde27e',1,'qe::core::Camera']]],
   ['allcameracount',['AllCameraCount',['../classqe_1_1core_1_1_camera.html#abf8db5b933ab3d0bb510ff61b54469e4',1,'qe::core::Camera']]],
   ['animation',['Animation',['../classqe_1_1core_1_1_animation.html#a4ab4b7447ab4ff13e28b3cdccfc1b632',1,'qe::core::Animation']]],
-  ['awake',['Awake',['../classqe_1_1core_1_1_script_behaviour.html#a2810248fa04c8578c66b7f9ae873bf56',1,'qe::core::ScriptBehaviour::Awake()'],['../classqe_1_1core_1_1_awake_behaviour.html#a2867f1e9e069750ae9d74c02ccfb646c',1,'qe::core::AwakeBehaviour::Awake()'],['../classqe_1_1core_1_1_camera_controller.html#a6419979ef1d8e61a7dc70467c52d618a',1,'qe::core::CameraController::Awake()']]]
+  ['awake',['Awake',['../classqe_1_1core_1_1_script_behaviour.html#a2810248fa04c8578c66b7f9ae873bf56',1,'qe::core::ScriptBehaviour::Awake()'],['../classqe_1_1core_1_1_camera_controller.html#a6419979ef1d8e61a7dc70467c52d618a',1,'qe::core::CameraController::Awake()']]]
 ];
