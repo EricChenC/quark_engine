@@ -45,6 +45,10 @@ qe::render::vulkan::VulkanDevice::VulkanDevice(HWND window, bool enable_validati
     queue_family_properties_.resize(queueFamilyCount);
     physical_device_.getQueueFamilyProperties(&queueFamilyCount, queue_family_properties_.data());
 
+    device_features_.sampleRateShading = true;
+
+    msaa_samples_ = GetMSAASample(device_properties_);
+
     // Get list of supported extensions
     uint32_t extCount = 0;
     VK_CHECK_RESULT(physical_device_.enumerateDeviceExtensionProperties(nullptr, &extCount, nullptr));
@@ -117,6 +121,18 @@ qe::render::vulkan::VulkanDevice::~VulkanDevice()
 
     if (swap_chain_) {
         logic_device_.destroySwapchainKHR(swap_chain_);
+    }
+
+    if (color_image_) {
+        logic_device_.destroyImage(color_image_);
+    }
+
+    if (color_image_memory_) {
+        logic_device_.freeMemory(color_image_memory_);
+    }
+
+    if (color_image_view_) {
+        logic_device_.destroyImageView(color_image_view_);
     }
 
     if (frame_buffer_depth_image_) {
@@ -493,7 +509,7 @@ auto qe::render::vulkan::VulkanDevice::CreateImage(
     switch (kTexture.get_type())
     {
     case qe::core::Texture::Type::T2D:
-        return Create2DImage(kTexture, format, imageUsage, imageLayout, forceLinear);
+        return Create2DImage(kTexture, format, msaa_samples_, imageUsage, imageLayout, forceLinear);
         break;
     case qe::core::Texture::Type::T2DARRAY:
         return Create2DArrayImage(kTexture, format, imageUsage, imageLayout, forceLinear);
@@ -528,7 +544,7 @@ void qe::render::vulkan::VulkanDevice::createImage(
     imageInfo.tiling = tiling;
     imageInfo.initialLayout = vk::ImageLayout::ePreinitialized;
     imageInfo.usage = usage;
-    imageInfo.samples = vk::SampleCountFlagBits::e1;
+    imageInfo.samples = msaa_samples_;
     imageInfo.sharingMode = vk::SharingMode::eExclusive;
 
     VK_CHECK_RESULT(logic_device_.createImage(&imageInfo, nullptr, &image));
@@ -658,7 +674,7 @@ vk::Bool32 qe::render::vulkan::VulkanDevice::GetSupportedDepthFormat(vk::Physica
     return false;
 }
 
-std::shared_ptr<qe::render::vulkan::VulkanTexture> qe::render::vulkan::VulkanDevice::Create2DImage(core::Texture kTexture, vk::Format format, vk::ImageUsageFlagBits imageUsage, vk::ImageLayout imageLayout, bool forceLinear)
+std::shared_ptr<qe::render::vulkan::VulkanTexture> qe::render::vulkan::VulkanDevice::Create2DImage(core::Texture kTexture, vk::Format format, vk::SampleCountFlagBits numSamples, vk::ImageUsageFlagBits imageUsage, vk::ImageLayout imageLayout, bool forceLinear)
 {
     auto vi_texture = std::make_shared<qe::render::vulkan::VulkanTexture>();
 
@@ -740,7 +756,7 @@ std::shared_ptr<qe::render::vulkan::VulkanTexture> qe::render::vulkan::VulkanDev
         imageCreateInfo.format = format;
         imageCreateInfo.mipLevels = vi_texture->mip_level;
         imageCreateInfo.arrayLayers = 1;
-        imageCreateInfo.samples = vk::SampleCountFlagBits::e1;
+        imageCreateInfo.samples = numSamples;
         imageCreateInfo.tiling = vk::ImageTiling::eOptimal;
         imageCreateInfo.sharingMode = vk::SharingMode::eExclusive;
         imageCreateInfo.initialLayout = vk::ImageLayout::eUndefined;
@@ -821,7 +837,7 @@ std::shared_ptr<qe::render::vulkan::VulkanTexture> qe::render::vulkan::VulkanDev
         imageCreateInfo.extent = { kTexture.get_width(), kTexture.get_height(), 1 };
         imageCreateInfo.mipLevels = 1;
         imageCreateInfo.arrayLayers = 1;
-        imageCreateInfo.samples = vk::SampleCountFlagBits::e1;
+        imageCreateInfo.samples = numSamples;
         imageCreateInfo.tiling = vk::ImageTiling::eLinear;
         imageCreateInfo.usage = imageUsage;
         imageCreateInfo.sharingMode = vk::SharingMode::eExclusive;
@@ -1415,23 +1431,33 @@ void qe::render::vulkan::VulkanDevice::CreateRenderPass()
 {
     vk::AttachmentDescription colorAttachment = {};
     colorAttachment.format = swap_chain_image_format_;
-    colorAttachment.samples = vk::SampleCountFlagBits::e1;
+    colorAttachment.samples = msaa_samples_;
     colorAttachment.loadOp = vk::AttachmentLoadOp::eClear;
     colorAttachment.storeOp = vk::AttachmentStoreOp::eStore;
     colorAttachment.stencilLoadOp = vk::AttachmentLoadOp::eDontCare;
     colorAttachment.stencilStoreOp = vk::AttachmentStoreOp::eDontCare;
     colorAttachment.initialLayout = vk::ImageLayout::eUndefined;
-    colorAttachment.finalLayout = vk::ImageLayout::ePresentSrcKHR;
+    colorAttachment.finalLayout = vk::ImageLayout::eColorAttachmentOptimal;
 
     vk::AttachmentDescription depthAttachment = {};
     depthAttachment.format = depth_format_;
-    depthAttachment.samples = vk::SampleCountFlagBits::e1;
+    depthAttachment.samples = msaa_samples_;
     depthAttachment.loadOp = vk::AttachmentLoadOp::eClear;
     depthAttachment.storeOp = vk::AttachmentStoreOp::eDontCare;
     depthAttachment.stencilLoadOp = vk::AttachmentLoadOp::eDontCare;
     depthAttachment.stencilStoreOp = vk::AttachmentStoreOp::eDontCare;
     depthAttachment.initialLayout = vk::ImageLayout::eUndefined;
     depthAttachment.finalLayout = vk::ImageLayout::eDepthStencilAttachmentOptimal;
+
+    vk::AttachmentDescription colorAttachmentResolve = {};
+    colorAttachmentResolve.format = swap_chain_image_format_;
+    colorAttachmentResolve.samples = vk::SampleCountFlagBits::e1;
+    colorAttachmentResolve.loadOp = vk::AttachmentLoadOp::eDontCare;
+    colorAttachmentResolve.storeOp = vk::AttachmentStoreOp::eStore;
+    colorAttachmentResolve.stencilLoadOp = vk::AttachmentLoadOp::eDontCare;
+    colorAttachmentResolve.stencilStoreOp = vk::AttachmentStoreOp::eDontCare;
+    colorAttachmentResolve.initialLayout = vk::ImageLayout::eUndefined;
+    colorAttachmentResolve.finalLayout = vk::ImageLayout::ePresentSrcKHR;
 
     vk::AttachmentReference colorAttachmentRef = {};
     colorAttachmentRef.attachment = 0;
@@ -1441,13 +1467,18 @@ void qe::render::vulkan::VulkanDevice::CreateRenderPass()
     depthAttachmentRef.attachment = 1;
     depthAttachmentRef.layout = vk::ImageLayout::eDepthStencilAttachmentOptimal;
 
+    vk::AttachmentReference colorAttachmentResolveRef = {};
+    colorAttachmentResolveRef.attachment = 2;
+    colorAttachmentResolveRef.layout = vk::ImageLayout::eColorAttachmentOptimal;
+
     vk::SubpassDescription subpass = {};
     subpass.pipelineBindPoint = vk::PipelineBindPoint::eGraphics;
     subpass.colorAttachmentCount = 1;
     subpass.pColorAttachments = &colorAttachmentRef;
+    subpass.pResolveAttachments = &colorAttachmentResolveRef;
     subpass.pDepthStencilAttachment = &depthAttachmentRef;
 
-    std::array<vk::AttachmentDescription, 2> attachments = { colorAttachment, depthAttachment };
+    std::array<vk::AttachmentDescription, 3> attachments = { colorAttachment, depthAttachment, colorAttachmentResolve };
 
     vk::RenderPassCreateInfo renderPassInfo = {};
     renderPassInfo.attachmentCount = static_cast<uint32_t>(attachments.size());
@@ -1466,6 +1497,20 @@ void qe::render::vulkan::VulkanDevice::CreateFrameBuffer()
     swap_chain_frame_buffers_.resize(swap_chain_image_views_.size());
 
     createImage(
+        swap_chain_extent_.width,
+        swap_chain_extent_.height,
+        swap_chain_image_format_,
+        vk::ImageTiling::eOptimal,
+        vk::ImageUsageFlagBits::eColorAttachment,
+        vk::MemoryPropertyFlagBits::eDeviceLocal,
+        color_image_,
+        color_image_memory_
+    );
+
+    color_image_view_ = CreateImageView(color_image_, swap_chain_image_format_, vk::ImageAspectFlagBits::eColor);
+
+
+    createImage(
         swap_chain_extent_.width, 
         swap_chain_extent_.height, 
         depth_format_, 
@@ -1479,9 +1524,10 @@ void qe::render::vulkan::VulkanDevice::CreateFrameBuffer()
     frame_buffer_depth_image_view_ = CreateImageView(frame_buffer_depth_image_, depth_format_, vk::ImageAspectFlagBits::eDepth);
 
     for (size_t i = 0; i < swap_chain_image_views_.size(); i++) {
-        std::array<vk::ImageView, 2> attachments = {
-            swap_chain_image_views_[i],
-            frame_buffer_depth_image_view_
+        std::array<vk::ImageView, 3> attachments = {
+            color_image_view_,
+            frame_buffer_depth_image_view_,
+            swap_chain_image_views_[i]
         }; 
 
         vk::FramebufferCreateInfo framebufferInfo = {};
@@ -1494,6 +1540,19 @@ void qe::render::vulkan::VulkanDevice::CreateFrameBuffer()
 
         logic_device_.createFramebuffer(&framebufferInfo, nullptr, &swap_chain_frame_buffers_[i]);
     }
+}
+
+vk::SampleCountFlagBits qe::render::vulkan::VulkanDevice::GetMSAASample(vk::PhysicalDeviceProperties properties)
+{
+    vk::SampleCountFlags counts = properties.limits.framebufferColorSampleCounts & properties.limits.framebufferDepthSampleCounts;
+    if (counts & vk::SampleCountFlagBits::e64) { return vk::SampleCountFlagBits::e64; }
+    if (counts & vk::SampleCountFlagBits::e32) { return vk::SampleCountFlagBits::e32; }
+    if (counts & vk::SampleCountFlagBits::e16) { return vk::SampleCountFlagBits::e16; }
+    if (counts & vk::SampleCountFlagBits::e8) { return vk::SampleCountFlagBits::e8; }
+    if (counts & vk::SampleCountFlagBits::e4) { return vk::SampleCountFlagBits::e4; }
+    if (counts & vk::SampleCountFlagBits::e2) { return vk::SampleCountFlagBits::e2; }
+
+    return vk::SampleCountFlagBits::e1;
 }
 
 void qe::render::vulkan::VulkanDevice::CreateSurface(vk::SurfaceKHR& surface)

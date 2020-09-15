@@ -483,8 +483,9 @@ void qe::edit::SceneWindow::CreatePipeline()
     rasterizer.depthBiasEnable = false;
 
     vk::PipelineMultisampleStateCreateInfo multisampling = {};
-    multisampling.sampleShadingEnable = false;
-    multisampling.rasterizationSamples = vk::SampleCountFlagBits::e1;
+    multisampling.sampleShadingEnable = true;
+    multisampling.rasterizationSamples = vi_device_->msaa_samples_;
+    multisampling.minSampleShading = .2f;
 
     vk::PipelineDepthStencilStateCreateInfo depthStencil = {};
     depthStencil.depthTestEnable = true;
