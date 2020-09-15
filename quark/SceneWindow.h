@@ -45,7 +45,7 @@ namespace qe {
 
     namespace edit {
 
-        class QuarkWindow : public QWindow, public EditObject
+        class SceneWindow : public QWindow, public EditObject
         {
             Q_OBJECT
         public:
@@ -161,8 +161,8 @@ namespace qe {
 
 
         public:
-            explicit QuarkWindow();
-            ~QuarkWindow();
+            explicit SceneWindow();
+            ~SceneWindow();
 
             void Init();
 

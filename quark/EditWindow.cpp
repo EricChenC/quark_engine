@@ -1,5 +1,5 @@
-#include "MainWindow.h"
-#include "QuarkWindow.h"
+#include "EditWindow.h"
+#include "SceneWindow.h"
 #include "QuarkString.h"
 #include "EditModule.h"
 
@@ -35,7 +35,7 @@
 #include <qdebug.h>
 
 
-qe::edit::MainWindow::MainWindow()
+qe::edit::EditWindow::EditWindow()
     : doc_path_("D:/project/quark_engine/media/doc/html/index.html")
     , window_icon_(QString(qe::edit::Platform::get_platform_path().c_str()) + "image/quark.png")
 {
@@ -47,78 +47,78 @@ qe::edit::MainWindow::MainWindow()
     fps_timer_->start();
 }
 
-qe::edit::MainWindow::~MainWindow()
+qe::edit::EditWindow::~EditWindow()
 {
     ClearUI();
 }
 
-void qe::edit::MainWindow::InitUI()
+void qe::edit::EditWindow::InitUI()
 {
     InitWindowBase();
     InitLayout();
 }
 
-void qe::edit::MainWindow::NewProjectAction()
+void qe::edit::EditWindow::NewProjectAction()
 {
     std::cout << "new project action \n";
 }
 
-void qe::edit::MainWindow::OpenProjectAction()
+void qe::edit::EditWindow::OpenProjectAction()
 {
     std::cout << "open project action \n";
 }
 
-void qe::edit::MainWindow::SaveProjectAction()
+void qe::edit::EditWindow::SaveProjectAction()
 {
     std::cout << "save project action \n";
 }
 
-void qe::edit::MainWindow::NewSceneAction()
+void qe::edit::EditWindow::NewSceneAction()
 {
     std::cout << "new scene action \n";
 }
 
-void qe::edit::MainWindow::OpenSceneAction()
+void qe::edit::EditWindow::OpenSceneAction()
 {
     scene_file_ = QFileDialog::getOpenFileName(this,
         tr("Open Project"), "D:/media/models/maya/", tr("Project Files (*.fbx *.obj)"));
 
     if (scene_file_.isEmpty()) return;
 
-    quark_window_->LoadScene(scene_file_.toStdString());
+    scene_window_->LoadScene(scene_file_.toStdString());
 }
 
-void qe::edit::MainWindow::SaveSceneAction()
+void qe::edit::EditWindow::SaveSceneAction()
 {
     std::cout << "save scene action \n";
 }
 
-void qe::edit::MainWindow::ExitAction()
+void qe::edit::EditWindow::ExitAction()
 {
     this->close();
 }
 
-void qe::edit::MainWindow::QuarkManualAction()
+void qe::edit::EditWindow::QuarkManualAction()
 {
     QDesktopServices::openUrl(QUrl(doc_path_));
 }
 
-void qe::edit::MainWindow::UpdateFps()
+void qe::edit::EditWindow::UpdateFps()
 {
-    auto fps = quark_window_->Fps();
+    auto fps = scene_window_->Fps();
     auto delta = 1000.0f / fps;
 
     this->statusBar()->showMessage(QString::number(delta) + " ms/" + QString::number(fps) + " fps");
 }
 
-void qe::edit::MainWindow::dragEnterEvent(QDragEnterEvent * event)
+void qe::edit::EditWindow::dragEnterEvent(QDragEnterEvent * event)
 {
     std::cout << "dragEnterEvent \n";
 
     event->acceptProposedAction();
 }
 
-void qe::edit::MainWindow::dropEvent(QDropEvent * event)
+void qe::edit::EditWindow::dropEvent(QDropEvent * event)
 {
     std::cout << "dropEvent \n";
 
@@ -130,14 +130,21 @@ void qe::edit::MainWindow::dropEvent(QDropEvent * event)
     qDebug() << "file Name " << fileName;
 }
 
-void qe::edit::MainWindow::InitWindowBase()
+void qe::edit::EditWindow::closeEvent(QCloseEvent* event)
+{
+    std::cout << "close window\n";
+
+    scene_window_->ReleaseScene();
+}
+
+void qe::edit::EditWindow::InitWindowBase()
 {
     InitIcon();
     InitWindowName();
     InitWindowSize();
 }
 
-void qe::edit::MainWindow::InitLayout()
+void qe::edit::EditWindow::InitLayout()
 {
     InitMenuBar();
 
@@ -157,17 +164,17 @@ void qe::edit::MainWindow::InitLayout()
     InitStatusBar();
 }
 
-void qe::edit::MainWindow::InitIcon()
+void qe::edit::EditWindow::InitIcon()
 {
     this->setWindowIcon(QIcon(window_icon_));
 }
 
-void qe::edit::MainWindow::InitWindowName()
+void qe::edit::EditWindow::InitWindowName()
 {
     this->setWindowTitle("quark " + QString::number(version_, 'f', 4));
 }
 
-void qe::edit::MainWindow::InitWindowSize()
+void qe::edit::EditWindow::InitWindowSize()
 {
     QRect screen_rect = QApplication::desktop()->screenGeometry();
 
@@ -181,7 +188,7 @@ void qe::edit::MainWindow::InitWindowSize()
 
 }
 
-void qe::edit::MainWindow::InitMenuBar()
+void qe::edit::EditWindow::InitMenuBar()
 {
     auto menu_bar = this->menuBar();
 
@@ -291,12 +298,12 @@ void qe::edit::MainWindow::InitMenuBar()
 
 }
 
-void qe::edit::MainWindow::InitStatusBar()
+void qe::edit::EditWindow::InitStatusBar()
 {
     this->statusBar()->showMessage(tr("Hello world!  i'm quark engine! ^v^"));
 }
 
-void qe::edit::MainWindow::InitSplitterPolicy()
+void qe::edit::EditWindow::InitSplitterPolicy()
 {
     // fixed widget expand bug!
     tab_splitter_policy_ = DBG_NEW QSizePolicy();
@@ -312,7 +319,7 @@ void qe::edit::MainWindow::InitSplitterPolicy()
     button_policy_->setVerticalStretch(0);
 }
 
-void qe::edit::MainWindow::InitSceneTreeUI()
+void qe::edit::EditWindow::InitSceneTreeUI()
 {
     scene_tree_tab_widget_ = DBG_NEW QTabWidget();
 
@@ -321,7 +328,7 @@ void qe::edit::MainWindow::InitSceneTreeUI()
     scene_tree_tab_widget_->setTabShape(QTabWidget::Triangular);
 }
 
-void qe::edit::MainWindow::InitSceneUI()
+void qe::edit::EditWindow::InitSceneUI()
 {
     scene_widget_ = DBG_NEW QWidget();
     scene_tab_widget_ = DBG_NEW QTabWidget();
@@ -335,9 +342,9 @@ void qe::edit::MainWindow::InitSceneUI()
     secne_widget_layout_ = DBG_NEW QVBoxLayout();
 
 
-    quark_window_ = DBG_NEW QuarkWindow();
-    quark_window_->Init();
-    vulkan_window_containter_ = QWidget::createWindowContainer(quark_window_);
+    scene_window_ = DBG_NEW SceneWindow();
+    scene_window_->Init();
+    vulkan_window_containter_ = QWidget::createWindowContainer(scene_window_);
 
     scene_layout_ = DBG_NEW QVBoxLayout();
 
@@ -385,7 +392,7 @@ void qe::edit::MainWindow::InitSceneUI()
 
 }
 
-void qe::edit::MainWindow::InitContentUI()
+void qe::edit::EditWindow::InitContentUI()
 {
     content_tab_widget_ = DBG_NEW QTabWidget();
 
@@ -403,7 +410,7 @@ void qe::edit::MainWindow::InitContentUI()
 
 }
 
-void qe::edit::MainWindow::InitPropertyUI()
+void qe::edit::EditWindow::InitPropertyUI()
 {
     property_tab_widget_ = DBG_NEW QTabWidget();
 
@@ -416,7 +423,7 @@ void qe::edit::MainWindow::InitPropertyUI()
     property_tab_->setAcceptDrops(false);
 }
 
-void qe::edit::MainWindow::InitSceneUILayout()
+void qe::edit::EditWindow::InitSceneUILayout()
 {
     scene_splitter_ = DBG_NEW QSplitter();
     scene_splitter_->setOrientation(Qt::Horizontal);
@@ -429,7 +436,7 @@ void qe::edit::MainWindow::InitSceneUILayout()
     scene_splitter_->setStretchFactor(1, 4);
 }
 
-void qe::edit::MainWindow::InitInsideContentUILayout()
+void qe::edit::EditWindow::InitInsideContentUILayout()
 {
     content_tab_splitter_ = DBG_NEW QSplitter();
     content_tab_splitter_->setOrientation(Qt::Horizontal);
@@ -448,7 +455,7 @@ void qe::edit::MainWindow::InitInsideContentUILayout()
     content_tab_splitter_->setStretchFactor(1, 76);
 }
 
-void qe::edit::MainWindow::InitLeftMainUILayout()
+void qe::edit::EditWindow::InitLeftMainUILayout()
 {
     left_main_splitter_ = DBG_NEW QSplitter();
     left_main_splitter_->setOrientation(Qt::Vertical);
@@ -461,7 +468,7 @@ void qe::edit::MainWindow::InitLeftMainUILayout()
     left_main_splitter_->setStretchFactor(1, 1);
 }
 
-void qe::edit::MainWindow::InitMainUILayout()
+void qe::edit::EditWindow::InitMainUILayout()
 {
     center_widget_ = DBG_NEW QWidget(this);
     main_layout_ = DBG_NEW QHBoxLayout(center_widget_);
@@ -484,7 +491,7 @@ void qe::edit::MainWindow::InitMainUILayout()
 
 
 
-void qe::edit::MainWindow::ClearUI()
+void qe::edit::EditWindow::ClearUI()
 {
     delete tab_splitter_policy_;
     delete button_policy_;
